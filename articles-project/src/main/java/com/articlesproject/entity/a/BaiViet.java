@@ -21,7 +21,7 @@ public class BaiViet extends PrimaryEntity {
     private String tieuDe;
 
     @Lob
-    @Column( nullable = false)
+    @Column( nullable = false, columnDefinition = "TEXT" )
     private String noiDung;
 
     @Column(nullable = false)

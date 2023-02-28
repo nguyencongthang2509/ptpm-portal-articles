@@ -20,7 +20,7 @@ public class DanhGia extends PrimaryEntity {
     private Integer sao;
 
     @Lob
-    @Column( nullable = false)
+    @Column( nullable = false, length = EntityProperties.LENGTH_DESCRIPTION)
     private String noiDung;
 
     @Column(nullable = false)

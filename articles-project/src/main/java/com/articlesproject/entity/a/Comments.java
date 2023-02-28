@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 public class Comments extends PrimaryEntity{
 
     @Nationalized
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Column(length = EntityProperties.LENGTH_DESCRIPTION , nullable = false)
     private String noiDung;
 
     @Nationalized

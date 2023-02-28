@@ -17,11 +17,10 @@ import jakarta.persistence.Table;
 public class BaiViet extends PrimaryEntity {
 
     @Nationalized
-    @Column(length = EntityProperties.LENGTH_DESCRIPTION, nullable = false)
+    @Column(length = EntityProperties.LENGTH_NoiDung, nullable = false)
     private String tieuDe;
 
-    @Lob
-    @Column( nullable = false, columnDefinition = "TEXT" )
+    @Column( nullable = false, length = EntityProperties.LENGTH_DESCRIPTION )
     private String noiDung;
 
     @Column(nullable = false)

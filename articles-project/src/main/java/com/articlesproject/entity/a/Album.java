@@ -5,10 +5,9 @@ import com.articlesproject.infrastructure.constant.EntityProperties;
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.Nationalized;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
 @Data
@@ -17,8 +16,11 @@ import javax.persistence.Table;
 public class Album extends PrimaryEntity {
 
     @Nationalized
-    @Column(length = EntityProperties.LENGTH_DESCRIPTION, nullable = false)
+    @Column(length = EntityProperties.LENGTH_NoiDung)
     private String noiDung;
+
+    @Column(length = EntityProperties.LENGTH_DESCRIPTION, nullable = false)
+    private int loai;
 
     @Column(length = EntityProperties.LENGTH_ID)
     private String usersId;

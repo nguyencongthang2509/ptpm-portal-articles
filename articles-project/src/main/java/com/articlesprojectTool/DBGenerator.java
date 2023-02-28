@@ -69,7 +69,6 @@ public class DBGenerator implements CommandLineRunner {
         users1.setRole(1);
         users.setId(userRepository.save(users1).getId());
 
-
         TheLoai theLoai = new TheLoai();
         theLoai.setMa("SOF1");
         theLoai.setTen("Java");
@@ -79,7 +78,6 @@ public class DBGenerator implements CommandLineRunner {
         theLoai1.setMa("FE1");
         theLoai1.setTen("Font-End");
         theLoai.setId(theLoaiRepository.save(theLoai1).getId());
-
 
         BaiViet baiViet = new BaiViet();
         baiViet.setTieuDe("Authorization on Angular Routes");
@@ -113,7 +111,6 @@ public class DBGenerator implements CommandLineRunner {
         baiViet2.setTym(5);
         baiViet2.setTheLoaiId(theLoai.getId());
         baiViet.setId(baiVietRepository.save(baiViet2).getId());
-
 
         Comments comments = new Comments();
         comments.setNoiDung("Rất biết ơn về những chia sẻ thực sự bổ ích của bạn.\n" +
@@ -150,7 +147,6 @@ public class DBGenerator implements CommandLineRunner {
         comments3.setRelay(comments2.getId());
         comments3.setBaiVietId(baiViet1.getId());
         comments.setId(commentRepository.save(comments3).getId());
-
 
         Comments comments4 = new Comments();
         comments4.setNoiDung("Em chào anh, bài viết của anh rất bổ ích. Em muốn hỏi thêm 1 chút xíu về User Req trong FS ạ.\n" +
@@ -244,7 +240,6 @@ public class DBGenerator implements CommandLineRunner {
         danhGia2.setUsersId(users.getId());
         danhGia2.setBaiVietId(baiViet2.getId());
         danhGia.setId(danhGiaRepository.save(danhGia2).getId());
-
 
     }
 

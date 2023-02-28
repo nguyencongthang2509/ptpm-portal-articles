@@ -42,6 +42,9 @@ dependencies {
     implementation group: 'org.springframework.data', name: 'spring-data-rest-core', version: '2.1.0.RELEASE'
 
     implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+
+    implementation group: 'jakarta.persistence', name: 'jakarta.persistence-api', version: '3.1.0'
+
 }
 
 tasks.named('test') {

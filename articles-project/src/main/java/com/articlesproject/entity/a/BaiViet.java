@@ -2,13 +2,15 @@ package com.articlesproject.entity.a;
 
 import com.articlesproject.entity.base.PrimaryEntity;
 import com.articlesproject.infrastructure.constant.EntityProperties;
+import jakarta.persistence.Basic;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Lob;
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.Nationalized;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
 @Data
@@ -20,8 +22,8 @@ public class BaiViet extends PrimaryEntity {
     @Column(length = EntityProperties.LENGTH_DESCRIPTION, nullable = false)
     private String tieuDe;
 
-    @Nationalized
-    @Column(length = EntityProperties.LENGTH_DESCRIPTION, nullable = false)
+    @Lob
+    @Column( nullable = false)
     private String noiDung;
 
     @Column(nullable = false)

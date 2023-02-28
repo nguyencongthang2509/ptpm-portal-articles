@@ -1,6 +1,6 @@
 package com.articlesproject.repository;
 
-import com.articlesproject.entity.a.TheLoai;
+import com.articlesproject.entity.TheLoai;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

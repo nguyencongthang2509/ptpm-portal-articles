@@ -1,4 +1,4 @@
-package com.articlesproject.entity.a;
+package com.articlesproject.entity;
 
 
 import com.articlesproject.entity.base.PrimaryEntity;

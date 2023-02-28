@@ -1,6 +1,6 @@
 package com.articlesproject.repository;
 
-import com.articlesproject.entity.a.Comments;
+import com.articlesproject.entity.Comments;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

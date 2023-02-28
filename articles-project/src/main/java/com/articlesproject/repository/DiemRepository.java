@@ -1,6 +1,6 @@
 package com.articlesproject.repository;
 
-import com.articlesproject.entity.a.Diem;
+import com.articlesproject.entity.Diem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

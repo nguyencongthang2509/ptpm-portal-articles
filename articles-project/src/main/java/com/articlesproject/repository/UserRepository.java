@@ -1,6 +1,6 @@
 package com.articlesproject.repository;
 
-import com.articlesproject.entity.a.Users;
+import com.articlesproject.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

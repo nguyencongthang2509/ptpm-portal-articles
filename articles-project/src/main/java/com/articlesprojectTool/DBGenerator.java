@@ -1,12 +1,12 @@
 package com.articlesprojectTool;
 
-import com.articlesproject.entity.a.Album;
-import com.articlesproject.entity.a.BaiViet;
-import com.articlesproject.entity.a.Comments;
-import com.articlesproject.entity.a.DanhGia;
-import com.articlesproject.entity.a.Diem;
-import com.articlesproject.entity.a.TheLoai;
-import com.articlesproject.entity.a.Users;
+import com.articlesproject.entity.Album;
+import com.articlesproject.entity.BaiViet;
+import com.articlesproject.entity.Comments;
+import com.articlesproject.entity.DanhGia;
+import com.articlesproject.entity.Diem;
+import com.articlesproject.entity.TheLoai;
+import com.articlesproject.entity.Users;
 import com.articlesproject.repository.AlbumRepository;
 import com.articlesproject.repository.BaiVietRepository;
 import com.articlesproject.repository.CommentRepository;

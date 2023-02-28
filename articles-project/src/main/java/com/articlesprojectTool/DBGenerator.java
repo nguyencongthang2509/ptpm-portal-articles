@@ -142,7 +142,6 @@ public class DBGenerator implements CommandLineRunner {
         comments2.setBaiVietId(baiViet1.getId());
         comments.setId(commentRepository.save(comments2).getId());
 
-
         Comments comments3 = new Comments();
         comments3.setNoiDung("À hình đó anh tự vẽ á, em cứ lấy thoải mái nhé, nhưng nhớ ghi nguồn thinhnotes.com vào giúp anh nha");
         comments3.setKieu(1);

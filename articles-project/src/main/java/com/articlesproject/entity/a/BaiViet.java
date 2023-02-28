@@ -2,8 +2,6 @@ package com.articlesproject.entity.a;
 
 import com.articlesproject.entity.base.PrimaryEntity;
 import com.articlesproject.infrastructure.constant.EntityProperties;
-import jakarta.persistence.Basic;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Lob;
 import lombok.Data;
 import lombok.ToString;
@@ -31,6 +29,9 @@ public class BaiViet extends PrimaryEntity {
 
     @Column(nullable = false)
     private Long createDate;
+
+    @Column(nullable = false)
+    private Integer tym;
 
     @Column(nullable = false)
     private Long thoiGianKiemDuyet;

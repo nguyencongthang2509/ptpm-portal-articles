@@ -2,6 +2,8 @@ package com.articlesproject.entity.a;
 
 
 import com.articlesproject.entity.base.PrimaryEntity;
+import com.articlesproject.infrastructure.constant.EntityProperties;
+import jakarta.persistence.Lob;
 import lombok.Data;
 import lombok.ToString;
 import jakarta.persistence.Column;
@@ -17,13 +19,18 @@ public class DanhGia extends PrimaryEntity {
     @Column(nullable = false)
     private Integer sao;
 
-    @Column(nullable = false)
-    private Integer tym;
+    @Lob
+    @Column( nullable = false)
+    private String noiDung;
 
     @Column(nullable = false)
     private Long thoiGianDanhGia;
 
-    @Column(nullable = false)
-    private Long thoiGianTym;
+    @Column(length = EntityProperties.LENGTH_ID)
+    private String baiVietId;
+
+    @Column(length = EntityProperties.LENGTH_ID)
+    private String usersId;
+
 
 }

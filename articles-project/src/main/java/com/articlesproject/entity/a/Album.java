@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 public class Album extends PrimaryEntity {
 
     @Nationalized
-    @Column(length = EntityProperties.LENGTH_DESCRIPTION, nullable = false)
+    @Column(length = EntityProperties.LENGTH_DESCRIPTION)
     private String noiDung;
 
     @Column(length = EntityProperties.LENGTH_DESCRIPTION, nullable = false)

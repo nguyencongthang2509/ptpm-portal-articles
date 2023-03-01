@@ -16,20 +16,18 @@ public class Comments extends PrimaryEntity{
 
     @Nationalized
     @Column(length = EntityProperties.LENGTH_DESCRIPTION , nullable = false)
-    private String noiDung;
-
-    @Nationalized
-    @Column(length = EntityProperties.LENGTH_CODE, nullable = false)
-    private Integer kieu;
+    private String content;
 
     @Column(nullable = false)
-    private Long thoiGianComment;
+    private Long createAt;
 
-    private String relay;
+    @Nationalized
+    @Column(length = EntityProperties.LENGTH_DESCRIPTION)
+    private String reply;
 
     @Column(length = EntityProperties.LENGTH_ID)
     private String usersId;
 
     @Column(length = EntityProperties.LENGTH_ID)
-    private String baiVietId;
+    private String articlesId;
 }

@@ -17,15 +17,16 @@ public class Album extends PrimaryEntity {
 
     @Nationalized
     @Column(length = EntityProperties.LENGTH_NoiDung)
-    private String noiDung;
+    private String title;
 
-    @Column(length = EntityProperties.LENGTH_DESCRIPTION, nullable = false)
-    private int loai;
+    @Column(length = EntityProperties.LENGTH_CODE, nullable = false)
+    private int type;
 
     @Column(length = EntityProperties.LENGTH_ID)
     private String usersId;
+
     @Column(length = EntityProperties.LENGTH_ID)
-    private String baiVietId;
+    private String articlesId;
 }
 
 

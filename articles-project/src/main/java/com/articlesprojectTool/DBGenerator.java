@@ -2,6 +2,8 @@ package com.articlesprojectTool;
 
 import com.articlesproject.entity.Album;
 import com.articlesproject.entity.Articles;
+import com.articlesproject.entity.Articles_Album;
+import com.articlesproject.entity.Articles_Category;
 import com.articlesproject.entity.Category;
 import com.articlesproject.entity.Comments;
 import com.articlesproject.entity.Evaluate;
@@ -9,10 +11,12 @@ import com.articlesproject.entity.Point;
 import com.articlesproject.entity.Users;
 import com.articlesproject.repository.AlbumRepository;
 import com.articlesproject.repository.ArticlesRepository;
+import com.articlesproject.repository.Articles_AlbumRepository;
+import com.articlesproject.repository.Articles_CategoryRepository;
+import com.articlesproject.repository.CategoryRepository;
 import com.articlesproject.repository.CommentRepository;
 import com.articlesproject.repository.EvalueteRepository;
 import com.articlesproject.repository.PointRepository;
-import com.articlesproject.repository.CategoryRepository;
 import com.articlesproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -43,6 +47,13 @@ public class DBGenerator implements CommandLineRunner {
     private CategoryRepository categoryRepository;
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private Articles_AlbumRepository articles_albumRepository;
+
+    @Autowired
+    private Articles_CategoryRepository articles_categoryRepository;
+
     @Override
     public void run(String... args) throws Exception {
         Users users = new Users();
@@ -73,38 +84,46 @@ public class DBGenerator implements CommandLineRunner {
 
         Articles baiViet = new Articles();
         baiViet.setFileName("xuan-hai.html");
+        baiViet.setTitle("Xin chào các bạn");
+        baiViet.setContent("Mình là Phạm Xuân Hải");
         baiViet.setStatus(1);
         baiViet.setCreateDate(1900800000L);
         baiViet.setBrowseDate(1900800000L);
         baiViet.setUsersId(users.getId());
         baiViet.setTym(10);
-        baiViet.setCategoryId(theLoai1.getId());
         baiViet.setId(articlesRepository.save(baiViet).getId());
 
         Articles baiViet1 = new Articles();
         baiViet1.setFileName("hoa-linh.html");
+        baiViet1.setTitle("Xin chào các bạn");
+        baiViet1.setContent("Mình là Phạm Xuân hahaha");
         baiViet1.setStatus(1);
         baiViet1.setCreateDate(1900800000L);
         baiViet1.setBrowseDate(1900800000L);
         baiViet1.setUsersId(users.getId());
         baiViet1.setTym(10);
-        baiViet1.setCategoryId(theLoai1.getId());
         baiViet1.setId(articlesRepository.save(baiViet1).getId());
 
         Articles baiViet2 = new Articles();
         baiViet2.setFileName("tut-thang.html");
+        baiViet2.setTitle("Xin chào các bạn");
+        baiViet2.setContent("Mình là Phạm Xuân hihihih");
         baiViet2.setStatus(1);
         baiViet2.setCreateDate(1900800000L);
         baiViet2.setBrowseDate(1900800000L);
         baiViet2.setUsersId(users.getId());
         baiViet2.setTym(4);
-        baiViet2.setCategoryId(theLoai1.getId());
         baiViet2.setId(articlesRepository.save(baiViet2).getId());
+
+        Articles_Category articlesCategory = new Articles_Category();
+        articlesCategory.setArticlesId(baiViet.getId());
+        articlesCategory.setCategoryId(theLoai.getId());
+        articlesCategory.setId(articles_categoryRepository.save(articlesCategory).getId());
 
         Comments comments = new Comments();
         comments.setContent("Rất biết ơn về những chia sẻ thực sự bổ ích của bạn.\n" +
                 "Mong bạn và gia đình nhiều sức khỏe, bình an.\n" +
-                        "HH");
+                "HH");
         comments.setCreateAt(1900800000L);
         comments.setUsersId(users1.getId());
         comments.setArticlesId(baiViet.getId());
@@ -146,23 +165,22 @@ public class DBGenerator implements CommandLineRunner {
 
         Album album = new Album();
         album.setTitle("Java");
-        album.setArticlesId(baiViet1.getId());
         album.setUsersId(users1.getId());
-        album.setType(1);
         album.setId(albumRepository.save(album).getId());
 
         Album album1 = new Album();
         album1.setTitle("Java");
-        album1.setArticlesId(baiViet2.getId());
         album1.setUsersId(users1.getId());
-        album1.setType(1);
         album.setId(albumRepository.save(album1).getId());
 
         Album album2 = new Album();
-        album2.setArticlesId(baiViet1.getId());
         album2.setUsersId(users.getId());
-        album2.setType(0);
         album.setId(albumRepository.save(album2).getId());
+
+        Articles_Album baiVietAlbum = new Articles_Album();
+        baiVietAlbum.setAlbumId(album.getId());
+        baiVietAlbum.setArticlesId(baiViet.getId());
+        baiVietAlbum.setId(articles_albumRepository.save(baiVietAlbum).getId());
 
         Point diem = new Point();
         diem.setPoint(9);

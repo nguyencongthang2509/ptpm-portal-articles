@@ -2,26 +2,21 @@ package com.articlesproject.entity;
 
 import com.articlesproject.entity.base.PrimaryEntity;
 import com.articlesproject.infrastructure.constant.EntityProperties;
-import lombok.Data;
-import lombok.ToString;
-import org.hibernate.annotations.Nationalized;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.ToString;
 
 @Entity
 @Data
 @ToString
-@Table(name = "album")
-public class Album extends PrimaryEntity {
-
-    @Nationalized
-    @Column(length = EntityProperties.LENGTH_NoiDung)
-    private String title;
+@Table(name = "articles_album")
+public class Articles_Album extends PrimaryEntity {
 
     @Column(length = EntityProperties.LENGTH_ID)
-    private String usersId;
+    private String articlesId;
 
+    @Column(length = EntityProperties.LENGTH_ID)
+    private String albumId;
 }
-
-

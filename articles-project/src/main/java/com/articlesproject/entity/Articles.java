@@ -18,6 +18,12 @@ public class Articles extends PrimaryEntity {
     @Column( nullable = false, length = EntityProperties.LENGTH_NoiDung )
     private String fileName;
 
+    @Column( nullable = false, length = EntityProperties.LENGTH_NoiDung )
+    private String title;
+
+    @Column( nullable = false, length = EntityProperties.LENGTH_NoiDung )
+    private String content;
+
     @Column(nullable = false)
     private Integer status;
 
@@ -35,9 +41,6 @@ public class Articles extends PrimaryEntity {
 
     @Column(length = EntityProperties.LENGTH_ID)
     private String usersId;
-
-    @Column(length = EntityProperties.LENGTH_ID)
-    private String categoryId;
 
 }
 

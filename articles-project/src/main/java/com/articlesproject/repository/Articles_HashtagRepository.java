@@ -1,10 +1,10 @@
 package com.articlesproject.repository;
 
-import com.articlesproject.entity.Articles_Category;
+import com.articlesproject.entity.Articles_Hashtag;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository(Articles_CategoryRepository.NAME)
-public interface Articles_CategoryRepository extends JpaRepository<Articles_Category, String>{
+@Repository(Articles_HashtagRepository.NAME)
+public interface Articles_HashtagRepository extends JpaRepository<Articles_Hashtag, String>{
     public static final String NAME = "BaseArticles_CategoryRepository";
 }

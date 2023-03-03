@@ -12,12 +12,12 @@ import lombok.ToString;
 @Entity
 @Data
 @ToString
-@Table(name = "articles_category")
-public class Articles_Category extends PrimaryEntity {
+@Table(name = "articles_hashtag")
+public class Articles_Hashtag extends PrimaryEntity {
 
     @Column(length = EntityProperties.LENGTH_ID)
     private String articlesId;
 
     @Column(length = EntityProperties.LENGTH_ID)
-    private String categoryId;
+    private String hashtagId;
 }

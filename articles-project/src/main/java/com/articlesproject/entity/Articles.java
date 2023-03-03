@@ -40,6 +40,9 @@ public class Articles extends PrimaryEntity {
     private Long browseDate;
 
     @Column(length = EntityProperties.LENGTH_ID)
+    private String categoryId;
+
+    @Column(length = EntityProperties.LENGTH_ID)
     private String usersId;
 
 }

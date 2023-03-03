@@ -3,19 +3,21 @@ package com.articlesprojectTool;
 import com.articlesproject.entity.Album;
 import com.articlesproject.entity.Articles;
 import com.articlesproject.entity.Articles_Album;
-import com.articlesproject.entity.Articles_Category;
+import com.articlesproject.entity.Articles_Hashtag;
 import com.articlesproject.entity.Category;
 import com.articlesproject.entity.Comments;
 import com.articlesproject.entity.Evaluate;
+import com.articlesproject.entity.Hashtag;
 import com.articlesproject.entity.Point;
 import com.articlesproject.entity.Users;
 import com.articlesproject.repository.AlbumRepository;
 import com.articlesproject.repository.ArticlesRepository;
 import com.articlesproject.repository.Articles_AlbumRepository;
-import com.articlesproject.repository.Articles_CategoryRepository;
+import com.articlesproject.repository.Articles_HashtagRepository;
 import com.articlesproject.repository.CategoryRepository;
 import com.articlesproject.repository.CommentRepository;
 import com.articlesproject.repository.EvalueteRepository;
+import com.articlesproject.repository.HashtagRepository;
 import com.articlesproject.repository.PointRepository;
 import com.articlesproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +54,10 @@ public class DBGenerator implements CommandLineRunner {
     private Articles_AlbumRepository articles_albumRepository;
 
     @Autowired
-    private Articles_CategoryRepository articles_categoryRepository;
+    private Articles_HashtagRepository articles_hashtagRepository;
+
+    @Autowired
+    private HashtagRepository hashtagRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -81,6 +86,14 @@ public class DBGenerator implements CommandLineRunner {
         theLoai1.setCode("FE1");
         theLoai1.setName("Font-End");
         theLoai.setId(categoryRepository.save(theLoai1).getId());
+
+        Hashtag hashtag = new Hashtag();
+        hashtag.setTitle("#hahaha");
+        hashtag.setId(hashtagRepository.save(hashtag).getId());
+
+        Hashtag hashtag1 = new Hashtag();
+        hashtag1.setTitle("#hiihii");
+        hashtag1.setId(hashtagRepository.save(hashtag1).getId());
 
         Articles baiViet = new Articles();
         baiViet.setFileName("xuan-hai.html");
@@ -115,10 +128,10 @@ public class DBGenerator implements CommandLineRunner {
         baiViet2.setTym(4);
         baiViet2.setId(articlesRepository.save(baiViet2).getId());
 
-        Articles_Category articlesCategory = new Articles_Category();
-        articlesCategory.setArticlesId(baiViet.getId());
-        articlesCategory.setCategoryId(theLoai.getId());
-        articlesCategory.setId(articles_categoryRepository.save(articlesCategory).getId());
+        Articles_Hashtag articles_hashtag = new Articles_Hashtag();
+        articles_hashtag.setArticlesId(baiViet.getId());
+        articles_hashtag.setHashtagId(hashtag.getId());
+        articles_hashtag.setId(articles_hashtagRepository.save(articles_hashtag).getId());
 
         Comments comments = new Comments();
         comments.setContent("Rất biết ơn về những chia sẻ thực sự bổ ích của bạn.\n" +

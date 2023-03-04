@@ -2,31 +2,40 @@ package com.articlesproject.core.user.service.impl;
 
 import com.articlesproject.core.user.model.request.CreateAlbumRequest;
 import com.articlesproject.core.user.model.request.UpdateAlbumRequest;
-import com.articlesproject.core.user.model.respone.AlbumRespone;
+import com.articlesproject.core.user.model.response.AlbumResponse;
 import com.articlesproject.core.user.repository.UAlbumRepository;
-import com.articlesproject.core.user.repository.UUserRepository;
+import com.articlesproject.core.user.repository.UArticleAlbumRepository;
 import com.articlesproject.core.user.service.UAlbumService;
 import com.articlesproject.entity.Album;
 import com.articlesproject.infrastructure.constant.Message;
 import com.articlesproject.infrastructure.exception.rest.RestApiException;
 import com.articlesproject.util.FormUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Scope(proxyMode = ScopedProxyMode.INTERFACES)
+@Transactional
 public class UAlbumServiceImpl implements UAlbumService {
 
     @Autowired
     private UAlbumRepository albumRepository;
 
+    @Autowired
+    private UArticleAlbumRepository articleAlbumRepository;
+
+
     private FormUtils formUtils = new FormUtils();
 
 
     @Override
-    public List<AlbumRespone> findAllAlbumByUserId(String userId) {
+    public List<AlbumResponse> findAllAlbumByUserId(String userId) {
         return albumRepository.findAllAlbumByUserId(userId);
     }
 
@@ -44,5 +53,25 @@ public class UAlbumServiceImpl implements UAlbumService {
         }
         album.get().setTitle(request.getTitle());
         return albumRepository.save(album.get());
+    }
+
+    @Override
+    public boolean delete(String id) {
+        Optional<Album> album = albumRepository.findById(id);
+        if(!album.isPresent()){
+            throw new RestApiException(Message.ALBUM_NOT_EXIST);
+        }
+        articleAlbumRepository.deleteByAlbumId(id);
+        albumRepository.deleteById(id);
+        return true;
+    }
+
+    @Override
+    public Album findById(String id) {
+        Optional<Album> album = albumRepository.findById(id);
+        if(!album.isPresent()){
+            throw new RestApiException(Message.ALBUM_NOT_EXIST);
+        }
+        return album.get();
     }
 }

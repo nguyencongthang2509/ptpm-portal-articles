@@ -1,6 +1,6 @@
 package com.articlesproject.core.user.repository;
 
-import com.articlesproject.core.user.model.respone.UserRespone;
+import com.articlesproject.core.user.model.response.UserResponse;
 import com.articlesproject.repository.UserRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,5 +16,5 @@ public interface UUserRepository extends UserRepository {
             WHERE us.id LIKE :id
             GROUP BY us.name, us.email, us.phone_number,us.img
             """, nativeQuery = true)
-    List<UserRespone> findByIdUser(@Param("id")String id);
+    List<UserResponse> findByIdUser(@Param("id")String id);
 }

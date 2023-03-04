@@ -1,11 +1,11 @@
-package com.articlesproject.core.user.model.respone;
+package com.articlesproject.core.user.model.response;
 
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.rest.core.config.Projection;
 
 @Projection(types = {User.class})
-public interface UserRespone {
+public interface UserResponse {
     @Value("#{target.name}")
     String getName();
 

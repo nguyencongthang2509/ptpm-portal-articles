@@ -1,6 +1,6 @@
 package com.articlesproject.core.user.service.impl;
 
-import com.articlesproject.core.user.model.respone.UserRespone;
+import com.articlesproject.core.user.model.response.UserResponse;
 import com.articlesproject.core.user.repository.UUserRepository;
 import com.articlesproject.core.user.service.UUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ public class UUserServiceImpl implements UUserService {
     private UUserRepository userRepository;
 
     @Override
-    public List<UserRespone> findByIdUser(String id) {
+    public List<UserResponse> findByIdUser(String id) {
         return userRepository.findByIdUser(id);
     }
 }

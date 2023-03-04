@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,7 +32,7 @@ public class UAlbumResController extends BaseController {
 
     @PostMapping("/create")
     private ResponseObject create(@RequestBody CreateAlbumRequest request){
-        request.setUsersId(session.getUserId());
+        request.setUsersId("f249b9dd-4eb1-429e-b8f5-7eab507d4552");
         return new ResponseObject(albumService.create(request));
     }
 
@@ -40,7 +41,7 @@ public class UAlbumResController extends BaseController {
         return new ResponseObject(articleAlbumService.create(request));
     }
 
-    @PutMapping("/edit")
+    @PutMapping("/update")
     private ResponseObject update(@RequestBody UpdateAlbumRequest request){
         return new ResponseObject(albumService.update(request));
     }
@@ -52,7 +53,17 @@ public class UAlbumResController extends BaseController {
 
     @GetMapping
     private ResponseObject findAllAlbumByUserId(){
-        String userId = session.getUserId();
+        String userId = "f249b9dd-4eb1-429e-b8f5-7eab507d4552";
         return new ResponseObject(albumService.findAllAlbumByUserId(userId));
+    }
+
+    @GetMapping("/detail/{id}")
+    private ResponseObject detailAlbum(@PathVariable("id") String id){
+        return new ResponseObject(albumService.findById(id));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    private ResponseObject deleteAlbum(@PathVariable("id") String id){
+        return new ResponseObject(albumService.delete(id));
     }
 }

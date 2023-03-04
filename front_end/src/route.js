@@ -17,8 +17,8 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./pages/myblog.html",
       // controller: ChiTietDonHangController,
     })
-    .when("/gioithieu", {
-      templateUrl: "./pages/gioithieu.html",
+    .when("/blog", {
+      templateUrl: "./pages/blog.html",
       // controller: ChiTietDonHangController,
     })
     .when("/contact", {
@@ -27,6 +27,18 @@ app.config(function ($routeProvider, $locationProvider) {
     })
     .when("/login", {
       templateUrl: "./pages/login.html",
+      // controller: ChiTietDonHangController,
+    })
+    .when("/signup", {
+      templateUrl: "./pages/signup.html",
+      // controller: ChiTietDonHangController,
+    })
+    .when("/album", {
+      templateUrl: "./pages/album.html",
+      // controller: ChiTietDonHangController,
+    })
+    .when("/chitiet", {
+      templateUrl: "./pages/bvchitiet.html",
       // controller: ChiTietDonHangController,
     })
     .otherwise({

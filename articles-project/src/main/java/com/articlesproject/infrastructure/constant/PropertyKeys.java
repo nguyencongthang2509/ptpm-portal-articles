@@ -10,4 +10,8 @@ public class PropertyKeys {
     public static final String ALBUM_NOT_EXIST = "album.not.exist";
 
     public static final String ARTICLE_ALBUM_NOT_EXIST = "article.album.not.exist";
+
+    public static final String COMMENT_NOT_EXIST = "comment.not.exist";
+
+
 }

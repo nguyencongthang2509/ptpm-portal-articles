@@ -39,4 +39,9 @@ public class UserArticleServiceImpl implements UserArticleService {
         return userArticleRepository.save(ar);
     }
 
+    @Override
+    public Articles updateArticle(UserCreateArticleRequest request, String iUser) {
+        return null;
+    }
+
 }

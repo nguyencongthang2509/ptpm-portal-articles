@@ -12,4 +12,5 @@ public final class UserCreateArticleRequest {
     private String content;
     private String img;
     private String fileName;
+
 }

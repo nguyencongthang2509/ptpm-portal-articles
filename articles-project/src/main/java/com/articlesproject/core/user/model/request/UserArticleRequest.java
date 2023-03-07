@@ -10,6 +10,7 @@ public class UserArticleRequest extends PageableRequest {
     private String fileName;
     private String title;
     private String content;
+    private String img;
     private Long createDate;
     private Integer tym;
 }

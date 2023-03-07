@@ -12,5 +12,6 @@ import java.util.List;
 public interface UserArticleService {
     PageableObject<UserArticleResponse> getAllArticle(final UserArticleRequest request);
     Articles addArticle(UserCreateArticleRequest request);
+
     Articles updateArticle(UserCreateArticleRequest request, String iUser);
 }

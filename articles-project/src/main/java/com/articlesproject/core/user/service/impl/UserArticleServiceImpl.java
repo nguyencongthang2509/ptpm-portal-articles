@@ -3,20 +3,29 @@ package com.articlesproject.core.user.service.impl;
 import com.articlesproject.core.common.base.PageableObject;
 import com.articlesproject.core.user.model.request.UserArticleRequest;
 import com.articlesproject.core.user.model.request.UserCreateArticleRequest;
+import com.articlesproject.core.user.model.request.UserUpdateArticleRequest;
 import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.core.user.repository.UserArticleRepository;
 import com.articlesproject.core.user.service.UserArticleService;
 import com.articlesproject.entity.Articles;
+import com.articlesproject.infrastructure.constant.Message;
+import com.articlesproject.infrastructure.exception.rest.RestApiException;
 import com.articlesproject.util.FormUtils;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.Optional;
 
 @Service
+@Scope(proxyMode = ScopedProxyMode.INTERFACES)
+@Transactional
 public class UserArticleServiceImpl implements UserArticleService {
 
     @Autowired
@@ -40,8 +49,31 @@ public class UserArticleServiceImpl implements UserArticleService {
     }
 
     @Override
-    public Articles updateArticle(UserCreateArticleRequest request, String iUser) {
-        return null;
+    public Articles updateArticle(String fileName, UserUpdateArticleRequest request) {
+        Articles articles = userArticleRepository.findByFileName(fileName);
+//        if(!articles.isPresent()){
+//            throw new RestApiException(Message.ARTICLE_NOT_EXIT);
+//        }
+//        Articles ar = formUtils.convertToObject(Articles.class, request);
+//        ar.setTym(0);
+//        ar.setStatus(1);
+        articles.setContent(request.getContent());
+        articles.setTitle(request.getTitle());
+        articles.setImg(request.getImg());
+        articles.setCategoryId(request.getCategoryId());
+        articles.setTym(0);
+        articles.setStatus(1);
+        return userArticleRepository.save(articles);
+    }
+
+    @Override
+    public boolean deleteArticle(String id) {
+        Optional<Articles> articles = userArticleRepository.findById(id);
+        if(!articles.isPresent()){
+            throw new RestApiException(Message.ARTICLE_NOT_EXIT);
+        }
+        userArticleRepository.deleteById(id);
+        return true;
     }
 
 }

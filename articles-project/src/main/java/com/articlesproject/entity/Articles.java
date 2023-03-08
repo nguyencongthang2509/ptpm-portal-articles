@@ -24,19 +24,19 @@ public class Articles extends PrimaryEntity {
     @Column( nullable = false, length = EntityProperties.LENGTH_NoiDung )
     private String content;
 
+    @Column( nullable = false)
+    private String img;
+
     @Column(nullable = false)
     private Integer status;
 
-    @Column(nullable = false)
-    private Long createDate;
-
-    @Column(nullable = false)
+    @Column()
     private Long lastModifiedDate;
 
     @Column(nullable = false)
     private Integer tym;
 
-    @Column(nullable = false)
+    @Column()
     private Long browseDate;
 
     @Column(length = EntityProperties.LENGTH_ID)

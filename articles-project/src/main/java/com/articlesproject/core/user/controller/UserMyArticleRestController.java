@@ -22,7 +22,7 @@ public class UserMyArticleRestController extends BaseController {
     @GetMapping("")
     public ResponseEntity<PageableObject<UserMyArticleResponse>> getAllMyArticle(final UserMyArticleRequest request) {
 //        String idUser = session.getUserId();
-        String idUser = "0e8e9541-3df4-4695-a754-6c5f864d8a92";
+        String idUser = "02412118-60aa-4e10-8d3b-6f69351cfe88";
 
         PageableObject<UserMyArticleResponse> listMyArticle = userMyArticleService.getAllMyArticle(request, idUser);
         return ResponseEntity.ok(listMyArticle);

@@ -101,8 +101,8 @@ public class DBGenerator implements CommandLineRunner {
         baiViet.setFileName("xuan-hai.html");
         baiViet.setTitle("Xin chào các bạn");
         baiViet.setContent("Mình là Phạm Xuân Hải");
+        baiViet.setImg("hai.png");
         baiViet.setStatus(1);
-        baiViet.setCreateDate(1900800000L);
         baiViet.setBrowseDate(1900800000L);
         baiViet.setUsersId(users.getId());
         baiViet.setTym(10);
@@ -113,8 +113,8 @@ public class DBGenerator implements CommandLineRunner {
         baiViet1.setFileName("hoa-linh.html");
         baiViet1.setTitle("Xin chào các bạn");
         baiViet1.setContent("Mình là Phạm Xuân hahaha");
+        baiViet1.setImg("tut.png");
         baiViet1.setStatus(1);
-        baiViet1.setCreateDate(1900800000L);
         baiViet1.setBrowseDate(1900800000L);
         baiViet1.setUsersId(users.getId());
         baiViet1.setTym(10);
@@ -125,8 +125,8 @@ public class DBGenerator implements CommandLineRunner {
         baiViet2.setFileName("tut-thang.html");
         baiViet2.setTitle("Xin chào các bạn");
         baiViet2.setContent("Mình là Phạm Xuân hihihih");
+        baiViet2.setImg("haha.png");
         baiViet2.setStatus(1);
-        baiViet2.setCreateDate(1900800000L);
         baiViet2.setBrowseDate(1900800000L);
         baiViet2.setUsersId(users.getId());
         baiViet2.setTym(4);

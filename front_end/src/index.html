@@ -7,6 +7,50 @@
     <title>Articles</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="language" content="english" />
+    <meta name="viewport" content="width=device-width" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@quilljs" />
+
+    <meta name="twitter:title" content="Full Editor - Quill" />
+
+    <meta
+      name="twitter:description"
+      content="Quill is a free, open source rich text editor built for the modern web."
+    />
+    <meta
+      name="twitter:image"
+      content="https://quilljs.com/assets/images/brand-asset.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://quilljs.com/standalone/full/" />
+    <meta
+      property="og:image"
+      content="https://quilljs.com/assets/images/brand-asset.png"
+    />
+    <meta property="og:title" content="Full Editor - Quill" />
+    <meta property="og:site_name" content="Quill" />
+
+    <link rel="canonical" href="https://quilljs.com/standalone/full/" />
+    <link
+      type="application/atom+xml"
+      rel="alternate"
+      href="https://quilljs.com/feed.xml"
+      title="Quill - Your powerful rich text editor"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"
+    />
+    <link rel="stylesheet" href="../css/plugin/quill.snow.css" />
 
     <!-- Favicons -->
     <link href="../assets/img/favicon.png" rel="icon" />
@@ -52,6 +96,9 @@
     <section ng-view></section>
 
     <!-- Thư viện -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <script src="../lib/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="../lib/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/vendor/chart.js/chart.umd.js"></script>
@@ -60,8 +107,7 @@
     <script src="../lib/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="../lib/vendor/tinymce/tinymce.min.js"></script>
     <script src="../lib/vendor/php-email-form/validate.js"></script>
-    <script src="../js/custom/main.js"></script>
-    <script src="../js/custom/script.js"></script>
+
     <script src="../lib/angular.js"></script>
     <script src="../lib/angular-route.js"></script>
     <script src="../lib/ng-file-upload-12.2.3/dist/ng-file-upload.js"></script>
@@ -69,13 +115,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-resource.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-locale_vi-vn.js"></script>
     <!--    <script src="../src/controller/articleController.js"></script>-->
+    <script src="../js/plugin/quill.min.js"></script>
+    <script src="../js/custom/quill.js"></script>
     <script src="../src/controller/userController.js"></script>
+    <script src="../js/custom/main.js"></script>
+    <script src="../js/custom/script.js"></script>
     <script src="./app.js"></script>
     <script src="./config/api.js"></script>
 
+    <script src="../src/controller/testController.js"></script>
     <script src="../src/controller/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="../js/custom/date.js"></script>
     <script src="./route.js"></script>
+    <!-- thư viện có link, custom api app service ctrl route -->
   </body>
 </html>

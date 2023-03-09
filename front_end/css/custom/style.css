@@ -2528,3 +2528,11 @@ legend {
 }
 
 /*# sourceMappingURL=Searchs_009.css.map */
+/* create article */
+  .create-article > #standalone-container {
+    margin: 50px auto;
+    max-width: 720px;
+  }
+  #editor-container {
+    height: 350px;
+  }

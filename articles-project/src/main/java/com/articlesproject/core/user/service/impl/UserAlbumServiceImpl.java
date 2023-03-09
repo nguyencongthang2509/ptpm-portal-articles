@@ -3,9 +3,9 @@ package com.articlesproject.core.user.service.impl;
 import com.articlesproject.core.user.model.request.CreateAlbumRequest;
 import com.articlesproject.core.user.model.request.UpdateAlbumRequest;
 import com.articlesproject.core.user.model.response.AlbumResponse;
-import com.articlesproject.core.user.repository.UAlbumRepository;
-import com.articlesproject.core.user.repository.UArticleAlbumRepository;
-import com.articlesproject.core.user.service.UAlbumService;
+import com.articlesproject.core.user.repository.UserAlbumRepository;
+import com.articlesproject.core.user.repository.UserArticleAlbumRepository;
+import com.articlesproject.core.user.service.UserAlbumService;
 import com.articlesproject.entity.Album;
 import com.articlesproject.infrastructure.constant.Message;
 import com.articlesproject.infrastructure.exception.rest.RestApiException;
@@ -22,13 +22,13 @@ import java.util.Optional;
 @Service
 @Scope(proxyMode = ScopedProxyMode.INTERFACES)
 @Transactional
-public class UAlbumServiceImpl implements UAlbumService {
+public class UserAlbumServiceImpl implements UserAlbumService {
 
     @Autowired
-    private UAlbumRepository albumRepository;
+    private UserAlbumRepository albumRepository;
 
     @Autowired
-    private UArticleAlbumRepository articleAlbumRepository;
+    private UserArticleAlbumRepository articleAlbumRepository;
 
 
     private FormUtils formUtils = new FormUtils();

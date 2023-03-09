@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface UAlbumRepository extends AlbumRepository {
+public interface UserAlbumRepository extends AlbumRepository {
 
     @Query(value = """
            SELECT ab.id, ab.title , count(arab.id)  AS numberOfArticle, ab.created_date FROM album ab

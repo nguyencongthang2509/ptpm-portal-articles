@@ -4,9 +4,9 @@ import com.articlesproject.core.common.base.BaseController;
 import com.articlesproject.core.user.model.request.CreateAlbumRequest;
 import com.articlesproject.core.user.model.request.CreateArticleAlbumRequest;
 import com.articlesproject.core.user.model.request.UpdateAlbumRequest;
-import com.articlesproject.core.user.service.UAlbumService;
+import com.articlesproject.core.user.service.UserAlbumService;
 import com.articlesproject.core.common.base.ResponseObject;
-import com.articlesproject.core.user.service.UArticleAlbumService;
+import com.articlesproject.core.user.service.UserArticleAlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,13 +22,13 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/album")
-public class UAlbumResController extends BaseController {
+public class UserAlbumResController extends BaseController {
 
     @Autowired
-    private UAlbumService albumService;
+    private UserAlbumService albumService;
 
     @Autowired
-    private UArticleAlbumService articleAlbumService;
+    private UserArticleAlbumService articleAlbumService;
 
     @PostMapping("/create")
     private ResponseObject create(@RequestBody CreateAlbumRequest request){

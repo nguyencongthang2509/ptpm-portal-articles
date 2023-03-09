@@ -7,7 +7,7 @@ import com.articlesproject.entity.Comments;
 
 import java.util.List;
 
-public interface UCommentService {
+public interface UserCommentService {
 
     List<CommentResponse> findCommentByArticleId(String articleId);
 

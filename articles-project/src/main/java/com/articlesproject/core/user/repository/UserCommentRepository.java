@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface UCommentRepository extends CommentRepository {
+public interface UserCommentRepository extends CommentRepository {
 
     @Query(value = """
             SELECT co.id, co.content, co.reply, us.id AS userID, us.name AS userName, co.created_date FROM comments co

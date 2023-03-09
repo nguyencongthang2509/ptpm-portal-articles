@@ -2,8 +2,8 @@ package com.articlesproject.core.user.service.impl;
 
 import com.articlesproject.core.user.model.request.CreateArticleAlbumRequest;
 import com.articlesproject.core.user.model.request.UpdateArticleAlbumRequest;
-import com.articlesproject.core.user.repository.UArticleAlbumRepository;
-import com.articlesproject.core.user.service.UArticleAlbumService;
+import com.articlesproject.core.user.repository.UserArticleAlbumRepository;
+import com.articlesproject.core.user.service.UserArticleAlbumService;
 import com.articlesproject.entity.Articles_Album;
 import com.articlesproject.infrastructure.constant.Message;
 import com.articlesproject.infrastructure.exception.rest.RestApiException;
@@ -14,10 +14,10 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class UArticleAlbumServiceImpl implements UArticleAlbumService {
+public class UserArticleAlbumServiceImpl implements UserArticleAlbumService {
 
     @Autowired
-    private UArticleAlbumRepository articleAlbumRepository;
+    private UserArticleAlbumRepository articleAlbumRepository;
 
     private FormUtils formUtils = new FormUtils();
 

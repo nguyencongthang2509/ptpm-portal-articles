@@ -3,8 +3,8 @@ package com.articlesproject.core.user.service.impl;
 import com.articlesproject.core.user.model.request.CreateCommentRequest;
 import com.articlesproject.core.user.model.request.UpdateCommentRequest;
 import com.articlesproject.core.user.model.response.CommentResponse;
-import com.articlesproject.core.user.repository.UCommentRepository;
-import com.articlesproject.core.user.service.UCommentService;
+import com.articlesproject.core.user.repository.UserCommentRepository;
+import com.articlesproject.core.user.service.UserCommentService;
 import com.articlesproject.entity.Comments;
 import com.articlesproject.infrastructure.constant.Message;
 import com.articlesproject.infrastructure.exception.rest.RestApiException;
@@ -21,10 +21,10 @@ import java.util.Optional;
 @Service
 @Scope(proxyMode = ScopedProxyMode.INTERFACES)
 @Transactional
-public class UCommentServiceImpl implements UCommentService {
+public class UserCommentServiceImpl implements UserCommentService {
 
     @Autowired
-    private UCommentRepository commentRepository;
+    private UserCommentRepository commentRepository;
 
     private FormUtils formUtils = new FormUtils();
 

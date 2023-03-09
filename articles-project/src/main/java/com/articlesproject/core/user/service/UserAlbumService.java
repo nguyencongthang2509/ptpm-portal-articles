@@ -8,7 +8,7 @@ import com.articlesproject.entity.Album;
 import java.util.List;
 
 
-public interface UAlbumService {
+public interface UserAlbumService {
 
     List<AlbumResponse> findAllAlbumByUserId(String userId);
 

@@ -36,6 +36,10 @@ public class Articles extends PrimaryEntity {
     @Column(nullable = false)
     private Integer tym;
 
+    @Nationalized
+    @Column(length = EntityProperties.LENGTH_DESCRIPTION , nullable = false)
+    private String content;
+
     @Column()
     private Long browseDate;
 

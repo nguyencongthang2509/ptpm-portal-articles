@@ -3,7 +3,7 @@ package com.articlesproject.core.user.controller;
 import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.model.request.CreateCommentRequest;
 import com.articlesproject.core.user.model.request.UpdateCommentRequest;
-import com.articlesproject.core.user.service.UCommentService;
+import com.articlesproject.core.user.service.UserCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/comment")
-public class UCommentResController {
+public class UserCommentResController {
 
     @Autowired
-    private UCommentService commentService;
+    private UserCommentService commentService;
 
     @GetMapping("/detail-comment-article/{articleId}")
     private ResponseObject findCommentByArticleId(@PathVariable("articleId") String articleId){

@@ -14,11 +14,11 @@ app.config(function ($routeProvider, $locationProvider) {
       // controller: ChiTietDonHangController,
     })
     .when("/myarticles", {
-      templateUrl: "./pages/myblog.html",
+      templateUrl: "./pages/myarticles.html",
       // controller: ChiTietDonHangController,
     })
     .when("/articles", {
-      templateUrl: "./pages/blog.html",
+      templateUrl: "./pages/articles.html",
       // controller: ChiTietDonHangController,
     })
     .when("/profile", {

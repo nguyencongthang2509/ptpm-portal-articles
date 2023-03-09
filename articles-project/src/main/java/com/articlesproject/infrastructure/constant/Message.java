@@ -1,7 +1,5 @@
 package com.articlesproject.infrastructure.constant;
 
-import com.articlesproject.util.PropertiesReader;
-
 public enum Message {
 
     SUCCESS("Success"),
@@ -17,6 +15,10 @@ public enum Message {
     ARTICLE_ALREADY_EXIST(PropertiesReader.getProperty(PropertyKeys.ARTICLE_ALREADY_EXIST)),
     CATEGORY_CODE_ALREADY_EXIST(PropertiesReader.getProperty(PropertyKeys.CATEGORY_CODE_ALREADY_EXIST)),
     ARTICLE_NOT_EXIST(PropertiesReader.getProperty(PropertyKeys.ARTICLE_NOT_EXIST));
+    ERROR_UNKNOWN("Error Unknown"),
+
+    ARTICLE_NOT_EXIT("Error Article Not Exit");
+//    CHUYEN_NGANH_NOT_EXIST(PropertiesReader.getProperty(PropertyKeys.CHUYEN_NGANH_NOT_EXIST)),
 
     private String message;
 

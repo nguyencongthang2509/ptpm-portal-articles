@@ -1,0 +1,134 @@
+<div class="">
+    <div class="row" style="justify-content: flex-end;">
+        <img src="./../img/add-new.png" alt="" srcset="" style="margin: 0px;width: 5%;" data-bs-toggle="modal"
+            data-bs-target="#createAlbum">
+    </div>
+    <div class="row">
+
+        <table>
+            <thead>
+                <tr>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="album in albums">
+                    <td>
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="row">
+                                    <div class="col-1">
+                                        <img data-ng-src="data:image/png;base64,{{user.img}}" alt="Profile"
+                                            class="rounded-circle" style="width: 100%;">
+                                    </div>
+                                    <div class="col-9">
+                                        <div class="row">
+                                            <p class="text-uppercase fw-light text-primary"
+                                                style="font-size: 10px;margin: 0px;">{{user.name}} <span
+                                                    class="text-dark">{{album.creatAt | date:'MM/dd/yyyy '}}</span>
+                                            </p>
+
+                                        </div>
+                                        <div class="row">
+                                            <p class="fs-5 fst-normal">{{album.title}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="row">
+                                    <div class="">
+                                        <img src="./../img/ellipsis.png" alt="" srcset=""
+                                            style="margin: 0px;width: 12%;" id="dropdownMenuButton1"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="#" ng-click="detailAlbum($index, album.id)" data-bs-toggle="modal" data-bs-target="#updateAlbumModal">Sửa</a></li>
+                                            <li><a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)" data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Xóa</a></li>
+                                            <li><a class="dropdown-item" href="#">xem chi tiết</a></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    Số lượng : {{album.numberOfArticle}}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- create album -->
+    <div class="modal fade" id="createAlbum" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thêm mới album</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form name="formThemMoi" ng-submit="createAlbum($event)" novalidate>
+                        <div class="mb-3">
+                          <label for="exampleInputTitle" class="form-label">Title:</label>
+                          <input type="text" class="form-control" name="title" id="exampleInputPassword1" required ng-model="createNewAlbum.title" minlength="6">
+                          <span class="text-danger" ng-show="formThemMoi.title.$error.required && formThemMoi.title.$touched">vui lòng nhập title</span>
+                          <span class="text-danger" ng-show="formThemMoi.title.$error.minlength"> Vui lòng nhập ít nhất 6 kí tự </span>
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Thêm mới</button>
+                      </form>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
+    <!-- update album -->
+
+    <div class="modal fade" id="updateAlbumModal" tabindex="-1" aria-labelledby="exampleModalLabel" ng-submit="updateAlbum($event)" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">update album</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form name="formUpdate">
+                        <input type="hidden" class="form-control" name="title" id="exampleInputPassword1" required ng-model="album.id" >
+                        <div class="mb-3">
+                          <label for="exampleInputTitle" class="form-label">Title:</label>
+                          <input type="text" class="form-control" name="title" id="exampleInputPassword1" required ng-model="album.title" minlength="6">
+                          <span class="text-danger" ng-show="formUpdate.title.$error.required && formUpdate.title.$touched">vui lòng nhập title</span>
+                          <span class="text-danger" ng-show="formUpdate.title.$error.minlength"> Vui lòng nhập ít nhất 6 kí tự </span>
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" >update</button>
+                      </form>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
+    <!-- delete Album -->
+    <div class="modal fade modal-backdrop" id="deleteAlbumModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Xóa Album</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Bạn có muốn xóa Album {{album.title}}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" ng-click="deleteAlbum()">Xóa</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

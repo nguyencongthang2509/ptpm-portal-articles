@@ -9,6 +9,7 @@ import com.articlesproject.core.user.model.request.UserUpdateArticleRequest;
 import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.core.user.service.UserArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/article")
 @CrossOrigin(origins = {"*"}, maxAge = 4800, allowCredentials = "false")
 public class UserArticleRestController extends BaseController {
+
+    @Value("${app.UserId}") private String id;
+
     @Autowired
     private UserArticleService userArticleService;
 
@@ -27,7 +31,7 @@ public class UserArticleRestController extends BaseController {
 
     @PostMapping("/create-article")
     public ResponseObject creaetArticle(@RequestBody UserCreateArticleRequest request){
-        request.setUsersId("2404bf9f-987d-4e7d-9906-21c44ee4b72f");
+        request.setUsersId(id);
         return new ResponseObject(userArticleService.addArticle(request));
     }
 

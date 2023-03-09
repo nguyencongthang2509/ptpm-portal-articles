@@ -32,7 +32,7 @@ public class UAlbumResController extends BaseController {
 
     @PostMapping("/create")
     private ResponseObject create(@RequestBody CreateAlbumRequest request){
-        request.setUsersId("f249b9dd-4eb1-429e-b8f5-7eab507d4552");
+        request.setUsersId("bf80d51f-7849-4a68-8b9d-e8cf62f7b88f");
         return new ResponseObject(albumService.create(request));
     }
 
@@ -53,7 +53,7 @@ public class UAlbumResController extends BaseController {
 
     @GetMapping
     private ResponseObject findAllAlbumByUserId(){
-        String userId = "f249b9dd-4eb1-429e-b8f5-7eab507d4552";
+        String userId = "bf80d51f-7849-4a68-8b9d-e8cf62f7b88f";
         return new ResponseObject(albumService.findAllAlbumByUserId(userId));
     }
 

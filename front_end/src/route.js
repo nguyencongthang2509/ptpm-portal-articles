@@ -41,6 +41,9 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./pages/bvchitiet.html",
       // controller: ChiTietDonHangController,
     })
+    .when("/test", {
+      templateUrl: "./pages/test.html",
+    })
     .otherwise({
       redirectTo: "/trang-chu",
     });

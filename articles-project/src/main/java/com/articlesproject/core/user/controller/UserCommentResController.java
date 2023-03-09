@@ -5,6 +5,7 @@ import com.articlesproject.core.user.model.request.CreateCommentRequest;
 import com.articlesproject.core.user.model.request.UpdateCommentRequest;
 import com.articlesproject.core.user.service.UserCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/comment")
 public class UserCommentResController {
 
+    @Value("${app.UserId}") private String id;
+
     @Autowired
     private UserCommentService commentService;
 
@@ -30,7 +33,8 @@ public class UserCommentResController {
 
     @PostMapping("/create")
     private ResponseObject createComment(@RequestBody CreateCommentRequest request){
-        return new ResponseObject(commentService.create(request));
+        String userId = id;
+        return new ResponseObject(commentService.create(request, userId));
     }
 
     @PutMapping("/update")

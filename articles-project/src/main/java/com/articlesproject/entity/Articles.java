@@ -37,8 +37,8 @@ public class Articles extends PrimaryEntity {
     private Integer tym;
 
     @Nationalized
-    @Column(length = EntityProperties.LENGTH_DESCRIPTION , nullable = false)
-    private String content;
+    @Column(length = EntityProperties.LENGTH_DESCRIPTION)
+    private String review;
 
     @Column()
     private Long browseDate;

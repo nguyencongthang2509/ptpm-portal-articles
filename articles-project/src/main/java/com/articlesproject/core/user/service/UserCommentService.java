@@ -11,7 +11,7 @@ public interface UserCommentService {
 
     List<CommentResponse> findCommentByArticleId(String articleId);
 
-    Comments create(CreateCommentRequest request);
+    Comments create(CreateCommentRequest request, String userId);
 
     Comments update(UpdateCommentRequest request);
 

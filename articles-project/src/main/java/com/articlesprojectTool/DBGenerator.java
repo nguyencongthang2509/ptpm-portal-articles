@@ -228,7 +228,6 @@ public class DBGenerator implements CommandLineRunner {
 
         Evaluate danhGia = new Evaluate();
         danhGia.setStar(2);
-        danhGia.setCreateAt(1900800000L);
         danhGia.setContent("Bug");
         danhGia.setUsersId(users.getId());
         danhGia.setArticlesId(baiViet1.getId());
@@ -236,7 +235,6 @@ public class DBGenerator implements CommandLineRunner {
 
         Evaluate danhGia1 = new Evaluate();
         danhGia1.setStar(2);
-        danhGia1.setCreateAt(1900800000L);
         danhGia1.setContent("Bug");
         danhGia1.setUsersId(users.getId());
         danhGia1.setArticlesId(baiViet1.getId());
@@ -245,7 +243,6 @@ public class DBGenerator implements CommandLineRunner {
 
         Evaluate danhGia2 = new Evaluate();
         danhGia2.setStar(2);
-        danhGia2.setCreateAt(1900800000L);
         danhGia2.setContent("Bug");
         danhGia2.setUsersId(users.getId());
         danhGia2.setArticlesId(baiViet1.getId());

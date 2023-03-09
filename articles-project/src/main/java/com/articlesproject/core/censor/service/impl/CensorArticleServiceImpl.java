@@ -35,6 +35,7 @@ public class CensorArticleServiceImpl implements CensorArticleService {
             throw new RestApiException(Message.ARTICLE_NOT_EXIST);
         }
         article.get().setStatus(3);
+        article.get().setReview(request.getReview());
         return articleRepository.save(article.get());
     }
 
@@ -45,6 +46,7 @@ public class CensorArticleServiceImpl implements CensorArticleService {
             throw new RestApiException(Message.ARTICLE_NOT_EXIST);
         }
         article.get().setStatus(2);
+        article.get().setReview(request.getReview());
         return articleRepository.save(article.get());
     }
 }

@@ -34,9 +34,9 @@ public class UserCommentServiceImpl implements UserCommentService {
     }
 
     @Override
-    public Comments create(CreateCommentRequest request) {
+    public Comments create(CreateCommentRequest request, String userId) {
         Comments comment = formUtils.convertToObject(Comments.class, request);
-        System.out.println(comment);
+        comment.setUsersId(userId);
         return commentRepository.save(comment);
     }
 

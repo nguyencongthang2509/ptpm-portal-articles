@@ -8,6 +8,7 @@ import com.articlesproject.core.user.service.UserAlbumService;
 import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.service.UserArticleAlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,19 +25,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/album")
 public class UserAlbumResController extends BaseController {
 
+    @Value("${app.UserId}") private String id;
+
     @Autowired
     private UserAlbumService albumService;
 
     @Autowired
     private UserArticleAlbumService articleAlbumService;
 
+
+
     @PostMapping("/create")
     private ResponseObject create(@RequestBody CreateAlbumRequest request){
-        request.setUsersId("f249b9dd-4eb1-429e-b8f5-7eab507d4552");
-        return new ResponseObject(albumService.create(request));
+         String userId = id;
+        return new ResponseObject(albumService.create(request, userId));
     }
 
-    @PostMapping("/create-album")
+    @PostMapping("/add-article-album")
     private ResponseObject createArticleToAlbum(@RequestBody CreateArticleAlbumRequest request){
         return new ResponseObject(articleAlbumService.create(request));
     }
@@ -53,16 +58,21 @@ public class UserAlbumResController extends BaseController {
 
     @GetMapping
     private ResponseObject findAllAlbumByUserId(){
-        String userId = "f249b9dd-4eb1-429e-b8f5-7eab507d4552";
+        String userId = id;
         return new ResponseObject(albumService.findAllAlbumByUserId(userId));
     }
 
-    @GetMapping("/detail/{id}")
+    @GetMapping("/{userId}")
+    private ResponseObject findAllAlbumPublicByUserId(@PathVariable("userId") String userId){
+        return new ResponseObject(albumService.findAllAlbumPublicByUserId(userId));
+    }
+
+    @GetMapping("/detail-article-ablum/{id}")
     private ResponseObject detailAlbum(@PathVariable("id") String id){
         return new ResponseObject(albumService.findById(id));
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete-article-ablum/{id}")
     private ResponseObject deleteAlbum(@PathVariable("id") String id){
         return new ResponseObject(albumService.delete(id));
     }

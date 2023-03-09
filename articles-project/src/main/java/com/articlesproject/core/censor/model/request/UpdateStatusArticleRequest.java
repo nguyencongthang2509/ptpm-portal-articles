@@ -11,5 +11,7 @@ public class UpdateStatusArticleRequest {
 
     private String id;
 
+    private String review;
+
 
 }

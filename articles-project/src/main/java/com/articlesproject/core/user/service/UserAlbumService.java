@@ -12,7 +12,9 @@ public interface UserAlbumService {
 
     List<AlbumResponse> findAllAlbumByUserId(String userId);
 
-    Album create(CreateAlbumRequest request);
+    List<AlbumResponse> findAllAlbumPublicByUserId(String userId);
+
+    Album create(CreateAlbumRequest request, String userId);
 
     Album update(UpdateAlbumRequest request);
 

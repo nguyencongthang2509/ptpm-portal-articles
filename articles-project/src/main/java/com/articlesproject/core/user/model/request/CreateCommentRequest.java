@@ -14,8 +14,6 @@ public class CreateCommentRequest {
 
     private String content;
 
-    private String usersId;
-
     private String reply;
 
 

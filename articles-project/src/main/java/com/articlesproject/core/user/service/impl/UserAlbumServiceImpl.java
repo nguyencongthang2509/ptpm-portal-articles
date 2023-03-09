@@ -40,8 +40,14 @@ public class UserAlbumServiceImpl implements UserAlbumService {
     }
 
     @Override
-    public Album create(CreateAlbumRequest request) {
+    public List<AlbumResponse> findAllAlbumPublicByUserId(String userId) {
+        return albumRepository.findAllAlbumPublicByUserId(userId);
+    }
+
+    @Override
+    public Album create(CreateAlbumRequest request, String userId) {
         Album album =  formUtils.convertToObject(Album.class, request);
+        album.setUsersId(userId);
         return albumRepository.save(album);
     }
 
@@ -52,6 +58,7 @@ public class UserAlbumServiceImpl implements UserAlbumService {
             throw new RestApiException(Message.ALBUM_NOT_EXIST);
         }
         album.get().setTitle(request.getTitle());
+        album.get().setStatus(request.isStatus());
         return albumRepository.save(album.get());
     }
 

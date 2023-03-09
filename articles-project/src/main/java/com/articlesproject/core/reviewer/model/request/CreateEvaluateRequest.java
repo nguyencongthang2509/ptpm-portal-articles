@@ -1,4 +1,4 @@
-package com.articlesproject.core.censor.model.request;
+package com.articlesproject.core.reviewer.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,5 +15,4 @@ public class CreateEvaluateRequest {
 
     private Integer star;
 
-    private String usersId;
 }

@@ -22,9 +22,6 @@ public class Evaluate extends PrimaryEntity {
     @Column( nullable = false, length = EntityProperties.LENGTH_DESCRIPTION)
     private String content;
 
-    @Column(nullable = false)
-    private Long createAt;
-
     @Column(length = EntityProperties.LENGTH_ID)
     private String articlesId;
 

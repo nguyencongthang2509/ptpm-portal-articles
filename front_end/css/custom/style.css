@@ -6,7 +6,9 @@
   box-sizing: border-box;
   font-family: var(--lato);
 }
-
+header {
+  width: auto;
+}
 a {
   text-decoration: none;
 }
@@ -15,6 +17,10 @@ li {
   list-style: none;
 }
 
+.container-fluid {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
 :root {
   --poppins: "Poppins", sans-serif;
   --lato: "Lato", sans-serif;
@@ -1022,11 +1028,11 @@ user agent stylesheet ul {
   box-sizing: border-box;
 } */
 .main-parent {
-  /* width: 100%; */
+  width: 100%;
   height: 70vh;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: center; */
   background-color: #ffffff;
   border-radius: 50px;
   display: flex;
@@ -1046,7 +1052,7 @@ user agent stylesheet ul {
 }
 .main-parent .form-wrap {
   width: 450px;
-  height: 600px;
+  height: auto;
   background-image: linear-gradient(#fff, #70b7fe);
   border-radius: 30px;
   padding: 30px 40px;
@@ -1110,7 +1116,7 @@ user agent stylesheet ul {
 }
 .account-have a {
   margin-top: 5px;
-  color: rgb(183, 182, 182);
+  color: rgb(234, 245, 255);
   text-decoration: none;
   font-size: 14px;
 }
@@ -1217,4 +1223,8 @@ ul.nav-tabs li.nav-item button.nav-link-custom {
 .hg {
   font-size: 15px;
   color: #000000;
+}
+.sh {
+  /* background-color: #000000; */
+  margin-top: 0px;
 }

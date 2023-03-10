@@ -91,16 +91,41 @@
       <i class="bx bxs-bell"></i>
       <span class="num">8</span>
     </a>
-    <a href="#" class="profile">
-      <img src="/front_end/assets/people.png" />
-    </a>
+    <!-- dropdown -->
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        style="background-color: #f9f9f9; border: 0px"
+      >
+        <a href="#" class="profile">
+          <img src="/front_end/assets/people.png" />
+        </a>
+      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item" href="#"
+            ><i
+              class="bi bi-person-lines-fill"
+              style="color: var(--blue); padding-right: 7px"
+            >
+            </i>
+            <span>Profile</span></a
+          >
+        </li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
   </nav>
   <!-- NAVBAR -->
 
   <!-- MAIN -->
-  <main>
-    <div class="head-title">
-      <div class="left">
+  <!-- <main>
+    <div class="head-title"> -->
+  <!-- <div class="left">
         <h1>Dashboard</h1>
         <ul class="breadcrumb">
           <li>
@@ -115,9 +140,10 @@
       <a href="#" class="btn-download">
         <i class="bx bxs-cloud-download"></i>
         <span class="text">Download PDF</span>
-      </a>
-    </div>
-  </main>
+      </a> -->
+  <!-- </div> -->
+  <main ng-view></main>
+  <!-- </main> -->
   <!-- MAIN -->
 </section>
 <!-- CONTENT -->

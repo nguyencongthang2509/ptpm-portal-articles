@@ -29,9 +29,10 @@ function userController($scope, $http, env) {
         });
     }
   };
+   
 
   $scope.detailAlbum = function (index, idAlbum) {
-    $scope.index = index;
+    $scope.index = index
     $http
       .get(env.API_URL + "/album/detail/" + idAlbum)
       .then(function (respone) {
@@ -43,6 +44,7 @@ function userController($scope, $http, env) {
 
   $scope.showConfirmDeleteAlbum = function (index, idAlbum) {
     $scope.index = index;
+
     $http
       .get(env.API_URL + "/album/detail/" + idAlbum)
       .then(function (respone) {
@@ -52,13 +54,14 @@ function userController($scope, $http, env) {
 
   $scope.deleteAlbum = function () {
     console.log($scope.index);
+    var modal = document.getElementById("deleteAlbumModal");
     $http
       .delete(env.API_URL + "/album/delete/" + $scope.album.id)
       .then(function (respone) {
         $scope.index = 0;
       });
     $scope.albums.splice($scope.index, 1);
-    console.log($scope.albums);
+    modal.classList.remove("show");
   };
 
   $scope.updateAlbum = function (event) {

@@ -12,4 +12,7 @@ public class UpdateAlbumRequest {
     private String id;
 
     private String title;
+
+    private boolean status;
+
 }

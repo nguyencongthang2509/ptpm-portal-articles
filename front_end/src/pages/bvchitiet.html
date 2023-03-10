@@ -1,6 +1,18 @@
 <section class="bvchitiet">
   <div class="row">
     <div class="col-lg-3"></div>
+    <div class="col-lg-6"></div>
+    <div class="add col-lg-3 pb-5">
+      <main>
+        <div class="head-title">
+          <a href="#" class="btn-download">
+            <i class="bx bxs-cloud-download"></i>
+            <span class="text">Download PDF</span>
+          </a>
+        </div>
+      </main>
+    </div>
+    <div class="col-lg-3"></div>
     <div class="col-lg-8">
       <article
         data-test="article-preview"
@@ -1492,6 +1504,74 @@
                       ><i class="bx bx-envelope"></i></span
                   ></span></button></span
             ></a>
+          </div>
+        </div>
+        <hr style="color: red; font-size: 30px" />
+        <div
+          id="article-comment"
+          class="box-comment article-comment"
+          data-id="722323"
+          data-type="20"
+        >
+          <div id="comment-722323" class="box-comment">
+            <div class="box-heading">
+              <h3 class="wrap-heading"><a href="#">Bình luận</a></h3>
+            </div>
+            <hr />
+            <div class="box-content">
+              <div class="input wrap-comment">
+                <textarea
+                  rows="3"
+                  placeholder="Ý kiến của bạn sẽ được biên tập trước khi đăng. Xin vui lòng gõ tiếng Việt có dấu"
+                ></textarea>
+                <div class="w-100 mt-3 d-flex justify-content-between">
+                  <div class="wrap-login" id="login-comment">
+                    <span class="text-dark">Đăng nhập bằng :</span>
+                    <button class="fb login-fb" rel="facebook">
+                      <i class="bx bxl-facebook"></i>
+                    </button>
+                    <button class="google login-gg" rel="google">
+                      <i class="bx bxl-twitter"></i>
+                    </button>
+                    <button class="zalo login-zl" rel="zalo"></button>
+                    <button class="mail" id="login-cms">
+                      <i class="bx bx-envelope"></i>
+                    </button>
+                    <span class="text-dark">hoặc</span>
+                    <a
+                      href="#/signup"
+                      class="register-link text-dark"
+                      id="signup-cms"
+                      >Đăng ký</a
+                    >
+                  </div>
+                  <button
+                    class="btn-Submit btnSubmit bg-danger text-light"
+                    style="font-size: 20px"
+                  >
+                    Gửi bình luận
+                  </button>
+                </div>
+              </div>
+              <div class="filter-comment" style="display: none">
+                <div class="total-comment" id="total-comment">0 bình luận</div>
+                <div class="wrap-select">
+                  <label>sắp xếp theo:</label>
+                  <select id="ddlOrder">
+                    <option value="0">Mới nhất</option>
+                    <option value="1">Hay nhất</option>
+                  </select>
+                </div>
+              </div>
+              <div class="user"></div>
+              <button
+                data-page="1"
+                style="display: none"
+                class="btn btn-link btn-lg mt-3 btnMore"
+              >
+                XEM THÊM BÌNH LUẬN
+              </button>
+            </div>
           </div>
         </div>
       </div>

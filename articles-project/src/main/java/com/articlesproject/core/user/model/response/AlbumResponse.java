@@ -11,6 +11,15 @@ public interface AlbumResponse extends IsIdentified {
     @Value("#{target.title}")
     String getTitle();
 
+    @Value("#{target.status}")
+    boolean getStatus();
+
+    @Value("#{target.userName}")
+    String getUserName();
+
+    @Value("#{target.userImg}")
+    String getUserImg();
+
     @Value("#{target.numberOfArticle}")
     int getNumberOfArticle();
 

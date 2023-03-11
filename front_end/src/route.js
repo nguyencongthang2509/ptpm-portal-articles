@@ -29,6 +29,10 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./pages/articles.html",
       
     })
+    .when("/favourite_articles", {
+      templateUrl: "./pages/favourite_articles.html",
+      // controller: ChiTietDonHangController,
+    })
     .when("/profile", {
       templateUrl: "./pages/profile.html",
     })

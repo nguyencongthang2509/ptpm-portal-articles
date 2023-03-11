@@ -8,7 +8,10 @@ window.testCtrl = function ($scope, $http) {
     placeholder: "What are you going to write today...?",
     theme: "snow",
   });
-
+  $scope.isMenuOpen = false;
+  $scope.toggleMenu = function () {
+    $scope.isMenuOpen = !$scope.isMenuOpen;
+  };
   $scope.saveHTML = function () {
     var content = quill.root.innerHTML;
     var fileContent = new Blob([content], { type: "text/html" });

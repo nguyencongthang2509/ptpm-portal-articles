@@ -50,6 +50,18 @@ public class UserArticleRestController extends BaseController {
     public ResponseObject deleteArticle(@PathVariable("id") String id) {
         return new ResponseObject(userArticleService.deleteArticle(id));
     }
+    @PostMapping("/download")
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
+        try {
+            String currentDirectory = System.getProperty("user.dir");
+            String filePath = currentDirectory + "/articles-project/src/main/resources/templates/articles/" + file.getOriginalFilename();
+            file.transferTo(new File(filePath));
+            return new ResponseEntity<>("File uploaded successfully!", HttpStatus.OK);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("File upload failed!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     //    @PostMapping("/download")
 //    public boolean createFile(@RequestBody MultipartFile file){

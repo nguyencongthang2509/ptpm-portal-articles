@@ -22,6 +22,9 @@ public class Album extends PrimaryEntity {
     @Column(length = EntityProperties.LENGTH_ID)
     private String usersId;
 
+    @Column(columnDefinition = "BIT default 0")
+    private boolean status;
+
 }
 
 

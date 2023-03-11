@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CreateAlbumRequest {
 
-    private String usersId;
-
     private String title;
+
+    private boolean status;
+
 }

@@ -19,6 +19,9 @@ public interface UserArticleResponse extends IsIdentified {
     @Value("#{target.content}")
     String getContent();
 
+    @Value("#{target.img}")
+    String getImg();
+
     @Value("#{target.create_date}")
     Long getCreateDate();
 

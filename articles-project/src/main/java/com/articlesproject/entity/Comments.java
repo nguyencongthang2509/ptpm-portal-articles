@@ -18,9 +18,6 @@ public class Comments extends PrimaryEntity{
     @Column(length = EntityProperties.LENGTH_DESCRIPTION , nullable = false)
     private String content;
 
-    @Column(nullable = false)
-    private Long createAt;
-
     @Nationalized
     @Column(length = EntityProperties.LENGTH_DESCRIPTION)
     private String reply;

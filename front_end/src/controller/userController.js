@@ -4,7 +4,7 @@ function userController($scope, $http, env) {
   $scope.album = { title: "", id: "" };
   $scope.albumDetail = {};
   $scope.createNewAlbum = { title: "" };
-  $scope.index = 0
+  $scope.index = 0;
 
   $http
     .get(env.API_URL + "/user/detail/" + env.USER_ID)
@@ -42,35 +42,37 @@ function userController($scope, $http, env) {
       });
   };
 
-  $scope.showConfirmDeleteAlbum = function(index, idAlbum){
-    $scope.index = index
+  $scope.showConfirmDeleteAlbum = function (index, idAlbum) {
+    $scope.index = index;
+
     $http
       .get(env.API_URL + "/album/detail/" + idAlbum)
       .then(function (respone) {
         $scope.album = respone.data.data;
       });
-  }
+  };
 
-  $scope.deleteAlbum = function(){
+  $scope.deleteAlbum = function () {
     console.log($scope.index);
+    var modal = document.getElementById("deleteAlbumModal");
     $http
-        .delete(env.API_URL + "/album/delete/"+$scope.album.id)
-        .then(function (respone) {
-          $scope.index = 0;
-        });
-        $scope.albums.splice($scope.index,1);
-        console.log($scope.albums);
-  }
+      .delete(env.API_URL + "/album/delete/" + $scope.album.id)
+      .then(function (respone) {
+        $scope.index = 0;
+      });
+    $scope.albums.splice($scope.index, 1);
+    modal.classList.remove("show");
+  };
 
   $scope.updateAlbum = function (event) {
     event.preventDefault();
-    $scope.UpdateAlbum = {id: $scope.album.id, title: $scope.album.title}
+    $scope.UpdateAlbum = { id: $scope.album.id, title: $scope.album.title };
     if ($scope.album.title != "") {
       $http
         .put(env.API_URL + "/album/update", $scope.UpdateAlbum)
         .then(function (respone) {
           $scope.index = 0;
-          $scope.albums.splice($scope.index,1,respone.data.data);
+          $scope.albums.splice($scope.index, 1, respone.data.data);
         });
     }
   };

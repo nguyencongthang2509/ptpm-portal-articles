@@ -10,15 +10,21 @@ import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.core.user.service.UserArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/article")
 @CrossOrigin(origins = {"*"}, maxAge = 4800, allowCredentials = "false")
 public class UserArticleRestController extends BaseController {
 
-    @Value("${app.UserId}") private String id;
+    @Value("${app.UserId}")
+    private String id;
 
     @Autowired
     private UserArticleService userArticleService;
@@ -30,19 +36,48 @@ public class UserArticleRestController extends BaseController {
     }
 
     @PostMapping("/create-article")
-    public ResponseObject creaetArticle(@RequestBody UserCreateArticleRequest request){
+    public ResponseObject createArticle(@RequestBody UserCreateArticleRequest request) {
         request.setUsersId(id);
         return new ResponseObject(userArticleService.addArticle(request));
     }
 
-    @PutMapping("update-article/{fileName}")
-    public ResponseObject updateArticle(@PathVariable("fileName") String fileName, @RequestBody UserUpdateArticleRequest request){
+    @PutMapping("/update-article/{fileName}")
+    public ResponseObject updateArticle(@PathVariable("fileName") String fileName, @RequestBody UserUpdateArticleRequest request) {
         return new ResponseObject(userArticleService.updateArticle(fileName, request));
     }
 
-    @DeleteMapping("delete-article/{id}")
-    public ResponseObject deleteArticle(@PathVariable("id") String id){
+    @DeleteMapping("/delete-article/{id}")
+    public ResponseObject deleteArticle(@PathVariable("id") String id) {
         return new ResponseObject(userArticleService.deleteArticle(id));
     }
 
+    //    @PostMapping("/download")
+//    public boolean createFile(@RequestBody MultipartFile file){
+//        System.out.println(file + "vvv");
+//        String currentDirectory = System.getProperty("user.dir");
+//        String absoluteFilePath = currentDirectory + "/src/main/resources/templates/articles/";
+//        String fileName = file.getOriginalFilename();
+//        System.out.println(fileName + "huhuhu");
+//        String filePath = absoluteFilePath + fileName;
+//        System.out.println(filePath + "aaaa");
+//        try {
+//            file.transferTo(new File(filePath));
+//            return true;
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//        return false;
+//    }
+    @PostMapping("/download")
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
+        try {
+            String currentDirectory = System.getProperty("user.dir");
+            String filePath = currentDirectory + "/articles-project/src/main/resources/templates/articles/" + file.getOriginalFilename();
+            file.transferTo(new File(filePath));
+            return new ResponseEntity<>("File uploaded successfully!", HttpStatus.OK);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("File upload failed!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

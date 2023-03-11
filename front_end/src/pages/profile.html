@@ -1,0 +1,948 @@
+<div class="row" ng-controller="userController">
+  <!-- <div class="row"> -->
+  <!-- <div class="row" style="margin-bottom: 18px; width: 100%">
+      <div class="card" style="border-radius: 50px">
+        <div class="card-body profile-card pt-4 d-flex flex-column">
+          <div class="row">
+            <div class="col-2">
+              <img
+                data-ng-src="data:image/png;base64,{{user.img}}"
+                alt="Profile"
+                class="rounded-circle"
+                style="width: 74%; margin-bottom: 20px"
+              />
+            </div>
+            <div class="col-10">
+              <h2>{{user.name}}</h2>
+              <p>{{user.code}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+  <div class="row" style="padding-top: 0px">
+    <div class="card" style="border-radius: 30px; width: 100%" ;>
+      <div class="card-body pt-3">
+        <!-- Bordered Tabs -->
+        <ul class="nav nav-tabs nav-tabs-bordered">
+          <li class="nav-item">
+            <button
+              class="nav-link active"
+              data-bs-toggle="tab"
+              data-bs-target="#profile-overview"
+            >
+              Information
+            </button>
+          </li>
+
+          <li class="nav-item">
+            <button
+              class="nav-link"
+              data-bs-toggle="tab"
+              data-bs-target="#profile-edit"
+            >
+              Articles
+            </button>
+          </li>
+
+          <li class="nav-item">
+            <button
+              class="nav-link"
+              data-bs-toggle="tab"
+              data-bs-target="#profile-album"
+            >
+              Album
+            </button>
+          </li>
+
+          <li class="nav-item">
+            <button
+              class="nav-link"
+              data-bs-toggle="tab"
+              data-bs-target="#profile-change-password"
+            >
+              Favorite articles
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content pt-2">
+          <div
+            class="tab-pane fade show active profile-overview"
+            id="profile-overview"
+          >
+            <div ng-include="'./components/profileOverview.html'"></div>
+          </div>
+
+          <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+            <!-- Profile Edit Form -->
+            <div id="primary" class="content-area">
+              <!-- <main id="main" class="site-main" role="main"> -->
+              <section class="row posts-loop flex-row">
+                <div class="post-wrapper col-4 col-sm-6 sh sh">
+                  <article
+                    id="post-3626"
+                    class="grid-post post-3626 post type-post status-publish format-standard has-post-thumbnail hentry category-css"
+                  >
+                    <figure class="entry-thumbnail">
+                      <a
+                        href="https://evondev.com/huong-dan-tuy-bien-scrollbar/"
+                        title="Hướng dẫn tùy biến scrollbar cực đẹp dành cho người mới"
+                      >
+                        <img
+                          width="800"
+                          height="500"
+                          src="https://evondev.com/wp-content/uploads/2022/03/tuy-bien-scrollbar-trong-css-800x500.jpg"
+                          class="attachment-type-large size-type-large wp-post-image"
+                          alt=""
+                          loading="lazy"
+                        />
+                      </a>
+                    </figure>
+
+                    <div class="entry-header">
+                      <div class="entry-meta entry-category">
+                        <span class="cat-links"
+                          ><a
+                            href="https://evondev.com/category/css/"
+                            rel="category tag"
+                            >CSS</a
+                          ></span
+                        >
+                      </div>
+                      <h2 class="entry-title">
+                        <a
+                          href="https://evondev.com/huong-dan-tuy-bien-scrollbar/"
+                          >Hướng dẫn tùy biến scrollbar cực đẹp dành cho người
+                          mới</a
+                        >
+                      </h2>
+                      <div class="entry-meta">
+                        <span class="posted-on"
+                          ><span class="screen-reader-text">Posted on</span
+                          ><a
+                            href="https://evondev.com/huong-dan-tuy-bien-scrollbar/"
+                            rel="bookmark"
+                            ><time
+                              class="entry-date published"
+                              datetime="2022-03-23T11:21:32+07:00"
+                              >23/03/2022</time
+                            ><time
+                              class="updated"
+                              datetime="2022-03-23T11:21:33+07:00"
+                              >23/03/2022</time
+                            ></a
+                          ></span
+                        >
+                      </div>
+                    </div>
+                    <!-- .entry-header -->
+
+                    <div class="entry-summary">
+                      <p>
+                        Ở bài viết này mình sẽ hướng dẫn cho các bạn cách tùy
+                        biến scrollbar cực đẹp cho trang web giống như trang web
+                        của&hellip;
+                      </p>
+                    </div>
+                    <!-- .entry-content -->
+                  </article>
+                  <!-- #post-## -->
+                </div>
+                <div class="post-wrapper col-4 col-sm-6 sh">
+                  <article
+                    id="post-3504"
+                    class="grid-post post-3504 post type-post status-publish format-standard has-post-thumbnail hentry category-useful"
+                  >
+                    <figure class="entry-thumbnail">
+                      <a
+                        href="https://evondev.com/border-gradient-trong-css/"
+                        title="3 cách làm Border Gradient trong CSS mà bạn nên biết"
+                      >
+                        <img
+                          width="800"
+                          height="500"
+                          src="https://evondev.com/wp-content/uploads/2022/03/border-gradient-css-800x500.jpg"
+                          class="attachment-type-large size-type-large wp-post-image"
+                          alt="border gradient trong css"
+                          loading="lazy"
+                        />
+                      </a>
+                    </figure>
+
+                    <div class="entry-header">
+                      <div class="entry-meta entry-category">
+                        <span class="cat-links"
+                          ><a
+                            href="https://evondev.com/category/useful/"
+                            rel="category tag"
+                            >Useful</a
+                          ></span
+                        >
+                      </div>
+                      <h2 class="entry-title">
+                        <a href="https://evondev.com/border-gradient-trong-css/"
+                          >3 cách làm Border Gradient trong CSS mà bạn nên
+                          biết</a
+                        >
+                      </h2>
+                      <div class="entry-meta">
+                        <span class="posted-on"
+                          ><span class="screen-reader-text">Posted on</span
+                          ><a
+                            href="https://evondev.com/border-gradient-trong-css/"
+                            rel="bookmark"
+                            ><time
+                              class="entry-date published"
+                              datetime="2022-03-03T20:05:37+07:00"
+                              >03/03/2022</time
+                            ><time
+                              class="updated"
+                              datetime="2022-03-03T20:05:38+07:00"
+                              >03/03/2022</time
+                            ></a
+                          ></span
+                        >
+                      </div>
+                    </div>
+                    <!-- .entry-header -->
+
+                    <div class="entry-summary">
+                      <p>
+                        Ở bài viết này mình sẽ chia sẻ cho các bạn 3 cách làm
+                        border gradient trong CSS, không giới thiệu dài dòng,
+                        mình đi&hellip;
+                      </p>
+                    </div>
+                    <!-- .entry-content -->
+                  </article>
+                  <!-- #post-## -->
+                </div>
+                <div class="post-wrapper col-4 col-sm-6 sh">
+                  <article
+                    id="post-3523"
+                    class="grid-post post-3523 post type-post status-publish format-standard has-post-thumbnail hentry category-javascript"
+                  >
+                    <figure class="entry-thumbnail">
+                      <a
+                        href="https://evondev.com/css-co-ban-p1/"
+                        title="CSS cơ bản toàn tập dành cho người mới phần 1"
+                      >
+                        <img
+                          width="800"
+                          height="500"
+                          src="https://evondev.com/wp-content/uploads/2021/12/css-co-ban-p1-800x500.jpg"
+                          class="attachment-type-large size-type-large wp-post-image"
+                          alt="css-co-ban-p1"
+                          loading="lazy"
+                          srcset="
+                            https://evondev.com/wp-content/uploads/2021/12/css-co-ban-p1-800x500.jpg   800w,
+                            https://evondev.com/wp-content/uploads/2021/12/css-co-ban-p1-300x188.jpg   300w,
+                            https://evondev.com/wp-content/uploads/2021/12/css-co-ban-p1-1024x640.jpg 1024w,
+                            https://evondev.com/wp-content/uploads/2021/12/css-co-ban-p1-768x480.jpg   768w,
+                            https://evondev.com/wp-content/uploads/2021/12/css-co-ban-p1-1536x960.jpg 1536w,
+                            https://evondev.com/wp-content/uploads/2021/12/css-co-ban-p1.jpg          1600w
+                          "
+                          sizes="(max-width: 800px) 100vw, 800px"
+                        />
+                      </a>
+                    </figure>
+
+                    <div class="entry-header">
+                      <div class="entry-meta entry-category">
+                        <span class="cat-links"
+                          ><a
+                            href="https://evondev.com/category/javascript/"
+                            rel="category tag"
+                            >Javascript</a
+                          ></span
+                        >
+                      </div>
+                      <h2 class="entry-title">
+                        <a href="https://evondev.com/css-co-ban-p1/"
+                          >CSS cơ bản toàn tập dành cho người mới phần 1</a
+                        >
+                      </h2>
+                      <div class="entry-meta">
+                        <span class="posted-on"
+                          ><span class="screen-reader-text">Posted on</span
+                          ><a
+                            href="https://evondev.com/css-co-ban-p1/"
+                            rel="bookmark"
+                            ><time
+                              class="entry-date published"
+                              datetime="2021-12-30T14:33:20+07:00"
+                              >30/12/2021</time
+                            ><time
+                              class="updated"
+                              datetime="2021-12-30T14:33:23+07:00"
+                              >30/12/2021</time
+                            ></a
+                          ></span
+                        >
+                      </div>
+                    </div>
+                    <!-- .entry-header -->
+
+                    <div class="entry-summary">
+                      <p>
+                        Sau series HTML cơ bản dành cho người mới thì bây giờ
+                        mình lại tiếp tục tới một series cơ bản khác đó chính
+                        là&hellip;
+                      </p>
+                    </div>
+                    <!-- .entry-content -->
+                  </article>
+                  <!-- #post-## -->
+                </div>
+                <div class="post-wrapper col-4 col-sm-6 sh">
+                  <article
+                    id="post-3446"
+                    class="grid-post post-3446 post type-post status-publish format-standard has-post-thumbnail hentry category-useful"
+                  >
+                    <figure class="entry-thumbnail">
+                      <a
+                        href="https://evondev.com/frontend-developer-roadmap-2023/"
+                        title="Lộ trình để trở thành 1 Frontend Developer cho người mới 2023"
+                      >
+                        <img
+                          width="800"
+                          height="500"
+                          src="https://evondev.com/wp-content/uploads/2021/10/frontend-developer-800x500.jpg"
+                          class="attachment-type-large size-type-large wp-post-image"
+                          alt="frontend-developer"
+                          loading="lazy"
+                        />
+                      </a>
+                    </figure>
+
+                    <div class="entry-header">
+                      <div class="entry-meta entry-category">
+                        <span class="cat-links"
+                          ><a
+                            href="https://evondev.com/category/useful/"
+                            rel="category tag"
+                            >Useful</a
+                          ></span
+                        >
+                      </div>
+                      <h2 class="entry-title">
+                        <a
+                          href="https://evondev.com/frontend-developer-roadmap-2023/"
+                          >Lộ trình để trở thành 1 Frontend Developer cho người
+                          mới 2023</a
+                        >
+                      </h2>
+                      <div class="entry-meta">
+                        <span class="posted-on"
+                          ><span class="screen-reader-text">Posted on</span
+                          ><a
+                            href="https://evondev.com/frontend-developer-roadmap-2023/"
+                            rel="bookmark"
+                            ><time
+                              class="entry-date published"
+                              datetime="2021-10-16T11:24:01+07:00"
+                              >16/10/2021</time
+                            ><time
+                              class="updated"
+                              datetime="2023-01-29T22:05:19+07:00"
+                              >29/01/2023</time
+                            ></a
+                          ></span
+                        >
+                      </div>
+                    </div>
+                    <!-- .entry-header -->
+
+                    <div class="entry-summary">
+                      <p>
+                        Chào bạn đã đến với bài viết lộ trình để trở thành 1
+                        Frontend Developer dành cho người mới. Khi bạn đã nhấn
+                        vào đọc&hellip;
+                      </p>
+                    </div>
+                    <!-- .entry-content -->
+                  </article>
+                  <!-- #post-## -->
+                </div>
+                <div class="post-wrapper col-4 col-sm-6 sh">
+                  <article
+                    id="post-3389"
+                    class="grid-post post-3389 post type-post status-publish format-standard has-post-thumbnail hentry category-css-in-depth"
+                  >
+                    <figure class="entry-thumbnail">
+                      <a
+                        href="https://evondev.com/conditional-border-radius/"
+                        title="Tìm hiểu Conditional Border Radius trong CSS"
+                      >
+                        <img
+                          width="800"
+                          height="500"
+                          src="https://evondev.com/wp-content/uploads/2021/10/conditional-radius-800x500.jpg"
+                          class="attachment-type-large size-type-large wp-post-image"
+                          alt=""
+                          loading="lazy"
+                        />
+                      </a>
+                    </figure>
+
+                    <div class="entry-header">
+                      <div class="entry-meta entry-category">
+                        <span class="cat-links"
+                          ><a
+                            href="https://evondev.com/category/css-in-depth/"
+                            rel="category tag"
+                            >CSS In Depth</a
+                          ></span
+                        >
+                      </div>
+                      <h2 class="entry-title">
+                        <a href="https://evondev.com/conditional-border-radius/"
+                          >Tìm hiểu Conditional Border Radius trong CSS</a
+                        >
+                      </h2>
+                      <div class="entry-meta">
+                        <span class="posted-on"
+                          ><span class="screen-reader-text">Posted on</span
+                          ><a
+                            href="https://evondev.com/conditional-border-radius/"
+                            rel="bookmark"
+                            ><time
+                              class="entry-date published"
+                              datetime="2021-10-05T14:23:02+07:00"
+                              >05/10/2021</time
+                            ><time
+                              class="updated"
+                              datetime="2021-10-06T23:46:45+07:00"
+                              >06/10/2021</time
+                            ></a
+                          ></span
+                        >
+                      </div>
+                    </div>
+                    <!-- .entry-header -->
+
+                    <div class="entry-summary">
+                      <p>
+                        Bài viết được tham khảo và xin phép tác giả Ishadeed.
+                        Gần đây mình có F12 và kiểm tra code CSS của Facebook và
+                        thấy&hellip;
+                      </p>
+                    </div>
+                    <!-- .entry-content -->
+                  </article>
+                  <!-- #post-## -->
+                </div>
+                <div class="post-wrapper col-4 col-sm-6 sh">
+                  <article
+                    id="post-3369"
+                    class="grid-post post-3369 post type-post status-publish format-standard has-post-thumbnail hentry category-javascript"
+                  >
+                    <figure class="entry-thumbnail">
+                      <a
+                        href="https://evondev.com/lap-trinh-vien-chi-biet-code/"
+                        title="Là lập trình viên thì có nên chỉ viết code thôi không ?"
+                      >
+                        <img
+                          width="800"
+                          height="500"
+                          src="https://evondev.com/wp-content/uploads/2021/09/just-coding-800x500.jpg"
+                          class="attachment-type-large size-type-large wp-post-image"
+                          alt=""
+                          loading="lazy"
+                        />
+                      </a>
+                    </figure>
+
+                    <div class="entry-header">
+                      <div class="entry-meta entry-category">
+                        <span class="cat-links"
+                          ><a
+                            href="https://evondev.com/category/javascript/"
+                            rel="category tag"
+                            >Javascript</a
+                          ></span
+                        >
+                      </div>
+                      <h2 class="entry-title">
+                        <a
+                          href="https://evondev.com/lap-trinh-vien-chi-biet-code/"
+                          >Là lập trình viên thì có nên chỉ viết code thôi không
+                          ?</a
+                        >
+                      </h2>
+                      <div class="entry-meta">
+                        <span class="posted-on"
+                          ><span class="screen-reader-text">Posted on</span
+                          ><a
+                            href="https://evondev.com/lap-trinh-vien-chi-biet-code/"
+                            rel="bookmark"
+                            ><time
+                              class="entry-date published"
+                              datetime="2021-09-15T19:27:07+07:00"
+                              >15/09/2021</time
+                            ><time
+                              class="updated"
+                              datetime="2021-09-15T19:38:49+07:00"
+                              >15/09/2021</time
+                            ></a
+                          ></span
+                        >
+                      </div>
+                    </div>
+                    <!-- .entry-header -->
+
+                    <div class="entry-summary">
+                      <p>
+                        Câu trả lời của mình là không. Mà các bạn nên tìm tòi
+                        học hỏi thêm nhiều thứ khác để có thể nâng cao
+                        kiến&hellip;
+                      </p>
+                    </div>
+                    <!-- .entry-content -->
+                  </article>
+                  <!-- #post-## -->
+                </div>
+              </section>
+              <!-- </main> -->
+            </div>
+          </div>
+          <!-- End Profile Edit Form -->
+        </div>
+
+        <div class="tab-pane fade pt-3" id="profile-album">
+          <div ng-include="'./components/profileAlbum.html'"></div>
+        </div>
+
+        <div class="tab-pane fade pt-3" id="profile-change-password">
+          <!-- Change Password Form -->
+          <div id="primary" class="content-area">
+            <!-- <main id="main" class="site-main" role="main"> -->
+            <section class="row posts-loop flex-row">
+              <div class="post-wrapper col-4 col-sm-6 sh sh">
+                <article
+                  id="post-3626"
+                  class="grid-post post-3626 post type-post status-publish format-standard has-post-thumbnail hentry category-css"
+                >
+                  <figure class="entry-thumbnail">
+                    <a
+                      href="https://evondev.com/huong-dan-tuy-bien-scrollbar/"
+                      title="Hướng dẫn tùy biến scrollbar cực đẹp dành cho người mới"
+                    >
+                      <img
+                        width="800"
+                        height="500"
+                        src="https://evondev.com/wp-content/uploads/2022/03/tuy-bien-scrollbar-trong-css-800x500.jpg"
+                        class="attachment-type-large size-type-large wp-post-image"
+                        alt=""
+                        loading="lazy"
+                      />
+                    </a>
+                  </figure>
+
+                  <div class="entry-header">
+                    <div class="entry-meta entry-category">
+                      <span class="cat-links"
+                        ><a
+                          href="https://evondev.com/category/css/"
+                          rel="category tag"
+                          >CSS</a
+                        ></span
+                      >
+                    </div>
+                    <h2 class="entry-title">
+                      <a
+                        href="https://evondev.com/huong-dan-tuy-bien-scrollbar/"
+                        >Hướng dẫn tùy biến scrollbar cực đẹp dành cho người
+                        mới</a
+                      >
+                    </h2>
+                    <div class="entry-meta">
+                      <span class="posted-on"
+                        ><span class="screen-reader-text">Posted on</span
+                        ><a
+                          href="https://evondev.com/huong-dan-tuy-bien-scrollbar/"
+                          rel="bookmark"
+                          ><time
+                            class="entry-date published"
+                            datetime="2022-03-23T11:21:32+07:00"
+                            >23/03/2022</time
+                          ><time
+                            class="updated"
+                            datetime="2022-03-23T11:21:33+07:00"
+                            >23/03/2022</time
+                          ></a
+                        ></span
+                      >
+                    </div>
+                  </div>
+                  <!-- .entry-header -->
+
+                  <div class="entry-summary">
+                    <p>
+                      Ở bài viết này mình sẽ hướng dẫn cho các bạn cách tùy biến
+                      scrollbar cực đẹp cho trang web giống như trang web
+                      của&hellip;
+                    </p>
+                  </div>
+                  <!-- .entry-content -->
+                </article>
+                <!-- #post-## -->
+              </div>
+              <div class="post-wrapper col-4 col-sm-6 sh">
+                <article
+                  id="post-3504"
+                  class="grid-post post-3504 post type-post status-publish format-standard has-post-thumbnail hentry category-useful"
+                >
+                  <figure class="entry-thumbnail">
+                    <a
+                      href="https://evondev.com/border-gradient-trong-css/"
+                      title="3 cách làm Border Gradient trong CSS mà bạn nên biết"
+                    >
+                      <img
+                        width="800"
+                        height="500"
+                        src="https://evondev.com/wp-content/uploads/2022/03/border-gradient-css-800x500.jpg"
+                        class="attachment-type-large size-type-large wp-post-image"
+                        alt="border gradient trong css"
+                        loading="lazy"
+                      />
+                    </a>
+                  </figure>
+
+                  <div class="entry-header">
+                    <div class="entry-meta entry-category">
+                      <span class="cat-links"
+                        ><a
+                          href="https://evondev.com/category/useful/"
+                          rel="category tag"
+                          >Useful</a
+                        ></span
+                      >
+                    </div>
+                    <h2 class="entry-title">
+                      <a href="https://evondev.com/border-gradient-trong-css/"
+                        >3 cách làm Border Gradient trong CSS mà bạn nên biết</a
+                      >
+                    </h2>
+                    <div class="entry-meta">
+                      <span class="posted-on"
+                        ><span class="screen-reader-text">Posted on</span
+                        ><a
+                          href="https://evondev.com/border-gradient-trong-css/"
+                          rel="bookmark"
+                          ><time
+                            class="entry-date published"
+                            datetime="2022-03-03T20:05:37+07:00"
+                            >03/03/2022</time
+                          ><time
+                            class="updated"
+                            datetime="2022-03-03T20:05:38+07:00"
+                            >03/03/2022</time
+                          ></a
+                        ></span
+                      >
+                    </div>
+                  </div>
+                  <!-- .entry-header -->
+
+                  <div class="entry-summary">
+                    <p>
+                      Ở bài viết này mình sẽ chia sẻ cho các bạn 3 cách làm
+                      border gradient trong CSS, không giới thiệu dài dòng, mình
+                      đi&hellip;
+                    </p>
+                  </div>
+                  <!-- .entry-content -->
+                </article>
+                <!-- #post-## -->
+              </div>
+              <div class="post-wrapper col-4 col-sm-6 sh">
+                <article
+                  id="post-3523"
+                  class="grid-post post-3523 post type-post status-publish format-standard has-post-thumbnail hentry category-javascript"
+                >
+                  <figure class="entry-thumbnail">
+                    <a
+                      href="https://evondev.com/css-co-ban-p1/"
+                      title="CSS cơ bản toàn tập dành cho người mới phần 1"
+                    >
+                      <img
+                        width="800"
+                        height="500"
+                        src="https://evondev.com/wp-content/uploads/2021/12/css-co-ban-p1-800x500.jpg"
+                        class="attachment-type-large size-type-large wp-post-image"
+                        alt="css-co-ban-p1"
+                        loading="lazy"
+                        srcset="
+                          https://evondev.com/wp-content/uploads/2021/12/css-co-ban-p1-800x500.jpg   800w,
+                          https://evondev.com/wp-content/uploads/2021/12/css-co-ban-p1-300x188.jpg   300w,
+                          https://evondev.com/wp-content/uploads/2021/12/css-co-ban-p1-1024x640.jpg 1024w,
+                          https://evondev.com/wp-content/uploads/2021/12/css-co-ban-p1-768x480.jpg   768w,
+                          https://evondev.com/wp-content/uploads/2021/12/css-co-ban-p1-1536x960.jpg 1536w,
+                          https://evondev.com/wp-content/uploads/2021/12/css-co-ban-p1.jpg          1600w
+                        "
+                        sizes="(max-width: 800px) 100vw, 800px"
+                      />
+                    </a>
+                  </figure>
+
+                  <div class="entry-header">
+                    <div class="entry-meta entry-category">
+                      <span class="cat-links"
+                        ><a
+                          href="https://evondev.com/category/javascript/"
+                          rel="category tag"
+                          >Javascript</a
+                        ></span
+                      >
+                    </div>
+                    <h2 class="entry-title">
+                      <a href="https://evondev.com/css-co-ban-p1/"
+                        >CSS cơ bản toàn tập dành cho người mới phần 1</a
+                      >
+                    </h2>
+                    <div class="entry-meta">
+                      <span class="posted-on"
+                        ><span class="screen-reader-text">Posted on</span
+                        ><a
+                          href="https://evondev.com/css-co-ban-p1/"
+                          rel="bookmark"
+                          ><time
+                            class="entry-date published"
+                            datetime="2021-12-30T14:33:20+07:00"
+                            >30/12/2021</time
+                          ><time
+                            class="updated"
+                            datetime="2021-12-30T14:33:23+07:00"
+                            >30/12/2021</time
+                          ></a
+                        ></span
+                      >
+                    </div>
+                  </div>
+                  <!-- .entry-header -->
+
+                  <div class="entry-summary">
+                    <p>
+                      Sau series HTML cơ bản dành cho người mới thì bây giờ mình
+                      lại tiếp tục tới một series cơ bản khác đó chính
+                      là&hellip;
+                    </p>
+                  </div>
+                  <!-- .entry-content -->
+                </article>
+                <!-- #post-## -->
+              </div>
+              <div class="post-wrapper col-4 col-sm-6 sh">
+                <article
+                  id="post-3446"
+                  class="grid-post post-3446 post type-post status-publish format-standard has-post-thumbnail hentry category-useful"
+                >
+                  <figure class="entry-thumbnail">
+                    <a
+                      href="https://evondev.com/frontend-developer-roadmap-2023/"
+                      title="Lộ trình để trở thành 1 Frontend Developer cho người mới 2023"
+                    >
+                      <img
+                        width="800"
+                        height="500"
+                        src="https://evondev.com/wp-content/uploads/2021/10/frontend-developer-800x500.jpg"
+                        class="attachment-type-large size-type-large wp-post-image"
+                        alt="frontend-developer"
+                        loading="lazy"
+                      />
+                    </a>
+                  </figure>
+
+                  <div class="entry-header">
+                    <div class="entry-meta entry-category">
+                      <span class="cat-links"
+                        ><a
+                          href="https://evondev.com/category/useful/"
+                          rel="category tag"
+                          >Useful</a
+                        ></span
+                      >
+                    </div>
+                    <h2 class="entry-title">
+                      <a
+                        href="https://evondev.com/frontend-developer-roadmap-2023/"
+                        >Lộ trình để trở thành 1 Frontend Developer cho người
+                        mới 2023</a
+                      >
+                    </h2>
+                    <div class="entry-meta">
+                      <span class="posted-on"
+                        ><span class="screen-reader-text">Posted on</span
+                        ><a
+                          href="https://evondev.com/frontend-developer-roadmap-2023/"
+                          rel="bookmark"
+                          ><time
+                            class="entry-date published"
+                            datetime="2021-10-16T11:24:01+07:00"
+                            >16/10/2021</time
+                          ><time
+                            class="updated"
+                            datetime="2023-01-29T22:05:19+07:00"
+                            >29/01/2023</time
+                          ></a
+                        ></span
+                      >
+                    </div>
+                  </div>
+                  <!-- .entry-header -->
+
+                  <div class="entry-summary">
+                    <p>
+                      Chào bạn đã đến với bài viết lộ trình để trở thành 1
+                      Frontend Developer dành cho người mới. Khi bạn đã nhấn vào
+                      đọc&hellip;
+                    </p>
+                  </div>
+                  <!-- .entry-content -->
+                </article>
+                <!-- #post-## -->
+              </div>
+              <div class="post-wrapper col-4 col-sm-6 sh">
+                <article
+                  id="post-3389"
+                  class="grid-post post-3389 post type-post status-publish format-standard has-post-thumbnail hentry category-css-in-depth"
+                >
+                  <figure class="entry-thumbnail">
+                    <a
+                      href="https://evondev.com/conditional-border-radius/"
+                      title="Tìm hiểu Conditional Border Radius trong CSS"
+                    >
+                      <img
+                        width="800"
+                        height="500"
+                        src="https://evondev.com/wp-content/uploads/2021/10/conditional-radius-800x500.jpg"
+                        class="attachment-type-large size-type-large wp-post-image"
+                        alt=""
+                        loading="lazy"
+                      />
+                    </a>
+                  </figure>
+
+                  <div class="entry-header">
+                    <div class="entry-meta entry-category">
+                      <span class="cat-links"
+                        ><a
+                          href="https://evondev.com/category/css-in-depth/"
+                          rel="category tag"
+                          >CSS In Depth</a
+                        ></span
+                      >
+                    </div>
+                    <h2 class="entry-title">
+                      <a href="https://evondev.com/conditional-border-radius/"
+                        >Tìm hiểu Conditional Border Radius trong CSS</a
+                      >
+                    </h2>
+                    <div class="entry-meta">
+                      <span class="posted-on"
+                        ><span class="screen-reader-text">Posted on</span
+                        ><a
+                          href="https://evondev.com/conditional-border-radius/"
+                          rel="bookmark"
+                          ><time
+                            class="entry-date published"
+                            datetime="2021-10-05T14:23:02+07:00"
+                            >05/10/2021</time
+                          ><time
+                            class="updated"
+                            datetime="2021-10-06T23:46:45+07:00"
+                            >06/10/2021</time
+                          ></a
+                        ></span
+                      >
+                    </div>
+                  </div>
+                  <!-- .entry-header -->
+
+                  <div class="entry-summary">
+                    <p>
+                      Bài viết được tham khảo và xin phép tác giả Ishadeed. Gần
+                      đây mình có F12 và kiểm tra code CSS của Facebook và
+                      thấy&hellip;
+                    </p>
+                  </div>
+                  <!-- .entry-content -->
+                </article>
+                <!-- #post-## -->
+              </div>
+              <div class="post-wrapper col-4 col-sm-6 sh">
+                <article
+                  id="post-3369"
+                  class="grid-post post-3369 post type-post status-publish format-standard has-post-thumbnail hentry category-javascript"
+                >
+                  <figure class="entry-thumbnail">
+                    <a
+                      href="https://evondev.com/lap-trinh-vien-chi-biet-code/"
+                      title="Là lập trình viên thì có nên chỉ viết code thôi không ?"
+                    >
+                      <img
+                        width="800"
+                        height="500"
+                        src="https://evondev.com/wp-content/uploads/2021/09/just-coding-800x500.jpg"
+                        class="attachment-type-large size-type-large wp-post-image"
+                        alt=""
+                        loading="lazy"
+                      />
+                    </a>
+                  </figure>
+
+                  <div class="entry-header">
+                    <div class="entry-meta entry-category">
+                      <span class="cat-links"
+                        ><a
+                          href="https://evondev.com/category/javascript/"
+                          rel="category tag"
+                          >Javascript</a
+                        ></span
+                      >
+                    </div>
+                    <h2 class="entry-title">
+                      <a
+                        href="https://evondev.com/lap-trinh-vien-chi-biet-code/"
+                        >Là lập trình viên thì có nên chỉ viết code thôi không
+                        ?</a
+                      >
+                    </h2>
+                    <div class="entry-meta">
+                      <span class="posted-on"
+                        ><span class="screen-reader-text">Posted on</span
+                        ><a
+                          href="https://evondev.com/lap-trinh-vien-chi-biet-code/"
+                          rel="bookmark"
+                          ><time
+                            class="entry-date published"
+                            datetime="2021-09-15T19:27:07+07:00"
+                            >15/09/2021</time
+                          ><time
+                            class="updated"
+                            datetime="2021-09-15T19:38:49+07:00"
+                            >15/09/2021</time
+                          ></a
+                        ></span
+                      >
+                    </div>
+                  </div>
+                  <!-- .entry-header -->
+
+                  <div class="entry-summary">
+                    <p>
+                      Câu trả lời của mình là không. Mà các bạn nên tìm tòi học
+                      hỏi thêm nhiều thứ khác để có thể nâng cao kiến&hellip;
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

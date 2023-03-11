@@ -21,6 +21,21 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./pages/blog.html",
       // controller: ChiTietDonHangController,
     })
+    .when("/myarticles", {
+      templateUrl: "./pages/myarticles.html",
+      // controller: ChiTietDonHangController,
+    })
+    .when("/articles", {
+      templateUrl: "./pages/articles.html",
+      // controller: ChiTietDonHangController,
+    })
+    .when("/favourite_articles", {
+      templateUrl: "./pages/favourite_articles.html",
+      // controller: ChiTietDonHangController,
+    })
+    .when("/profile", {
+      templateUrl: "./pages/profile.html",
+    })
     .when("/contact", {
       templateUrl: "./pages/contact.html",
       // controller: ChiTietDonHangController,
@@ -39,6 +54,17 @@ app.config(function ($routeProvider, $locationProvider) {
     })
     .when("/chitiet", {
       templateUrl: "./pages/bvchitiet.html",
+      // controller: ChiTietDonHangController,
+    })
+    .when("/test", {
+      templateUrl: "./pages/test.html",
+      controller: testCtrl,
+    })
+    .when("/setting", {
+      templateUrl: "./pages/setting.html",
+    })
+    .when("/users", {
+      templateUrl: "./pages/users.html",
       // controller: ChiTietDonHangController,
     })
     .otherwise({

@@ -25,6 +25,9 @@ public class Users extends PrimaryEntity {
     @Column(length = EntityProperties.LENGTH_EMAIL, nullable = false)
     private String email;
 
+    @Column(length = EntityProperties.LENGTH_DESCRIPTION)
+    private String img;
+
     @Column(length = EntityProperties.LENGTH_ID, nullable = false)
     private Integer role;
 }

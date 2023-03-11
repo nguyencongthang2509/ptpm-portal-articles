@@ -4,7 +4,23 @@
     <i class="bx bxs-smile"></i>
     <span class="text">Articles</span>
   </a>
+  <!-- <div class="add">
+    <main>
+      <div class="head-title">
+        <a href="#" class="btn-download">
+          <i class="bx bxs-cloud-download"></i>
+          <span class="text">Thêm Bài Viết</span>
+        </a>
+      </div>
+    </main>
+  </div> -->
   <ul class="side-menu top">
+    <li class="active bg-primary">
+      <a href="#">
+        <i class="bx bxs-cloud-download"></i>
+        <span class="text">Add Articles</span>
+      </a>
+    </li>
     <li class="active">
       <a href="#">
         <i class="bx bxs-dashboard"></i>
@@ -12,15 +28,21 @@
       </a>
     </li>
     <li>
-      <a href="#/blog">
+      <a href="#/articles">
         <i class="bx bxs-shopping-bag-alt"></i>
-        <span class="text">Blog</span>
+        <span class="text">Articles</span>
       </a>
     </li>
     <li>
-      <a href="#/myblog">
+      <a href="#/myarticles">
         <i class="bx bxs-doughnut-chart"></i>
-        <span class="text">My Blog</span>
+        <span class="text">My Articles</span>
+      </a>
+    </li>
+    <li>
+      <a href="#/favourite_articles">
+        <i class="bx bxs-heart"></i>
+        <span class="text">My Favourite Articles</span>
       </a>
     </li>
     <li>
@@ -42,7 +64,7 @@
       </a>
     </li>
   </ul>
-  <ul class="side-menu">
+  <ul class="side-menu top">
     <li>
       <a href="#login">
         <i class="bx bxs-log-in"></i>
@@ -53,12 +75,6 @@
       <a href="#signup">
         <i class="bx bxs-log-in"></i>
         <span class="text">Sign Up</span>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <i class="bx bxs-cog"></i>
-        <span class="text">Setting</span>
       </a>
     </li>
     <li>
@@ -91,33 +107,37 @@
       <i class="bx bxs-bell"></i>
       <span class="num">8</span>
     </a>
-    <a href="#" class="profile">
+    <!-- dropdown -->
+    <div class="dropdown" style="padding-left: 5px">
+      <a
+        href="#"
+        class="profile"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <img src="/front_end/assets/people.png" />
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item" href="#/profile"
+            ><i
+              class="bi bi-person-lines-fill"
+              style="color: var(--blue); padding-right: 7px"
+            >
+            </i>
+            <span>Profile</span></a
+          >
+        </li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+    <!-- <a href="#/users" class="profile">
       <img src="/front_end/assets/people.png" />
-    </a>
+    </a> -->
   </nav>
   <!-- NAVBAR -->
 
-  <!-- MAIN -->
-  <main>
-    <div class="head-title">
-      <div class="left">
-        <h1>Dashboard</h1>
-        <ul class="breadcrumb">
-          <li>
-            <a href="#">Dashboard</a>
-          </li>
-          <li><i class="bx bx-chevron-right"></i></li>
-          <li>
-            <a class="active" href="#">Home</a>
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="btn-download">
-        <i class="bx bxs-cloud-download"></i>
-        <span class="text">Download PDF</span>
-      </a>
-    </div>
-  </main>
-  <!-- MAIN -->
+  <main ng-view></main>
 </section>
 <!-- CONTENT -->

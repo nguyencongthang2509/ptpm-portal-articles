@@ -10,8 +10,13 @@ import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.core.user.service.UserArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/article")
@@ -43,6 +48,18 @@ public class UserArticleRestController extends BaseController {
     @DeleteMapping("delete-article/{id}")
     public ResponseObject deleteArticle(@PathVariable("id") String id){
         return new ResponseObject(userArticleService.deleteArticle(id));
+    }
+    @PostMapping("/download")
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
+        try {
+            String currentDirectory = System.getProperty("user.dir");
+            String filePath = currentDirectory + "/articles-project/src/main/resources/templates/articles/" + file.getOriginalFilename();
+            file.transferTo(new File(filePath));
+            return new ResponseEntity<>("File uploaded successfully!", HttpStatus.OK);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("File upload failed!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

@@ -29,9 +29,10 @@ function userController($scope, $http, env) {
         });
     }
   };
+   
 
   $scope.detailAlbum = function (index, idAlbum) {
-    $scope.index = index;
+    $scope.index = index
     $http
       .get(env.API_URL + "/album/detail/" + idAlbum)
       .then(function (respone) {

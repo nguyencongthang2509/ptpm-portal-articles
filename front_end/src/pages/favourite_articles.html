@@ -1,0 +1,718 @@
+<div class="container-fluid">
+  <div class="row">
+    <h5 class="text-dark">Lượt Yêu Thích</h5>
+    <table class="table" style="background-color: #F9F9F9; border-radius: 15px">
+      <tbody>
+        <tr style="height: 40px">
+          <th scope="row">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="defaultCheck1"
+              />
+              <label> Tất Cả </label>
+            </div>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table" style="background-color: #F9F9F9; border-radius: 15px">
+      <tbody>
+        <tr>
+          <th scope="row">
+            <label> 9 tháng 3, 2023</label>
+          </th>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="defaultCheck1"
+              />
+
+              <div class="card__avatars cluster color-mid-text ps-4">
+                <a class="avatar" href="/authors/rachelandrew/"
+                  ><img
+                    class="img"
+                    alt="Rachel Andrew"
+                    sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
+                    src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
+                    srcset="
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=1&amp;q=75 1x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=2&amp;q=50 2x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=3&amp;q=35 3x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=4&amp;q=23 4x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=5&amp;q=20 5x
+                    "
+                    decoding="async"
+                    height="40"
+                    loading="lazy"
+                    width="40"
+                /></a>
+                <div class="flow flow-space-size-0">
+                  <div
+                    class="card__authors flow-space-base"
+                    aria-label="authors"
+                  >
+                    <a href="/authors/rachelandrew/" class="text-dark"
+                      ><strong> Rachel Andrew </strong> đã bày tỏ cảm xúc về
+                      <strong> bài viết </strong>của
+                      <strong> Phạm Xuân Hải</strong></a
+                    >
+                  </div>
+                  <time class="text-dark"
+                    ><i class="bx bx-world"></i>Công khai</time
+                  >
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="cham">
+                <i
+                class="bi bi-three-dots-vertical"
+                style="margin: 0px; width: 12%"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    ng-click="showConfirmDeleteAlbum($index, album.id)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteAlbumModal"
+                    >Xóa</a
+                  >
+                </li>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="defaultCheck1"
+              />
+
+              <div class="card__avatars cluster color-mid-text ps-4">
+                <a class="avatar" href="/authors/rachelandrew/"
+                  ><img
+                    class="img"
+                    alt="Rachel Andrew"
+                    sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
+                    src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
+                    srcset="
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=1&amp;q=75 1x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=2&amp;q=50 2x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=3&amp;q=35 3x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=4&amp;q=23 4x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=5&amp;q=20 5x
+                    "
+                    decoding="async"
+                    height="40"
+                    loading="lazy"
+                    width="40"
+                /></a>
+                <div class="flow flow-space-size-0">
+                  <div
+                    class="card__authors flow-space-base"
+                    aria-label="authors"
+                  >
+                    <a href="/authors/rachelandrew/" class="text-dark"
+                      ><strong> Rachel Andrew </strong> đã bày tỏ cảm xúc về
+                      <strong> bài viết </strong>của
+                      <strong> Phạm Xuân Hải</strong></a
+                    >
+                  </div>
+                  <time class="text-dark"
+                    ><i class="bx bx-world"></i>Công khai</time
+                  >
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="cham">
+                <i
+                class="bi bi-three-dots-vertical"
+                style="margin: 0px; width: 12%"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    ng-click="showConfirmDeleteAlbum($index, album.id)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteAlbumModal"
+                    >Xóa</a
+                  >
+                </li>
+            </div>         
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="defaultCheck1"
+              />
+
+              <div class="card__avatars cluster color-mid-text ps-4">
+                <a class="avatar" href="/authors/rachelandrew/"
+                  ><img
+                    class="img"
+                    alt="Rachel Andrew"
+                    sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
+                    src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
+                    srcset="
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=1&amp;q=75 1x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=2&amp;q=50 2x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=3&amp;q=35 3x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=4&amp;q=23 4x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=5&amp;q=20 5x
+                    "
+                    decoding="async"
+                    height="40"
+                    loading="lazy"
+                    width="40"
+                /></a>
+                <div class="flow flow-space-size-0">
+                  <div
+                    class="card__authors flow-space-base"
+                    aria-label="authors"
+                  >
+                    <a href="/authors/rachelandrew/" class="text-dark"
+                      ><strong> Rachel Andrew </strong> đã bày tỏ cảm xúc về
+                      <strong> bình luận </strong> của
+                      <strong> Phạm Xuân Hải.</strong>
+                    </a>
+                  </div>
+                  <time class="text-dark">Rachel Andrew vui tươi lên.</time
+                  ><br />
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="cham">
+                <i
+                class="bi bi-three-dots-vertical"
+                style="margin: 0px; width: 12%"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    ng-click="showConfirmDeleteAlbum($index, album.id)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteAlbumModal"
+                    >Xóa</a
+                  >
+                </li>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="defaultCheck1"
+              />
+
+              <div class="card__avatars cluster color-mid-text ps-4">
+                <a class="avatar" href="/authors/rachelandrew/"
+                  ><img
+                    class="img"
+                    alt="Rachel Andrew"
+                    sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
+                    src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
+                    srcset="
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=1&amp;q=75 1x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=2&amp;q=50 2x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=3&amp;q=35 3x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=4&amp;q=23 4x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=5&amp;q=20 5x
+                    "
+                    decoding="async"
+                    height="40"
+                    loading="lazy"
+                    width="40"
+                /></a>
+                <div class="flow flow-space-size-0">
+                  <div
+                    class="card__authors flow-space-base"
+                    aria-label="authors"
+                  >
+                    <a href="/authors/rachelandrew/" class="text-dark"
+                      ><strong> Rachel Andrew </strong> đã bày tỏ cảm xúc về
+                      <strong> bài viết </strong>của
+                      <strong> Phạm Xuân Hải</strong></a
+                    >
+                  </div>
+                  <time class="text-dark"
+                    ><i class="bx bx-world"></i>Công khai</time
+                  >
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="cham">
+                <i
+                class="bi bi-three-dots-vertical"
+                style="margin: 0px; width: 12%"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    ng-click="showConfirmDeleteAlbum($index, album.id)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteAlbumModal"
+                    >Xóa</a
+                  >
+                </li>
+            </div>
+          </td>        
+        </tr>
+      </tbody>
+    </table>
+    <table class="table" style="background-color: #F9F9F9; border-radius: 15px">
+      <tbody>
+        <tr>
+          <th scope="row">
+            <label> 8 tháng 3, 2023</label>
+          </th>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="defaultCheck1"
+              />
+
+              <div class="card__avatars cluster color-mid-text ps-4">
+                <a class="avatar" href="/authors/rachelandrew/"
+                  ><img
+                    class="img"
+                    alt="Rachel Andrew"
+                    sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
+                    src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
+                    srcset="
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=1&amp;q=75 1x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=2&amp;q=50 2x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=3&amp;q=35 3x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=4&amp;q=23 4x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=5&amp;q=20 5x
+                    "
+                    decoding="async"
+                    height="40"
+                    loading="lazy"
+                    width="40"
+                /></a>
+                <div class="flow flow-space-size-0">
+                  <div
+                    class="card__authors flow-space-base"
+                    aria-label="authors"
+                  >
+                    <a href="/authors/rachelandrew/" class="text-dark"
+                      ><strong> Rachel Andrew </strong> đã bày tỏ cảm xúc về
+                      <strong> bài viết </strong>của
+                      <strong> Phạm Xuân Hải</strong></a
+                    >
+                  </div>
+                  <time class="text-dark"
+                    ><i class="bx bx-world"></i>Công khai</time
+                  >
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="cham">
+                <i
+                class="bi bi-three-dots-vertical"
+                style="margin: 0px; width: 12%"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    ng-click="showConfirmDeleteAlbum($index, album.id)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteAlbumModal"
+                    >Xóa</a
+                  >
+                </li>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="defaultCheck1"
+              />
+
+              <div class="card__avatars cluster color-mid-text ps-4">
+                <a class="avatar" href="/authors/rachelandrew/"
+                  ><img
+                    class="img"
+                    alt="Rachel Andrew"
+                    sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
+                    src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
+                    srcset="
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=1&amp;q=75 1x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=2&amp;q=50 2x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=3&amp;q=35 3x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=4&amp;q=23 4x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=5&amp;q=20 5x
+                    "
+                    decoding="async"
+                    height="40"
+                    loading="lazy"
+                    width="40"
+                /></a>
+                <div class="flow flow-space-size-0">
+                  <div
+                    class="card__authors flow-space-base"
+                    aria-label="authors"
+                  >
+                    <a href="/authors/rachelandrew/" class="text-dark"
+                      ><strong> Rachel Andrew </strong> đã bày tỏ cảm xúc về
+                      <strong> bài viết </strong>của
+                      <strong> Phạm Xuân Hải</strong></a
+                    >
+                  </div>
+                  <time class="text-dark"
+                    ><i class="bx bx-world"></i>Công khai</time
+                  >
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="cham">
+                <i
+                class="bi bi-three-dots-vertical"
+                style="margin: 0px; width: 12%"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    ng-click="showConfirmDeleteAlbum($index, album.id)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteAlbumModal"
+                    >Xóa</a
+                  >
+                </li>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="defaultCheck1"
+              />
+
+              <div class="card__avatars cluster color-mid-text ps-4">
+                <a class="avatar" href="/authors/rachelandrew/"
+                  ><img
+                    class="img"
+                    alt="Rachel Andrew"
+                    sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
+                    src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
+                    srcset="
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=1&amp;q=75 1x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=2&amp;q=50 2x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=3&amp;q=35 3x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=4&amp;q=23 4x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=5&amp;q=20 5x
+                    "
+                    decoding="async"
+                    height="40"
+                    loading="lazy"
+                    width="40"
+                /></a>
+                <div class="flow flow-space-size-0">
+                  <div
+                    class="card__authors flow-space-base"
+                    aria-label="authors"
+                  >
+                    <a href="/authors/rachelandrew/" class="text-dark"
+                      ><strong> Rachel Andrew </strong> đã bày tỏ cảm xúc về
+                      <strong> bình luận </strong> của
+                      <strong> Phạm Xuân Hải.</strong>
+                    </a>
+                  </div>
+                  <time class="text-dark">Rachel Andrew vui tươi lên.</time
+                  ><br />
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="cham">
+                <i
+                class="bi bi-three-dots-vertical"
+                style="margin: 0px; width: 12%"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    ng-click="showConfirmDeleteAlbum($index, album.id)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteAlbumModal"
+                    >Xóa</a
+                  >
+                </li>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="defaultCheck1"
+              />
+
+              <div class="card__avatars cluster color-mid-text ps-4">
+                <a class="avatar" href="/authors/rachelandrew/"
+                  ><img
+                    class="img"
+                    alt="Rachel Andrew"
+                    sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
+                    src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
+                    srcset="
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=1&amp;q=75 1x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=2&amp;q=50 2x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=3&amp;q=35 3x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=4&amp;q=23 4x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=5&amp;q=20 5x
+                    "
+                    decoding="async"
+                    height="40"
+                    loading="lazy"
+                    width="40"
+                /></a>
+                <div class="flow flow-space-size-0">
+                  <div
+                    class="card__authors flow-space-base"
+                    aria-label="authors"
+                  >
+                    <a href="/authors/rachelandrew/" class="text-dark"
+                      ><strong> Rachel Andrew </strong> đã bày tỏ cảm xúc về
+                      <strong> bài viết </strong>của
+                      <strong> Phạm Xuân Hải</strong></a
+                    >
+                  </div>
+                  <time class="text-dark"
+                    ><i class="bx bx-world"></i>Công khai</time
+                  >
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="cham">
+                <i
+                class="bi bi-three-dots-vertical"
+                style="margin: 0px; width: 12%"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    ng-click="showConfirmDeleteAlbum($index, album.id)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteAlbumModal"
+                    >Xóa</a
+                  >
+                </li>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table" style="background-color: #F9F9F9; border-radius: 15px">
+      <tbody>
+        <tr>
+          <th scope="row">
+            <label> 6 tháng 3, 2023</label>
+          </th>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="defaultCheck1"
+              />
+
+              <div class="card__avatars cluster color-mid-text ps-4">
+                <a class="avatar" href="/authors/rachelandrew/"
+                  ><img
+                    class="img"
+                    alt="Rachel Andrew"
+                    sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
+                    src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
+                    srcset="
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=1&amp;q=75 1x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=2&amp;q=50 2x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=3&amp;q=35 3x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=4&amp;q=23 4x,
+                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=5&amp;q=20 5x
+                    "
+                    decoding="async"
+                    height="40"
+                    loading="lazy"
+                    width="40"
+                /></a>
+                <div class="flow flow-space-size-0">
+                  <div
+                    class="card__authors flow-space-base"
+                    aria-label="authors"
+                  >
+                    <a href="/authors/rachelandrew/" class="text-dark"
+                      ><strong> Rachel Andrew </strong> đã bày tỏ cảm xúc về
+                      <strong> bài viết </strong>của
+                      <strong> Phạm Xuân Hải</strong></a
+                    >
+                    <br />🥰
+                  </div>
+                  <time class="text-dark"
+                    ><i class="bx bx-world"></i>Công khai</time
+                  >
+                </div>
+                
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="cham">
+                <i
+                class="bi bi-three-dots-vertical"
+                style="margin: 0px; width: 12%"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    ng-click="showConfirmDeleteAlbum($index, album.id)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteAlbumModal"
+                    >Xóa</a
+                  >
+                </li>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

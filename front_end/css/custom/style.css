@@ -1140,6 +1140,7 @@ ul.nav-tabs li.nav-item button.nav-link-custom {
   color: #000000bb;
   font-weight: bolder;
   margin-bottom: 15px;
+  padding-right: 0px;
 }
 .thongtinsv {
   margin-left: 3em;
@@ -2675,10 +2676,69 @@ legend {
 
 /*# sourceMappingURL=Searchs_009.css.map */
 /* create article */
-  .create-article > #standalone-container {
-    margin: 50px auto;
-    max-width: 720px;
-  }
-  #editor-container {
-    height: 350px;
-  }
+.create-article > #standalone-container {
+  margin: 50px auto;
+  max-width: 720px;
+}
+#editor-container {
+  height: 550px;
+  background-color: #ffffff;
+}
+
+.create-article {
+  background-color: #dedede;
+  padding: 10px 0px 10px 0px;
+
+  margin-bottom: 30px;
+  margin-top: 0px;
+}
+.cl {
+  margin-top: 0px;
+}
+.l1 {
+  background-color: #ffff;
+  margin-top: 2px;
+
+  /* text-align: center; */
+  padding-left: 10px;
+  height: 35px;
+  padding-top: 2px;
+  width: 100%;
+}
+.l1 p {
+  color: #101010;
+  font-size: 15px;
+}
+.l1 p:hover {
+  text-decoration: overline;
+  color: #ffff;
+}
+.l1:hover {
+  margin-top: 2px;
+  background-image: linear-gradient(#0626b4, var(--blue), #ffff);
+  padding-left: 10px;
+  height: 35px;
+  padding-top: 2px;
+  width: 100%;
+}
+.nav-sidebar > .nav-item {
+  margin-bottom: 0;
+}
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+.nav-sidebar .nav-item > .nav-link {
+  position: relative;
+}
+.nav-sidebar .nav-item > .nav-link {
+  margin-bottom: 0.2rem;
+}
+.cate .nav-item.menu-open > ul {
+  display: block;
+}

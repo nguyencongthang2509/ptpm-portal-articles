@@ -1,4 +1,4 @@
-window.testCtrl = function ($scope) {
+window.testCtrl = function ($scope, $http) {
   var quill = new Quill("#editor-container", {
     modules: {
       formula: true,

@@ -1,55 +1,165 @@
-<section>
-  <a style="margin-left: 800px" class="btn btn-danger" ng-click="saveHTML()"
-    >Lưu HTML</a
-  >
-  <div class="create-article">
-    <div id="standalone-container">
-      <div id="toolbar-container">
-        <span class="ql-formats">
-          <select class="ql-font"></select>
-          <select class="ql-size"></select>
-        </span>
-        <span class="ql-formats">
-          <button class="ql-bold"></button>
-          <button class="ql-italic"></button>
-          <button class="ql-underline"></button>
-          <button class="ql-strike"></button>
-        </span>
-        <span class="ql-formats">
-          <select class="ql-color"></select>
-          <select class="ql-background"></select>
-        </span>
-        <span class="ql-formats">
-          <button class="ql-script" value="sub"></button>
-          <button class="ql-script" value="super"></button>
-        </span>
-        <span class="ql-formats">
-          <button class="ql-header" value="1"></button>
-          <button class="ql-header" value="2"></button>
-          <button class="ql-blockquote"></button>
-          <button class="ql-code-block"></button>
-        </span>
-        <span class="ql-formats">
-          <button class="ql-list" value="ordered"></button>
-          <button class="ql-list" value="bullet"></button>
-          <button class="ql-indent" value="-1"></button>
-          <button class="ql-indent" value="+1"></button>
-        </span>
-        <span class="ql-formats">
-          <button class="ql-direction" value="rtl"></button>
-          <select class="ql-align"></select>
-        </span>
-        <span class="ql-formats">
-          <button class="ql-link"></button>
-          <button class="ql-image"></button>
-          <button class="ql-video"></button>
-          <button class="ql-formula"></button>
-        </span>
-        <span class="ql-formats">
-          <button class="ql-clean"></button>
-        </span>
+<section style="background-color: rgb(253, 253, 253); border-radius: 20px">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-10">
+        <form>
+          <div class="mb-3" style="margin-top: 30px">
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputEmail1"
+              placeholder="Title.."
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputEmail1"
+              placeholder="Content.."
+              aria-describedby="emailHelp"
+              style="
+                border-bottom: solid 2px var(--blue);
+                border-radius: 0px;
+                background-color: rgb(255, 255, 255);
+              "
+            />
+          </div>
+        </form>
+        <div id="toolbar-container">
+          <span class="ql-formats">
+            <select class="ql-font"></select>
+            <select class="ql-size"></select>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+            <button class="ql-underline"></button>
+            <button class="ql-strike"></button>
+          </span>
+          <span class="ql-formats">
+            <select class="ql-color"></select>
+            <select class="ql-background"></select>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-script" value="sub"></button>
+            <button class="ql-script" value="super"></button>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-header" value="1"></button>
+            <button class="ql-header" value="2"></button>
+            <button class="ql-blockquote"></button>
+            <button class="ql-code-block"></button>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-list" value="ordered"></button>
+            <button class="ql-list" value="bullet"></button>
+            <button class="ql-indent" value="-1"></button>
+            <button class="ql-indent" value="+1"></button>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-direction" value="rtl"></button>
+            <select class="ql-align"></select>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-link"></button>
+            <button class="ql-image"></button>
+            <button class="ql-video"></button>
+            <button class="ql-formula"></button>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-clean"></button>
+          </span>
+        </div>
+        <section ng-init="testHaha()" class="cl">
+          <div class="create-article">
+            <div id="standalone-container">
+              <div id="editor-container"></div>
+            </div>
+          </div>
+        </section>
       </div>
-      <div id="editor-container"></div>
+      <div
+        class="col-2"
+        style="
+          background-color: rgb(252, 252, 252);
+          border-left: 2px double rgb(177, 177, 178);
+        "
+      >
+        <div class="row">
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              style="margin-top: 30px; background-color: #fcfcfc; color: black"
+            >
+              <i class="bi bi-eye"></i>
+              Preview
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-eye" style="padding-right: 10px"></i>Post
+                  preview</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"
+                  ><i
+                    class="bi bi-cloud-download"
+                    style="padding-right: 10px"
+                  ></i
+                  >Save</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div style="margin-top: 20px">
+            <button
+              type="button"
+              class="btn btn-primary"
+              style="background-color: var(--blue)"
+            >
+              <i class="bi bi-caret-right-fill"></i>Publish
+            </button>
+          </div>
+          <div class="cate" style="margin-top: 20px">
+            <li class="nav-item" ng-class="{ 'menu-open': isMenuOpen }">
+              <a href="#test" class="nav-link active" ng-click="toggleMenu()">
+                TYPE
+                <hr style="margin-top: 5px; margin-bottom: 5px" />
+              </a>
+              <ul class="nav nav-treeview" ng-show="isMenuOpen">
+                <li class="nav-item l1">
+                  <a href="./index.html" class="nav-link">
+                    <p>Type 1</p>
+                  </a>
+                </li>
+                <li class="nav-item l1">
+                  <a href="./index2.html" class="nav-link">
+                    <p>Type 3</p>
+                  </a>
+                </li>
+                <li class="nav-item l1">
+                  <a href="./index3.html" class="nav-link">
+                    <p>Type 4</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </div>
+
+          <div class="imgl" style="margin-top: 20px">
+            BACKGROUND <br />
+            IMAGE
+            <i class="bi bi-arrow-right-circle-fill"> </i>
+            <hr style="margin-top: 5px; margin-bottom: 5px" />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

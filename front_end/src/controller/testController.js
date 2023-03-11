@@ -34,22 +34,5 @@ window.testCtrl = function ($scope, $http) {
           console.log("Thất bại rồi xem lại code đi");
         }
       );
-    // console.log(formData);
-    // // send POST request to server
-    // var request = new XMLHttpRequest();
-    // request.open("POST", "/api/articles/download");
-
-    // request.send(formData);
-
-    // // handle response
-    // request.onreadystatechange = function () {
-    //   if (request.readyState === XMLHttpRequest.DONE) {
-    //     if (request.status === 200) {
-    //       console.log("File saved successfully.");
-    //     } else {
-    //       console.log("Failed to save file.");
-    //     }
-    //   }
-    // };
   };
 };

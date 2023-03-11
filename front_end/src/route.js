@@ -54,7 +54,10 @@ app.config(function ($routeProvider, $locationProvider) {
     })
     .when("/test", {
       templateUrl: "./pages/test.html",
-      controller: testCtrl
+      controller: testCtrl,
+    })
+    .when("/setting", {
+      templateUrl: "./pages/setting.html",
     })
     .when("/users", {
       templateUrl: "./pages/users.html",
@@ -64,4 +67,3 @@ app.config(function ($routeProvider, $locationProvider) {
       redirectTo: "/trang-chu",
     });
 });
-

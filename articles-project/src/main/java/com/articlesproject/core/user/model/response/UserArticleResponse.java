@@ -10,17 +10,8 @@ public interface UserArticleResponse extends IsIdentified {
     @Value("#{target.id}")
     String getId();
 
-    @Value("#{target.file_name}")
-    String getFileName();
-
     @Value("#{target.title}")
     String getTitle();
-
-    @Value("#{target.content}")
-    String getContent();
-
-    @Value("#{target.img}")
-    String getImg();
 
     @Value("#{target.create_date}")
     Long getCreateDate();

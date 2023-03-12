@@ -49,21 +49,15 @@ public class UserArticleServiceImpl implements UserArticleService {
     }
 
     @Override
-    public Articles updateArticle(String fileName, UserUpdateArticleRequest request) {
-        Articles articles = userArticleRepository.findByFileName(fileName);
-//        if(!articles.isPresent()){
-//            throw new RestApiException(Message.ARTICLE_NOT_EXIT);
-//        }
-//        Articles ar = formUtils.convertToObject(Articles.class, request);
-//        ar.setTym(0);
-//        ar.setStatus(1);
-        articles.setContent(request.getContent());
-        articles.setTitle(request.getTitle());
-        articles.setImg(request.getImg());
-        articles.setCategoryId(request.getCategoryId());
-        articles.setTym(0);
-        articles.setStatus(1);
-        return userArticleRepository.save(articles);
+    public Articles updateArticle(String id, UserUpdateArticleRequest request) {
+        Optional<Articles> articles = userArticleRepository.findById(id);
+        if(articles.isPresent()){
+            articles.get().setTitle(request.getTitle());
+            articles.get().setCategoryId(request.getCategoryId());
+            articles.get().setTym(0);
+            articles.get().setStatus(1);
+        }
+        return userArticleRepository.save(articles.get());
     }
 
     @Override

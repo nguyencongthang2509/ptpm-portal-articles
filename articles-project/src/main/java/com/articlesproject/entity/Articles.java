@@ -19,16 +19,7 @@ import jakarta.persistence.Table;
 public class Articles extends PrimaryEntity {
 
     @Column( nullable = false, length = EntityProperties.LENGTH_NoiDung )
-    private String fileName;
-
-    @Column( nullable = false, length = EntityProperties.LENGTH_NoiDung )
     private String title;
-
-    @Column( nullable = false, length = EntityProperties.LENGTH_NoiDung )
-    private String content;
-
-    @Column( nullable = false)
-    private String img;
 
     @Column(nullable = false)
     private Integer status;
@@ -39,17 +30,13 @@ public class Articles extends PrimaryEntity {
     @Column(nullable = false)
     private Integer tym;
 
-    @Nationalized
-    @Column(length = EntityProperties.LENGTH_DESCRIPTION)
-    private String review;
-
     @Column()
     private Long browseDate;
 
     @Column(length = EntityProperties.LENGTH_ID)
     private String categoryId;
 
-    @Column(length = EntityProperties.LENGTH_ID)
+    @Column(length = 65555)
     private String usersId;
 
 }

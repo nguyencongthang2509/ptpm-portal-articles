@@ -12,7 +12,7 @@ import lombok.ToString;
 @Data
 @ToString
 @Table(name = "articles_album")
-public class Articles_Album extends PrimaryEntity {
+public class ArticlesAlbum extends PrimaryEntity {
 
     @Column(length = EntityProperties.LENGTH_ID)
     private String articlesId;

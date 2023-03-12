@@ -3,10 +3,12 @@ package com.articlesproject.core.user.service.impl;
 import com.articlesproject.core.user.model.request.CreateAlbumRequest;
 import com.articlesproject.core.user.model.request.UpdateAlbumRequest;
 import com.articlesproject.core.user.model.response.AlbumResponse;
+import com.articlesproject.core.user.model.response.UserArticleAlbumResponse;
 import com.articlesproject.core.user.repository.UserAlbumRepository;
 import com.articlesproject.core.user.repository.UserArticleAlbumRepository;
 import com.articlesproject.core.user.service.UserAlbumService;
 import com.articlesproject.entity.Album;
+import com.articlesproject.entity.Articles_Album;
 import com.articlesproject.infrastructure.constant.Message;
 import com.articlesproject.infrastructure.exception.rest.RestApiException;
 import com.articlesproject.util.FormUtils;
@@ -45,6 +47,11 @@ public class UserAlbumServiceImpl implements UserAlbumService {
     }
 
     @Override
+    public List<UserArticleAlbumResponse> getAllArticleFavorite(String userId) {
+        return albumRepository.getAllArticleFavorite(userId);
+    }
+
+    @Override
     public Album create(CreateAlbumRequest request, String userId) {
         Album album =  formUtils.convertToObject(Album.class, request);
         album.setUsersId(userId);
@@ -72,6 +79,8 @@ public class UserAlbumServiceImpl implements UserAlbumService {
         albumRepository.deleteById(id);
         return true;
     }
+
+
 
     @Override
     public Album findById(String id) {

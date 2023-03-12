@@ -1,6 +1,7 @@
 package com.articlesproject.core.user.repository;
 
 import com.articlesproject.core.user.model.response.AlbumResponse;
+import com.articlesproject.core.user.model.response.UserArticleAlbumResponse;
 import com.articlesproject.repository.AlbumRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -26,4 +27,13 @@ public interface UserAlbumRepository extends AlbumRepository {
            GROUP BY ab.id, ab.title, ab.status, ab.created_date, us.name , us.img
             """, nativeQuery = true)
     List<AlbumResponse> findAllAlbumPublicByUserId(@Param("userId") String userId);
+
+    @Query(value = """
+           SELECT aral.id, ar.title, us.name AS userName, us.img AS userImage, aral.created_date FROM album al
+           JOIN articles_album aral ON al.id = aral.album_id
+           LEFT JOIN articles ar ON ar.id = aral.articles_id
+           LEFT JOIN users us ON us.id = ar.users_id\s
+           WHERE al.users_id = :userId
+            """, nativeQuery = true)
+    List<UserArticleAlbumResponse> getAllArticleFavorite(@Param("userId") String userId);
 }

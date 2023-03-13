@@ -2,7 +2,7 @@ package com.articlesproject.core.user.service.impl;
 
 import com.articlesproject.core.user.model.request.CreateCommentRequest;
 import com.articlesproject.core.user.model.request.UpdateCommentRequest;
-import com.articlesproject.core.user.model.response.CommentResponse;
+import com.articlesproject.core.user.model.response.UserCommentResponse;
 import com.articlesproject.core.user.repository.UserCommentRepository;
 import com.articlesproject.core.user.service.UserCommentService;
 import com.articlesproject.entity.Comments;
@@ -29,7 +29,7 @@ public class UserCommentServiceImpl implements UserCommentService {
     private FormUtils formUtils = new FormUtils();
 
     @Override
-    public List<CommentResponse> findCommentByArticleId(String articleId) {
+    public List<UserCommentResponse> findCommentByArticleId(String articleId) {
         return commentRepository.findCommentByArticleId(articleId);
     }
 

@@ -1,6 +1,6 @@
 package com.articlesproject.core.user.repository;
 
-import com.articlesproject.core.user.model.response.AlbumResponse;
+import com.articlesproject.core.user.model.response.UserAlbumResponse;
 import com.articlesproject.core.user.model.response.UserArticleAlbumResponse;
 import com.articlesproject.repository.AlbumRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,7 +17,7 @@ public interface UserAlbumRepository extends AlbumRepository {
            WHERE ab.users_id LIKE :userId
            GROUP BY ab.id, ab.title, ab.status, ab.created_date, us.name , us.img
             """, nativeQuery = true)
-    List<AlbumResponse> findAllAlbumByUserId(@Param("userId") String userId);
+    List<UserAlbumResponse> findAllAlbumByUserId(@Param("userId") String userId);
 
     @Query(value = """
            SELECT ab.id, ab.title, ab.status , count(arab.id)  AS numberOfArticle, us.name AS userName, us.img AS userImg, ab.created_date FROM album ab
@@ -26,7 +26,7 @@ public interface UserAlbumRepository extends AlbumRepository {
            WHERE ab.users_id LIKE :userId AND ab.status = 1
            GROUP BY ab.id, ab.title, ab.status, ab.created_date, us.name , us.img
             """, nativeQuery = true)
-    List<AlbumResponse> findAllAlbumPublicByUserId(@Param("userId") String userId);
+    List<UserAlbumResponse> findAllAlbumPublicByUserId(@Param("userId") String userId);
 
     @Query(value = """
            SELECT aral.id, ar.title, us.name AS userName, us.img AS userImage, aral.created_date FROM album al

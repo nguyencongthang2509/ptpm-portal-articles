@@ -1,6 +1,6 @@
 package com.articlesproject.core.user.repository;
 
-import com.articlesproject.core.user.model.response.CommentResponse;
+import com.articlesproject.core.user.model.response.UserCommentResponse;
 import com.articlesproject.repository.CommentRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,7 +16,7 @@ public interface UserCommentRepository extends CommentRepository {
             WHERE ar.id = :articleId
             ORDER BY  co.created_date ASC
             """,nativeQuery = true)
-    List<CommentResponse> findCommentByArticleId(@Param("articleId") String articleId);
+    List<UserCommentResponse> findCommentByArticleId(@Param("articleId") String articleId);
 
     long deleteByReply(String replyId);
 }

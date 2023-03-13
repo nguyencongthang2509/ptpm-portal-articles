@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.rest.core.config.Projection;
 
 @Projection(types = {Album.class})
-public interface AlbumResponse extends IsIdentified {
+public interface UserAlbumResponse extends IsIdentified {
 
     @Value("#{target.title}")
     String getTitle();

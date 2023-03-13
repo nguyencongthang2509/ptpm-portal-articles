@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.rest.core.config.Projection;
 
 @Projection(types = {Comments.class, Users.class})
-public interface CommentResponse  extends IsIdentified {
+public interface UserCommentResponse extends IsIdentified {
 
     @Value("#{target.content}")
     String getContent();

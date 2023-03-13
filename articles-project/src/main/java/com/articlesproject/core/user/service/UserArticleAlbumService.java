@@ -2,11 +2,11 @@ package com.articlesproject.core.user.service;
 
 import com.articlesproject.core.user.model.request.CreateArticleAlbumRequest;
 import com.articlesproject.core.user.model.request.UpdateArticleAlbumRequest;
-import com.articlesproject.entity.Articles_Album;
+import com.articlesproject.entity.ArticlesAlbum;
 
 public interface UserArticleAlbumService {
 
-    Articles_Album favoriteArticle(CreateArticleAlbumRequest request);
+    ArticlesAlbum favoriteArticle(CreateArticleAlbumRequest request);
 
     boolean unfavoriteArticle(String id);
 

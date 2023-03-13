@@ -2,6 +2,7 @@ package com.articlesproject.core.user.controller;
 
 import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.model.request.CreateHashtagRequest;
+import com.articlesproject.core.user.service.UserArticleHashtagService;
 import com.articlesproject.core.user.service.UserHashtagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +20,9 @@ public class UserHashtagResController {
     @Autowired
     private UserHashtagService hashtagService;
 
+    @Autowired
+    private UserArticleHashtagService articleHashtagService;
+
     @GetMapping
     private ResponseObject getAll(){
         return new ResponseObject(hashtagService.getAll());
@@ -28,4 +32,5 @@ public class UserHashtagResController {
     private ResponseObject createHahtag(@RequestBody CreateHashtagRequest request){
         return new ResponseObject(hashtagService.createHashtag(request));
     }
+
 }

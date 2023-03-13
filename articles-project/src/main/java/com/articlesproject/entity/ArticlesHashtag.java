@@ -13,7 +13,7 @@ import lombok.ToString;
 @Data
 @ToString
 @Table(name = "articles_hashtag")
-public class Articles_Hashtag extends PrimaryEntity {
+public class ArticlesHashtag extends PrimaryEntity {
 
     @Column(length = EntityProperties.LENGTH_ID)
     private String articlesId;

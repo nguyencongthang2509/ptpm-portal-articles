@@ -13,6 +13,6 @@ import java.util.List;
 public interface UserArticleService {
     PageableObject<UserArticleResponse> getAllArticle(final UserArticleRequest request);
     Articles addArticle(UserCreateArticleRequest request);
-    Articles updateArticle(String fileName, UserUpdateArticleRequest request);
+    Articles updateArticle(String id, UserUpdateArticleRequest request);
     boolean deleteArticle(String id);
 }

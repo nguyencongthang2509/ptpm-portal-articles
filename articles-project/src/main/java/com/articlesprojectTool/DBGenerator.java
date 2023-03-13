@@ -2,8 +2,8 @@ package com.articlesprojectTool;
 
 import com.articlesproject.entity.Album;
 import com.articlesproject.entity.Articles;
-import com.articlesproject.entity.Articles_Album;
-import com.articlesproject.entity.Articles_Hashtag;
+import com.articlesproject.entity.ArticlesAlbum;
+import com.articlesproject.entity.ArticlesHashtag;
 import com.articlesproject.entity.Category;
 import com.articlesproject.entity.Comments;
 import com.articlesproject.entity.Evaluate;
@@ -98,10 +98,7 @@ public class DBGenerator implements CommandLineRunner {
         hashtag1.setId(hashtagRepository.save(hashtag1).getId());
 
         Articles baiViet = new Articles();
-        baiViet.setFileName("xuan-hai.html");
         baiViet.setTitle("Xin chào các bạn");
-        baiViet.setContent("Mình là Phạm Xuân Hải");
-        baiViet.setImg("hai.png");
         baiViet.setStatus(1);
         baiViet.setBrowseDate(1900800000L);
         baiViet.setUsersId(users.getId());
@@ -110,10 +107,7 @@ public class DBGenerator implements CommandLineRunner {
         baiViet.setId(articlesRepository.save(baiViet).getId());
 
         Articles baiViet1 = new Articles();
-        baiViet1.setFileName("hoa-linh.html");
         baiViet1.setTitle("Xin chào các bạn");
-        baiViet1.setContent("Mình là Phạm Xuân hahaha");
-        baiViet1.setImg("tut.png");
         baiViet1.setStatus(1);
         baiViet1.setBrowseDate(1900800000L);
         baiViet1.setUsersId(users.getId());
@@ -122,10 +116,7 @@ public class DBGenerator implements CommandLineRunner {
         baiViet1.setId(articlesRepository.save(baiViet1).getId());
 
         Articles baiViet2 = new Articles();
-        baiViet2.setFileName("tut-thang.html");
         baiViet2.setTitle("Xin chào các bạn");
-        baiViet2.setContent("Mình là Phạm Xuân hihihih");
-        baiViet2.setImg("haha.png");
         baiViet2.setStatus(1);
         baiViet2.setBrowseDate(1900800000L);
         baiViet2.setUsersId(users.getId());
@@ -133,7 +124,7 @@ public class DBGenerator implements CommandLineRunner {
         baiViet2.setCategoryId(theLoai.getId());
         baiViet2.setId(articlesRepository.save(baiViet2).getId());
 
-        Articles_Hashtag articles_hashtag = new Articles_Hashtag();
+        ArticlesHashtag articles_hashtag = new ArticlesHashtag();
         articles_hashtag.setArticlesId(baiViet.getId());
         articles_hashtag.setHashtagId(hashtag.getId());
         articles_hashtag.setId(articles_hashtagRepository.save(articles_hashtag).getId());
@@ -189,7 +180,7 @@ public class DBGenerator implements CommandLineRunner {
         album2.setUsersId(users.getId());
         album.setId(albumRepository.save(album2).getId());
 
-        Articles_Album baiVietAlbum = new Articles_Album();
+        ArticlesAlbum baiVietAlbum = new ArticlesAlbum();
         baiVietAlbum.setAlbumId(album.getId());
         baiVietAlbum.setArticlesId(baiViet.getId());
         baiVietAlbum.setId(articles_albumRepository.save(baiVietAlbum).getId());

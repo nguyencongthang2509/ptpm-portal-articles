@@ -21,12 +21,12 @@ window.testCtrl = function ($scope, $http) {
     console.log(file.name);
     // create form data with file
     var formData = new FormData();
-    formData.append("file", file, file.name);
+    formData.append("file", file);
 
     $http
-      .post("http://localhost:8080/api/article/download", formData, {
+      .post("http://localhost:8080/api/article/create-article", formData, {
         transformRequest: angular.identity,
-        headers: { "Content-Type": undefined }, // set content type header
+        headers: { "Content-type": undefined},
       })
       .then(
         function (response) {

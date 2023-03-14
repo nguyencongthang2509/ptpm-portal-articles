@@ -13,8 +13,8 @@
     <div class="row gy-4">
       <div class="col-md-4" data-aos="fade-up" ng-repeat="ar in articles">
         <div class="card-custom rounded-4 bg-base shadow-effect">
-          <div class="card-custom-image rounded-4" ng-repeat="img in imgs">
-            <img class="rounded-4" ng-src="{{imgs}}" alt="Image"/>
+          <div class="card-custom-image rounded-4">
+            <img class="rounded-4" src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.jpeg" alt="Image"/>
           </div>
           <div class="card-custom-content p-4">
             <p class="text-brand mb-2">{{ar.browseDate| date:'dd/MM/yyyy'}}</p>

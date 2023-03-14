@@ -14,10 +14,10 @@ import java.util.List;
 
 public interface UserArticleRepository extends ArticlesRepository {
     @Query(value = """
-            SELECT a.id, a.title, a.content, a.browse_date, a.tym FROM articles a
+            SELECT a.id, a.title, a.browse_date, a.tym FROM articles a
             """,
             countQuery = """
-                    SELECT a.id, a.title, a.content, a.browse_date, a.tym FROM articles a
+                    SELECT a.id, a.title, a.browse_date, a.tym FROM articles a
                     """
             , nativeQuery = true)
     Page<UserArticleResponse> getAllArticle(Pageable page, @Param("req") UserArticleRequest req);

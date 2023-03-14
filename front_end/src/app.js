@@ -5,6 +5,7 @@ var app = angular.module("myModule", [
   "ngStorage",
   "ngFileUpload",
   "ngLocale",
+  "ui.select2"
 ]);
 app.constant("env", {
   API_URL: "http://localhost:8080/api",

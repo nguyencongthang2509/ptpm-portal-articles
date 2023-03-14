@@ -1,12 +1,10 @@
 package com.articlesproject.core.user.controller;
 
 import com.articlesproject.core.common.base.BaseController;
-import com.articlesproject.core.common.base.PageableObject;
 import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.model.request.UserArticleRequest;
 import com.articlesproject.core.user.model.request.UserCreateArticleRequest;
 import com.articlesproject.core.user.model.request.UserUpdateArticleRequest;
-import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.core.user.service.UserArticleService;
 import com.articlesproject.entity.Articles;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -43,7 +40,6 @@ public class UserArticleRestController extends BaseController {
         if (!folder.exists()) {
             folder.mkdirs();
             String fileName = "toi-thanh-cong-roi.html";
-
             File dir = new File(folderPath);
             File actualFile = new File(dir, fileName);
             actualFile.getParentFile().mkdirs();
@@ -51,9 +47,7 @@ public class UserArticleRestController extends BaseController {
             FileWriter fileWriter = new FileWriter(actualFile);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(request.getContent());
-
             bufferedWriter.close();
-            System.out.println("File saved successfully!");
             String regex = "data:image/(png|jpeg|jpg);base64,([^\"]+)";
             Pattern pattern = Pattern.compile(regex);
             String html = new String(Files.readAllBytes(Paths.get(folderPath + "/toi-thanh-cong-roi.html")));

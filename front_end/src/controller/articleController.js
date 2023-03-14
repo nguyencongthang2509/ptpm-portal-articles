@@ -1,7 +1,7 @@
 window.articleCtrl = function ($scope, $http) {
   $scope.articles = [];
   $http.get(apiURL + "/article").then(function (respone) {
-    $scope.articles = respone.data.data;
+    $scope.articles = respone.data.data.data;
     console.log($scope.articles);
   });
   $scope.categories = [];

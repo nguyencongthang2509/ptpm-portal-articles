@@ -7,10 +7,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserArticleRequest extends PageableRequest {
-    private String fileName;
     private String title;
     private String content;
+    private Long browseDate;
     private String img;
-    private Long createDate;
     private Integer tym;
 }

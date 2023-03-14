@@ -12,22 +12,21 @@ window.testCtrl = function ($scope, $http) {
   $scope.toggleMenu = function () {
     $scope.isMenuOpen = !$scope.isMenuOpen;
   };
+  $scope.categories = [];
+
+  $http.get("http://localhost:8080/api/category").then(function (response) {
+    $scope.categories = response.data.data;
+  });
+
   $scope.saveHTML = function () {
     var content = quill.root.innerHTML;
-    var fileContent = new Blob([content], { type: "text/html" });
-
-    // create file object
-    var file = new File([fileContent], "huhuh.html", { type: "text/html" });
-    console.log(file.name);
-    // create form data with file
-    var formData = new FormData();
-    formData.append("file", file);
-
+    var formData = {
+      title: $scope.title,
+      content: content,
+      categoryId: $scope.category,
+    };
     $http
-      .post("http://localhost:8080/api/article/create-article", formData, {
-        transformRequest: angular.identity,
-        headers: { "Content-type": undefined},
-      })
+      .post("http://localhost:8080/api/article/create-article", formData)
       .then(
         function (response) {
           console.log("Thành công rồi haha");

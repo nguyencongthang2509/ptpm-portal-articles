@@ -2,409 +2,104 @@
   <div class="container-fluid">
     <div class="bt pb-4">
       <button type="button" class="btn btn-light me-5">All</button>
-      <button type="button" class="btn btn-light me-5">New</button>
-      <button type="button" class="btn btn-light me-5">Light</button>
-      <button type="button" class="btn btn-light me-5">Light</button>
-      <button type="button" class="btn btn-light me-5">Light</button>
+      <button
+        type="button"
+        class="btn btn-light me-5"
+        ng-repeat="cate in categories"
+      >
+        {{cate.name}}
+      </button>
     </div>
     <div class="row gy-4">
-      <div class="col-md-4" data-aos="fade-up">
+      <div class="col-md-4" data-aos="fade-up" ng-repeat="ar in articles">
         <div class="card-custom rounded-4 bg-base shadow-effect">
-          <div class="card-custom-image rounded-4">
-            <img
-              class="rounded-4"
-              src="/front_end/assets/blog-post-1.jpg"
-              alt=""
-            />
+          <div class="card-custom-image rounded-4" ng-repeat="img in imgs">
+            <img class="rounded-4" ng-src="{{imgs}}" alt="Image"/>
           </div>
           <div class="card-custom-content p-4">
-            <p class="text-brand mb-2">20 Dec, 2022</p>
-            <h5 class="mb-4">
-              Design a creative landing page using Bootstrap 5
-            </h5>
+            <p class="text-brand mb-2">{{ar.browseDate| date:'dd/MM/yyyy'}}</p>
+            <h5 class="mb-4">{{ar.title}}</h5>
             <a href="#" class="link-custom pe-3">Read More</a>
-            <a class="btn bg-primary-subtle text-dark " role="button"><i class='bx bx-heart' ></i> Like</a>
+            <a class="btn bg-primary-subtle text-dark" role="button"
+              ><i class="bx bx-heart"></i> {{ar.tym}}</a
+            >
             <div class="cham">
               <i
-              class="bi bi-three-dots-vertical"
-              style="margin: 0px; width: 12%"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            ></i>
-            <ul
-              class="dropdown-menu"
-              aria-labelledby="dropdownMenuButton1"
-            >
-            <li>
-              <a 
-                class="dropdown-item"
-                href="#"
-                ng-click="showConfirmDeleteAlbum($index, album.id)"
-                data-bs-toggle="modal" data-bs-target="#exampleModal"
-                >Thêm vào album</a
-              >
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">Đặt Tên</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      hhhh
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
+                class="bi bi-three-dots-vertical"
+                style="margin: 0px; width: 12%"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    ng-click="showConfirmDeleteAlbum($index, album.id)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                    >Thêm vào album</a
+                  >
+                  <div
+                    class="modal fade"
+                    id="exampleModal"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            Đặt Tên
+                          </h1>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div class="modal-body">hhhh</div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button type="button" class="btn btn-primary">
+                            Save changes
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  ng-click="showConfirmDeleteAlbum($index, album.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#deleteAlbumModal"
-                  >Ẩn bài viết</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  ng-click="showConfirmDeleteAlbum($index, album.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#deleteAlbumModal"
-                  >Báo Cáo</a
-                >
-              </li>
-              <!-- Button trigger modal -->
-              <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Launch demo modal
-              </button> -->
-
-              <!-- Modal -->
-            </ul>
-          </div> 
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-        <div class="card-custom rounded-4 bg-base shadow-effect">
-          <div class="card-custom-image rounded-4">
-            <img
-              class="rounded-4"
-              src="/front_end/assets/blog-post-2.jpg"
-              alt=""
-            />
-          </div>
-          <div class="card-custom-content p-4">
-            <p class="text-brand mb-2">20 Dec, 2022</p>
-            <h5 class="mb-4">
-              Design a creative landing page using Bootstrap 5
-            </h5>
-            <a href="#" class="link-custom pe-3">Read More</a>
-            <a class="btn bg-primary-subtle text-dark " role="button"><i class='bx bx-heart' ></i> Like</a>
-            <div class="cham">
-              <i
-              class="bi bi-three-dots-vertical"
-              style="margin: 0px; width: 12%"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            ></i>
-            <ul
-              class="dropdown-menu"
-              aria-labelledby="dropdownMenuButton1"
-            >
-            <li>
-              <a
-                class="dropdown-item"
-                href="#"
-                ng-click="showConfirmDeleteAlbum($index, album.id)"
-                data-bs-toggle="modal"
-                data-bs-target="#deleteAlbumModal"
-                >Thêm vào album</a
-              >
-            </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  ng-click="showConfirmDeleteAlbum($index, album.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#deleteAlbumModal"
-                  >Ẩn bài viết</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  ng-click="showConfirmDeleteAlbum($index, album.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#deleteAlbumModal"
-                  >Báo Cáo</a
-                >
-              </li>
-          </div> 
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
-        <div class="card-custom rounded-4 bg-base shadow-effect">
-          <div class="card-custom-image rounded-4">
-            <img
-              class="rounded-4"
-              src="/front_end/assets/blog-post-3.jpg"
-              alt=""
-            />
-          </div>
-          <div class="card-custom-content p-4">
-            <p class="text-brand mb-2">20 Dec, 2022</p>
-            <h5 class="mb-4">
-              Design a creative landing page using Bootstrap 5
-            </h5>
-            <a href="#" class="link-custom pe-3">Read More</a>
-            <a class="btn bg-primary-subtle text-dark " role="button"><i class='bx bx-heart' ></i> Like</a>
-            <div class="cham">
-              <i
-              class="bi bi-three-dots-vertical"
-              style="margin: 0px; width: 12%"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            ></i>
-            <ul
-              class="dropdown-menu"
-              aria-labelledby="dropdownMenuButton1"
-            >
-            <li>
-              <a
-                class="dropdown-item"
-                href="#"
-                ng-click="showConfirmDeleteAlbum($index, album.id)"
-                data-bs-toggle="modal"
-                data-bs-target="#deleteAlbumModal"
-                >Thêm vào album</a
-              >
-            </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  ng-click="showConfirmDeleteAlbum($index, album.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#deleteAlbumModal"
-                  >Ẩn bài viết</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  ng-click="showConfirmDeleteAlbum($index, album.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#deleteAlbumModal"
-                  >Báo Cáo</a
-                >
-              </li>
-          </div>    
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4" data-aos="fade-up">
-        <div class="card-custom rounded-4 bg-base shadow-effect">
-          <div class="card-custom-image rounded-4">
-            <img
-              class="rounded-4"
-              src="/front_end/assets/blog-post-1.jpg"
-              alt=""
-            />
-          </div>
-          <div class="card-custom-content p-4">
-            <p class="text-brand mb-2">20 Dec, 2022</p>
-            <h5 class="mb-4">
-              Design a creative landing page using Bootstrap 5
-            </h5>
-            <a href="#" class="link-custom pe-3">Read More</a>
-            <a class="btn bg-primary-subtle text-dark " role="button"><i class='bx bx-heart' ></i> Like</a>
-            <div class="cham">
-              <i
-              class="bi bi-three-dots-vertical"
-              style="margin: 0px; width: 12%"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            ></i>
-            <ul
-              class="dropdown-menu"
-              aria-labelledby="dropdownMenuButton1"
-            >
-            <li>
-              <a
-                class="dropdown-item"
-                href="#"
-                ng-click="showConfirmDeleteAlbum($index, album.id)"
-                data-bs-toggle="modal"
-                data-bs-target="#deleteAlbumModal"
-                >Thêm vào album</a
-              >
-            </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  ng-click="showConfirmDeleteAlbum($index, album.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#deleteAlbumModal"
-                  >Ẩn bài viết</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  ng-click="showConfirmDeleteAlbum($index, album.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#deleteAlbumModal"
-                  >Báo Cáo</a
-                >
-              </li>
-          </div> 
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-        <div class="card-custom rounded-4 bg-base shadow-effect">
-          <div class="card-custom-image rounded-4">
-            <img
-              class="rounded-4"
-              src="/front_end/assets/blog-post-2.jpg"
-              alt=""
-            />
-          </div>
-          <div class="card-custom-content p-4">
-            <p class="text-brand mb-2">20 Dec, 2022</p>
-            <h5 class="mb-4">
-              Design a creative landing page using Bootstrap 5
-            </h5>
-            <a href="#" class="link-custom pe-3">Read More</a>
-            <a class="btn bg-primary-subtle text-dark " role="button"><i class='bx bx-heart' ></i> Like</a>
-            <div class="cham">
-              <i
-              class="bi bi-three-dots-vertical"
-              style="margin: 0px; width: 12%"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            ></i>
-            <ul
-              class="dropdown-menu"
-              aria-labelledby="dropdownMenuButton1"
-            >
-            <li>
-              <a
-                class="dropdown-item"
-                href="#"
-                ng-click="showConfirmDeleteAlbum($index, album.id)"
-                data-bs-toggle="modal"
-                data-bs-target="#deleteAlbumModal"
-                >Thêm vào album</a
-              >
-            </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  ng-click="showConfirmDeleteAlbum($index, album.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#deleteAlbumModal"
-                  >Ẩn bài viết</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  ng-click="showConfirmDeleteAlbum($index, album.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#deleteAlbumModal"
-                  >Báo Cáo</a
-                >
-              </li>
-          </div> 
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
-        <div class="card-custom rounded-4 bg-base shadow-effect">
-          <div class="card-custom-image rounded-4">
-            <img
-              class="rounded-4"
-              src="/front_end/assets/blog-post-3.jpg"
-              alt=""
-            />
-          </div>
-          <div class="card-custom-content p-4">
-            <p class="text-brand mb-2">20 Dec, 2022</p>
-            <h5 class="mb-4">
-              Design a creative landing page using Bootstrap 5
-            </h5>
-            <a href="#" class="link-custom pe-3">Read More</a>
-            <a class="btn bg-primary-subtle text-dark " role="button"><i class='bx bx-heart' ></i> Like</a>
-            <div class="cham">
-              <i
-              class="bi bi-three-dots-vertical"
-              style="margin: 0px; width: 12%"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            ></i>
-            <ul
-              class="dropdown-menu"
-              aria-labelledby="dropdownMenuButton1"
-            >
-            <li>
-              <a
-                class="dropdown-item"
-                href="#"
-                ng-click="showConfirmDeleteAlbum($index, album.id)"
-                data-bs-toggle="modal"
-                data-bs-target="#deleteAlbumModal"
-                >Thêm vào album</a
-              >
-            </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  ng-click="showConfirmDeleteAlbum($index, album.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#deleteAlbumModal"
-                  >Ẩn bài viết</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  ng-click="showConfirmDeleteAlbum($index, album.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#deleteAlbumModal"
-                  >Báo Cáo</a
-                >
-              </li>
-          </div> 
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    ng-click="showConfirmDeleteAlbum($index, album.id)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteAlbumModal"
+                    >Ẩn bài viết</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    ng-click="showConfirmDeleteAlbum($index, album.id)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteAlbumModal"
+                    >Báo Cáo</a
+                  >
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -627,7 +322,6 @@
                     >Báo Cáo</a
                   >
                 </li>
-            </div> 
             </div>
           </article>
         </div>

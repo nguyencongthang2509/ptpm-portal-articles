@@ -108,6 +108,7 @@ public class DBGenerator implements CommandLineRunner {
 
         Articles baiViet1 = new Articles();
         baiViet1.setTitle("Xin chào các bạn");
+
         baiViet1.setStatus(1);
         baiViet1.setBrowseDate(1900800000L);
         baiViet1.setUsersId(users.getId());

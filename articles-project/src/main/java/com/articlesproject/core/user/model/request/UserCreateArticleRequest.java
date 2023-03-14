@@ -10,5 +10,5 @@ public final class UserCreateArticleRequest {
     private String usersId;
     private String categoryId;
     private String title;
-    MultipartFile file;
+    private String content;
 }

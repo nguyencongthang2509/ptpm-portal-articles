@@ -13,8 +13,11 @@ public interface UserArticleResponse extends IsIdentified {
     @Value("#{target.title}")
     String getTitle();
 
-    @Value("#{target.create_date}")
-    Long getCreateDate();
+    @Value("#{target.content}")
+    String getContent();
+
+    @Value("#{target.browse_date}")
+    Long getBrowseDate();
 
     @Value("#{target.tym}")
     Integer getTym();

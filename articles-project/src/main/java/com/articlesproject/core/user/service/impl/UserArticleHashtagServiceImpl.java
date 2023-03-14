@@ -1,6 +1,7 @@
 package com.articlesproject.core.user.service.impl;
 
 import com.articlesproject.core.user.repository.UserArticleHashtagRepository;
+import com.articlesproject.core.user.repository.UserHashtagRepository;
 import com.articlesproject.core.user.service.UserArticleHashtagService;
 import com.articlesproject.entity.ArticlesHashtag;
 import com.articlesproject.entity.Hashtag;
@@ -15,14 +16,30 @@ public  class UserArticleHashtagServiceImpl implements UserArticleHashtagService
     @Autowired
     private UserArticleHashtagRepository articleHashtagRepository;
 
+    @Autowired
+    private UserHashtagRepository hashtagRepository;
+
+
 
     @Override
-    public boolean addTagsArticle(String[] hashtagId, String articleId) {
-        Arrays.stream(hashtagId).forEach(item ->{
+    public boolean addTagsArticle(String[] hashtags, String articleId) {
+        Arrays.stream(hashtags).forEach(item ->{
+            Hashtag hashtag = hashtagRepository.findByTitle(item.toLowerCase());
             ArticlesHashtag articlesHashtag = new ArticlesHashtag();
-            articlesHashtag.setArticlesId(articleId);
-            articlesHashtag.setHashtagId(item);
-            articleHashtagRepository.save(articlesHashtag);
+            if(hashtag != null){
+                articlesHashtag.setArticlesId(articleId);
+                articlesHashtag.setHashtagId(hashtag.getId());
+                articleHashtagRepository.save(articlesHashtag);
+            }else{
+                Hashtag newhashtag = new Hashtag();
+                newhashtag.setTitle(item);
+                hashtagRepository.save(newhashtag);
+                articlesHashtag.setArticlesId(articleId);
+                articlesHashtag.setHashtagId(newhashtag.getId());
+                articleHashtagRepository.save(articlesHashtag);
+            }
+
+
         });
         return true;
     }

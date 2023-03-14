@@ -7,9 +7,8 @@
             <input
               type="text"
               class="form-control"
-              id="exampleInputEmail1"
               placeholder="Title.."
-              aria-describedby="emailHelp"
+              ng-model="title"
             />
           </div>
           <div class="mb-3">
@@ -119,7 +118,7 @@
           </div>
           <div style="margin-top: 20px">
             <a
-            ng-click="saveHTML()"
+              ng-click="saveHTML()"
               type="button"
               class="btn btn-primary"
               style="background-color: var(--blue)"
@@ -127,37 +126,21 @@
               <i class="bi bi-caret-right-fill"></i>Publish
             </a>
           </div>
+
           <div class="cate" style="margin-top: 20px">
             <li class="nav-item" ng-class="{ 'menu-open': isMenuOpen }">
-              <a href="#test" class="nav-link active" ng-click="toggleMenu()">
-                TYPE
+              <a href="" class="nav-link active" ng-click="toggleMenu()">
+                CATEGORY
                 <hr style="margin-top: 5px; margin-bottom: 5px" />
               </a>
               <ul class="nav nav-treeview" ng-show="isMenuOpen">
-                <li class="nav-item l1">
-                  <a href="./index.html" class="nav-link">
-                    <p>Type 1</p>
-                  </a>
-                </li>
-                <li class="nav-item l1">
-                  <a href="./index2.html" class="nav-link">
-                    <p>Type 3</p>
-                  </a>
-                </li>
-                <li class="nav-item l1">
-                  <a href="./index3.html" class="nav-link">
-                    <p>Type 4</p>
-                  </a>
-                </li>
+                <select class="form-select" ng-model="category">
+                  <option ng-repeat="cate in categories" value="{{cate.id}}">
+                    {{cate.name}}
+                  </option>
+                </select>
               </ul>
             </li>
-          </div>
-
-          <div class="imgl" style="margin-top: 20px">
-            BACKGROUND <br />
-            IMAGE
-            <i class="bi bi-arrow-right-circle-fill"> </i>
-            <hr style="margin-top: 5px; margin-bottom: 5px" />
           </div>
         </div>
       </div>

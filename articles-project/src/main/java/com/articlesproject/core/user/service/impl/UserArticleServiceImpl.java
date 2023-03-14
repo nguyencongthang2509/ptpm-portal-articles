@@ -70,4 +70,12 @@ public class UserArticleServiceImpl implements UserArticleService {
         return true;
     }
 
+    @Override
+    public Articles add(UserCreateArticleRequest request) {
+        Articles ar = formUtils.convertToObject(Articles.class, request);
+        ar.setTym(0);
+        ar.setStatus(1);
+        return userArticleRepository.save(ar);
+    }
+
 }

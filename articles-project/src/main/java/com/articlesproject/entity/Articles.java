@@ -24,9 +24,6 @@ public class Articles extends PrimaryEntity {
     @Column(nullable = false)
     private Integer status;
 
-    @Column()
-    private Long lastModifiedDate;
-
     @Column(nullable = false)
     private Integer tym;
 

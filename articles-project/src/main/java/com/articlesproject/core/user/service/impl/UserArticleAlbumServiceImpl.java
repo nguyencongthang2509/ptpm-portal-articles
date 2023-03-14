@@ -4,7 +4,7 @@ import com.articlesproject.core.user.model.request.CreateArticleAlbumRequest;
 import com.articlesproject.core.user.model.request.UpdateArticleAlbumRequest;
 import com.articlesproject.core.user.repository.UserArticleAlbumRepository;
 import com.articlesproject.core.user.service.UserArticleAlbumService;
-import com.articlesproject.entity.Articles_Album;
+import com.articlesproject.entity.ArticlesAlbum;
 import com.articlesproject.infrastructure.constant.Message;
 import com.articlesproject.infrastructure.exception.rest.RestApiException;
 import com.articlesproject.util.FormUtils;
@@ -22,14 +22,14 @@ public class UserArticleAlbumServiceImpl implements UserArticleAlbumService {
     private FormUtils formUtils = new FormUtils();
 
     @Override
-    public Articles_Album create(CreateArticleAlbumRequest request) {
-        Articles_Album articlesAlbum = formUtils.convertToObject(Articles_Album.class, request);
+    public ArticlesAlbum create(CreateArticleAlbumRequest request) {
+        ArticlesAlbum articlesAlbum = formUtils.convertToObject(ArticlesAlbum.class, request);
         return articleAlbumRepository.save(articlesAlbum);
     }
 
     @Override
-    public Articles_Album update(UpdateArticleAlbumRequest request) {
-        Optional<Articles_Album> articlesAlbum = articleAlbumRepository.findById(request.getId());
+    public ArticlesAlbum update(UpdateArticleAlbumRequest request) {
+        Optional<ArticlesAlbum> articlesAlbum = articleAlbumRepository.findById(request.getId());
         if(!articlesAlbum.isPresent()){
             throw new RestApiException(Message.ARTICLE_ALBUM_NOT_EXIST);
         }
@@ -39,7 +39,7 @@ public class UserArticleAlbumServiceImpl implements UserArticleAlbumService {
 
     @Override
     public boolean delete(String id) {
-        Optional<Articles_Album> articlesAlbum = articleAlbumRepository.findById(id);
+        Optional<ArticlesAlbum> articlesAlbum = articleAlbumRepository.findById(id);
         if(!articlesAlbum.isPresent()){
             throw new RestApiException(Message.ARTICLE_ALBUM_NOT_EXIST);
         }

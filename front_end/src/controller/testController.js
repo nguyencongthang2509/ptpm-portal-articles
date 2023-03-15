@@ -12,6 +12,13 @@ window.testCtrl = function ($scope, $http) {
   $scope.toggleMenu = function () {
     $scope.isMenuOpen = !$scope.isMenuOpen;
   };
+  $scope.list_of_string = [];
+  $scope.select2Options = {
+    multiple: true,
+    simple_tags: true,
+    tags: ["tag1", "tag2", "tag3", "tag4"],
+    tokenSeparators: ["/", ",", ";"],
+  };
   $scope.categories = [];
 
   $http.get("http://localhost:8080/api/category").then(function (response) {

@@ -21,6 +21,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -76,6 +77,15 @@ public class UserArticleServiceImpl implements UserArticleService {
         ar.setTym(0);
         ar.setStatus(1);
         return userArticleRepository.save(ar);
+    }
+
+    @Override
+    public UserArticleResponse getArticleById(String id) {
+        Optional<UserArticleResponse> articles = userArticleRepository.findArticleById(id);
+        if(!articles.isPresent()){
+            throw new RestApiException(Message.ERROR_UNKNOWN);
+        }
+        return articles.get();
     }
 
 }

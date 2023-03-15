@@ -1,6 +1,6 @@
 
-var allHaha = {};
-allHaha.allHihi = function () {
+var Toolbar = {};
+Toolbar.allHihi = function () {
   const allSideMenu = document.querySelectorAll("#sidebar .side-menu.top li a");
 
   allSideMenu.forEach((item) => {

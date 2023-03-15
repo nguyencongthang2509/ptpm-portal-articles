@@ -32,7 +32,14 @@ public class UserArticleRestController extends BaseController {
     private String id;
 
     @Autowired
+    private UserArticleService userArticleService;
+    @Autowired
     private UserArticleHashtagService articleHashtagService;
+
+    @GetMapping("")
+    public ResponseObject getAllArticle(final UserArticleRequest request) {
+        return new ResponseObject(userArticleService.getAllArticle(request));
+    }
 
     @PostMapping("/create-article")
     public ResponseEntity<String> createArticle(@RequestBody UserCreateArticleRequest request) throws IOException {
@@ -71,14 +78,6 @@ public class UserArticleRestController extends BaseController {
         return new ResponseEntity<>("File upload failed!", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @Autowired
-    private UserArticleService userArticleService;
-
-    @GetMapping("")
-    public ResponseObject getAllArticle(final UserArticleRequest request) {
-        return new ResponseObject(userArticleService.getAllArticle(request));
-    }
-
     @PutMapping("/update-article/{id}")
     public ResponseObject updateArticle(@PathVariable("id") String id, @RequestBody UserUpdateArticleRequest request) {
         return new ResponseObject(userArticleService.updateArticle(id, request));
@@ -90,4 +89,8 @@ public class UserArticleRestController extends BaseController {
     }
 
 
+    @GetMapping("/{id}")
+    public ResponseObject getArticleById(@PathVariable("id") String id){
+        return new ResponseObject(userArticleService.getArticleById(id));
+    }
 }

@@ -42,8 +42,9 @@ app.config(function ($routeProvider, $locationProvider) {
     .when("/album", {
       templateUrl: "./pages/album.html",
     })
-    .when("/chitiet", {
+    .when("/article/:id", {
       templateUrl: "./pages/bvchitiet.html",
+      controller: detailArticleCtrl,
     })
     .when("/test", {
       templateUrl: "./pages/test.html",

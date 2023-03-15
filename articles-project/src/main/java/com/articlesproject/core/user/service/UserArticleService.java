@@ -15,6 +15,6 @@ public interface UserArticleService {
     Articles addArticle(UserCreateArticleRequest request);
     Articles updateArticle(String id, UserUpdateArticleRequest request);
     boolean deleteArticle(String id);
-
     Articles add(UserCreateArticleRequest request);
+    UserArticleResponse getArticleById(String id);
 }

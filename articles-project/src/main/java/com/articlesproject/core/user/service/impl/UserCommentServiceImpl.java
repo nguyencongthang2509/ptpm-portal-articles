@@ -60,4 +60,5 @@ public class UserCommentServiceImpl implements UserCommentService {
         commentRepository.deleteById(commentId);
         return true;
     }
+
 }

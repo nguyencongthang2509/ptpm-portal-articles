@@ -12,4 +12,6 @@ window.detailArticleCtrl = function (
       return (ar.id = $routeParams.id);
     })[0];
   });
+  ArticleService.fetchComments()
 };
+

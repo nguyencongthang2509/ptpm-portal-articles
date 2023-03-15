@@ -10,7 +10,7 @@ import java.util.List;
 public interface UserCommentRepository extends CommentRepository {
 
     @Query(value = """
-            SELECT co.id, co.content, co.reply, us.id AS userID, us.name AS userName, co.created_date FROM comments co
+            SELECT co.id, co.content, co.reply, us.id AS userID, us.name AS userName,us.img AS userImg, co.created_date FROM comments co
             JOIN articles ar ON ar.id = co.articles_id
             JOIN users us ON us.id = co.users_id
             WHERE ar.id = :articleId

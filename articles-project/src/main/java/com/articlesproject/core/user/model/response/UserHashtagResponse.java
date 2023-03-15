@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.rest.core.config.Projection;
 
 @Projection(types = {Hashtag.class})
-public interface UserHashtagResponse extends IsIdentified {
+public interface UserHashtagResponse  {
 
     @Value("#{target.title}")
     String getTitle();

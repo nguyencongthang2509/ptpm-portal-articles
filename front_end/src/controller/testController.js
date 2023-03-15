@@ -1,4 +1,5 @@
 window.testCtrl = function ($scope, $http) {
+  $scope.listTag  = []
   var quill = new Quill("#editor-container", {
     modules: {
       formula: true,
@@ -8,17 +9,34 @@ window.testCtrl = function ($scope, $http) {
     placeholder: "What are you going to write today...?",
     theme: "snow",
   });
+  $scope.select2Options = {
+    multiple: true,
+    simple_tags: true,
+    tags:  $scope.listTag ,
+    tokenSeparators: ["/", ",", ";"],
+   
+  };
   $scope.isMenuOpen = false;
   $scope.toggleMenu = function () {
     $scope.isMenuOpen = !$scope.isMenuOpen;
   };
+
+  $http.get("http://localhost:8080/api/hashtag").then(function (response) {
+    response.data.data.map(item => {
+      $scope.listTag.push(item.title);
+      
+    })
+    $scope.select2Options = {
+      multiple: true,
+      simple_tags: true,
+      tags:  $scope.listTag ,
+      tokenSeparators: ["/", ",", ";"],
+      
+    };
+    console.log( $scope.listTag)
+  });
   $scope.list_of_string = [];
-  $scope.select2Options = {
-    multiple: true,
-    simple_tags: true,
-    tags: ["tag1", "tag2", "tag3", "tag4"],
-    tokenSeparators: ["/", ",", ";"],
-  };
+  
   $scope.categories = [];
 
   $http.get("http://localhost:8080/api/category").then(function (response) {
@@ -26,11 +44,13 @@ window.testCtrl = function ($scope, $http) {
   });
 
   $scope.saveHTML = function () {
+   
     var content = quill.root.innerHTML;
     var formData = {
       title: $scope.title,
       content: content,
       categoryId: $scope.category,
+      hashtag: $scope.list_of_string
     };
     $http
       .post("http://localhost:8080/api/article/create-article", formData)

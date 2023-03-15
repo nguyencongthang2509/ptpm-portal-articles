@@ -5,7 +5,9 @@ import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.model.request.UserArticleRequest;
 import com.articlesproject.core.user.model.request.UserCreateArticleRequest;
 import com.articlesproject.core.user.model.request.UserUpdateArticleRequest;
+import com.articlesproject.core.user.service.UserArticleHashtagService;
 import com.articlesproject.core.user.service.UserArticleService;
+import com.articlesproject.core.user.service.UserHashtagService;
 import com.articlesproject.entity.Articles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,11 +31,15 @@ public class UserArticleRestController extends BaseController {
     @Value("${app.UserId}")
     private String id;
 
+    @Autowired
+    private UserArticleHashtagService articleHashtagService;
+
     @PostMapping("/create-article")
     public ResponseEntity<String> createArticle(@RequestBody UserCreateArticleRequest request) throws IOException {
         request.setUsersId("97f152fe-4250-400a-8605-743a3a3e66f8");
         String currentDirectory1 = System.getProperty("user.dir");
         Articles articles = userArticleService.addArticle(request);
+        articleHashtagService.addTagsArticle(request.getHashtag(), articles.getId());
         String folderName = articles.getId();
         String folderPath = currentDirectory1 + "/articles-project/src/main/resources/templates/articles/" + folderName;
         File folder = new File(folderPath);

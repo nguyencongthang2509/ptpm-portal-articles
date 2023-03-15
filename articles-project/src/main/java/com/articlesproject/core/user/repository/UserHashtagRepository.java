@@ -10,7 +10,7 @@ import java.util.List;
 public interface UserHashtagRepository extends HashtagRepository {
 
     @Query(value = """
-            SELECT id, title FROM hashtag
+            SELECT  title FROM hashtag
             ORDER BY created_date DESC
             """, nativeQuery = true)
     List<UserHashtagResponse> getAll();

@@ -74,8 +74,7 @@
         <section ng-init="testHaha()" class="cl">
           <div class="create-article">
             <div id="standalone-container">
-              <div id="editor-container" ng-model="content">
-              </div>
+              <div id="editor-container" ng-model="content"></div>
             </div>
           </div>
         </section>
@@ -107,7 +106,7 @@
                 >
               </li>
               <li>
-                <a class="dropdown-item" href="#"
+                <a class="dropdown-item" ng-click="updateMyArticle()"
                   ><i
                     class="bi bi-cloud-download"
                     style="padding-right: 10px"
@@ -132,8 +131,8 @@
             <li class="nav-item" ng-class="{ 'menu-open': isMenuOpen }">
               <a href="" class="nav-link active" ng-click="toggleMenu()">
                 CATEGORY
-                <hr style="margin-top: 5px; margin-bottom: 5px" />
               </a>
+              <hr style="margin-top: 5px; margin-bottom: 5px" />
               <ul class="nav nav-treeview" ng-show="isMenuOpen">
                 <select class="form-select" ng-model="category">
                   <option ng-repeat="cate in listCategory" value="{{cate.id}}">

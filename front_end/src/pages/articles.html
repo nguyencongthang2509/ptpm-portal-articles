@@ -14,13 +14,15 @@
       <div class="col-md-4" data-aos="fade-up" ng-repeat="ar in listArticle">
         <div class="card-custom rounded-4 bg-base shadow-effect">
           <div class="card-custom-image rounded-4">
-            <img class="rounded-4" src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.jpeg" alt="Image"/>
+            <img class="rounded-4" src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.jpeg" alt="Image" style="max-height: 200px;width: 100%;object-fit: cover;"/>
           </div>
           <div class="card-custom-content p-4">
             <p class="text-brand mb-2">{{ar.browseDate| date:'dd/MM/yyyy'}}</p>
-            <h5 class="mb-4">{{ar.title}}</h5>
+            <h5 class="mb-4" style="overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;">{{ar.title}}</h5>
             <a href="#article/{{ar.id}}" class="link-custom pe-3">Read More</a>
-            <a class="btn bg-primary-subtle text-dark" role="button"
+            <a  role="button"
               ><i class="bx bx-heart"></i> {{ar.tym}}</a
             >
             <div class="cham">

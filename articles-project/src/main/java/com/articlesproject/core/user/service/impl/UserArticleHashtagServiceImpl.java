@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 
 @Service
-public  class UserArticleHashtagServiceImpl implements UserArticleHashtagService {
+public class UserArticleHashtagServiceImpl implements UserArticleHashtagService {
 
     @Autowired
     private UserArticleHashtagRepository articleHashtagRepository;
@@ -20,17 +20,16 @@ public  class UserArticleHashtagServiceImpl implements UserArticleHashtagService
     private UserHashtagRepository hashtagRepository;
 
 
-
     @Override
     public boolean addTagsArticle(String[] hashtags, String articleId) {
-        Arrays.stream(hashtags).forEach(item ->{
+        Arrays.stream(hashtags).forEach(item -> {
             Hashtag hashtag = hashtagRepository.findByTitle(item.toLowerCase());
             ArticlesHashtag articlesHashtag = new ArticlesHashtag();
-            if(hashtag != null){
+            if (hashtag != null) {
                 articlesHashtag.setArticlesId(articleId);
                 articlesHashtag.setHashtagId(hashtag.getId());
                 articleHashtagRepository.save(articlesHashtag);
-            }else{
+            } else {
                 Hashtag newhashtag = new Hashtag();
                 newhashtag.setTitle(item);
                 hashtagRepository.save(newhashtag);
@@ -38,8 +37,27 @@ public  class UserArticleHashtagServiceImpl implements UserArticleHashtagService
                 articlesHashtag.setHashtagId(newhashtag.getId());
                 articleHashtagRepository.save(articlesHashtag);
             }
+        });
+        return true;
+    }
 
-
+    @Override
+    public boolean updateTagsArticle(String[] hashtags, String articleId) {
+        Arrays.stream(hashtags).forEach(item -> {
+            Hashtag hashtag = hashtagRepository.findByTitle(item.toLowerCase());
+            ArticlesHashtag articlesHashtag = new ArticlesHashtag();
+            if (hashtag != null) {
+                articlesHashtag.setArticlesId(articleId);
+                articlesHashtag.setHashtagId(hashtag.getId());
+                articleHashtagRepository.save(articlesHashtag);
+            } else {
+                Hashtag newhashtag = new Hashtag();
+                newhashtag.setTitle(item);
+                hashtagRepository.save(newhashtag);
+                articlesHashtag.setArticlesId(articleId);
+                articlesHashtag.setHashtagId(newhashtag.getId());
+                articleHashtagRepository.save(articlesHashtag);
+            }
         });
         return true;
     }

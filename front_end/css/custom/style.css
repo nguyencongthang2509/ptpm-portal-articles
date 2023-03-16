@@ -28,7 +28,7 @@ li {
   --light: #f9f9f9;
   --blue: #3c91e6;
   --light-blue: #cfe8ff;
-  --grey: #eee;
+  --grey: #eeeeee;
   --dark-grey: #aaaaaa;
   --dark: #342e37;
   --red: #db504a;
@@ -36,6 +36,7 @@ li {
   --light-yellow: #fff2c6;
   --orange: #fd7238;
   --light-orange: #ffe0d3;
+  --background-image: linear-gradient(rgb(205, 224, 253), white);
 }
 
 html {
@@ -43,9 +44,9 @@ html {
 }
 
 body.dark {
-  --light: #0c0c1e;
-  --grey: #060714;
-  --dark: #fbfbfb;
+  --light: #4a4a55;
+  --grey: #f1f1f1;
+  --dark: #fffcfc;
 }
 
 body {
@@ -107,7 +108,7 @@ body {
   padding: 4px;
 }
 #sidebar .side-menu li.active {
-  background: var(--grey);
+  background: rgb(225, 240, 255);
   position: relative;
 }
 #sidebar .side-menu li.active::before {
@@ -118,7 +119,7 @@ body {
   border-radius: 50%;
   top: -40px;
   right: 0;
-  box-shadow: 20px 20px 0 var(--grey);
+  box-shadow: 20px 20px 0 rgb(225, 240, 255);
   z-index: -1;
 }
 #sidebar .side-menu li.active::after {
@@ -129,7 +130,7 @@ body {
   border-radius: 50%;
   bottom: -40px;
   right: 0;
-  box-shadow: 20px -20px 0 var(--grey);
+  box-shadow: 20px -20px 0 rgb(225, 240, 255);
   z-index: -1;
 }
 #sidebar .side-menu li a {
@@ -587,7 +588,7 @@ body {
   --color-heading: #eef3db;
   --color-base: #033f47;
   --color-base2: #022a30;
-  --color-brand: #e0f780;
+  --color-brand: #b4daff;
   --color-brand2: #deff58;
   --sidbar-width: 240px;
   --font-base: "Bai Jamjuree";
@@ -613,7 +614,7 @@ a {
 }
 
 a:hover {
-  color: var(--color-brand);
+  color: var(--blue);
 }
 
 img {
@@ -621,7 +622,7 @@ img {
 }
 
 .text-brand {
-  color: #A9D09E;
+  color: #a9d09e;
 }
 
 .bg-base {
@@ -2677,7 +2678,7 @@ legend {
 }
 .bt button:hover {
   color: white;
-  background-color: #f7345e;
+  background-color: var(--blue);
 }
 .cham {
   float: right;
@@ -2716,50 +2717,24 @@ legend {
 .cl {
   margin-top: 0px;
 }
-.l1 {
-  background-color: #ffff;
-  margin-top: 2px;
 
-  /* text-align: center; */
-  padding-left: 10px;
-  height: 35px;
-  padding-top: 2px;
-  width: 100%;
-}
-.l1 p {
-  color: #101010;
-  font-size: 15px;
-}
-.l1 p:hover {
-  text-decoration: overline;
-  color: #ffff;
-}
-.l1:hover {
+.cate li ul a:hover {
   margin-top: 2px;
-  background-image: linear-gradient(#0626b4, var(--blue), #ffff);
+  background-image: linear-gradient(var(--blue), #ffff);
   padding-left: 10px;
   height: 35px;
   padding-top: 2px;
   width: 100%;
+  color: #000;
 }
-.nav-sidebar > .nav-item {
-  margin-bottom: 0;
-}
-*,
-::after,
-::before {
-  box-sizing: border-box;
-}
-li {
-  display: list-item;
-  text-align: -webkit-match-parent;
-}
-.nav-sidebar .nav-item > .nav-link {
-  position: relative;
-}
-.nav-sidebar .nav-item > .nav-link {
-  margin-bottom: 0.2rem;
-}
+
 .cate .nav-item.menu-open > ul {
   display: block;
+}
+.cate li ul a {
+  color: #000;
+  /* padding-left: 10px; */
+  height: 35px;
+  padding-top: 2px;
+  width: 100%;
 }

@@ -5,22 +5,24 @@ window.detailArticleCtrl = function (
   $routeParams,
   ArticleService,
   CommentService,
-  CategoryService
+  CategoryService,
+  MyArticleService
 ) {
   $scope.comment = {
     articlesId: $routeParams.id,
     content: "",
-    reply:""
-  }
-  ArticleService.fetchArticles().then(function () {
-    $scope.article = ArticleService.getArticle().filter((ar) => {
-      return (ar.id = $routeParams.id);
-    })[0];
+    reply: "",
+  };
+
+  var id = $routeParams.id;
+  MyArticleService.fetchMyArticleById(id).then(function () {
+    $scope.myArticleById = MyArticleService.getMyArticleById();
+    console.log($scope.myArticleById);
   });
-  
+
   CommentService.fetchComments($routeParams.id);
 
-  $scope.commentArticle = CommentService.getCommentArticle().then(function(response){
+  // $scope.commentArticle = CommentService.getCommentArticle().then(function(response){
 
-  })
+  // })
 };

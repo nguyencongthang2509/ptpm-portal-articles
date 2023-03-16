@@ -62,19 +62,20 @@ window.createArticleCtrl = function (
     );
   };
 
-  // $scope.detailMyArticle = [];
-
   var id = $routeParams.id;
-  const reader = new FileReader();
-  console.log(
-    reader.readAsDataURL(
-      "../../../articles-project/src/main/resources/templates/articles/" + id + "/toi-thanh-cong-roi.html"
-    )
+  $.get(
+    "../../../articles-project/src/main/resources/templates/articles/" +
+      id +
+      "/toi-thanh-cong-roi.html",
+    function (data) {
+      quill.setContents(quill.clipboard.convert(data));
+    }
   );
-  MyArticleService.fetchMyArticleById(id).then(function () {
-    $scope.myArticleById = MyArticleService.getMyArticleById();
-    $scope.title = $scope.myArticleById.title;
-    $scope.content = delta;
+
+  MyArticleService.fetchUpdateMyArticleById(id).then(function () {
+    $scope.myUpdateArticleById = MyArticleService.getMyUpdateArticleById();
+    $scope.title = $scope.myUpdateArticleById.title;
+    $scope.list_of_string = $scope.myUpdateArticleById.hashtags;
   });
 
   $scope.updateMyArticle = function () {
@@ -85,7 +86,9 @@ window.createArticleCtrl = function (
       categoryId: $scope.category,
       hashtag: $scope.list_of_string,
     };
-    $http.post(articleAPI + "/create-article", formData).then(
+    console.log(formData);
+
+    $http.put(myArticleAPI + "/update-article/" + id, formData).then(
       function (response) {
         console.log("Thành công rồi haha");
       },

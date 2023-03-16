@@ -18,14 +18,14 @@
                     height="250"
                     width="310"
                     style="height: 200px"
-                    src="../../../articles-project/src/main/resources/templates/articles/{{article.id}}/image.jpeg"
+                    src="../../../articles-project/src/main/resources/templates/articles/{{myArticleById.id}}/image.jpeg"
                     alt="content planning"
                 /></a>
               </div>
               <div class="sc-bdvvtL FmHLX">
                 <h2 data-test="heading-text" class="sc-bBHxTw hsjjsR">
                   <a data-test="heading-link" href="/blog/content-planning/"></a>
-                    {{article.title}}
+                    {{myArticleById.title}}
                   </a>
                 </h2>
                 <!-- <p data-test="preview-text" class="sc-bBHxTw epRzfQ">
@@ -34,7 +34,7 @@
                 </p> -->
                 <div class="sc-bdvvtL ftOnze">
                   <span data-test="date">
-                    {{article.browseDate | date:'dd/MM/yyyy'}} </span
+                    {{myArticleById.browseDate | date:'dd/MM/yyyy'}} </span
                   ><strong data-test="category" class="sc-dtMgUX iEGeoe"
                     ><a
                       data-test="category-link"
@@ -61,7 +61,7 @@
     <div class="row gy-4 pt-5">
       <div class="col-md-10" data-aos="fade-up">
         <div data-parse="true" class="sc-bdvvtL ikHgNc sc-fydGpi jwdqZU">
-          <div ng-include="'../../../articles-project/src/main/resources/templates/articles/' + article.id + '/toi-thanh-cong-roi.html'"></div>
+          <div ng-include="'../../../articles-project/src/main/resources/templates/articles/' + myArticleById.id + '/toi-thanh-cong-roi.html'"></div>
         </div>
       </div>
     </div>

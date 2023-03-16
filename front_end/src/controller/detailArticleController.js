@@ -6,12 +6,10 @@ window.detailArticleCtrl = function (
   ArticleService,
   CategoryService
 ) {
-
   ArticleService.fetchArticles().then(function () {
     $scope.article = ArticleService.getArticle().filter((ar) => {
       return (ar.id = $routeParams.id);
     })[0];
   });
-  ArticleService.fetchComments()
+  ArticleService.fetchComments();
 };
-

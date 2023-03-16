@@ -78,19 +78,50 @@ public class UserArticleRestController extends BaseController {
         return new ResponseEntity<>("File upload failed!", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @PutMapping("/update-article/{id}")
-    public ResponseObject updateArticle(@PathVariable("id") String id, @RequestBody UserUpdateArticleRequest request) {
-        return new ResponseObject(userArticleService.updateArticle(id, request));
-    }
+//    @PutMapping("/update-article/{id}")
+//    public ResponseObject updateArticle(@PathVariable("id") String id, @RequestBody UserUpdateArticleRequest request) throws IOException {
+//        String currentDirectory1 = System.getProperty("user.dir");
+//        Articles articles = userArticleService.updateArticle(id, request);
+//        articleHashtagService.addTagsArticle(request.getHashtag(), articles.getId());
+//        String folderName = articles.getId();
+//        String folderPath = currentDirectory1 + "/articles-project/src/main/resources/templates/articles/" + folderName;
+//        File folder = new File(folderPath);
+//        File imageFile = new File(folderPath + "/toi-thanh-cong-roi.html");
+//        if (!folder.exists()) {
+//            imageFile.delete();
+//            String fileName = "toi-thanh-cong-roi.html";
+//            File dir = new File(folderPath);
+//            File actualFile = new File(dir, fileName);
+//            actualFile.getParentFile().mkdirs();
+//            actualFile.createNewFile();
+//            FileWriter fileWriter = new FileWriter(actualFile);
+//            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+//            bufferedWriter.write(request.getContent());
+//            bufferedWriter.close();
+//            String regex = "data:image/(png|jpeg|jpg);base64,([^\"]+)";
+//            Pattern pattern = Pattern.compile(regex);
+//            String html = new String(Files.readAllBytes(Paths.get(folderPath + "/toi-thanh-cong-roi.html")));
+//            Matcher matcher = pattern.matcher(html);
+//            while (matcher.find()) {
+//                String extension = matcher.group(1);
+//                String base64Data = matcher.group(2);
+//                byte[] imageData = Base64.getDecoder().decode(base64Data);
+//                String imageName = "image" + "." + extension;
+//                Files.write(Paths.get(folderPath + "/" + imageName), imageData, StandardOpenOption.CREATE_NEW);
+//                break;
+//            }
+//            return new ResponseObject(userArticleService.updateArticle(id, request));
+//        }
+//        return null;
+//    }
 
     @DeleteMapping("/delete-article/{id}")
     public ResponseObject deleteArticle(@PathVariable("id") String id) {
         return new ResponseObject(userArticleService.deleteArticle(id));
     }
 
-
     @GetMapping("/{id}")
-    public ResponseObject getArticleById(@PathVariable("id") String id){
+    public ResponseObject getArticleById(@PathVariable("id") String id) {
         return new ResponseObject(userArticleService.getArticleById(id));
     }
 }

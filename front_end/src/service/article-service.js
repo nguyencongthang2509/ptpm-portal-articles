@@ -45,7 +45,7 @@ app.service("ArticleService", function ($http, env, $routeParams) {
         }
       });
       var codeHtml =""
-      console.log(roots);
+      // console.log(roots);
       function show(replies, depth = 0) {
         replies.map(item =>{
           // console.log(" ".repeat(depth) + item.content);

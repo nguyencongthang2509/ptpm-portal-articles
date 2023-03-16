@@ -65,11 +65,12 @@ window.createArticleCtrl = function (
   // $scope.detailMyArticle = [];
 
   var id = $routeParams.id;
-  const value =
-    "../../../articles-project/src/main/resources/templates/articles/{{id}}/toi-thanh-cong-roi.html";
-  const delta = quill.clipboard.convert(value);
-  quill.setContents(delta, "silent");
-
+  const reader = new FileReader();
+  console.log(
+    reader.readAsDataURL(
+      "../../../articles-project/src/main/resources/templates/articles/" + id + "/toi-thanh-cong-roi.html"
+    )
+  );
   MyArticleService.fetchMyArticleById(id).then(function () {
     $scope.myArticleById = MyArticleService.getMyArticleById();
     $scope.title = $scope.myArticleById.title;

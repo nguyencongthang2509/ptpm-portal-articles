@@ -1,7 +1,7 @@
 package com.articlesproject.core.user.controller;
 
 import com.articlesproject.core.common.base.ResponseObject;
-import com.articlesproject.core.user.model.request.CreateHashtagRequest;
+import com.articlesproject.core.user.model.request.UserCreateHashtagRequest;
 import com.articlesproject.core.user.service.UserArticleHashtagService;
 import com.articlesproject.core.user.service.UserHashtagService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class UserHashtagResController {
     }
 
     @PostMapping("/create")
-    private ResponseObject createHahtag(@RequestBody CreateHashtagRequest request){
+    private ResponseObject createHahtag(@RequestBody UserCreateHashtagRequest request){
         return new ResponseObject(hashtagService.createHashtag(request));
     }
 

@@ -1,5 +1,6 @@
 package com.articlesproject.core.user.model.request;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,9 +8,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateArticleAlbumRequest {
+public class UserCreateCommentRequest {
 
     private String articlesId;
 
-    private String albumId;
+    private String content;
+
+    private String reply;
+
+
 }

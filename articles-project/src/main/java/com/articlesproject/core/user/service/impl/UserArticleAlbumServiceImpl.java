@@ -1,6 +1,6 @@
 package com.articlesproject.core.user.service.impl;
 
-import com.articlesproject.core.user.model.request.CreateArticleAlbumRequest;
+import com.articlesproject.core.user.model.request.UserCreateArticleAlbumRequest;
 import com.articlesproject.core.user.repository.UserArticleAlbumRepository;
 import com.articlesproject.core.user.service.UserArticleAlbumService;
 import com.articlesproject.entity.ArticlesAlbum;
@@ -21,7 +21,7 @@ public class UserArticleAlbumServiceImpl implements UserArticleAlbumService {
     private FormUtils formUtils = new FormUtils();
 
     @Override
-    public ArticlesAlbum favoriteArticle(CreateArticleAlbumRequest request) {
+    public ArticlesAlbum favoriteArticle(UserCreateArticleAlbumRequest request) {
         ArticlesAlbum articlesAlbum = formUtils.convertToObject(ArticlesAlbum.class, request);
         return articleAlbumRepository.save(articlesAlbum);
     }

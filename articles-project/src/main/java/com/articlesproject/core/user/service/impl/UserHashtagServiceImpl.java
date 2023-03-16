@@ -1,6 +1,6 @@
 package com.articlesproject.core.user.service.impl;
 
-import com.articlesproject.core.user.model.request.CreateHashtagRequest;
+import com.articlesproject.core.user.model.request.UserCreateHashtagRequest;
 import com.articlesproject.core.user.model.response.UserHashtagResponse;
 import com.articlesproject.core.user.repository.UserHashtagRepository;
 import com.articlesproject.core.user.service.UserHashtagService;
@@ -30,7 +30,7 @@ public class UserHashtagServiceImpl implements UserHashtagService {
     }
 
     @Override
-    public Hashtag createHashtag(CreateHashtagRequest request) {
+    public Hashtag createHashtag(UserCreateHashtagRequest request) {
         Hashtag hashtag = hashtagRepository.findByTitle(request.getTitle().toLowerCase());
         if(hashtag != null){
             return hashtag;

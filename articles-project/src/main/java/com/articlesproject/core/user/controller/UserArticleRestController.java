@@ -4,10 +4,10 @@ import com.articlesproject.core.common.base.BaseController;
 import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.model.request.UserArticleRequest;
 import com.articlesproject.core.user.model.request.UserCreateArticleRequest;
+import com.articlesproject.core.user.model.request.UserFindArticleRequest;
 import com.articlesproject.core.user.model.request.UserUpdateArticleRequest;
 import com.articlesproject.core.user.service.UserArticleHashtagService;
 import com.articlesproject.core.user.service.UserArticleService;
-import com.articlesproject.core.user.service.UserHashtagService;
 import com.articlesproject.entity.Articles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -39,6 +39,11 @@ public class UserArticleRestController extends BaseController {
     @GetMapping("")
     public ResponseObject getAllArticle(final UserArticleRequest request) {
         return new ResponseObject(userArticleService.getAllArticle(request));
+    }
+
+    @GetMapping("/search")
+    public ResponseObject findAllArticle(@RequestBody UserFindArticleRequest request) {
+        return new ResponseObject(userArticleService.FindAllArticle(request));
     }
 
     @PostMapping("/create-article")

@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateHashtagRequest {
+public class UserCreateHashtagRequest {
 
     private String title;
 }

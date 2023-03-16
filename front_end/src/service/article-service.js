@@ -48,18 +48,15 @@ app.service("ArticleService", function ($http, env, $routeParams) {
       console.log(roots);
       function show(replies, depth = 0) {
         replies.map(item =>{
-          // console.log(" ".repeat(depth) + item.content);
-          // <img class="rounded-circle shadow-1-strong me-3"
-          //             `+` data-ng-src="data:image/png;base64,`+item.userImg+`" alt="avatar" width="65"
-          //             height="65" />
           codeHtml += `
-          <div class="d-flex flex-start">
-                    
+          <div class="d-flex flex-start" style= " margin-left:`+depth+`%">
+          <img class="rounded-circle shadow-1-strong me-3"
+          `+`src="`+item.userImg+`" alt="avatar" style="width: 5%;height: 5%;" />
                     <div class="flex-grow-1 flex-shrink-1">
                       <div>
                         <div class="d-flex justify-content-between align-items-center">
                           <p class="mb-1">
-                            Maria Smantha <span class="small">- 2 hours ago</span>
+                            Maria Smantha <span class="small">` + `</span>
                           </p>
                           <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="small"> reply</span></a>
                         </div>
@@ -67,8 +64,10 @@ app.service("ArticleService", function ($http, env, $routeParams) {
                           item.content
                         +`</p>
                       </div>
+                    </div>
+          </div>
           `
-          show(item.children || [], depth + 0.1);
+          show(item.children || [], depth + 5);
         })
       }
      

@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateAlbumRequest {
+public class UserUpdateAlbumRequest {
+
+    private String id;
 
     private String title;
 

@@ -1,7 +1,7 @@
 package com.articlesproject.core.user.service.impl;
 
-import com.articlesproject.core.user.model.request.CreateAlbumRequest;
-import com.articlesproject.core.user.model.request.UpdateAlbumRequest;
+import com.articlesproject.core.user.model.request.UserCreateAlbumRequest;
+import com.articlesproject.core.user.model.request.UserUpdateAlbumRequest;
 import com.articlesproject.core.user.model.response.UserAlbumResponse;
 import com.articlesproject.core.user.model.response.UserArticleAlbumResponse;
 import com.articlesproject.core.user.repository.UserAlbumRepository;
@@ -51,14 +51,14 @@ public class UserAlbumServiceImpl implements UserAlbumService {
     }
 
     @Override
-    public Album create(CreateAlbumRequest request, String userId) {
+    public Album create(UserCreateAlbumRequest request, String userId) {
         Album album =  formUtils.convertToObject(Album.class, request);
         album.setUsersId(userId);
         return albumRepository.save(album);
     }
 
     @Override
-    public Album update(UpdateAlbumRequest request) {
+    public Album update(UserUpdateAlbumRequest request) {
         Optional<Album> album = albumRepository.findById(request.getId());
         if(!album.isPresent()){
             throw new RestApiException(Message.ALBUM_NOT_EXIST);

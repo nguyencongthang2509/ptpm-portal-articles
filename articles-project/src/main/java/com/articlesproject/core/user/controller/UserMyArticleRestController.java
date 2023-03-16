@@ -58,12 +58,9 @@ public class UserMyArticleRestController extends BaseController {
             String fileName = "toi-thanh-cong-roi.html";
             File dir = new File(folderPath);
             File actualFile = new File(dir, fileName);
-            actualFile.getParentFile().mkdirs();
-            actualFile.createNewFile();
             FileWriter fileWriter = new FileWriter(actualFile);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(request.getContent());
-            bufferedWriter.close();
+            fileWriter.write(request.getContent());
+            fileWriter.close();
             String regex = "data:image/(png|jpeg|jpg);base64,([^\"]+)";
             Pattern pattern = Pattern.compile(regex);
             String html = new String(Files.readAllBytes(Paths.get(folderPath + "/toi-thanh-cong-roi.html")));

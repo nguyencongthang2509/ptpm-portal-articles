@@ -65,11 +65,15 @@ window.createArticleCtrl = function (
   // $scope.detailMyArticle = [];
 
   var id = $routeParams.id;
+  const value =
+    "../../../articles-project/src/main/resources/templates/articles/{{id}}/toi-thanh-cong-roi.html";
+  const delta = quill.clipboard.convert(value);
+  quill.setContents(delta, "silent");
+
   MyArticleService.fetchMyArticleById(id).then(function () {
     $scope.myArticleById = MyArticleService.getMyArticleById();
     $scope.title = $scope.myArticleById.title;
-
-    // console.log($scope.myArticleById);
+    $scope.content = delta;
   });
 
   $scope.updateMyArticle = function () {

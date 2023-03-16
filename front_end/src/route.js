@@ -26,6 +26,7 @@ app.config(function ($routeProvider, $locationProvider) {
     })
     .when("/favourite-articles", {
       templateUrl: "./pages/favourite-articles.html",
+      controller: favouriteArticleCtrl,
     })
     .when("/profile", {
       templateUrl: "./pages/profile.html",

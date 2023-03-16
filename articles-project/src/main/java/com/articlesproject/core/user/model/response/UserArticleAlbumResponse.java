@@ -13,11 +13,17 @@ public interface UserArticleAlbumResponse extends IsIdentified {
     @Value("#{target.title}")
     String getTitle();
 
+    @Value("#{target.status}")
+    boolean getStatus();
+
     @Value("#{target.userName}")
     String getUserName();
 
     @Value("#{target.userImage}")
     String getUserImage();
+
+    @Value("#{target.articleId}")
+    String getArticleId();
 
     @Value("#{target.created_date}")
     String getCreatedDate();

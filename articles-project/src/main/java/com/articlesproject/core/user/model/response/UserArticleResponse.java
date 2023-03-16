@@ -21,4 +21,7 @@ public interface UserArticleResponse extends IsIdentified {
 
     @Value("#{target.tym}")
     Integer getTym();
+
+    @Value("#{target.hashtags}")
+    String getHashtags();
 }

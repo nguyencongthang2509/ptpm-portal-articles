@@ -1,9 +1,9 @@
 package com.articlesproject.core.user.controller;
 
 import com.articlesproject.core.common.base.BaseController;
-import com.articlesproject.core.user.model.request.CreateAlbumRequest;
-import com.articlesproject.core.user.model.request.CreateArticleAlbumRequest;
-import com.articlesproject.core.user.model.request.UpdateAlbumRequest;
+import com.articlesproject.core.user.model.request.UserCreateAlbumRequest;
+import com.articlesproject.core.user.model.request.UserCreateArticleAlbumRequest;
+import com.articlesproject.core.user.model.request.UserUpdateAlbumRequest;
 import com.articlesproject.core.user.service.UserAlbumService;
 import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.service.UserArticleAlbumService;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
@@ -34,13 +33,13 @@ public class UserAlbumResController extends BaseController {
     private UserArticleAlbumService articleAlbumService;
 
     @PostMapping("/create")
-    private ResponseObject createAlbum(@RequestBody CreateAlbumRequest request){
+    private ResponseObject createAlbum(@RequestBody UserCreateAlbumRequest request){
          String userId = id;
         return new ResponseObject(albumService.create(request, userId));
     }
 
     @PutMapping("/update")
-    private ResponseObject updateAlbum(@RequestBody UpdateAlbumRequest request){
+    private ResponseObject updateAlbum(@RequestBody UserUpdateAlbumRequest request){
         return new ResponseObject(albumService.update(request));
     }
 
@@ -72,7 +71,7 @@ public class UserAlbumResController extends BaseController {
     }
 
     @PostMapping("/favorite-article")
-    private ResponseObject favoriteArticle(@RequestBody CreateArticleAlbumRequest request){
+    private ResponseObject favoriteArticle(@RequestBody UserCreateArticleAlbumRequest request){
         return new ResponseObject(articleAlbumService.favoriteArticle(request));
     }
 

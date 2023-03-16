@@ -5,6 +5,8 @@ window.articleCtrl = function (
   ArticleService,
   CategoryService
 ) {
+  
+
   CategoryService.fetchCategories().then(function () {
     $scope.listCategory = CategoryService.getCategory();
     console.log($scope.listCategory);
@@ -13,4 +15,7 @@ window.articleCtrl = function (
     $scope.listArticle = ArticleService.getArticle();
     console.log($scope.listArticle);
   });
+
+
+
 };

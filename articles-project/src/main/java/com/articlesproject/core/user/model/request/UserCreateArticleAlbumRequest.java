@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateCommentRequest {
+public class UserCreateArticleAlbumRequest {
 
-    private String id;
+    private String articlesId;
 
-    private String content;
-
+    private String[] albumId;
 }

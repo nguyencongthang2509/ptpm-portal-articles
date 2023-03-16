@@ -1,7 +1,7 @@
 package com.articlesproject.core.user.service;
 
-import com.articlesproject.core.user.model.request.CreateAlbumRequest;
-import com.articlesproject.core.user.model.request.UpdateAlbumRequest;
+import com.articlesproject.core.user.model.request.UserCreateAlbumRequest;
+import com.articlesproject.core.user.model.request.UserUpdateAlbumRequest;
 import com.articlesproject.core.user.model.response.UserAlbumResponse;
 import com.articlesproject.core.user.model.response.UserArticleAlbumResponse;
 import com.articlesproject.entity.Album;
@@ -17,9 +17,9 @@ public interface UserAlbumService {
 
     List<UserArticleAlbumResponse> getAllArticleFavorite( String userId);
 
-    Album create(CreateAlbumRequest request, String userId);
+    Album create(UserCreateAlbumRequest request, String userId);
 
-    Album update(UpdateAlbumRequest request);
+    Album update(UserUpdateAlbumRequest request);
 
     boolean delete(String id);
 

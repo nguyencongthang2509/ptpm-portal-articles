@@ -1,8 +1,8 @@
 package com.articlesproject.core.user.controller;
 
 import com.articlesproject.core.common.base.ResponseObject;
-import com.articlesproject.core.user.model.request.CreateCommentRequest;
-import com.articlesproject.core.user.model.request.UpdateCommentRequest;
+import com.articlesproject.core.user.model.request.UserCreateCommentRequest;
+import com.articlesproject.core.user.model.request.UserUpdateCommentRequest;
 import com.articlesproject.core.user.service.UserCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,13 +32,13 @@ public class UserCommentResController {
     }
 
     @PostMapping("/create")
-    private ResponseObject createComment(@RequestBody CreateCommentRequest request){
+    private ResponseObject createComment(@RequestBody UserCreateCommentRequest request){
         String userId = id;
         return new ResponseObject(commentService.create(request, userId));
     }
 
     @PutMapping("/update")
-    private ResponseObject updateComment(@RequestBody UpdateCommentRequest request){
+    private ResponseObject updateComment(@RequestBody UserUpdateCommentRequest request){
         return new ResponseObject(commentService.update(request));
     }
 

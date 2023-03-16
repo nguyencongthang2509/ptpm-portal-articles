@@ -1,6 +1,6 @@
 package com.articlesproject.core.user.service;
 
-import com.articlesproject.core.user.model.request.CreateHashtagRequest;
+import com.articlesproject.core.user.model.request.UserCreateHashtagRequest;
 import com.articlesproject.core.user.model.response.UserHashtagResponse;
 import com.articlesproject.entity.Hashtag;
 
@@ -10,5 +10,5 @@ public interface UserHashtagService {
 
     List<UserHashtagResponse> getAll();
 
-    Hashtag createHashtag(CreateHashtagRequest request);
+    Hashtag createHashtag(UserCreateHashtagRequest request);
 }

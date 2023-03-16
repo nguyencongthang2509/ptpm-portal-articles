@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateArticleAlbumRequest {
+public class UserCreateAlbumRequest {
 
-    private String id;
+    private String title;
 
-    private String articlesId;
+    private boolean status;
+
 }

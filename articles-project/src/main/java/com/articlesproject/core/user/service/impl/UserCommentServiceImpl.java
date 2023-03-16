@@ -1,7 +1,7 @@
 package com.articlesproject.core.user.service.impl;
 
-import com.articlesproject.core.user.model.request.CreateCommentRequest;
-import com.articlesproject.core.user.model.request.UpdateCommentRequest;
+import com.articlesproject.core.user.model.request.UserCreateCommentRequest;
+import com.articlesproject.core.user.model.request.UserUpdateCommentRequest;
 import com.articlesproject.core.user.model.response.UserCommentResponse;
 import com.articlesproject.core.user.repository.UserCommentRepository;
 import com.articlesproject.core.user.service.UserCommentService;
@@ -34,14 +34,14 @@ public class UserCommentServiceImpl implements UserCommentService {
     }
 
     @Override
-    public Comments create(CreateCommentRequest request, String userId) {
+    public Comments create(UserCreateCommentRequest request, String userId) {
         Comments comment = formUtils.convertToObject(Comments.class, request);
         comment.setUsersId(userId);
         return commentRepository.save(comment);
     }
 
     @Override
-    public Comments update(UpdateCommentRequest request) {
+    public Comments update(UserUpdateCommentRequest request) {
         Optional<Comments> comment = commentRepository.findById(request.getId());
         if(!comment.isPresent()){
             throw new RestApiException(Message.COMMENT_NOT_EXIST);

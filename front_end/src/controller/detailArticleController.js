@@ -4,12 +4,23 @@ window.detailArticleCtrl = function (
   $rootScope,
   $routeParams,
   ArticleService,
+  CommentService,
   CategoryService
 ) {
+  $scope.comment = {
+    articlesId: $routeParams.id,
+    content: "",
+    reply:""
+  }
   ArticleService.fetchArticles().then(function () {
     $scope.article = ArticleService.getArticle().filter((ar) => {
       return (ar.id = $routeParams.id);
     })[0];
   });
-  ArticleService.fetchComments();
+  
+  CommentService.fetchComments($routeParams.id);
+
+  $scope.commentArticle = CommentService.getCommentArticle().then(function(response){
+
+  })
 };

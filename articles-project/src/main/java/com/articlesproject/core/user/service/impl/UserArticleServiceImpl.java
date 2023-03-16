@@ -63,7 +63,6 @@ public class UserArticleServiceImpl implements UserArticleService {
         if(articles.isPresent()){
             articles.get().setTitle(request.getTitle());
             articles.get().setCategoryId(request.getCategoryId());
-            articles.get().setTym(0);
             articles.get().setStatus(1);
         }
         return userArticleRepository.save(articles.get());

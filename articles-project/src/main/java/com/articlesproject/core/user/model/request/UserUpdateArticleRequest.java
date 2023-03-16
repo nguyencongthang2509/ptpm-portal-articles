@@ -12,4 +12,5 @@ public final class UserUpdateArticleRequest {
     private String title;
     private String content;
     private String img;
+    private String[] hashtag;
 }

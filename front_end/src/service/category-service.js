@@ -10,7 +10,7 @@ app.service("CategoryService", function ($http) {
   };
 
   this.fetchCategories = function () {
-    return $http.get(categoryAPI + "?_embed=article").then(
+    return $http.get(categoryAPI).then(
       function (response) {
         if (response.status === 200) {
           categories = response.data.data;

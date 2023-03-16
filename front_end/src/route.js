@@ -11,21 +11,21 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./pages/about.html",
     })
     .when("/myblog", {
-      templateUrl: "./pages/myblog.html",
+      templateUrl: "./pages/my-blog.html",
     })
     .when("/blog", {
       templateUrl: "./pages/blog.html",
     })
-    .when("/myarticles", {
-      templateUrl: "./pages/myarticles.html",
+    .when("/my-article", {
+      templateUrl: "./pages/my-article.html",
+      controller: myArticleCtrl,
     })
     .when("/articles", {
       templateUrl: "./pages/articles.html",
       controller: articleCtrl,
     })
-    .when("/favourite_articles", {
-      templateUrl: "./pages/favourite_articles.html",
-      // controller: ChiTietDonHangController,
+    .when("/favourite-articles", {
+      templateUrl: "./pages/favourite-articles.html",
     })
     .when("/profile", {
       templateUrl: "./pages/profile.html",
@@ -43,12 +43,20 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./pages/album.html",
     })
     .when("/article/:id", {
-      templateUrl: "./pages/bvchitiet.html",
+      templateUrl: "./pages/detail-article.html",
       controller: detailArticleCtrl,
     })
-    .when("/test", {
-      templateUrl: "./pages/test.html",
-      controller: testCtrl,
+    .when("/my-article/:id", {
+      templateUrl: "./pages/detail-my-article.html",
+      controller: detailArticleCtrl,
+    })
+    .when("/my-article/update-article/:id", {
+      templateUrl: "./pages/create-article.html",
+      controller: createArticleCtrl,
+    })
+    .when("/create-article", {
+      templateUrl: "./pages/create-article.html",
+      controller: createArticleCtrl,
     })
     .when("/setting", {
       templateUrl: "./pages/setting.html",

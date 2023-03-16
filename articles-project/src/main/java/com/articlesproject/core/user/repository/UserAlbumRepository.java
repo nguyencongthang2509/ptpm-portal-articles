@@ -32,8 +32,9 @@ public interface UserAlbumRepository extends AlbumRepository {
            SELECT aral.id, ar.title,al.status, us.name AS userName, ar.id AS articleId, us.img AS userImage, aral.created_date FROM album al
            JOIN articles_album aral ON al.id = aral.album_id
            LEFT JOIN articles ar ON ar.id = aral.articles_id
-           LEFT JOIN users us ON us.id = ar.users_id\s
+           LEFT JOIN users us ON us.id = ar.users_id
            WHERE al.users_id = :userId
+           GROUP BY ar.id
             """, nativeQuery = true)
     List<UserArticleAlbumResponse> getAllArticleFavorite(@Param("userId") String userId);
 }

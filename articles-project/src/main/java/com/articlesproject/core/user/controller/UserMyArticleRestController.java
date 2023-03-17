@@ -6,6 +6,7 @@ import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.model.request.UserMyArticleRequest;
 import com.articlesproject.core.user.model.request.UserUpdateArticleRequest;
 import com.articlesproject.core.user.model.response.UserMyArticleResponse;
+import com.articlesproject.core.user.service.UserArticleHashtagService;
 import com.articlesproject.core.user.service.UserMyArticleService;
 import com.articlesproject.entity.Articles;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,9 @@ public class UserMyArticleRestController extends BaseController {
     @Autowired
     private UserMyArticleService userMyArticleService;
 
+    @Autowired
+    private UserArticleHashtagService articleHashtagService;
+
     @GetMapping("")
     public ResponseEntity<PageableObject<UserMyArticleResponse>> getAllMyArticle(final UserMyArticleRequest request) {
         String idUser = id;
@@ -48,22 +52,19 @@ public class UserMyArticleRestController extends BaseController {
     public ResponseEntity<String> updateArticle(@PathVariable("id") String id, @RequestBody UserUpdateArticleRequest request) throws IOException {
         String currentDirectory1 = System.getProperty("user.dir");
         Articles articles = userMyArticleService.updateArticle(id, request);
-//        userMyArticleService.addTagsArticle(request.getHashtag(), articles.getId());
+        articleHashtagService.updateTagsArticle(request.getHashtag(), articles.getId());
         String folderName = articles.getId();
         String folderPath = currentDirectory1 + "/articles-project/src/main/resources/templates/articles/" + folderName;
         File folder = new File(folderPath);
-        File imageFile = new File(folderPath + "/toi-thanh-cong-roi.html");
-        if (!folder.exists()) {
+        File imageFile = new File(folderPath + "/image.jpeg");
+        if (folder.exists()) {
             imageFile.delete();
             String fileName = "toi-thanh-cong-roi.html";
             File dir = new File(folderPath);
             File actualFile = new File(dir, fileName);
-            actualFile.getParentFile().mkdirs();
-            actualFile.createNewFile();
             FileWriter fileWriter = new FileWriter(actualFile);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(request.getContent());
-            bufferedWriter.close();
+            fileWriter.write(request.getContent());
+            fileWriter.close();
             String regex = "data:image/(png|jpeg|jpg);base64,([^\"]+)";
             Pattern pattern = Pattern.compile(regex);
             String html = new String(Files.readAllBytes(Paths.get(folderPath + "/toi-thanh-cong-roi.html")));

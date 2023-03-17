@@ -12,5 +12,5 @@ public  class UserFindArticleRequest extends PageableRequest {
 
     private String hashtag;
 
-
+    private String albumId;
 }

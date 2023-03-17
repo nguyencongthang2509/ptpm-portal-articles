@@ -10,12 +10,17 @@ import com.articlesproject.infrastructure.constant.Message;
 import com.articlesproject.infrastructure.exception.rest.RestApiException;
 import com.articlesproject.util.FormUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.Optional;
 
 @Service
+@Scope(proxyMode = ScopedProxyMode.INTERFACES)
+@Transactional
 public class UserArticleAlbumServiceImpl implements UserArticleAlbumService {
 
     @Autowired
@@ -44,18 +49,14 @@ public class UserArticleAlbumServiceImpl implements UserArticleAlbumService {
     }
 
     @Override
-    public boolean unfavoriteArticle(String id) {
-        Optional<ArticlesAlbum> articlesAlbum = articleAlbumRepository.findById(id);
-        Optional<Articles> articles = articleRepository.findById(articlesAlbum.get().getArticlesId());
+    public boolean unfavoriteArticle(String articleId) {
+        Optional<Articles> articles = articleRepository.findById(articleId);
         if(!articles.isPresent()){
             throw new RestApiException(Message.ARTICLE_NOT_EXIT);
         }
-        if(!articlesAlbum.isPresent()){
-            throw new RestApiException(Message.ARTICLE_ALBUM_NOT_EXIST);
-        }
         articles.get().setTym(articles.get().getTym() - 1);
         articleRepository.save(articles.get());
-        articleAlbumRepository.deleteById(id);
+        articleAlbumRepository.deleteByArticlesId(articleId);
         return true;
     }
 }

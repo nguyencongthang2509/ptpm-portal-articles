@@ -7,6 +7,6 @@ public interface UserArticleAlbumService {
 
     boolean favoriteArticle(UserCreateArticleAlbumRequest request);
 
-    boolean unfavoriteArticle(String id);
+    boolean unfavoriteArticle(String articleId);
 
 }

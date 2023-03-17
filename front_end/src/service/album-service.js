@@ -1,5 +1,14 @@
 app.service("AlbumService", function ($http, env) {
   var ArticleFavorite = {};
+
+  
+  this.getArticleFavorite = function () {
+    return ArticleFavorite;
+  };
+  this.setArticleFavorite = function (data) {
+    ArticleFavorite = data;
+  };
+
   var groupByTimePeriod = function (obj, timestamp) {
     var objPeriod = {};
     var oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
@@ -12,13 +21,6 @@ app.service("AlbumService", function ($http, env) {
     return objPeriod;
 };
 
-  this.getArticleFavorite = function () {
-    return ArticleFavorite;
-  };
-  this.setArticleFavorite = function (data) {
-    ArticleFavorite = data;
-  };
-  
   this.fetchArticleFavorite = function () {
     return $http.get(env.API_URL + "/album/all-article-favorite").then(
       function (response) {
@@ -31,4 +33,6 @@ app.service("AlbumService", function ($http, env) {
     );
   };
 
+  
 });
+

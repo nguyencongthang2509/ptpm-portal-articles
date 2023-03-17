@@ -46,19 +46,25 @@ public interface UserArticleRepository extends ArticlesRepository {
                      AND ( :#{#request.hashtag} IS NULL
                             OR :#{#request.hashtag} LIKE ''
                             OR ha.title LIKE :#{#request.hashtag} )
+                     AND ( :#{#request.hashtag} IS NULL
+                            OR :#{#request.hashtag} LIKE ''
+                            OR ha.title LIKE :#{#request.hashtag} )
+                     AND ( :#{#request.albumId} IS NULL
+                                    OR :#{#request.albumId} LIKE ''
+                                    OR arha.album_id LIKE :#{#request.albumId} )
             GROUP BY  ar.id, ar.title, ar.browse_date, ar.tym
             """,
             countQuery = """
-                            SELECT COUNT(ar.id) FROM articles ar
+                    SELECT COUNT(ar.id) FROM articles ar
                     LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
                     LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
                     WHERE  ( :#{#request.title} IS NULL
                              OR :#{#request.title} LIKE ''
                              OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION) 
                              OR ar.title LIKE %:#{#request.title}% )
-                             AND ( :#{#request.hashtag} IS NULL
-                                    OR :#{#request.hashtag} LIKE ''
-                                    OR ha.title LIKE :#{#request.hashtag} )
+                             AND ( :#{#request.albumId} IS NULL
+                                    OR :#{#request.albumId} LIKE ''
+                                    OR arha.album_id LIKE :#{#request.albumId} )
                     GROUP BY  ar.id, ar.title, ar.browse_date, ar.tym
                             """
             , nativeQuery = true)

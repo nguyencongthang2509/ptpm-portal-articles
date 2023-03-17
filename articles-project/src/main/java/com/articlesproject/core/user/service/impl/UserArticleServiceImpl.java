@@ -43,9 +43,9 @@ public class UserArticleServiceImpl implements UserArticleService {
     }
 
     @Override
-    public PageableObject<UserArticleResponse> FindAllArticle(final UserFindArticleRequest request) {
+    public PageableObject<UserArticleResponse> FindAllArticle(String userId,final UserFindArticleRequest request) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
-        Page<UserArticleResponse> res = userArticleRepository.FindAllArticle(pageable, request);
+        Page<UserArticleResponse> res = userArticleRepository.FindAllArticle(pageable,userId, request);
         return new PageableObject<>(res);
     }
 
@@ -87,8 +87,8 @@ public class UserArticleServiceImpl implements UserArticleService {
     }
 
     @Override
-    public UserArticleResponse getArticleById(String id) {
-        Optional<UserArticleResponse> articles = userArticleRepository.findArticleById(id);
+    public UserArticleResponse getArticleById(String userId, String id) {
+        Optional<UserArticleResponse> articles = userArticleRepository.findArticleById(userId, id);
         if(!articles.isPresent()){
             throw new RestApiException(Message.ERROR_UNKNOWN);
         }

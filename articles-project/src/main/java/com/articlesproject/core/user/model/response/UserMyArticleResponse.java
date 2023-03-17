@@ -20,4 +20,10 @@ public interface UserMyArticleResponse extends IsIdentified {
     @Value("#{target.tym}")
     Integer getTym();
 
+    @Value("#{target.hashtags}")
+    String getHashtags();
+
+    @Value("#{target.favorite}")
+    int getFavorite();
+
 }

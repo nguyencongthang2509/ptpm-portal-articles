@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 public class UserArticleRestController extends BaseController {
 
     @Value("${app.UserId}")
-    private String id;
+    private String userId;
 
     @Autowired
     private UserArticleService userArticleService;
@@ -38,12 +38,13 @@ public class UserArticleRestController extends BaseController {
 
     @GetMapping("")
     public ResponseObject getAllArticle(final UserArticleRequest request) {
-        return new ResponseObject(userArticleService.getAllArticle(request));
+        request.setUserId(userId);
+        return new ResponseObject(userArticleService.getAllArticle( request));
     }
 
     @GetMapping("/search")
     public ResponseObject findAllArticle(@RequestBody UserFindArticleRequest request) {
-        return new ResponseObject(userArticleService.FindAllArticle(request));
+        return new ResponseObject(userArticleService.FindAllArticle(userId, request));
     }
 
     @PostMapping("/create-article")
@@ -127,6 +128,6 @@ public class UserArticleRestController extends BaseController {
 
     @GetMapping("/{id}")
     public ResponseObject getArticleById(@PathVariable("id") String id) {
-        return new ResponseObject(userArticleService.getArticleById(id));
+        return new ResponseObject(userArticleService.getArticleById(userId, id));
     }
 }

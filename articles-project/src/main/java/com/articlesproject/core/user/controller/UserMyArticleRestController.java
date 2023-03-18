@@ -51,7 +51,7 @@ public class UserMyArticleRestController extends BaseController {
 
     @PostMapping("/create-article")
     public ResponseEntity<String> createArticle(@RequestBody UserCreateArticleRequest request) throws IOException {
-        request.setUsersId("8c6cfa51-1ff3-4783-ab86-c08101a58be8");
+        request.setUsersId(id);
         String currentDirectory1 = System.getProperty("user.dir");
         Articles articles = userMyArticleService.addArticle(request);
         articleHashtagService.addTagsArticle(request.getHashtag(), articles.getId());

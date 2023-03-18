@@ -14,9 +14,6 @@ import java.util.List;
 public interface UserArticleService {
     PageableObject<UserArticleResponse> getAllArticle(final UserArticleRequest request);
     PageableObject<UserArticleResponse> FindAllArticle(final UserFindArticleRequest request);
-    Articles addArticle(UserCreateArticleRequest request);
-    Articles updateArticle(String id, UserUpdateArticleRequest request);
-    boolean deleteArticle(String id);
     Articles add(UserCreateArticleRequest request);
     UserArticleResponse getArticleById(String id);
 }

@@ -6,21 +6,7 @@
 
     <title>Articles</title>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="language" content="english" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@quilljs" />
-    <meta name="twitter:title" content="Full Editor - Quill" />
-    <meta
-      name="twitter:description"
-      content="Quill is a free, open source rich text editor built for the modern web."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Full Editor - Quill" />
-    <meta property="og:site_name" content="Quill" />
     <link rel="stylesheet" href="../lib/select2/select2.css" />
-    <link rel="stylesheet" href="../css/plugin/quill.snow.css" />
     <link
       href="../lib/vendor/bootstrap/css/bootstrap.min.css"
       rel="stylesheet"
@@ -34,18 +20,25 @@
     <link href="../lib/vendor/quill/quill.bubble.css" rel="stylesheet" />
     <link href="../lib/vendor/remixicon/remixicon.css" rel="stylesheet" />
     <link href="../lib/vendor/simple-datatables/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/plugin/line-awesome.min.css" />
+    <link href="../css/plugin/line-awesome.min.css" rel="stylesheet" />
     <link
+      href="../css/custom/fontawesome-free-6.3.0-web/css/all.css"
       rel="stylesheet"
-      href="../css/fontawesome-free-6.3.0-web/css/all.css"
     />
-    <link rel="stylesheet" href="../css/custom/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
+      rel="stylesheet"
+    />
+    <link href="../css/custom/style.css" rel="stylesheet" />
   </head>
   <body ng-controller="myCtrl">
     <header ng-include="'./layout/header.html'"></header>
     <!-- <section ng-view></section> -->
 
     <!-- Thư viện -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
+    <script src="../js/plugin/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
@@ -53,15 +46,18 @@
     <script src="../lib/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/vendor/chart.js/chart.umd.js"></script>
     <script src="../lib/vendor/echarts/echarts.min.js"></script>
-    <script src="../lib/vendor/quill/quill.min.js"></script>
     <script src="../lib/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="../lib/vendor/tinymce/tinymce.min.js"></script>
     <script src="../lib/vendor/php-email-form/validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="../lib/summernote/jquery-slim.js"></script>
+    <script src="../lib/summernote/summernote-lite.min.js"></script>
+    <script src="../lib/summernote/form.js"></script>
     <script src="../js/custom/main.js"></script>
     <script src="../js/custom/script.js"></script>
     <script src="../lib/angular.js"></script>
     <script src="../lib/angular-route.js"></script>
+
     <script src="../lib/select2/select2.js"></script>
     <script src="../lib/angular-ui-select2/src/select2.js"></script>
     <script src="../lib/ng-file-upload-12.2.3/dist/ng-file-upload.js"></script>
@@ -70,8 +66,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-locale_vi-vn.js"></script>
     <script src="./app.js"></script>
     <script src="./config/api.js"></script>
-    <script src="../js/plugin/quill.min.js"></script>
-    <script src="../js/custom/quill.js"></script>
     <script src="../src/service/article-service.js"></script>
     <script src="../src/service/comment-service.js"></script>
     <script src="../src/service/category-service.js"></script>

@@ -1,5 +1,8 @@
-<section style="background-color: rgb(253, 253, 253); border-radius: 20px">
-  <div class="container-fluid">
+<section
+  style="background-color: rgb(253, 253, 253); border-radius: 20px"
+  ng-init="Summernote()"
+>
+  <div class="container-fluid" ng-init="getHtml()">
     <div class="row">
       <div class="col-10">
         <form>
@@ -25,59 +28,8 @@
               placeholder="Hashtag.."
             />
           </div>
+          <div id="summernote"></div>
         </form>
-        <div id="toolbar-container">
-          <span class="ql-formats">
-            <select class="ql-font"></select>
-            <select class="ql-size"></select>
-          </span>
-          <span class="ql-formats">
-            <button class="ql-bold"></button>
-            <button class="ql-italic"></button>
-            <button class="ql-underline"></button>
-            <button class="ql-strike"></button>
-          </span>
-          <span class="ql-formats">
-            <select class="ql-color"></select>
-            <select class="ql-background"></select>
-          </span>
-          <span class="ql-formats">
-            <button class="ql-script" value="sub"></button>
-            <button class="ql-script" value="super"></button>
-          </span>
-          <span class="ql-formats">
-            <button class="ql-header" value="1"></button>
-            <button class="ql-header" value="2"></button>
-            <button class="ql-blockquote"></button>
-            <button class="ql-code-block"></button>
-          </span>
-          <span class="ql-formats">
-            <button class="ql-list" value="ordered"></button>
-            <button class="ql-list" value="bullet"></button>
-            <button class="ql-indent" value="-1"></button>
-            <button class="ql-indent" value="+1"></button>
-          </span>
-          <span class="ql-formats">
-            <button class="ql-direction" value="rtl"></button>
-            <select class="ql-align"></select>
-          </span>
-          <span class="ql-formats">
-            <button class="ql-link"></button>
-            <button class="ql-image"></button>
-            <button class="ql-video"></button>
-            <button class="ql-formula"></button>
-          </span>
-          <span class="ql-formats">
-            <button class="ql-clean"></button>
-          </span>
-        </div>
-        <section ng-init="testHaha()" class="cl">
-          <div class="create-article">
-            <div id="standalone-container">
-              <div id="editor-container" ng-model="content"></div>
-            </div>
-          </div>
-        </section>
       </div>
       <div
         class="col-2"

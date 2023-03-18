@@ -9,6 +9,7 @@ import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.core.user.repository.UserArticleRepository;
 import com.articlesproject.core.user.service.UserArticleService;
 import com.articlesproject.entity.Articles;
+import com.articlesproject.infrastructure.constant.ArticleStatus;
 import com.articlesproject.infrastructure.constant.Message;
 import com.articlesproject.infrastructure.exception.rest.RestApiException;
 import com.articlesproject.util.FormUtils;
@@ -53,7 +54,7 @@ public class UserArticleServiceImpl implements UserArticleService {
     public Articles addArticle(UserCreateArticleRequest request) {
         Articles ar = formUtils.convertToObject(Articles.class, request);
         ar.setTym(0);
-        ar.setStatus(1);
+        ar.setStatus(ArticleStatus.MOI_TAO);
         return userArticleRepository.save(ar);
     }
 
@@ -63,7 +64,7 @@ public class UserArticleServiceImpl implements UserArticleService {
         if(articles.isPresent()){
             articles.get().setTitle(request.getTitle());
             articles.get().setCategoryId(request.getCategoryId());
-            articles.get().setStatus(1);
+            articles.get().setStatus(ArticleStatus.MOI_TAO);
         }
         return userArticleRepository.save(articles.get());
     }
@@ -82,7 +83,7 @@ public class UserArticleServiceImpl implements UserArticleService {
     public Articles add(UserCreateArticleRequest request) {
         Articles ar = formUtils.convertToObject(Articles.class, request);
         ar.setTym(0);
-        ar.setStatus(1);
+        ar.setStatus(ArticleStatus.MOI_TAO);
         return userArticleRepository.save(ar);
     }
 

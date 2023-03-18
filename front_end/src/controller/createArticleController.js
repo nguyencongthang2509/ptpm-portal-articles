@@ -6,15 +6,7 @@ window.createArticleCtrl = function (
   MyArticleService
 ) {
   $scope.listTag = [];
-  var quill = new Quill("#editor-container", {
-    modules: {
-      formula: true,
-      syntax: true,
-      toolbar: "#toolbar-container",
-    },
-    placeholder: "What are you going to write today...?",
-    theme: "snow",
-  });
+
   $scope.select2Options = {
     multiple: true,
     simple_tags: true,
@@ -44,13 +36,14 @@ window.createArticleCtrl = function (
   });
 
   $scope.saveHTML = function () {
-    var content = quill.root.innerHTML;
+    var content = $("#summernote").summernote("code");
     var formData = {
       title: $scope.title,
       content: content,
       categoryId: $scope.category,
       hashtag: $scope.list_of_string,
     };
+    console.log(formData);
     $http.post(articleAPI + "/create-article", formData).then(
       function (response) {
         console.log("Thành công rồi haha");
@@ -63,14 +56,19 @@ window.createArticleCtrl = function (
   };
 
   var id = $routeParams.id;
-  $.get(
-    "../../../articles-project/src/main/resources/templates/articles/" +
+  $scope.getHtml = function () {
+    var filePath =
+      "../../../articles-project/src/main/resources/templates/articles/" +
       id +
-      "/toi-thanh-cong-roi.html",
-    function (data) {
-      quill.setContents(quill.clipboard.convert(data));
-    }
-  );
+      "/toi-thanh-cong-roi.html";
+    $http.get(filePath).then(function (response) {
+      $("#summernote")
+        .summernote({
+          focus: true,
+        })
+        .summernote("code", response.data);
+    });
+  };
 
   MyArticleService.fetchUpdateMyArticleById(id).then(function () {
     $scope.myUpdateArticleById = MyArticleService.getMyUpdateArticleById();
@@ -79,7 +77,7 @@ window.createArticleCtrl = function (
   });
 
   $scope.updateMyArticle = function () {
-    var content = quill.root.innerHTML;
+    var content = $("#summernote").summernote("code");
     var formData = {
       title: $scope.title,
       content: content,

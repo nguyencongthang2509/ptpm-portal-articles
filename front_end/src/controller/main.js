@@ -19,4 +19,8 @@ app.controller("myCtrl", function ($scope) {
   $scope.ToolBar = function () {
     Toolbar.allHihi();
   };
+  $scope.Summernote = function () {
+    Summernote.summer();
+  };
+  
 });

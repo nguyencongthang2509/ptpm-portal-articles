@@ -1,6 +1,7 @@
 package com.articlesproject.entity;
 
 import com.articlesproject.entity.base.PrimaryEntity;
+import com.articlesproject.infrastructure.constant.ArticleStatus;
 import com.articlesproject.infrastructure.constant.EntityProperties;
 import lombok.*;
 import org.hibernate.annotations.Nationalized;
@@ -22,7 +23,7 @@ public class Articles extends PrimaryEntity {
     private String title;
 
     @Column(nullable = false)
-    private Integer status;
+    private ArticleStatus status;
 
     @Column(nullable = false)
     private Integer tym;

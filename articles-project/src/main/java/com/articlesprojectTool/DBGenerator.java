@@ -10,6 +10,7 @@ import com.articlesproject.entity.Evaluate;
 import com.articlesproject.entity.Hashtag;
 import com.articlesproject.entity.Point;
 import com.articlesproject.entity.Users;
+import com.articlesproject.infrastructure.constant.ArticleStatus;
 import com.articlesproject.repository.AlbumRepository;
 import com.articlesproject.repository.ArticlesRepository;
 import com.articlesproject.repository.Articles_AlbumRepository;
@@ -99,7 +100,7 @@ public class DBGenerator implements CommandLineRunner {
 
         Articles baiViet = new Articles();
         baiViet.setTitle("Xin chào các bạn");
-        baiViet.setStatus(1);
+        baiViet.setStatus(ArticleStatus.MOI_TAO);
         baiViet.setBrowseDate(1900800000L);
         baiViet.setUsersId(users.getId());
         baiViet.setTym(10);
@@ -109,7 +110,7 @@ public class DBGenerator implements CommandLineRunner {
         Articles baiViet1 = new Articles();
         baiViet1.setTitle("Xin chào các bạn");
 
-        baiViet1.setStatus(1);
+        baiViet1.setStatus(ArticleStatus.MOI_TAO);
         baiViet1.setBrowseDate(1900800000L);
         baiViet1.setUsersId(users.getId());
         baiViet1.setTym(10);
@@ -118,7 +119,7 @@ public class DBGenerator implements CommandLineRunner {
 
         Articles baiViet2 = new Articles();
         baiViet2.setTitle("Xin chào các bạn");
-        baiViet2.setStatus(1);
+        baiViet2.setStatus(ArticleStatus.MOI_TAO);
         baiViet2.setBrowseDate(1900800000L);
         baiViet2.setUsersId(users.getId());
         baiViet2.setTym(4);

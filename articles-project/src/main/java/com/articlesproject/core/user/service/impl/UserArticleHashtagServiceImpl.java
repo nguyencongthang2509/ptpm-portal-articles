@@ -8,7 +8,9 @@ import com.articlesproject.entity.Hashtag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class UserArticleHashtagServiceImpl implements UserArticleHashtagService {
@@ -43,21 +45,30 @@ public class UserArticleHashtagServiceImpl implements UserArticleHashtagService 
 
     @Override
     public boolean updateTagsArticle(String[] hashtags, String articleId) {
-        Arrays.stream(hashtags).forEach(item -> {
-            Hashtag hashtag = hashtagRepository.findByTitle(item.toLowerCase());
+        List<ArticlesHashtag> currentArticlesHashtags = articleHashtagRepository.findByArticlesId(articleId);
+
+        // Tạo một danh sách mới để lưu trữ các từ khóa
+        List<String> newHashtags = new ArrayList<>(Arrays.asList(hashtags));
+
+        // Duyệt qua danh sách ArticlesHashtag hiện tại và xoá các từ khóa không còn trong danh sách mới
+        currentArticlesHashtags.stream()
+                .filter(current -> !newHashtags.contains(current.getHashtagId()))
+                .forEach(current -> articleHashtagRepository.delete(current));
+
+        // Duyệt qua danh sách từ khóa mới và thêm mới hoặc cập nhật lại các ArticlesHashtag tương ứng
+        newHashtags.forEach(title -> {
+            Hashtag hashtag = hashtagRepository.findByTitle(title.toLowerCase());
             ArticlesHashtag articlesHashtag = new ArticlesHashtag();
+            articlesHashtag.setArticlesId(articleId);
             if (hashtag != null) {
-                articlesHashtag.setArticlesId(articleId);
                 articlesHashtag.setHashtagId(hashtag.getId());
-                articleHashtagRepository.save(articlesHashtag);
             } else {
-                Hashtag newhashtag = new Hashtag();
-                newhashtag.setTitle(item);
-                hashtagRepository.save(newhashtag);
-                articlesHashtag.setArticlesId(articleId);
-                articlesHashtag.setHashtagId(newhashtag.getId());
-                articleHashtagRepository.save(articlesHashtag);
+                Hashtag newHashtag = new Hashtag();
+                newHashtag.setTitle(title);
+                hashtagRepository.save(newHashtag);
+                articlesHashtag.setHashtagId(newHashtag.getId());
             }
+            articleHashtagRepository.save(articlesHashtag);
         });
         return true;
     }

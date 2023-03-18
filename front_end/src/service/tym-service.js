@@ -1,4 +1,4 @@
-app.service("AlbumService", function ($http, env) {
+app.service("TymService", function ($http, env) {
   var ArticleFavorite = {};
 
   
@@ -22,7 +22,7 @@ app.service("AlbumService", function ($http, env) {
 };
 
   this.fetchArticleFavorite = function () {
-    return $http.get(env.API_URL + "/album/all-article-favorite").then(
+    return $http.get(env.API_URL + "/tym/all-article-favorite").then(
       function (response) {
         ArticleFavorite = groupByTimePeriod(response.data.data, 'createdDate');
         return response;

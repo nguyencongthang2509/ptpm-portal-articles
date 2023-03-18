@@ -14,49 +14,42 @@ import java.util.Optional;
 
 public interface UserArticleRepository extends ArticlesRepository {
     @Query(value = """
-            SELECT ar.id, ar.title, ar.browse_date, ar.tym, IF(aral.articles_id IS NULL, 0, 1) AS 'favorite', GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' FROM articles ar
-            LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
-            LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
-            LEFT JOIN articles_album aral ON aral.articles_id = ar.id
-            LEFT JOIN album ab ON ab.id = aral.album_id
-            WHERE ( ab.users_id = :#{#request.userId}
-            OR  ab.users_id IS NULL)
-            GROUP BY  ar.id, ar.title, ar.browse_date, ar.tym, aral.articles_id
+           SELECT ar.id, ar.title, ar.browse_date, ar.tym, IF((SELECT SUM(IF(ty.article_id IS NULL, 0, 1))  FROM tyms ty
+                        WHERE (:#{#request.userId} IS NULL OR ty.users_id = :#{#request.userId}) AND ty.article_id = ar.id) IS NULL,0,1) AS 'favorite'  , GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 
+                        FROM articles ar
+                        LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
+                        LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
+                        GROUP BY  ar.id, ar.title, ar.browse_date, ar.tym
             """,
             countQuery = """
                     SELECT COUNT(ar.id) FROM articles ar
                     LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
                     LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
-                    LEFT JOIN articles_album aral ON aral.articles_id = ar.id
-                    LEFT JOIN album ab ON ab.id = aral.album_id
-                    WHERE (ab.users_id = :#{#request.userId}
-                    OR  ab.users_id IS NULL)
-                    GROUP BY  ar.id, ar.title, ar.browse_date, ar.tym, aral.articles_id
+                    GROUP BY  ar.id, ar.title, ar.browse_date, ar.tym
                             """
             , nativeQuery = true)
     Page<UserArticleResponse> getAllArticle(Pageable page,  @Param("request") UserArticleRequest req);
 
     @Query(value = """
-            SELECT ar.id, ar.title, ar.browse_date, ar.tym, IF(aral.articles_id IS NULL, 0, 1) AS 'favorite', GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' FROM articles ar
-            LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
-            LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
-            LEFT JOIN articles_album aral ON aral.articles_id = ar.id
-            LEFT JOIN album ab ON ab.id = aral.album_id
-            WHERE (ab.users_id = :userId
-            OR  ab.users_id IS NULL) AND ar.id = :id
-            GROUP BY  ar.id, ar.title, ar.browse_date, ar.tym, aral.articles_id
+            
+             SELECT ar.id, ar.title, ar.browse_date, ar.tym, IF((SELECT SUM(IF(ty.article_id IS NULL, 0, 1))  FROM tyms ty
+                        WHERE (:userId IS NULL OR ty.users_id = :userId) AND ty.article_id = ar.id) IS NULL,0,1) AS 'favorite'  , GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 
+                        FROM articles ar
+                        LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
+                        LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
+                        WHERE ar.id = :id
+                        GROUP BY  ar.id, ar.title, ar.browse_date, ar.tym
             """, nativeQuery = true)
     Optional<UserArticleResponse> findArticleById(@Param("id") String id, @Param("userId") String userId);
 
     @Query(value = """
-            SELECT ar.id, ar.title, ar.browse_date, ar.tym, IF(aral.articles_id IS NULL, 0, 1) AS 'favorite', GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' FROM articles ar
-            LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
-            LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
-            LEFT JOIN articles_album aral ON aral.articles_id = ar.id
-            LEFT JOIN album ab ON ab.id = aral.album_id
-            WHERE  (ab.users_id = :userId
-                    OR  ab.users_id IS NULL)
-            AND( :#{#request.title} IS NULL
+             SELECT ar.id, ar.title, ar.browse_date, ar.tym, IF((SELECT SUM(IF(ty.article_id IS NULL, 0, 1))  FROM tyms ty
+                        WHERE (:userId IS NULL OR ty.users_id = :userId) AND ty.article_id = ar.id) IS NULL,0,1) AS 'favorite'  , GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 
+                        FROM articles ar
+                        LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
+                        LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
+                        LEFT JOIN articles_album aral ON aral.articles_id = ar.id
+            WHERE  ( :#{#request.title} IS NULL
                      OR :#{#request.title} LIKE ''
                      OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION) 
                      OR ar.title LIKE %:#{#request.title}% )
@@ -72,14 +65,13 @@ public interface UserArticleRepository extends ArticlesRepository {
             GROUP BY  ar.id, ar.title, ar.browse_date, ar.tym, aral.articles_id
             """,
             countQuery = """
-                            SELECT COUNT(ar.id) FROM articles ar
-                            LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
-                            LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
-                            LEFT JOIN articles_album aral ON aral.articles_id = ar.id
-                            LEFT JOIN album ab ON ab.id = aral.album_id
-                            WHERE  (ab.users_id = :userId
-                                    OR  ab.users_id IS NULL)
-                                    AND ( :#{#request.title} IS NULL
+             SELECT ar.id, ar.title, ar.browse_date, ar.tym, IF((SELECT SUM(IF(ty.article_id IS NULL, 0, 1))  FROM tyms ty
+                        WHERE (:userId IS NULL OR ty.users_id = :userId) AND ty.article_id = ar.id) IS NULL,0,1) AS 'favorite'  , GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 
+                        FROM articles ar
+                        LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
+                        LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
+                        LEFT JOIN articles_album aral ON aral.articles_id = ar.id
+              WHERE ( :#{#request.title} IS NULL
                              OR :#{#request.title} LIKE ''
                              OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION) 
                              OR ar.title LIKE %:#{#request.title}% )

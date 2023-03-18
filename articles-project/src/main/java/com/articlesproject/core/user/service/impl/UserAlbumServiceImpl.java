@@ -46,11 +46,6 @@ public class UserAlbumServiceImpl implements UserAlbumService {
     }
 
     @Override
-    public List<UserArticleAlbumResponse> getAllArticleFavorite(String userId) {
-        return albumRepository.getAllArticleFavorite(userId);
-    }
-
-    @Override
     public Album create(UserCreateAlbumRequest request, String userId) {
         Album album =  formUtils.convertToObject(Album.class, request);
         album.setUsersId(userId);

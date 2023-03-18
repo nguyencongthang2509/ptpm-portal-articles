@@ -66,14 +66,13 @@
                         <strong> {{value.userName}}</strong></a
                       >
                     </div>
-                    <time class="text-dark"><i class="bx bx-world"></i>{{value.userName ? "Công khai" : "Riêng tư"}}</time
-                    >
+                    <!-- <time class="text-dark"><i class="bx bx-world"></i>{{value.userName ? "Công khai" : "Riêng tư"}}</time
+                    > -->
                   </div>
                 </div>
               </div>
             </td>
             <td>
-              
               <div class="cham">
                   <i
                   class="bi bi-three-dots-vertical"
@@ -91,7 +90,7 @@
                     <a
                       class="dropdown-item"
                       href="#"
-                      ng-click="unfavoriteArticle(key,$index,value.articleId)"
+                      ng-click="unfavoriteArticle(key,$index,value.id)"
                       data-bs-toggle="modal"
                       data-bs-target="#deleteAlbumModal"
                       >Xóa</a

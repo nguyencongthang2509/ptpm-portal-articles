@@ -9,6 +9,7 @@ import com.articlesproject.entity.Comments;
 import com.articlesproject.entity.Evaluate;
 import com.articlesproject.entity.Hashtag;
 import com.articlesproject.entity.Point;
+import com.articlesproject.entity.Tyms;
 import com.articlesproject.entity.Users;
 import com.articlesproject.infrastructure.constant.ArticleStatus;
 import com.articlesproject.repository.AlbumRepository;
@@ -20,6 +21,7 @@ import com.articlesproject.repository.CommentRepository;
 import com.articlesproject.repository.EvalueteRepository;
 import com.articlesproject.repository.HashtagRepository;
 import com.articlesproject.repository.PointRepository;
+import com.articlesproject.repository.TymRepository;
 import com.articlesproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -58,6 +60,9 @@ public class DBGenerator implements CommandLineRunner {
     private Articles_HashtagRepository articles_hashtagRepository;
 
     @Autowired
+    private TymRepository tymRepository;
+
+    @Autowired
     private HashtagRepository hashtagRepository;
 
     @Override
@@ -78,7 +83,7 @@ public class DBGenerator implements CommandLineRunner {
         users1.setImg("https://lh5.googleusercontent.com/-a1CWlFnA5xE/AAAAAAAAAAI/AAAAAAAAl1I/UcwPajZOuN4/photo.jpg");
         users1.setPhoneNumber("099999999");
         users1.setRole(1);
-        users.setId(userRepository.save(users1).getId());
+        users1.setId(userRepository.save(users1).getId());
 
         Category theLoai = new Category();
         theLoai.setCode("SOF1");
@@ -130,6 +135,26 @@ public class DBGenerator implements CommandLineRunner {
         articles_hashtag.setArticlesId(baiViet.getId());
         articles_hashtag.setHashtagId(hashtag.getId());
         articles_hashtag.setId(articles_hashtagRepository.save(articles_hashtag).getId());
+
+        Tyms tym = new Tyms();
+        tym.setUsersId(users.getId());
+        tym.setArticleId(baiViet.getId());
+        tymRepository.save(tym);
+
+        Tyms tym1 = new Tyms();
+        tym1.setUsersId(users.getId());
+        tym1.setArticleId(baiViet1.getId());
+        tymRepository.save(tym1);
+
+        Tyms tym2 = new Tyms();
+        tym2.setUsersId(users.getId());
+        tym2.setArticleId(baiViet2.getId());
+        tymRepository.save(tym2);
+
+        Tyms tym3 = new Tyms();
+        tym3.setUsersId(users1.getId());
+        tym3.setArticleId(baiViet2.getId());
+        tymRepository.save(tym3);
 
         Comments comments = new Comments();
         comments.setContent("Rất biết ơn về những chia sẻ thực sự bổ ích của bạn.\n" +

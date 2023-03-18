@@ -89,7 +89,7 @@ public class UserArticleServiceImpl implements UserArticleService {
 
     @Override
     public UserArticleResponse getArticleById(String userId, String id) {
-        Optional<UserArticleResponse> articles = userArticleRepository.findArticleById(userId, id);
+        Optional<UserArticleResponse> articles = userArticleRepository.findArticleById(id, userId);
         if(!articles.isPresent()){
             throw new RestApiException(Message.ERROR_UNKNOWN);
         }

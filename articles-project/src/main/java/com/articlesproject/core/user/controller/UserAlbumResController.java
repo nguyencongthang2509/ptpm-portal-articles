@@ -55,11 +55,6 @@ public class UserAlbumResController extends BaseController {
         return new ResponseObject(albumService.findAllAlbumByUserId(userId));
     }
 
-    @GetMapping("/all-article-favorite")
-    private ResponseObject getAllArticleFavorite(){
-        String userId = id;
-        return new ResponseObject(albumService.getAllArticleFavorite(userId));
-    }
     @GetMapping("/{userId}")
     private ResponseObject findAllAlbumPublicByUserId(@PathVariable("userId") String userId){
         return new ResponseObject(albumService.findAllAlbumPublicByUserId(userId));
@@ -70,13 +65,13 @@ public class UserAlbumResController extends BaseController {
         return new ResponseObject(albumService.findById(id));
     }
 
-    @PostMapping("/favorite-article")
-    private ResponseObject favoriteArticle(@RequestBody UserCreateArticleAlbumRequest request){
-        return new ResponseObject(articleAlbumService.favoriteArticle(request));
+    @PostMapping("/add-article")
+    private ResponseObject addArticleToAlbum(@RequestBody UserCreateArticleAlbumRequest request){
+        return new ResponseObject(articleAlbumService.createArticleAlbum(request));
     }
 
-    @DeleteMapping("/unfavorite-article/{articleId}")
-    private ResponseObject unfavoriteArticle(@PathVariable("articleId") String articleId){
-        return new ResponseObject(articleAlbumService.unfavoriteArticle(articleId));
+    @DeleteMapping("/delete-all-article/{articleId}")
+    private ResponseObject deleArticlesInAlbum(@PathVariable("articleId") String articleId){
+        return new ResponseObject(articleAlbumService.deleteArticleAlbum(articleId));
     }
 }

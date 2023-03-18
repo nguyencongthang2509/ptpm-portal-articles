@@ -32,30 +32,21 @@ public class UserArticleAlbumServiceImpl implements UserArticleAlbumService {
     private FormUtils formUtils = new FormUtils();
 
     @Override
-    public boolean favoriteArticle(UserCreateArticleAlbumRequest request) {
-        Optional<Articles> articles = articleRepository.findById(request.getArticlesId());
-        if(!articles.isPresent()){
-            throw new RestApiException(Message.ARTICLE_NOT_EXIT);
-        }
-        articles.get().setTym(articles.get().getTym() + 1);
-        articleRepository.save(articles.get());
-        Arrays.stream(request.getAlbumId()).forEach(item ->{
+    public ArticlesAlbum createArticleAlbum(UserCreateArticleAlbumRequest request) {
             ArticlesAlbum articlesAlbum = new ArticlesAlbum();
             articlesAlbum.setArticlesId(request.getArticlesId());
-            articlesAlbum.setAlbumId(item);
+            articlesAlbum.setAlbumId(request.getAlbumId());
             articleAlbumRepository.save(articlesAlbum);
-        });
-        return true ;
+        return articlesAlbum ;
     }
 
     @Override
-    public boolean unfavoriteArticle(String articleId) {
+    public boolean deleteArticleAlbum(String articleId) {
         Optional<Articles> articles = articleRepository.findById(articleId);
         if(!articles.isPresent()){
             throw new RestApiException(Message.ARTICLE_NOT_EXIT);
         }
-        articles.get().setTym(articles.get().getTym() - 1);
-        articleRepository.save(articles.get());
+
         articleAlbumRepository.deleteByArticlesId(articleId);
         return true;
     }

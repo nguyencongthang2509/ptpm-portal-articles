@@ -3,17 +3,18 @@ window.favouriteArticleCtrl = function (
     $http,
     env,
     $rootScope,
-    AlbumService
+    TymService
   ) {
     
     $scope.listArticleFavorite ={};
 
-    AlbumService.fetchArticleFavorite().then(function () {
-      $scope.listArticleFavorite = AlbumService.getArticleFavorite();
+    TymService.fetchArticleFavorite().then(function () {
+      $scope.listArticleFavorite = TymService.getArticleFavorite();
     });
 
-    $scope.unfavoriteArticle = function(key, index,articleId){
-      $http.delete(env.API_URL + "/album/unfavorite-article/" + articleId).then(
+    $scope.unfavoriteArticle = function(key, index,idTym){
+
+      $http.delete(env.API_URL + "/tym/unfavorite-article/"+ idTym ).then(
         function (response) {
           $scope.listArticleFavorite[key].splice(index,1)
           var isEmpty = $scope.listArticleFavorite[key].filter(function(val) {

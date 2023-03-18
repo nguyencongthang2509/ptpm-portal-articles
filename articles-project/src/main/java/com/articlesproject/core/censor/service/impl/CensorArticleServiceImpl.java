@@ -6,6 +6,7 @@ import com.articlesproject.core.censor.model.response.ArticleNotApproveResponse;
 import com.articlesproject.core.censor.repository.CensorArticleRepository;
 import com.articlesproject.core.censor.service.CensorArticleService;
 import com.articlesproject.entity.Articles;
+import com.articlesproject.infrastructure.constant.ArticleStatus;
 import com.articlesproject.infrastructure.constant.Message;
 import com.articlesproject.infrastructure.exception.rest.RestApiException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class CensorArticleServiceImpl implements CensorArticleService {
         if(!article.isPresent()){
             throw new RestApiException(Message.ARTICLE_NOT_EXIST);
         }
-        article.get().setStatus(3);
+        article.get().setStatus(ArticleStatus.DA_PHE_DUYET);
         return articleRepository.save(article.get());
     }
 
@@ -44,7 +45,7 @@ public class CensorArticleServiceImpl implements CensorArticleService {
         if(!article.isPresent()){
             throw new RestApiException(Message.ARTICLE_NOT_EXIST);
         }
-        article.get().setStatus(2);
+        article.get().setStatus(ArticleStatus.DA_HUY);
         return articleRepository.save(article.get());
     }
 }

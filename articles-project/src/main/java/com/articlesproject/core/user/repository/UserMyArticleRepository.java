@@ -12,24 +12,23 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface UserMyArticleRepository extends ArticlesRepository {
-    @Query(value = "SELECT a.id, a.title, a.browse_date, a.tym, IF(aral.articles_id IS NULL, 0, 1) AS 'favorite', \n" +
-            "GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' FROM articles a\n" +
-            "            LEFT JOIN articles_hashtag  arha ON a.id = arha.articles_id\n" +
-            "            LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id" +
-            "            LEFT JOIN articles_album aral ON aral.articles_id = a.id\n" +
-            "            LEFT JOIN album ab ON ab.id = aral.album_id where a.users_id = :idUser" +
-            " GROUP BY  a.id, a.title, a.browse_date, a.tym ", nativeQuery = true)
+    @Query(value = """
+            SELECT ar.id, ar.title, ar.browse_date, ar.tym , GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 
+                                    FROM articles ar
+                                    LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
+                                    LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
+                                    WHERE ar.users_id = :idUser
+                                    GROUP BY  ar.id, ar.title, ar.browse_date, ar.tym
+            """, nativeQuery = true)
     Page<UserMyArticleResponse> getAllMyArticle(Pageable page, @Param("idUser") String idUser);
 
     @Query(value = """
-            SELECT a.id, a.title, a.browse_date, a.tym, IF(aral.articles_id IS NULL, 0, 1) AS 'favorite',
-                   GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' FROM articles a
-                   LEFT JOIN articles_hashtag arha ON a.id = arha.articles_id
-                   LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
-                   LEFT JOIN articles_album aral ON aral.articles_id = a.id
-                   LEFT JOIN album ab ON ab.id = aral.album_id
-                WHERE a.id = :id
-                GROUP BY  a.id, a.title, a.browse_date, a.tym
+            SELECT ar.id, ar.title, ar.browse_date, ar.tym,  GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 
+                        FROM articles ar
+                        LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
+                        LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
+                        WHERE ar.id = id
+                        GROUP BY  ar.id, ar.title, ar.browse_date, ar.tym
             """, nativeQuery = true)
     Optional<UserArticleResponse> findArticleById(@Param("id") String id);
 }

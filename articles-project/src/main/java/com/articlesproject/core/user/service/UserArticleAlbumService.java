@@ -5,8 +5,8 @@ import com.articlesproject.entity.ArticlesAlbum;
 
 public interface UserArticleAlbumService {
 
-    boolean favoriteArticle(UserCreateArticleAlbumRequest request);
+    ArticlesAlbum createArticleAlbum(UserCreateArticleAlbumRequest request);
 
-    boolean unfavoriteArticle(String articleId);
+    boolean deleteArticleAlbum(String articleId);
 
 }

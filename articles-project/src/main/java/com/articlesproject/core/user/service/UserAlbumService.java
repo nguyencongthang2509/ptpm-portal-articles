@@ -15,8 +15,6 @@ public interface UserAlbumService {
 
     List<UserAlbumResponse> findAllAlbumPublicByUserId(String userId);
 
-    List<UserArticleAlbumResponse> getAllArticleFavorite( String userId);
-
     Album create(UserCreateAlbumRequest request, String userId);
 
     Album update(UserUpdateAlbumRequest request);

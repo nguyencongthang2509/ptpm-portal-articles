@@ -27,7 +27,7 @@ public interface UserMyArticleRepository extends ArticlesRepository {
                         FROM articles ar
                         LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
                         LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
-                        WHERE ar.id = id
+                        WHERE ar.id = :id
                         GROUP BY  ar.id, ar.title, ar.browse_date, ar.tym
             """, nativeQuery = true)
     Optional<UserArticleResponse> findArticleById(@Param("id") String id);

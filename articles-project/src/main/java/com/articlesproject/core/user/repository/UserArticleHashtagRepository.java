@@ -4,7 +4,12 @@ import com.articlesproject.entity.ArticlesHashtag;
 import com.articlesproject.repository.Articles_HashtagRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserArticleHashtagRepository extends Articles_HashtagRepository {
     List<ArticlesHashtag> findByArticlesId(String articleId);
+//
+//    Optional<ArticlesHashtag> findByArticleId(String articleId);
+
+//    void deleteByAticleId(String id);
 }

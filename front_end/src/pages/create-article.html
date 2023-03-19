@@ -20,7 +20,7 @@
               ui-select2="select2Options"
               ng-model="list_of_string"
               style="
-                border-bottom: solid 2px var(--blue);
+                border-bottom: solid 2px var(--mau1);
                 border-radius: 0px;
                 background-color: rgb(255, 255, 255);
                 width: 100%;
@@ -70,16 +70,16 @@
           </div>
           <div style="margin-top: 20px">
             <a
-              ng-click="saveHTML()"
+              ng-click="saveHTML($event)"
               type="button"
               class="btn btn-primary"
-              style="background-color: var(--blue)"
+              style="background-color: #fb3c75c3; border: solid 1px white"
             >
               <i class="bi bi-caret-right-fill"></i>Publish
             </a>
           </div>
 
-          <div class="cate" style="margin-top: 20px">
+          <div class="cate" style="margin-top: 20px; color: black">
             <li class="nav-item" ng-class="{ 'menu-open': isMenuOpen }">
               <a href="" class="nav-link active" ng-click="toggleMenu()">
                 CATEGORY

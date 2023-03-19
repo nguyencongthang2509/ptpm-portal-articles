@@ -54,6 +54,10 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./pages/create-article.html",
       controller: createArticleCtrl,
     })
+    .when("/my-article/delete-article/:id", {
+      templateUrl: "./pages/my-article.html",
+      controller: createArticleCtrl,
+    })
     .when("/create-article", {
       templateUrl: "./pages/create-article.html",
       controller: createArticleCtrl,

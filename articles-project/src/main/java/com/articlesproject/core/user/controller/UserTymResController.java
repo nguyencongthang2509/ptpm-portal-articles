@@ -35,8 +35,8 @@ public class UserTymResController {
         return new ResponseObject(tymService.favoriteArticle(id, request));
     }
 
-    @DeleteMapping("/unfavorite-article/{id}")
-    private ResponseObject unfavoriteArticle(@PathVariable("id") String id){
-        return new ResponseObject(tymService.unfavoriteArticle(id));
+    @DeleteMapping("/unfavorite-article/{articleId}")
+    private ResponseObject unfavoriteArticle(@PathVariable("articleId") String articleId){
+        return new ResponseObject(tymService.unfavoriteArticle(id, articleId));
     }
 }

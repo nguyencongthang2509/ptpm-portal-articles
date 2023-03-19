@@ -17,4 +17,5 @@ public interface UserTymRepository extends TymRepository {
             """, nativeQuery = true)
     List<UserTymResponse> getAllArticleFavorite(@Param("userId") String userId);
 
+    long deleteByUsersIdAndArticleId(String userId, String articleId);
 }

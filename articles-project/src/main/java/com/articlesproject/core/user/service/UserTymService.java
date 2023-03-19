@@ -12,6 +12,6 @@ public interface UserTymService {
 
     Tyms favoriteArticle(String userId, UserCreateTymRequest request);
 
-    boolean unfavoriteArticle(String id);
+    boolean unfavoriteArticle(String userId, String articleId);
 
 }

@@ -50,7 +50,7 @@ public class UserMyArticleRestController extends BaseController {
     }
 
     @PostMapping("/create-article")
-    public ResponseEntity<String> createArticle(@RequestBody UserCreateArticleRequest request) throws IOException {
+    public ResponseObject createArticle(@RequestBody UserCreateArticleRequest request) throws IOException {
         request.setUsersId(id);
         String currentDirectory1 = System.getProperty("user.dir");
         Articles articles = userMyArticleService.addArticle(request);
@@ -81,9 +81,9 @@ public class UserMyArticleRestController extends BaseController {
                 Files.write(Paths.get(folderPath + "/" + imageName), imageData, StandardOpenOption.CREATE_NEW);
                 break;
             }
-            return new ResponseEntity<>("File uploaded successfully!", HttpStatus.OK);
+            return new ResponseObject("File uploaded successfully!");
         }
-        return new ResponseEntity<>("File upload failed!", HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseObject("File upload failed!");
     }
 
     @PutMapping("/update-article/{id}")

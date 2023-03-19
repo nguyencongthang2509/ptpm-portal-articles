@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface UserArticleService {
     PageableObject<UserArticleResponse> getAllArticle(final UserArticleRequest request);
-    PageableObject<UserArticleResponse> FindAllArticle(final UserFindArticleRequest request);
+    PageableObject<UserArticleResponse> FindAllArticle(String userId, final UserFindArticleRequest request);
     Articles add(UserCreateArticleRequest request);
-    UserArticleResponse getArticleById(String id);
+    UserArticleResponse getArticleById(String userId, String id);
 }

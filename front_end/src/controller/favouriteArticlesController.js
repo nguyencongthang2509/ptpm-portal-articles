@@ -12,9 +12,9 @@ window.favouriteArticleCtrl = function (
       $scope.listArticleFavorite = TymService.getArticleFavorite();
     });
 
-    $scope.unfavoriteArticle = function(key, index,idTym){
+    $scope.unfavoriteArticle = function(key, index,articleId){
 
-      $http.delete(env.API_URL + "/tym/unfavorite-article/"+ idTym ).then(
+      $http.delete(env.API_URL + "/tym/unfavorite-article/"+ articleId ).then(
         function (response) {
           $scope.listArticleFavorite[key].splice(index,1)
           var isEmpty = $scope.listArticleFavorite[key].filter(function(val) {

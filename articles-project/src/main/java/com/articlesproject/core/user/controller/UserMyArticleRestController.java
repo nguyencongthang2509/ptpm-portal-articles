@@ -51,7 +51,7 @@ public class UserMyArticleRestController extends BaseController {
 
     @PostMapping("/create-article")
     public ResponseEntity<String> createArticle(@RequestBody UserCreateArticleRequest request) throws IOException {
-        request.setUsersId("8c6cfa51-1ff3-4783-ab86-c08101a58be8");
+        request.setUsersId(id);
         String currentDirectory1 = System.getProperty("user.dir");
         Articles articles = userMyArticleService.addArticle(request);
         articleHashtagService.addTagsArticle(request.getHashtag(), articles.getId());
@@ -77,7 +77,7 @@ public class UserMyArticleRestController extends BaseController {
                 String extension = matcher.group(1);
                 String base64Data = matcher.group(2);
                 byte[] imageData = Base64.getDecoder().decode(base64Data);
-                String imageName = "image" + "." + extension;
+                String imageName = "image" + "." + "png";
                 Files.write(Paths.get(folderPath + "/" + imageName), imageData, StandardOpenOption.CREATE_NEW);
                 break;
             }
@@ -85,38 +85,12 @@ public class UserMyArticleRestController extends BaseController {
         }
         return new ResponseEntity<>("File upload failed!", HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
     @PutMapping("/update-article/{id}")
     public ResponseEntity<String> updateArticle(@PathVariable("id") String id, @RequestBody UserUpdateArticleRequest request) throws IOException {
-        String currentDirectory1 = System.getProperty("user.dir");
         Articles articles = userMyArticleService.updateArticle(id, request);
         articleHashtagService.updateTagsArticle(request.getHashtag(), articles.getId());
-        String folderName = articles.getId();
-        String folderPath = currentDirectory1 + "/articles-project/src/main/resources/templates/articles/" + folderName;
-        File folder = new File(folderPath);
-        File imageFile = new File(folderPath + "/image.jpeg");
-        if (folder.exists()) {
-            imageFile.delete();
-            String fileName = "toi-thanh-cong-roi.html";
-            File dir = new File(folderPath);
-            File actualFile = new File(dir, fileName);
-            FileWriter fileWriter = new FileWriter(actualFile);
-            fileWriter.write(request.getContent());
-            fileWriter.close();
-            String regex = "data:image/(png|jpeg|jpg);base64,([^\"]+)";
-            Pattern pattern = Pattern.compile(regex);
-            String html = new String(Files.readAllBytes(Paths.get(folderPath + "/toi-thanh-cong-roi.html")));
-            Matcher matcher = pattern.matcher(html);
-            while (matcher.find()) {
-                String extension = matcher.group(1);
-                String base64Data = matcher.group(2);
-                byte[] imageData = Base64.getDecoder().decode(base64Data);
-                String imageName = "image" + "." + extension;
-                Files.write(Paths.get(folderPath + "/" + imageName), imageData, StandardOpenOption.CREATE_NEW);
-                break;
-            }
-            return new ResponseEntity<>("File uploaded successfully!", HttpStatus.OK);
-        }
-        return new ResponseEntity<>("File upload failed!", HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>("File uploaded successfully!", HttpStatus.OK);
     }
 
     @GetMapping("/detail-update-my-article/{id}")
@@ -127,5 +101,10 @@ public class UserMyArticleRestController extends BaseController {
     @GetMapping("/detail-my-article/{id}")
     public ResponseObject detailMyArticle(@PathVariable("id") String id) {
         return new ResponseObject(userMyArticleService.getArticleById(id));
+    }
+
+    @DeleteMapping("/delete-article/{id}")
+    public ResponseObject deleteArrticle(@PathVariable("id") String id){
+        return new ResponseObject(userMyArticleService.deleteArticle(id));
     }
 }

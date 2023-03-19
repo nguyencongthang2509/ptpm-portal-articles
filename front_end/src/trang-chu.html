@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trend Blogger</title>
+    <!-- Box-icon -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/custom/stylehome.css" />
+  </head>
+  <body>
+    <header>
+      <div class="nav container">
+        <a href="#" class="logo"
+          ><img
+            src="/front_end/assets/images/logo.png"
+            alt=""
+            style="width: 10%; text-align: center"
+          />Blog <span>myhobby</span></a
+        >
+        <a href="#login" class="login">Login</a>
+      </div>
+    </header>
+    <main ng-view></main>
+    <footer ng-include="'layout/footer.html'"></footer>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+      integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="../js/plugin/bootstrap.js"></script>
+    <script src="../js/plugin/bootstrap.bundle.js"></script>
+    <script src="../lib/angular.js"></script>
+    <script src="../lib/angular-route.js"></script>
+    <script src="./controller/homecontroller.js"></script>
+    <!-- <script src="./controller/login.js"></script> -->
+    <!-- <script src="../config/api.js"></script> -->
+    <script src="routett.js"></script>
+  </body>
+</html>

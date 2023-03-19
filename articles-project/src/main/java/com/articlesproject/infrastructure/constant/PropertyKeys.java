@@ -20,5 +20,6 @@ public class PropertyKeys {
     public  static final String ARTICLE_ALREADY_EXIST = "article.already.exist";
 
     public  static final String ARTICLE_NOT_EXIST = "article.not.exist";
+    public  static final String ARTICLE_HASHTAG_NOT_EXIST = "artilce.not.exist";
 
 }

@@ -24,19 +24,26 @@ li {
 :root {
   --poppins: "Poppins", sans-serif;
   --lato: "Lato", sans-serif;
-
-  --light: #f9f9f9;
-  --blue: #3c91e6;
+  --maumenu: #e70649c3;
+  --light: #ffffff;
+  --trang: #e7e7e7;
+  --blue: #c62d5b9a;
+  --tim: #ccaca9;
+  --tim1: #6d5790;
+  --tim2: #ff8f91;
+  --tim3: #c62d5b9a;
   --light-blue: #cfe8ff;
   --grey: #eeeeee;
   --dark-grey: #aaaaaa;
-  --dark: #342e37;
+  --dark: #111112;
   --red: #db504a;
   --yellow: #ffce26;
   --light-yellow: #fff2c6;
   --orange: #fd7238;
   --light-orange: #ffe0d3;
   --background-image: linear-gradient(rgb(205, 224, 253), white);
+  --mau1: #ff5c8dd1;
+  --logo1: #8c1e51f4;
 }
 
 html {
@@ -44,15 +51,19 @@ html {
 }
 
 body.dark {
-  --light: #4a4a55;
-  --grey: #f1f1f1;
-  --dark: #fffcfc;
+  --light: #222123;
+  --grey: #ffffff;
+  --dark: #ffffff;
+  --trang: white;
+  --maumenu: #ffdad6;
+  --mau1: #ff4580;
+  --logo1: #ffc5d7;
 }
 
 body {
-  background: var(--grey);
+  background-image: linear-gradient(white, #fda7b734);
   overflow-x: hidden;
-  color: var(--color-body);
+  color: black;
   font-family: var(--font-base), sans-serif;
 }
 
@@ -82,7 +93,7 @@ body {
   height: 56px;
   display: flex;
   align-items: center;
-  color: var(--blue);
+  color: var(--logo1);
   position: sticky;
   top: 0;
   left: 0;
@@ -108,7 +119,7 @@ body {
   padding: 4px;
 }
 #sidebar .side-menu li.active {
-  background: rgb(225, 240, 255);
+  background: #fcf1f0;
   position: relative;
 }
 #sidebar .side-menu li.active::before {
@@ -119,7 +130,7 @@ body {
   border-radius: 50%;
   top: -40px;
   right: 0;
-  box-shadow: 20px 20px 0 rgb(225, 240, 255);
+  box-shadow: 20px 20px 0 #fcf1f0;
   z-index: -1;
 }
 #sidebar .side-menu li.active::after {
@@ -130,7 +141,7 @@ body {
   border-radius: 50%;
   bottom: -40px;
   right: 0;
-  box-shadow: 20px -20px 0 rgb(225, 240, 255);
+  box-shadow: 20px -20px 0 #fcf1f0;
   z-index: -1;
 }
 #sidebar .side-menu li a {
@@ -146,7 +157,7 @@ body {
   overflow-x: hidden;
 }
 #sidebar .side-menu.top li.active a {
-  color: var(--blue);
+  color: var(--maumenu);
 }
 #sidebar.hide .side-menu li a {
   width: calc(48px - (4px * 2));
@@ -156,7 +167,8 @@ body {
   color: var(--red);
 }
 #sidebar .side-menu.top li a:hover {
-  color: var(--blue);
+  color: var(--maumenu);
+  font-size: 17px;
 }
 #sidebar .side-menu li a .bx {
   min-width: calc(60px - ((4px + 6px) * 2));
@@ -204,6 +216,9 @@ body {
 #content nav a {
   color: var(--dark);
 }
+/* .dropdown-menu ul li a {
+  color: #121212;
+} */
 #content nav .bx.bx-menu {
   cursor: pointer;
   color: var(--dark);
@@ -213,7 +228,7 @@ body {
   transition: 0.3s ease;
 }
 #content nav .nav-link:hover {
-  color: var(--blue);
+  color: var(--tim2);
 }
 #content nav form {
   max-width: 400px;
@@ -242,8 +257,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--blue);
-  color: var(--light);
+  background: #f81d5e96;
+  color: var(--trang);
   font-size: 18px;
   border: none;
   outline: none;
@@ -292,7 +307,7 @@ body {
   left: 2px;
   bottom: 2px;
   width: calc(25px - 4px);
-  background: var(--blue);
+  background: var(--tim2);
   border-radius: 50%;
   transition: all 0.3s ease;
 }
@@ -335,14 +350,14 @@ body {
   pointer-events: none;
 }
 #content main .head-title .left .breadcrumb li a.active {
-  color: var(--blue);
+  color: var(--tim2);
   pointer-events: unset;
 }
 #content main .head-title .btn-download {
   height: 36px;
   padding: 0 16px;
   border-radius: 36px;
-  background: var(--blue);
+  background: var(--tim1);
   color: var(--light);
   display: flex;
   justify-content: center;
@@ -354,7 +369,7 @@ body {
   height: 36px;
   width: 215px;
   border-radius: 36px;
-  background: var(--blue);
+  background: var(--tim1);
   color: var(--light);
   display: flex;
   justify-content: center;
@@ -366,6 +381,7 @@ body {
 .card-custom .card-custom-content .navbar {
   float: right;
 }
+
 #content main .box-info {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -391,7 +407,7 @@ body {
 }
 #content main .box-info li:nth-child(1) .bx {
   background: var(--light-blue);
-  color: var(--blue);
+  color: var(--tim2);
 }
 #content main .box-info li:nth-child(2) .bx {
   background: var(--light-yellow);
@@ -588,7 +604,7 @@ body {
   --color-heading: #eef3db;
   --color-base: #033f47;
   --color-base2: #022a30;
-  --color-brand: #b4daff;
+  --color-brand: #fdc4cd6b;
   --color-brand2: #deff58;
   --sidbar-width: 240px;
   --font-base: "Bai Jamjuree";
@@ -609,12 +625,14 @@ h6 {
 
 a {
   text-decoration: none;
-  color: var(--color-body);
+  color: var(--tim3);
   transition: all 0.4s ease;
 }
-
+.bx-heart:hover {
+  color: var(--maumenu);
+}
 a:hover {
-  color: var(--blue);
+  color: var(--maumenu);
 }
 
 img {
@@ -695,8 +713,7 @@ img {
 .link-custom:hover::after {
   width: 100%;
 }
-
-/* CARD */
+/* card */
 .card-custom .card-custom-image {
   overflow: hidden;
 }
@@ -760,7 +777,7 @@ input.form-control {
 }
 .cjDrZK {
   width: 100%;
-  background: rgb(255, 178, 110);
+  background-color: #ffc7c19d;
   color: rgb(23, 26, 34);
 }
 
@@ -1026,7 +1043,7 @@ user agent stylesheet ul {
 }
 
 .main-parent .form-wrap h1 span {
-  color: var(--blue);
+  color: var(--tim1);
 }
 .main-parent .form-wrap .single-input input {
   width: 100%;
@@ -1109,7 +1126,7 @@ user agent stylesheet ul {
 }
 /* profile hover tab */
 ul.nav-tabs li.nav-item button.nav-link.active {
-  background-color: #3c91e6;
+  background-color: #535151;
   color: #fff;
   border-radius: 50px;
   font-size: 1.1em;
@@ -2148,7 +2165,7 @@ legend {
   position: absolute;
   width: 100%;
   background-color: #ffffff;
-  border: 1px solid #dddddd;
+  border: 0px solid #dddddd;
   top: 100%;
   margin-top: -1px;
   border-bottom-left-radius: 2.5px;
@@ -2678,7 +2695,7 @@ legend {
 }
 .bt button:hover {
   color: white;
-  background-color: var(--blue);
+  background-color: var(--mau1);
 }
 .cham {
   float: right;
@@ -2708,9 +2725,9 @@ legend {
 }
 
 .create-article {
-  background-color: #dedede;
+  background-color: #f7f6f6;
   padding: 10px 0px 10px 0px;
-
+  /* background-image: linear-gradient(var(--blue), #ffff); */
   margin-bottom: 30px;
   margin-top: 0px;
 }
@@ -2720,7 +2737,7 @@ legend {
 
 .cate li ul a:hover {
   margin-top: 2px;
-  background-image: linear-gradient(var(--blue), #ffff);
+  background-image: linear-gradient(var(--tim1), #ffff);
   padding-left: 10px;
   height: 35px;
   padding-top: 2px;

@@ -12,11 +12,8 @@ import com.articlesproject.infrastructure.projection.SimpleEntityProj;
 import java.util.List;
 
 public interface UserArticleService {
-    PageableObject<UserArticleResponse> getAllArticle( final UserArticleRequest request);
-    PageableObject<UserArticleResponse> FindAllArticle(String userId,final UserFindArticleRequest request);
-    Articles addArticle(UserCreateArticleRequest request);
-    Articles updateArticle(String id, UserUpdateArticleRequest request);
-    boolean deleteArticle(String id);
+    PageableObject<UserArticleResponse> getAllArticle(final UserArticleRequest request);
+    PageableObject<UserArticleResponse> FindAllArticle(final UserFindArticleRequest request);
     Articles add(UserCreateArticleRequest request);
-    UserArticleResponse getArticleById(String userId,String id);
+    UserArticleResponse getArticleById(String id);
 }

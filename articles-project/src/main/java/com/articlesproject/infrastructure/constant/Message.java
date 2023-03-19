@@ -18,6 +18,7 @@ public enum Message {
     CATEGORY_NOT_EXIST(PropertiesReader.getProperty(PropertyKeys.CATEGORY_NOT_EXIST)),
     ARTICLE_ALREADY_EXIST(PropertiesReader.getProperty(PropertyKeys.ARTICLE_ALREADY_EXIST)),
     CATEGORY_CODE_ALREADY_EXIST(PropertiesReader.getProperty(PropertyKeys.CATEGORY_CODE_ALREADY_EXIST)),
+    ARTICLE_HASHTAG_NOT_EXIST(PropertiesReader.getProperty(PropertyKeys.ARTICLE_HASHTAG_NOT_EXIST)),
     ARTICLE_NOT_EXIST(PropertiesReader.getProperty(PropertyKeys.ARTICLE_NOT_EXIST));
 //    ERROR_UNKNOWN("Error Unknown"),
 

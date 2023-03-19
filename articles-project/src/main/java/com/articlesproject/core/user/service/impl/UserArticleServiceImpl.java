@@ -51,35 +51,6 @@ public class UserArticleServiceImpl implements UserArticleService {
     }
 
     @Override
-    public Articles addArticle(UserCreateArticleRequest request) {
-        Articles ar = formUtils.convertToObject(Articles.class, request);
-        ar.setTym(0);
-        ar.setStatus(ArticleStatus.MOI_TAO);
-        return userArticleRepository.save(ar);
-    }
-
-    @Override
-    public Articles updateArticle(String id, UserUpdateArticleRequest request) {
-        Optional<Articles> articles = userArticleRepository.findById(id);
-        if(articles.isPresent()){
-            articles.get().setTitle(request.getTitle());
-            articles.get().setCategoryId(request.getCategoryId());
-            articles.get().setStatus(ArticleStatus.MOI_TAO);
-        }
-        return userArticleRepository.save(articles.get());
-    }
-
-    @Override
-    public boolean deleteArticle(String id) {
-        Optional<Articles> articles = userArticleRepository.findById(id);
-        if(!articles.isPresent()){
-            throw new RestApiException(Message.ARTICLE_NOT_EXIT);
-        }
-        userArticleRepository.deleteById(id);
-        return true;
-    }
-
-    @Override
     public Articles add(UserCreateArticleRequest request) {
         Articles ar = formUtils.convertToObject(Articles.class, request);
         ar.setTym(0);

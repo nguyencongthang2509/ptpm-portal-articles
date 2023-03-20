@@ -7,9 +7,6 @@ app.config(function ($routeProvider, $locationProvider) {
     .when("/pages", {
       templateUrl: "./pages/pages.html",
     })
-    .when("/about", {
-      templateUrl: "./pages/about.html",
-    })
     .when("/myblog", {
       templateUrl: "./pages/my-blog.html",
     })
@@ -41,6 +38,10 @@ app.config(function ($routeProvider, $locationProvider) {
     })
     .when("/album", {
       templateUrl: "./pages/album.html",
+    })
+    .when("/article-trash", {
+      templateUrl: "./pages/article-trash.html",
+      controller: articleTrashCtrl,
     })
     .when("/article/:id", {
       templateUrl: "./pages/detail-article.html",

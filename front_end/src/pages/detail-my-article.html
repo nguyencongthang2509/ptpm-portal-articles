@@ -1,7 +1,20 @@
-<a type="button" href="#my-article/update-article/{{myArticleById.id}}" class="btn btn-primary">Sửa</a>
-<a type="button" href="#my-article" ng-click="deleteMyArticle()" class="btn btn-primary">Xóa</a>
-
 <div class="container-fluid">
+  <div class="menu-detail-myarrticle">
+    <a
+      type="button"
+      href="#my-article/update-article/{{myArticleById.id}}"
+      class="btn btn-outline-info"
+      >Sửa</a
+    >
+    <a
+      type="button"
+      href="#my-article"
+      ng-click="deleteMyArticle()"
+      class="btn btn-outline-danger"
+      >Xóa</a
+    >
+    <div class="dot"></div>
+  </div>
   <section class="bvchitiet">
     <div class="row">
       <div class="col-lg-12">
@@ -27,18 +40,14 @@
               </div>
               <div class="sc-bdvvtL FmHLX">
                 <h2 data-test="heading-text" class="sc-bBHxTw hsjjsR">
-                  <a data-test="heading-link" href="/blog/content-planning/"></a>
+                  <a data-test="heading-link" href="/blog/content-planning/">
                     {{myArticleById.title}}
                   </a>
                 </h2>
-                <!-- <p data-test="preview-text" class="sc-bBHxTw epRzfQ">
-                  Learn what a content plan is and how to build one, with
-                  examples and tools to make your life easier.
-                </p> -->
                 <div class="sc-bdvvtL ftOnze">
                   <span data-test="date">
                     {{myArticleById.browseDate | date:'dd/MM/yyyy'}} </span
-                  ><br>
+                  ><br />
                   <strong data-test="category" class="sc-dtMgUX iEGeoe"
                     ><a
                       data-test="category-link"
@@ -60,7 +69,9 @@
     <div class="row gy-4 pt-5">
       <div class="col-md-10" data-aos="fade-up">
         <div data-parse="true" class="sc-bdvvtL ikHgNc sc-fydGpi jwdqZU">
-          <div ng-include="'../../../articles-project/src/main/resources/templates/articles/' + myArticleById.id + '/toi-thanh-cong-roi.html'"></div>
+          <div
+            ng-include="'../../../articles-project/src/main/resources/templates/articles/' + myArticleById.id + '/toi-thanh-cong-roi.html'"
+          ></div>
         </div>
       </div>
     </div>

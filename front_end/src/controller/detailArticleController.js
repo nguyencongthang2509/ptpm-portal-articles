@@ -7,7 +7,8 @@ window.detailArticleCtrl = function (
     CommentService,
     CategoryService,
     env,
-    MyArticleService
+    MyArticleService,
+    UserService
 ) {
   $scope.comment = {
     articlesId: $routeParams.id,
@@ -28,7 +29,11 @@ window.detailArticleCtrl = function (
     $scope.comments = CommentService.getListCommentByArticle();
   });
 
-  // })
+  UserService.fetchDetailUser().then(function (respone){
+    $scope.detailUser = UserService.getUser();
+    console.log($scope.detailUser)
+  });
+
   $scope.deleteMyArticle = function () {
     if (confirm("Bạn có chắc muốn xóa?")) {
       $http.delete(myArticleAPI + "/delete-article/" + id).then(

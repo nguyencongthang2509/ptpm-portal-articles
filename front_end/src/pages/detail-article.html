@@ -71,24 +71,119 @@
 
  <!-- begin comment  -->
 </section>
-<div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
-  <div class="d-flex flex-start w-100">
-    <img class="rounded-circle shadow-1-strong me-3"
-      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" style="width: 5%; height: 5%;" />
-    <div class="form-outline w-100">
-      <form>
-        <textarea class="form-control" id="textAreaExample" rows="4"
-        style="background: #fff;" ng-model="comment.content"></textarea>
-      <label class="form-label" for="textAreaExample">Message</label>
-      <button type="button" class="btn btn-primary btn-sm" ng-click="commentArticle()">Post comment</button>
-      </form>
+  <div class="">
+
+    <div class="row">
+      <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+        <div class="d-flex flex-start w-100">
+          <img class="rounded-circle shadow-1-strong me-3"
+               src="{{detailUser.img}}" alt="avatar"
+               style="width: 5%;height: 5%;" />
+          <div class="form-outline w-100">
+            <textarea class="form-control" id="textAreaExample" rows="4" style="background: #fff;" placeholder="Message"
+                      ng-model="comment.content"></textarea>
+          </div>
+        </div>
+        <div class="float-end mt-2 pt-1">
+          <button type="button" class="btn btn-primary btn-sm" ng-click="createComment()">Post comment</button>
+          <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
+        </div>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="" ng-repeat="comment in comments">
+        <div class="d-flex flex-start">
+          <img class="rounded-circle shadow-1-strong me-3" style="width: 5%;height: 5%;" ng-src="{{comment.userImg}}"
+               alt="avatar" />
+          <div class="flex-grow-1 flex-shrink-1">
+            <div>
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="mb-1">
+                  {{comment.userName}} <span class="small">- {{comment.createDate | date:"h:mma 'at' dd/dMM/yyyy"}}</span>
+                </p>
+                <a ng-click="replyComment(comment.id, comment.userName)"><i class="fas fa-reply fa-xs"></i><span
+                        class="small"> reply</span></a>
+              </div>
+              <p class="small mb-0">
+                {{comment.content}}
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- begin reply  -->
+        <div class="row">
+          <div  id="{{comment.id}}" class="fromReplyComment" style="display:none;">
+            <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+              <div class="d-flex flex-start w-100">
+                <img class="rounded-circle shadow-1-strong me-3"
+                     src="{{detailUser.img}}" alt="avatar"
+                     style="width: 5%;height: 5%;" />
+                <div class="form-outline w-100">
+                  <input type="hidden" ng-model="replyCommentUser.reply">
+                  <textarea class="form-control" id="textAreaExample" rows="4" style="background: #fff;"
+                            placeholder="Message" ng-model="replyCommentUser.content"></textarea>
+                </div>
+              </div>
+              <div class="float-end mt-2 pt-1">
+                <button type="button" class="btn btn-primary btn-sm" ng-click="CreateReplyComment()">Post comment</button>
+                <button type="button" class="btn btn-outline-primary btn-sm"
+                        ng-click="closeForm(comment.id)">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end reply  -->
+        <div ng-if="comment.children && comment.children.length" ng-include="'reply.html'"></div>
+      </div>
+    </div>
+
+    <script type="text/ng-template" id="reply.html">
+      <ul>
+        <li ng-repeat="comment in comment.children">
+          <div class="d-flex flex-start">
+            <img class="rounded-circle shadow-1-strong me-3"  style="width: 5%;height: 5%;"
+                 ng-src="{{comment.userImg}}" alt="avatar"  />
+            <div class="flex-grow-1 flex-shrink-1">
+              <div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <p class="mb-1">
+                    {{comment.userName}} <span class="small">- {{comment.createDate | date:"h:mma 'at' dd/dMM/yyyy"}}</span>
+                  </p>
+                  <a ng-click="replyComment(comment.id, comment.userName)"><i class="fas fa-reply fa-xs"></i><span class="small"> reply</span></a>
+                </div>
+                <p class="small mb-0">
+                  {{comment.content}}
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- begin reply  -->
+          <div class="row">
+            <div  id="{{comment.id}}" class="fromReplyComment" style="display:none;">
+              <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+                <div class="d-flex flex-start w-100">
+                  <img class="rounded-circle shadow-1-strong me-3"
+                       src="{{detailUser.img}}" alt="avatar"
+                       style="width: 5%;height: 5%;" />
+                  <div class="form-outline w-100">
+                    <input type="hidden" ng-model="replyCommentUser.reply">
+                    <textarea class="form-control" id="textAreaExample" rows="4" style="background: #fff;"
+                              placeholder="Message" ng-model="replyCommentUser.content"></textarea>
+                  </div>
+                </div>
+                <div class="float-end mt-2 pt-1">
+                  <button type="button" class="btn btn-primary btn-sm" ng-click="CreateReplyComment()">Post comment</button>
+                  <button type="button" class="btn btn-outline-primary btn-sm"
+                          ng-click="closeForm(comment.id)">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end reply  -->
+          <div ng-if="comment.children && comment.children.length" ng-include="'reply.html'"></div>
+        </li>
+      </ul>
+    </script>
   </div>
-  <div class="float-end mt-2 pt-1">
-    
-    <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
-  </div>
-</div>
-<div class="comments"></div>
-<!-- end -->
 </div>

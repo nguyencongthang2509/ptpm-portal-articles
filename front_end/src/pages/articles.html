@@ -524,6 +524,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <input type="text" class="form-control"  ng-change="searchAlbum()" ng-model="nameAlbum" placeholder="Nhập tên album"/>
         <table style=" margin: 10px;">
           <thead>
           </thead>
@@ -533,39 +534,39 @@
                        id="{{album.id}}" data-ng-click="addArticleToAlbum(album.id)"/></td>
             <td>{{album.title}}</td>
             <td ng-if="album.status"><i class="bx bx-world"></i></td>
-            <td ng-if="album.status == false"><i class="bx bx-world"></i></td>
+            <td ng-if="album.status == false"><i class="bi bi-incognito"></i></td>
           </tr>
 
           </tbody>
         </table>
-        <button type="button" class="btn btn-primary " id="createAlbum" onclick="myFunction()">Create album</button>
+        <div   id="createAlbum" ng-click="showCreateAlbum()">Create album</div>
         <form name="formThemMoi" id="formThemMoi" style="display: none;" novalidate>
           <div class="mb-3">
             <label for="exampleInputTitle" class="form-label">Title:</label>
             <input type="text" class="form-control" name="title" id="exampleInputPassword1" required
-                   ng-model="createNewAlbum.title" minlength="6" />
+                   ng-model="createAlbumRequest.title" minlength="2" />
             <span class="text-danger" ng-show="formThemMoi.title.$error.required && formThemMoi.title.$touched">vui lòng
               nhập title</span>
             <span class="text-danger" ng-show="formThemMoi.title.$error.minlength">
-              Vui lòng nhập ít nhất 6 kí tự
+              Vui lòng nhập ít nhất 2 kí tự
             </span>
           </div>
           <div class="mb-3">
             <label for="exampleInputTitle" class="form-label">Status</label>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+              <input class="form-check-input" type="radio" name="status" value="false" id="flexRadioDefault1"  ng-model="createAlbumRequest.status"/>
               <label class="form-check-label" for="flexRadioDefault1">
                 <i class="bi bi-incognito"></i> Private
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
+              <input class="form-check-input" type="radio" name="status" value="true" id="flexRadioDefault2" ng-model="createAlbumRequest.status" checked />
               <label class="form-check-label" for="flexRadioDefault2">
                 <i class="bi bi-book"></i> Public
               </label>
             </div>
           </div>
-          <button type="button" class="btn btn-primary" onclick="myFunction1()">Thêm mới</button>
+          <button type="button" class="btn btn-primary" ng-click="createAlbum($event)">Create</button>
         </form>
       </div>
 

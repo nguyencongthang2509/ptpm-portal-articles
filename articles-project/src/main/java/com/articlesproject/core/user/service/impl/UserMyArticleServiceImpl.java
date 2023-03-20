@@ -1,6 +1,7 @@
 package com.articlesproject.core.user.service.impl;
 
 import com.articlesproject.core.common.base.PageableObject;
+import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.model.request.UserCreateArticleRequest;
 import com.articlesproject.core.user.model.request.UserMyArticleRequest;
 import com.articlesproject.core.user.model.request.UserUpdateArticleRequest;
@@ -24,10 +25,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Base64;
@@ -82,13 +85,28 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
                 Pattern pattern = Pattern.compile(regex);
                 String html = new String(Files.readAllBytes(Paths.get(folderPath + "/toi-thanh-cong-roi.html")));
                 Matcher matcher = pattern.matcher(html);
-                while (matcher.find()) {
+                String imageName = "image" + "." + "png";
+                if (matcher.find()) {
                     String extension = matcher.group(1);
                     String base64Data = matcher.group(2);
                     byte[] imageData = Base64.getDecoder().decode(base64Data);
-                    String imageName = "image" + "." + "png";
                     Files.write(Paths.get(folderPath + "/" + imageName), imageData, StandardOpenOption.CREATE_NEW);
-                    break;
+                } else {
+                    String imageDefaultPath = currentDirectory1 + "/front_end/assets/images/blog.png";
+                    byte[] imageData = null;
+                    try {
+                        Path path = Paths.get(imageDefaultPath);
+                        imageData = Files.readAllBytes(path);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    String newImagePath = folderPath+ "/" + imageName;
+                    try {
+                        Path path = Paths.get(newImagePath);
+                        Files.write(path, imageData);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
@@ -105,11 +123,56 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
     }
 
     @Override
-    public Articles addArticle(UserCreateArticleRequest request) {
+    public Articles addArticle(UserCreateArticleRequest request) throws IOException {
         Articles ar = formUtils.convertToObject(Articles.class, request);
         ar.setTym(0);
         ar.setStatus(ArticleStatus.MOI_TAO);
-        return userMyArticleRepository.save(ar);
+        userMyArticleRepository.save(ar);
+        String currentDirectory1 = System.getProperty("user.dir");
+        String folderName = ar.getId();
+        String folderPath = currentDirectory1 + "/articles-project/src/main/resources/templates/articles/" + folderName;
+        File folder = new File(folderPath);
+        if (!folder.exists()) {
+            folder.mkdirs();
+            String fileName = "toi-thanh-cong-roi.html";
+            File dir = new File(folderPath);
+            File actualFile = new File(dir, fileName);
+            actualFile.getParentFile().mkdirs();
+            actualFile.createNewFile();
+            FileWriter fileWriter = new FileWriter(actualFile);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(request.getContent());
+            bufferedWriter.close();
+            String regex = "data:image/(png|jpeg|jpg);base64,([^\"]+)";
+            Pattern pattern = Pattern.compile(regex);
+            String html = new String(Files.readAllBytes(Paths.get(folderPath + "/toi-thanh-cong-roi.html")));
+            Matcher matcher = pattern.matcher(html);
+            String imageName = "image" + "." + "png";
+            if (matcher.find()) {
+                String extension = matcher.group(1);
+                String base64Data = matcher.group(2);
+                byte[] imageData = Base64.getDecoder().decode(base64Data);
+                Files.write(Paths.get(folderPath + "/" + imageName), imageData, StandardOpenOption.CREATE_NEW);
+            } else {
+                String imageDefaultPath = currentDirectory1 + "/front_end/assets/images/blog.png";
+                byte[] imageData = null;
+                try {
+                    Path path = Paths.get(imageDefaultPath);
+                    imageData = Files.readAllBytes(path);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                String newImagePath = folderPath+ "/" + imageName;
+                try {
+                    Path path = Paths.get(newImagePath);
+                    Files.write(path, imageData);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return ar;
+        }
+        return null;
     }
 
     @Override

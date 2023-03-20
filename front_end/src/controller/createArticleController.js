@@ -44,42 +44,53 @@ window.createArticleCtrl = function (
       categoryId: $scope.category,
       hashtag: $scope.list_of_string,
     };
-    console.log(formData);
     $http.post(myArticleAPI + "/create-article", formData).then(
       function (response) {
-        toastr.success("Đăng ký thành công");
-        console.log(response);
+        toastr.success("Đã gửi yêu cầu phê duyệt thành công", "Thông báo!", {
+          timeOut: 5000,
+          closeButton: true,
+          progressBar: true,
+          positionClass: "toast-top-center",
+        });
+        console.log("Thành công rồi haha");
       },
       function (error) {
-        console.log(error)
+        toastr.error(error, "Thông báo!", {
+          timeOut: 5000,
+          closeButton: true,
+          progressBar: true,
+          positionClass: "toast-top-center",
+        });
+        console.log(error);
         console.log("Thất bại rồi xem lại code đi");
       }
     );
-  // };
-  // if (!window.location.href.includes("create-article")) {
-  //   var id = $routeParams.id;
-  //   $scope.getHtml = function () {
-  //     var filePath =
-  //       "../../../articles-project/src/main/resources/templates/articles/" +
-  //       id +
-  //       "/toi-thanh-cong-roi.html";
-  //     $http.get(filePath).then(function (response) {
-  //       $("#summernote")
-  //         .summernote({
-  //           focus: true,
-  //         })
-  //         .summernote("code", response.data);
-  //     });
-  //   };
+  };
+  if (!window.location.href.includes("create-article")) {
+    var id = $routeParams.id;
+    $scope.getHtml = function () {
+      var filePath =
+        "../../../articles-project/src/main/resources/templates/articles/" +
+        id +
+        "/toi-thanh-cong-roi.html";
+      $http.get(filePath).then(function (response) {
+        $("#summernote")
+          .summernote({
+            focus: true,
+          })
+          .summernote("code", response.data);
+      });
+    };
 
-  //   MyArticleService.fetchUpdateMyArticleById(id).then(function () {
-  //     $scope.myUpdateArticleById = MyArticleService.getMyUpdateArticleById();
-  //     $scope.title = $scope.myUpdateArticleById.title;
-  //     $scope.list_of_string = $scope.myUpdateArticleById.hashtags;
-  //   });
+    MyArticleService.fetchUpdateMyArticleById(id).then(function () {
+      $scope.myUpdateArticleById = MyArticleService.getMyUpdateArticleById();
+      $scope.title = $scope.myUpdateArticleById.title;
+      $scope.list_of_string = $scope.myUpdateArticleById.hashtags;
+    });
   }
 
-  $scope.updateMyArticle = function () {
+  $scope.updateMyArticle = function (event) {
+    event.preventDefault();
     var content = $("#summernote").summernote("code");
     var formData = {
       title: $scope.title,
@@ -91,7 +102,13 @@ window.createArticleCtrl = function (
 
     $http.put(myArticleAPI + "/update-article/" + id, formData).then(
       function (response) {
-        toastr.success("Đăng ký thành công");
+        toastr.success("Đã gửi yêu cầu phê duyệt thành công", "Thông báo!", {
+          timeOut: 5000,
+          closeButton: true,
+          progressBar: true,
+          positionClass: "toast-top-center",
+        });
+        alert(response.data);
         console.log("Thành công rồi haha");
       },
       function (error) {

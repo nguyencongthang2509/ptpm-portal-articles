@@ -44,14 +44,23 @@ window.createArticleCtrl = function (
       categoryId: $scope.category,
       hashtag: $scope.list_of_string,
     };
-    console.log(formData);
     $http.post(myArticleAPI + "/create-article", formData).then(
       function (response) {
-        toastr.success("Đăng ký thành công");
+        toastr.success("Đã gửi yêu cầu phê duyệt thành công", "Thông báo!", {
+          timeOut: 5000,
+          closeButton: true,
+          progressBar: true,
+          positionClass: "toast-top-center",
+        });
         console.log("Thành công rồi haha");
       },
       function (error) {
-        toastr.error("Có lỗi xảy ra");
+        toastr.error(error, "Thông báo!", {
+          timeOut: 5000,
+          closeButton: true,
+          progressBar: true,
+          positionClass: "toast-top-center",
+        });
         console.log(error);
         console.log("Thất bại rồi xem lại code đi");
       }
@@ -80,7 +89,8 @@ window.createArticleCtrl = function (
     });
   }
 
-  $scope.updateMyArticle = function () {
+  $scope.updateMyArticle = function (event) {
+    event.preventDefault();
     var content = $("#summernote").summernote("code");
     var formData = {
       title: $scope.title,
@@ -92,7 +102,13 @@ window.createArticleCtrl = function (
 
     $http.put(myArticleAPI + "/update-article/" + id, formData).then(
       function (response) {
-        toastr.success("Đăng ký thành công");
+        toastr.success("Đã gửi yêu cầu phê duyệt thành công", "Thông báo!", {
+          timeOut: 5000,
+          closeButton: true,
+          progressBar: true,
+          positionClass: "toast-top-center",
+        });
+        alert(response.data);
         console.log("Thành công rồi haha");
       },
       function (error) {

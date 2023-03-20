@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/articles-project.main.iml" filepath="$PROJECT_DIR$/.idea/modules/articles-project.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.articles-project.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.articles-project.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ptpm-portal-articles.iml" filepath="$PROJECT_DIR$/.idea/ptpm-portal-articles.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ptpm-portal-articles.articles-project.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ptpm-portal-articles.articles-project.main.iml" />
     </modules>

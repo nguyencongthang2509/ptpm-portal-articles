@@ -6,6 +6,6 @@ public interface UserArticleAlbumRepository extends Articles_AlbumRepository {
 
     long deleteByAlbumId(String id);
 
-    long deleteByArticlesId(String articleId);
+    long deleteByArticlesIdAndAlbumId(String articleId, String albumId);
 
 }

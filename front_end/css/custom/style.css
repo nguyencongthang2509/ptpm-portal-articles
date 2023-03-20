@@ -6,6 +6,13 @@
   box-sizing: border-box;
   font-family: var(--lato);
 }
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+table {
+  overflow: scroll;
+}
 header {
   width: auto;
 }

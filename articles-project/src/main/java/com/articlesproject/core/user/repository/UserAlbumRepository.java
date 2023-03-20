@@ -1,5 +1,6 @@
 package com.articlesproject.core.user.repository;
 
+import com.articlesproject.core.user.model.response.SimpleAlbumProjRequest;
 import com.articlesproject.core.user.model.response.UserAlbumResponse;
 import com.articlesproject.core.user.model.response.UserArticleAlbumResponse;
 import com.articlesproject.repository.AlbumRepository;
@@ -28,5 +29,14 @@ public interface UserAlbumRepository extends AlbumRepository {
             """, nativeQuery = true)
     List<UserAlbumResponse> findAllAlbumPublicByUserId(@Param("userId") String userId);
 
+    @Query(value = """
+           SELECT ab.id, ab.title, ab.status FROM album ab
+           LEFT JOIN articles_album arab ON ab.id = arab.album_id
+           LEFT JOIN users us ON us.id = ab.users_id
+           WHERE ab.users_id LIKE :userId
+           GROUP BY ab.id, ab.title, ab.status, ab.created_date, us.name , us.img
+           ORDER BY ab.created_date DESC 
+            """, nativeQuery = true)
+    List<SimpleAlbumProjRequest> findAllSimpleAlBumByUserId(@Param("userId") String userId);
 
 }

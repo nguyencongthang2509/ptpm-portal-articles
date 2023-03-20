@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
@@ -34,13 +35,19 @@ public class UserAlbumResController extends BaseController {
 
     @PostMapping("/create")
     private ResponseObject createAlbum(@RequestBody UserCreateAlbumRequest request){
-         String userId = id;
+        String userId = id;
         return new ResponseObject(albumService.create(request, userId));
     }
 
     @PutMapping("/update")
     private ResponseObject updateAlbum(@RequestBody UserUpdateAlbumRequest request){
         return new ResponseObject(albumService.update(request));
+    }
+
+    @GetMapping("/detail-album-user")
+    private ResponseObject findAllSimpleAlBumByUserId(){
+        String userId = id;
+        return new ResponseObject(albumService.findAllSimpleAlBumByUserId(userId));
     }
 
     @DeleteMapping("/delete/{id}")
@@ -70,8 +77,9 @@ public class UserAlbumResController extends BaseController {
         return new ResponseObject(articleAlbumService.createArticleAlbum(request));
     }
 
-    @DeleteMapping("/delete-all-article/{articleId}")
-    private ResponseObject deleArticlesInAlbum(@PathVariable("articleId") String articleId){
-        return new ResponseObject(articleAlbumService.deleteArticleAlbum(articleId));
+    @DeleteMapping("/delete-all-article")
+    private ResponseObject deleteArticlesInAlbum(@RequestParam("articleId") String articleId,@RequestParam("albumId") String albumId){
+        return new ResponseObject(articleAlbumService.deleteArticleAlbum(articleId,albumId));
     }
 }
+

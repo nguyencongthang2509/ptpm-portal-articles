@@ -2,11 +2,7 @@
   <div class="container-fluid">
     <div class="bt pb-4">
       <button type="button" class="btn btn-light me-5">All</button>
-      <button
-        type="button"
-        class="btn btn-light me-5"
-        ng-repeat="cate in listCategory"
-      >
+      <button type="button" class="btn btn-light me-5" ng-repeat="cate in listCategory">
         {{cate.name}}
       </button>
     </div>
@@ -14,7 +10,9 @@
       <div class="col-md-4" data-aos="fade-up" ng-repeat="ar in listArticle">
         <div class="card-custom rounded-4 bg-base shadow-effect" style="height: 350px;">
           <div class="card-custom-image rounded-4">
-            <img class="rounded-4" src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.png" alt="Image" style="max-height: 200px;width: 100%;object-fit: cover;"/>
+            <img class="rounded-4"
+                 src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.png" alt="Image"
+                 style="max-height: 200px;width: 100%;object-fit: cover;" />
           </div>
           <div class="card-custom-content p-4">
             <p class="text-brand mb-2">{{ar.browseDate| date:'dd/MM/yyyy'}}</p>
@@ -22,54 +20,26 @@
             text-overflow: ellipsis;
             white-space: nowrap;">{{ar.title}}</h5>
             <a href="#article/{{ar.id}}" class="link-custom pe-3">Read More</a>
-            <a  role="button"
-              ><i class="bx bx-heart"></i> {{ar.tym}}</a
-            >
+            <a role="button"><i class="bx bx-heart"></i> {{ar.tym}}</a>
             <div class="cham">
-              <i
-                class="bi bi-three-dots-vertical"
-                style="margin: 0px; width: 12%"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              ></i>
+              <i class="bi bi-three-dots-vertical" style="margin: 0px; width: 12%" id="dropdownMenuButton1"
+                 data-bs-toggle="dropdown" aria-expanded="false"></i>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li>
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                    ng-click="showConfirmDeleteAlbum($index, album.id)"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                    >Thêm vào album</a
-                  >
-                  <div
-                    class="modal fade"
-                    id="exampleModal"
-                    tabindex="-1"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                  >
+                  <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addArticleAlbum" ng-click="showModalAddArticleToAlbum(ar.id)">Thêm vào album</a>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                       aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
                           <h1 class="modal-title fs-5" id="exampleModalLabel">
                             Đặt Tên
                           </h1>
-                          <button
-                            type="button"
-                            class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                          ></button>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">hhhh</div>
                         <div class="modal-footer">
-                          <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                          >
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             Close
                           </button>
                           <button type="button" class="btn btn-primary">
@@ -81,24 +51,12 @@
                   </div>
                 </li>
                 <li>
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                    ng-click="showConfirmDeleteAlbum($index, album.id)"
-                    data-bs-toggle="modal"
-                    data-bs-target="#deleteAlbumModal"
-                    >Ẩn bài viết</a
-                  >
+                  <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
+                     data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Ẩn bài viết</a>
                 </li>
                 <li>
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                    ng-click="showConfirmDeleteAlbum($index, album.id)"
-                    data-bs-toggle="modal"
-                    data-bs-target="#deleteAlbumModal"
-                    >Báo Cáo</a
-                  >
+                  <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
+                     data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Báo Cáo</a>
                 </li>
               </ul>
             </div>
@@ -114,67 +72,36 @@
       <div data-test="post-card-item-en" class="sc-bdvvtL dKPyhr">
         <div class="card-custom-image rounded-4">
           <div data-test="image" class="sc-bdvvtL kScARU sc-jIkXHa hLdqAb">
-            <a data-test="image-link" href="/blog/top-level-domains/"
-              ><img
-                class="sc-cidDSM cXGIAa ls-is-cached lazyloaded"
-                data-src="https://static.semrush.com/blog/uploads/media/00/9c/009c041ae47f113e29d170fc340375a0/best-content-marketing-tools.svg"
-                alt="Content Marketing Tools"
-                height="190"
-                width="158"
-                style="height: 250px"
-                src="https://static.semrush.com/blog/uploads/media/00/9c/009c041ae47f113e29d170fc340375a0/best-content-marketing-tools.svg"
-            /></a>
+            <a data-test="image-link" href="/blog/top-level-domains/"><img
+                    class="sc-cidDSM cXGIAa ls-is-cached lazyloaded"
+                    data-src="https://static.semrush.com/blog/uploads/media/00/9c/009c041ae47f113e29d170fc340375a0/best-content-marketing-tools.svg"
+                    alt="Content Marketing Tools" height="190" width="158" style="height: 250px"
+                    src="https://static.semrush.com/blog/uploads/media/00/9c/009c041ae47f113e29d170fc340375a0/best-content-marketing-tools.svg" /></a>
           </div>
         </div>
         <div class="card-custom-content p-4">
           <div class="sc-bdvvtL ecaHBS">
             <div class="sc-dvQaRk iLqsUe">
               <p data-test="category" class="sc-bBHxTw jlUUmk sc-TBWPX dlGKeq">
-                <a target="_blank" href="/blog/category/seo/what-is-seo/"
-                  >SEO Tools
+                <a target="_blank" href="/blog/category/seo/what-is-seo/">SEO Tools
                 </a>
               </p>
               <div class="sc-bdvvtL dhnJpY sc-Galmp gJOLkM">
-                <span data-test="time-to-read" class="sc-bBHxTw gNNJPG"
-                  >17 min read</span
-                >
+                <span data-test="time-to-read" class="sc-bBHxTw gNNJPG">17 min read</span>
               </div>
             </div>
             <div class="sc-bdvvtL hIeyzy">
-              <h3
-                data-test="text-content"
-                style="word-break: break-word"
-                class="sc-bBHxTw kFRQee"
-              >
-                <a
-                  data-test="title"
-                  href="/blog/top-level-domains/"
-                  class="sc-ZOtfp dLYbaQ text-dark"
-                  >16 of the Best Content Marketing Tools for 2023</a
-                >
+              <h3 data-test="text-content" style="word-break: break-word" class="sc-bBHxTw kFRQee">
+                <a data-test="title" href="/blog/top-level-domains/" class="sc-ZOtfp dLYbaQ text-dark">16 of the Best
+                  Content Marketing Tools for 2023</a>
               </h3>
-              <span
-                data-test="description"
-                class="sc-bBHxTw gdTrDl sc-eLwHnm iTsgQK"
-                style="font-size: 17px"
-                >Streamline your content production and distribution with the
-                help of our favorite content marketing tools.</span
-              >
+              <span data-test="description" class="sc-bBHxTw gdTrDl sc-eLwHnm iTsgQK" style="font-size: 17px">Streamline
+                your content production and distribution with the
+                help of our favorite content marketing tools.</span>
               <div data-test="meta" class="sc-bdvvtL btGgl sc-bTfYFJ fiKUHl">
-                <a
-                  data-test="author-name"
-                  target="_blank"
-                  href="/user/203642673/"
-                  ><span
-                    data-test="text-content"
-                    class="sc-bBHxTw heMmct sc-hmjpVf hqcxFC"
-                    >Semrush Team
-                  </span></a
-                ><span
-                  data-test="date"
-                  class="sc-bBHxTw lgLCkw sc-hmjpVf hqcxFC"
-                  >Mar 03, 2023</span
-                >
+                <a data-test="author-name" target="_blank" href="/user/203642673/"><span data-test="text-content"
+                                                                                         class="sc-bBHxTw heMmct sc-hmjpVf hqcxFC">Semrush Team
+                  </span></a><span data-test="date" class="sc-bBHxTw lgLCkw sc-hmjpVf hqcxFC">Mar 03, 2023</span>
               </div>
             </div>
           </div>
@@ -201,11 +128,9 @@
         <div class="card">
           <article class="card1">
             <a aria-hidden="true" href="/web-platform-02-2023/">
-              <img
-                alt="Colorful wooden boards."
-                sizes="(min-width: 570px) 570px, calc(100vw - 48px)"
-                src="https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format"
-                srcset="
+              <img alt="Colorful wooden boards." sizes="(min-width: 570px) 570px, calc(100vw - 48px)"
+                   src="https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format"
+                   srcset="
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=200   200w,
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=228   228w,
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=260   260w,
@@ -221,18 +146,11 @@
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=964   964w,
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=1098 1098w,
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=1140 1140w
-                "
-                class="card__hero"
-                decoding="async"
-                height="330"
-                loading="lazy"
-                width="570"
-              />
+                " class="card__hero" decoding="async" height="330" loading="lazy" width="570" />
             </a>
             <div class="card__content flow">
               <h2 class="card__heading text-size-3">
-                <a href="/web-platform-02-2023/" class="text-dark"
-                  >New to the web
+                <a href="/web-platform-02-2023/" class="text-dark">New to the web
                 </a>
               </h2>
               <p></p>
@@ -243,88 +161,44 @@
             </div>
             <div class="gap-top-size-1">
               <div class="card__avatars cluster color-mid-text">
-                <a class="avatar" href="/authors/rachelandrew/"
-                  ><img
-                    class="img"
-                    alt="Rachel Andrew"
-                    sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
-                    src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
-                    srcset="
+                <a class="avatar" href="/authors/rachelandrew/"><img class="img" alt="Rachel Andrew"
+                                                                     sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
+                                                                     src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
+                                                                     srcset="
                       https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=1&amp;q=75 1x,
                       https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=2&amp;q=50 2x,
                       https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=3&amp;q=35 3x,
                       https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=4&amp;q=23 4x,
                       https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=5&amp;q=20 5x
-                    "
-                    decoding="async"
-                    height="40"
-                    loading="lazy"
-                    width="40"
-                /></a>
+                    " decoding="async" height="40" loading="lazy" width="40" /></a>
                 <div class="flow flow-space-size-0">
-                  <div
-                    class="card__authors flow-space-base"
-                    aria-label="authors"
-                  >
-                    <a href="/authors/rachelandrew/" class="text-dark"
-                      >Rachel Andrew</a
-                    >
+                  <div class="card__authors flow-space-base" aria-label="authors">
+                    <a href="/authors/rachelandrew/" class="text-dark">Rachel Andrew</a>
                   </div>
                   <time class="text-dark">Feb 28, 2023</time>
                 </div>
               </div>
             </div>
-            <div
-              aria-label="tags for this post"
-              class="card__tags cluster gap-top-base"
-            >
-              <a class="pill text-dark" href="/tags/new-to-the-web/"
-                >New to the web platform</a
-              >
-              <a class="btn bg-primary-subtle text-dark " role="button"><i class='bx bx-heart' ></i> Like</a>
+            <div aria-label="tags for this post" class="card__tags cluster gap-top-base">
+              <a class="pill text-dark" href="/tags/new-to-the-web/">New to the web platform</a>
+              <a class="btn bg-primary-subtle text-dark " role="button"><i class='bx bx-heart'></i> Like</a>
               <div class="cham">
-                <i
-                class="bi bi-three-dots-vertical"
-                style="margin: 0px; width: 12%"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              ></i>
-              <ul
-                class="dropdown-menu"
-                aria-labelledby="dropdownMenuButton1"
-              >
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  ng-click="showConfirmDeleteAlbum($index, album.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#deleteAlbumModal"
-                  >Thêm vào album</a
-                >
-              </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                    ng-click="showConfirmDeleteAlbum($index, album.id)"
-                    data-bs-toggle="modal"
-                    data-bs-target="#deleteAlbumModal"
-                    >Ẩn bài viết</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                    ng-click="showConfirmDeleteAlbum($index, album.id)"
-                    data-bs-toggle="modal"
-                    data-bs-target="#deleteAlbumModal"
-                    >Báo Cáo</a
-                  >
-                </li>
-            </div>
+                <i class="bi bi-three-dots-vertical" style="margin: 0px; width: 12%" id="dropdownMenuButton1"
+                   data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addArticleAlbum" ng-click="showModalAddArticleToAlbum(ar.id)">Thêm vào
+                      album</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
+                       data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Ẩn bài viết</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
+                       data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Báo Cáo</a>
+                  </li>
+              </div>
           </article>
         </div>
       </div>
@@ -333,11 +207,9 @@
         <div class="card">
           <article class="card1">
             <a aria-hidden="true" href="/web-platform-02-2023/">
-              <img
-                alt="Colorful wooden boards."
-                sizes="(min-width: 570px) 570px, calc(100vw - 48px)"
-                src="https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format"
-                srcset="
+              <img alt="Colorful wooden boards." sizes="(min-width: 570px) 570px, calc(100vw - 48px)"
+                   src="https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format"
+                   srcset="
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=200   200w,
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=228   228w,
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=260   260w,
@@ -353,18 +225,11 @@
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=964   964w,
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=1098 1098w,
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=1140 1140w
-                "
-                class="card__hero"
-                decoding="async"
-                height="330"
-                loading="lazy"
-                width="570"
-              />
+                " class="card__hero" decoding="async" height="330" loading="lazy" width="570" />
             </a>
             <div class="card__content flow">
               <h2 class="card__heading text-size-3">
-                <a href="/web-platform-02-2023/" class="text-dark"
-                  >New to the web
+                <a href="/web-platform-02-2023/" class="text-dark">New to the web
                 </a>
               </h2>
               <p></p>
@@ -375,88 +240,44 @@
             </div>
             <div class="gap-top-size-1">
               <div class="card__avatars cluster color-mid-text">
-                <a class="avatar" href="/authors/rachelandrew/"
-                  ><img
-                    class="img"
-                    alt="Rachel Andrew"
-                    sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
-                    src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
-                    srcset="
+                <a class="avatar" href="/authors/rachelandrew/"><img class="img" alt="Rachel Andrew"
+                                                                     sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
+                                                                     src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
+                                                                     srcset="
                       https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=1&amp;q=75 1x,
                       https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=2&amp;q=50 2x,
                       https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=3&amp;q=35 3x,
                       https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=4&amp;q=23 4x,
                       https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=5&amp;q=20 5x
-                    "
-                    decoding="async"
-                    height="40"
-                    loading="lazy"
-                    width="40"
-                /></a>
+                    " decoding="async" height="40" loading="lazy" width="40" /></a>
                 <div class="flow flow-space-size-0">
-                  <div
-                    class="card__authors flow-space-base"
-                    aria-label="authors"
-                  >
-                    <a href="/authors/rachelandrew/" class="text-dark"
-                      >Rachel Andrew</a
-                    >
+                  <div class="card__authors flow-space-base" aria-label="authors">
+                    <a href="/authors/rachelandrew/" class="text-dark">Rachel Andrew</a>
                   </div>
                   <time class="text-dark">Feb 28, 2023</time>
                 </div>
               </div>
             </div>
-            <div
-              aria-label="tags for this post"
-              class="card__tags cluster gap-top-base"
-            >
-              <a class="pill text-dark" href="/tags/new-to-the-web/"
-                >New to the web platform</a
-              >
-              <a class="btn bg-primary-subtle text-dark " role="button"><i class='bx bx-heart' ></i> Like</a>
+            <div aria-label="tags for this post" class="card__tags cluster gap-top-base">
+              <a class="pill text-dark" href="/tags/new-to-the-web/">New to the web platform</a>
+              <a class="btn bg-primary-subtle text-dark " role="button"><i class='bx bx-heart'></i> Like</a>
               <div class="cham">
-                <i
-                class="bi bi-three-dots-vertical"
-                style="margin: 0px; width: 12%"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              ></i>
-              <ul
-                class="dropdown-menu"
-                aria-labelledby="dropdownMenuButton1"
-              >
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  ng-click="showConfirmDeleteAlbum($index, album.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#deleteAlbumModal"
-                  >Thêm vào album</a
-                >
-              </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                    ng-click="showConfirmDeleteAlbum($index, album.id)"
-                    data-bs-toggle="modal"
-                    data-bs-target="#deleteAlbumModal"
-                    >Ẩn bài viết</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                    ng-click="showConfirmDeleteAlbum($index, album.id)"
-                    data-bs-toggle="modal"
-                    data-bs-target="#deleteAlbumModal"
-                    >Báo Cáo</a
-                  >
-                </li>
-            </div>
+                <i class="bi bi-three-dots-vertical" style="margin: 0px; width: 12%" id="dropdownMenuButton1"
+                   data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
+                       data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Thêm vào album</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
+                       data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Ẩn bài viết</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
+                       data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Báo Cáo</a>
+                  </li>
+              </div>
             </div>
           </article>
         </div>
@@ -465,11 +286,9 @@
         <div class="card">
           <article class="card1">
             <a aria-hidden="true" href="/web-platform-02-2023/">
-              <img
-                alt="Colorful wooden boards."
-                sizes="(min-width: 570px) 570px, calc(100vw - 48px)"
-                src="https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format"
-                srcset="
+              <img alt="Colorful wooden boards." sizes="(min-width: 570px) 570px, calc(100vw - 48px)"
+                   src="https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format"
+                   srcset="
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=200   200w,
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=228   228w,
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=260   260w,
@@ -485,18 +304,11 @@
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=964   964w,
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=1098 1098w,
                   https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=1140 1140w
-                "
-                class="card__hero"
-                decoding="async"
-                height="330"
-                loading="lazy"
-                width="570"
-              />
+                " class="card__hero" decoding="async" height="330" loading="lazy" width="570" />
             </a>
             <div class="card__content flow">
               <h2 class="card__heading text-size-3">
-                <a href="/web-platform-02-2023/" class="text-dark"
-                  >New to the web
+                <a href="/web-platform-02-2023/" class="text-dark">New to the web
                 </a>
               </h2>
               <p></p>
@@ -507,88 +319,44 @@
             </div>
             <div class="gap-top-size-1">
               <div class="card__avatars cluster color-mid-text">
-                <a class="avatar" href="/authors/rachelandrew/"
-                  ><img
-                    class="img"
-                    alt="Rachel Andrew"
-                    sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
-                    src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
-                    srcset="
+                <a class="avatar" href="/authors/rachelandrew/"><img class="img" alt="Rachel Andrew"
+                                                                     sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
+                                                                     src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
+                                                                     srcset="
                       https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=1&amp;q=75 1x,
                       https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=2&amp;q=50 2x,
                       https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=3&amp;q=35 3x,
                       https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=4&amp;q=23 4x,
                       https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=5&amp;q=20 5x
-                    "
-                    decoding="async"
-                    height="40"
-                    loading="lazy"
-                    width="40"
-                /></a>
+                    " decoding="async" height="40" loading="lazy" width="40" /></a>
                 <div class="flow flow-space-size-0">
-                  <div
-                    class="card__authors flow-space-base"
-                    aria-label="authors"
-                  >
-                    <a href="/authors/rachelandrew/" class="text-dark"
-                      >Rachel Andrew</a
-                    >
+                  <div class="card__authors flow-space-base" aria-label="authors">
+                    <a href="/authors/rachelandrew/" class="text-dark">Rachel Andrew</a>
                   </div>
                   <time class="text-dark">Feb 28, 2023</time>
                 </div>
               </div>
             </div>
-            <div
-              aria-label="tags for this post"
-              class="card__tags cluster gap-top-base"
-            >
-              <a class="pill text-dark" href="/tags/new-to-the-web/"
-                >New to the web platform</a
-              >
-              <a class="btn bg-primary-subtle text-dark " role="button"><i class='bx bx-heart' ></i> Like</a>
+            <div aria-label="tags for this post" class="card__tags cluster gap-top-base">
+              <a class="pill text-dark" href="/tags/new-to-the-web/">New to the web platform</a>
+              <a class="btn bg-primary-subtle text-dark " role="button"><i class='bx bx-heart'></i> Like</a>
               <div class="cham">
-                <i
-                class="bi bi-three-dots-vertical"
-                style="margin: 0px; width: 12%"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              ></i>
-              <ul
-                class="dropdown-menu"
-                aria-labelledby="dropdownMenuButton1"
-              >
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  ng-click="showConfirmDeleteAlbum($index, album.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#deleteAlbumModal"
-                  >Thêm vào album</a
-                >
-              </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                    ng-click="showConfirmDeleteAlbum($index, album.id)"
-                    data-bs-toggle="modal"
-                    data-bs-target="#deleteAlbumModal"
-                    >Ẩn bài viết</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                    ng-click="showConfirmDeleteAlbum($index, album.id)"
-                    data-bs-toggle="modal"
-                    data-bs-target="#deleteAlbumModal"
-                    >Báo Cáo</a
-                  >
-                </li>
-            </div>
+                <i class="bi bi-three-dots-vertical" style="margin: 0px; width: 12%" id="dropdownMenuButton1"
+                   data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
+                       data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Thêm vào album</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
+                       data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Ẩn bài viết</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
+                       data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Báo Cáo</a>
+                  </li>
+              </div>
             </div>
           </article>
         </div>
@@ -603,17 +371,12 @@
   <div class="container-fluid pt-4">
     <div class="row">
       <div class="col-md-6">
-        <div class="title-h2"><h4 class="text-danger">XEM NHIỀU NHẤT</h4></div>
+        <div class="title-h2">
+          <h4 class="text-danger">XEM NHIỀU NHẤT</h4>
+        </div>
         <div class="progress" style="height: 1px">
-          <div
-            class="progress-bar bg-danger"
-            role="progressbar"
-            aria-label="Example 1px high"
-            style="width: 25%"
-            aria-valuenow="25"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
+          <div class="progress-bar bg-danger" role="progressbar" aria-label="Example 1px high" style="width: 25%"
+               aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
         <br />
         <div class="row">
@@ -644,11 +407,7 @@
         <hr />
         <div class="row">
           <div class="col-5">
-            <img
-              src="/front_end/assets/blog2.jpg.crdownload"
-              alt=""
-              width="100%"
-            />
+            <img src="/front_end/assets/blog2.jpg.crdownload" alt="" width="100%" />
           </div>
           <div class="col-7">
             <p class="text-dark">
@@ -673,17 +432,12 @@
         </div>
       </div>
       <div class="col-md-6">
-        <div class="title-h2"><h4 class="text-danger">YÊU THÍCH NHIỀU NHẤT</h4></div>
+        <div class="title-h2">
+          <h4 class="text-danger">YÊU THÍCH NHIỀU NHẤT</h4>
+        </div>
         <div class="progress" style="height: 1px">
-          <div
-            class="progress-bar bg-danger"
-            role="progressbar"
-            aria-label="Example 1px high"
-            style="width: 25%"
-            aria-valuenow="25"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
+          <div class="progress-bar bg-danger" role="progressbar" aria-label="Example 1px high" style="width: 25%"
+               aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
         <br />
         <div class="row">
@@ -714,11 +468,7 @@
         <hr />
         <div class="row">
           <div class="col-5">
-            <img
-              src="/front_end/assets/blog2.jpg.crdownload"
-              alt=""
-              width="100%"
-            />
+            <img src="/front_end/assets/blog2.jpg.crdownload" alt="" width="100%" />
           </div>
           <div class="col-7">
             <p class="text-dark">
@@ -743,24 +493,83 @@
         </div>
       </div>
     </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-6">
+      <img src="/front_end/assets/blog2.jpg.crdownload" alt="" width="100%" />
     </div>
-    <hr>
-    <div class="row">
-      <div class="col-6">
-        <img src="/front_end/assets/blog2.jpg.crdownload" alt="" width="100%" />
-      </div>
 
-      <div class="col-6">
-        <div class="top pt-5" style="text-align: center">
-          <div class="section-title">
-            <h4 class="text-dark">GIỚI THIỆU CHUNG</h4>
-          </div>
-          <p class="text-dark">
-            Streamline your content production and distribution with the help of our favorite content marketing tools.
-            New to the web platform in February
-          </p>
+    <div class="col-6">
+      <div class="top pt-5" style="text-align: center">
+        <div class="section-title">
+          <h4 class="text-dark">GIỚI THIỆU CHUNG</h4>
         </div>
+        <p class="text-dark">
+          Streamline your content production and distribution with the help of our favorite content marketing tools.
+          New to the web platform in February
+        </p>
       </div>
     </div>
   </div>
+  </div>
 </section>
+
+<!-- begin add article album -->
+<div class="modal fade" id="addArticleAlbum" tabindex="-1" aria-labelledby="addArticleAlbum" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Save to...</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table style=" margin: 10px;">
+          <thead>
+          </thead>
+          <tbody style="display: block; height: 100px; overflow-y: scroll">
+          <tr ng-repeat="album in listAlbum">
+            <td><input class="form-check-input" type="checkbox" style="margin-right: 15px;" value="{{album.id}}"
+                       id="{{album.id}}" data-ng-click="addArticleToAlbum(album.id)"/></td>
+            <td>{{album.title}}</td>
+            <td ng-if="album.status"><i class="bx bx-world"></i></td>
+            <td ng-if="album.status == false"><i class="bx bx-world"></i></td>
+          </tr>
+
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-primary " id="createAlbum" onclick="myFunction()">Create album</button>
+        <form name="formThemMoi" id="formThemMoi" style="display: none;" novalidate>
+          <div class="mb-3">
+            <label for="exampleInputTitle" class="form-label">Title:</label>
+            <input type="text" class="form-control" name="title" id="exampleInputPassword1" required
+                   ng-model="createNewAlbum.title" minlength="6" />
+            <span class="text-danger" ng-show="formThemMoi.title.$error.required && formThemMoi.title.$touched">vui lòng
+              nhập title</span>
+            <span class="text-danger" ng-show="formThemMoi.title.$error.minlength">
+              Vui lòng nhập ít nhất 6 kí tự
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputTitle" class="form-label">Status</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+              <label class="form-check-label" for="flexRadioDefault1">
+                <i class="bi bi-incognito"></i> Private
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
+              <label class="form-check-label" for="flexRadioDefault2">
+                <i class="bi bi-book"></i> Public
+              </label>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="myFunction1()">Thêm mới</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- end add article album -->

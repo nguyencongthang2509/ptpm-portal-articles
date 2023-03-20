@@ -33,21 +33,22 @@ public class UserArticleAlbumServiceImpl implements UserArticleAlbumService {
 
     @Override
     public ArticlesAlbum createArticleAlbum(UserCreateArticleAlbumRequest request) {
-            ArticlesAlbum articlesAlbum = new ArticlesAlbum();
-            articlesAlbum.setArticlesId(request.getArticlesId());
-            articlesAlbum.setAlbumId(request.getAlbumId());
-            articleAlbumRepository.save(articlesAlbum);
+        ArticlesAlbum articlesAlbum = new ArticlesAlbum();
+        articlesAlbum.setArticlesId(request.getArticlesId());
+        articlesAlbum.setAlbumId(request.getAlbumId());
+        articleAlbumRepository.save(articlesAlbum);
         return articlesAlbum ;
     }
 
     @Override
-    public boolean deleteArticleAlbum(String articleId) {
+    public boolean deleteArticleAlbum(String articleId, String albumId) {
         Optional<Articles> articles = articleRepository.findById(articleId);
         if(!articles.isPresent()){
             throw new RestApiException(Message.ARTICLE_NOT_EXIT);
         }
 
-        articleAlbumRepository.deleteByArticlesId(articleId);
+        articleAlbumRepository.deleteByArticlesIdAndAlbumId(articleId, albumId);
         return true;
     }
 }
+

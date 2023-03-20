@@ -32,25 +32,25 @@ window.detailArticleCtrl = function (
   $scope.deleteMyArticle = function () {
     if (confirm("Bạn có chắc muốn xóa?")) {
       $http.delete(myArticleAPI + "/delete-article/" + id).then(
-        function (response) {
-          toastr.success("Xóa thành công", "Thông báo!", {
-            timeOut: 5000,
-            closeButton: true,
-            progressBar: true,
-            positionClass: "toast-top-center",
-          });
-          console.log("Thành công rồi haha");
-        },
-        function (error) {
-          toastr.error("Có lỗi xảy ra", "Thông báo!", {
-            timeOut: 5000,
-            closeButton: true,
-            progressBar: true,
-            positionClass: "toast-top-center",
-          });
-          console.log(error);
-          console.log("Thất bại rồi xem lại code đi");
-        }
+          function (response) {
+            toastr.success("Xóa thành công", "Thông báo!", {
+              timeOut: 5000,
+              closeButton: true,
+              progressBar: true,
+              positionClass: "toast-top-center",
+            });
+            console.log("Thành công rồi haha");
+          },
+          function (error) {
+            toastr.error("Có lỗi xảy ra", "Thông báo!", {
+              timeOut: 5000,
+              closeButton: true,
+              progressBar: true,
+              positionClass: "toast-top-center",
+            });
+            console.log(error);
+            console.log("Thất bại rồi xem lại code đi");
+          }
       );
     } else {
       toastr.info("Đã hủy xóa");

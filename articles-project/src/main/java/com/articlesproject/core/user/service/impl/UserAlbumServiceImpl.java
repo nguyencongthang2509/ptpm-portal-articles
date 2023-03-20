@@ -2,6 +2,7 @@ package com.articlesproject.core.user.service.impl;
 
 import com.articlesproject.core.user.model.request.UserCreateAlbumRequest;
 import com.articlesproject.core.user.model.request.UserUpdateAlbumRequest;
+import com.articlesproject.core.user.model.response.SimpleAlbumProjRequest;
 import com.articlesproject.core.user.model.response.UserAlbumResponse;
 import com.articlesproject.core.user.model.response.UserArticleAlbumResponse;
 import com.articlesproject.core.user.repository.UserAlbumRepository;
@@ -43,6 +44,11 @@ public class UserAlbumServiceImpl implements UserAlbumService {
     @Override
     public List<UserAlbumResponse> findAllAlbumPublicByUserId(String userId) {
         return albumRepository.findAllAlbumPublicByUserId(userId);
+    }
+
+    @Override
+    public List<SimpleAlbumProjRequest> findAllSimpleAlBumByUserId(String userId) {
+        return albumRepository.findAllSimpleAlBumByUserId(userId);
     }
 
     @Override

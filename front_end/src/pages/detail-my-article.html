@@ -1,6 +1,5 @@
 <a type="button" href="#my-article/update-article/{{myArticleById.id}}" class="btn btn-primary">Sửa</a>
-<a type="button" href="#my-article/delete-article/{{myArticleById.id}}" ng-click="deleteMyArticle()"
-  class="btn btn-primary">Xóa</a>
+<a type="button" href="#my-article" ng-click="deleteMyArticle()" class="btn btn-primary">Xóa</a>
 
 <div class="container-fluid">
   <section class="bvchitiet">
@@ -11,9 +10,9 @@
             <div class="sc-bdvvtL jbSNqA sc-kHOZwM cjDrZK">
               <div class="sc-bdvvtL iHLSCF">
                 <a data-test="heading-image-link" href="/blog/content-planning/" class="sc-cZMNgc iNdGjO"><img
-                    data-test="image" height="250" width="310" style="height: 200px"
-                    src="../../../articles-project/src/main/resources/templates/articles/{{myArticleById.id}}/image.png"
-                    alt="content planning" /></a>
+                        data-test="image" height="250" width="310" style="height: 200px"
+                        src="../../../articles-project/src/main/resources/templates/articles/{{myArticleById.id}}/image.png"
+                        alt="content planning" /></a>
               </div>
               <div class="sc-bdvvtL FmHLX">
                 <h2 data-test="heading-text" class="sc-bBHxTw hsjjsR">
@@ -21,11 +20,12 @@
                   {{myArticleById.title}}
                   </a>
                 </h2>
+
                 <div class="sc-bdvvtL ftOnze">
                   <span data-test="date">
                     {{myArticleById.browseDate | date:'dd/MM/yyyy'}} </span><br>
                   <strong data-test="category" class="sc-dtMgUX iEGeoe"><a data-test="category-link" target="_blank"
-                      href="/blog/category/content-creation/">{{myArticleById.hashtags}}</a></strong>
+                                                                           href="/blog/category/content-creation/">{{myArticleById.hashtags}}</a></strong>
                 </div>
               </div>
             </div>
@@ -40,7 +40,7 @@
       <div class="col-md-10" data-aos="fade-up">
         <div data-parse="true" class="sc-bdvvtL ikHgNc sc-fydGpi jwdqZU">
           <div
-            ng-include="'../../../articles-project/src/main/resources/templates/articles/' + myArticleById.id + '/toi-thanh-cong-roi.html'">
+                  ng-include="'../../../articles-project/src/main/resources/templates/articles/' + myArticleById.id + '/toi-thanh-cong-roi.html'">
           </div>
         </div>
       </div>
@@ -53,15 +53,15 @@
       <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
         <div class="d-flex flex-start w-100">
           <img class="rounded-circle shadow-1-strong me-3"
-            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar"
-            style="width: 5%;height: 5%;" />
+               src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar"
+               style="width: 5%;height: 5%;" />
           <div class="form-outline w-100">
             <textarea class="form-control" id="textAreaExample" rows="4" style="background: #fff;" placeholder="Message"
-              ng-model="comment.content"></textarea>
+                      ng-model="comment.content"></textarea>
           </div>
         </div>
         <div class="float-end mt-2 pt-1">
-          <button type="button" class="btn btn-primary btn-sm">Post comment</button>
+          <button type="button" class="btn btn-primary btn-sm" ng-click="createComment()">Post comment</button>
           <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
         </div>
       </div>
@@ -71,16 +71,15 @@
       <div class="" ng-repeat="comment in comments">
         <div class="d-flex flex-start">
           <img class="rounded-circle shadow-1-strong me-3" style="width: 5%;height: 5%;" ng-src="{{comment.userImg}}"
-            alt="avatar" />
+               alt="avatar" />
           <div class="flex-grow-1 flex-shrink-1">
             <div>
               <div class="d-flex justify-content-between align-items-center">
                 <p class="mb-1">
-                  {{comment.userName}} <span class="small">- {{comment.createDate | date:"h:mma 'at'
-                    dd/dMM/yyyy"}}</span>
+                  {{comment.userName}} <span class="small">- {{comment.createDate | date:"h:mma 'at' dd/dMM/yyyy"}}</span>
                 </p>
                 <a ng-click="replyComment(comment.id, comment.userName)"><i class="fas fa-reply fa-xs"></i><span
-                    class="small"> reply</span></a>
+                        class="small"> reply</span></a>
               </div>
               <p class="small mb-0">
                 {{comment.content}}
@@ -88,24 +87,24 @@
             </div>
           </div>
         </div>
-         <!-- begin reply  -->
+        <!-- begin reply  -->
         <div class="row">
-          <div  id="{{comment.id}}" style="display:none;">
+          <div  id="{{comment.id}}" class="fromReplyComment" style="display:none;">
             <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
               <div class="d-flex flex-start w-100">
                 <img class="rounded-circle shadow-1-strong me-3"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar"
-                  style="width: 5%;height: 5%;" />
+                     src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar"
+                     style="width: 5%;height: 5%;" />
                 <div class="form-outline w-100">
-                  <input type="hidden" ng-model="replyComment.reply">
+                  <input type="hidden" ng-model="replyCommentUser.reply">
                   <textarea class="form-control" id="textAreaExample" rows="4" style="background: #fff;"
-                    placeholder="Message" ng-model="replyComment.content"></textarea>
+                            placeholder="Message" ng-model="replyCommentUser.content"></textarea>
                 </div>
               </div>
               <div class="float-end mt-2 pt-1">
-                <button type="button" class="btn btn-primary btn-sm">Post comment</button>
+                <button type="button" class="btn btn-primary btn-sm" ng-click="CreateReplyComment()">Post comment</button>
                 <button type="button" class="btn btn-outline-primary btn-sm"
-                  ng-click="closeForm(comment.id)">Cancel</button>
+                        ng-click="closeForm(comment.id)">Cancel</button>
               </div>
             </div>
           </div>
@@ -120,7 +119,7 @@
         <li ng-repeat="comment in comment.children">
           <div class="d-flex flex-start">
             <img class="rounded-circle shadow-1-strong me-3"  style="width: 5%;height: 5%;"
-            ng-src="{{comment.userImg}}" alt="avatar"  />
+                 ng-src="{{comment.userImg}}" alt="avatar"  />
             <div class="flex-grow-1 flex-shrink-1">
               <div>
                 <div class="d-flex justify-content-between align-items-center">
@@ -137,22 +136,22 @@
           </div>
           <!-- begin reply  -->
           <div class="row">
-            <div  id="{{comment.id}}" style="display:none;">
+            <div  id="{{comment.id}}" class="fromReplyComment" style="display:none;">
               <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
                 <div class="d-flex flex-start w-100">
                   <img class="rounded-circle shadow-1-strong me-3"
-                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar"
-                    style="width: 5%;height: 5%;" />
+                       src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar"
+                       style="width: 5%;height: 5%;" />
                   <div class="form-outline w-100">
-                    <input type="hidden" ng-model="replyComment.reply">
+                    <input type="hidden" ng-model="replyCommentUser.reply">
                     <textarea class="form-control" id="textAreaExample" rows="4" style="background: #fff;"
-                      placeholder="Message" ng-model="replyComment.content"></textarea>
+                              placeholder="Message" ng-model="replyCommentUser.content"></textarea>
                   </div>
                 </div>
                 <div class="float-end mt-2 pt-1">
-                  <button type="button" class="btn btn-primary btn-sm">Post comment</button>
+                  <button type="button" class="btn btn-primary btn-sm" ng-click="CreateReplyComment()">Post comment</button>
                   <button type="button" class="btn btn-outline-primary btn-sm"
-                    ng-click="closeForm(comment.id)">Cancel</button>
+                          ng-click="closeForm(comment.id)">Cancel</button>
                 </div>
               </div>
             </div>

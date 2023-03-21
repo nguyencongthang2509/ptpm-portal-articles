@@ -1,18 +1,15 @@
 package com.articlesproject.core.user.model.request;
 
-import lombok.AllArgsConstructor;
+import com.articlesproject.core.common.base.PageableRequest;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
-public final class UserUpdateArticleRequest {
-
-    private String id;
-    private String categoryId;
+public class UserArticleTrashRequest extends PageableRequest {
     private String title;
     private String content;
     private String img;
-    private String[] hashtag;
+    private Long createDate;
+    private Integer tym;
 }

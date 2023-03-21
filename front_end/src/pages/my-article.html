@@ -2,9 +2,10 @@
   <div class="container-fluid">
     <div class="bt pb-4">
       <button type="button" class="btn btn-light me-5">All</button>
-      <button class="btn btn-light me-5" ng-repeat="ca in listCategory">
-        {{ca.name}}
-      </button>
+      <button class="btn btn-light me-5">Bản nháp</button>
+      <button class="btn btn-light me-5">Chờ phê duyệt</button>
+      <button class="btn btn-light me-5">Đã phê duyệt</button>
+      <button class="btn btn-light me-5">Đã bị hủy</button>
     </div>
     <div class="row gy-4">
       <div
@@ -18,19 +19,16 @@
           style="height: 350px"
         >
           <div class="card-custom-image rounded-4">
-            <img
-              class="rounded-4"
-              src="../../../articles-project/src/main/resources/templates/articles/{{myArticle.id}}/image.png"
-              alt=""
-              style="max-height: 200px; width: 100%; object-fit: cover"
-            />
+            <a href="#my-article/{{myArticle.id}}"
+              ><img
+                class="rounded-4"
+                src="../../../articles-project/src/main/resources/templates/articles/{{myArticle.id}}/image.png"
+                alt=""
+                style="max-height: 200px; width: 100%; object-fit: cover"
+            /></a>
           </div>
           <div class="card-custom-content p-4">
             <h4>{{myArticle.title}}</h4>
-            <!-- <p>
-              Innovation that exceeds expectations. Astra is a true template
-              equiqed with all the elements you could ever need to put together
-            </p> -->
             <a href="#my-article/{{myArticle.id}}" class="link-custom"
               >Read More</a
             >
@@ -43,14 +41,28 @@
 <section>
   <div class="container-fluid">
     <div class="pagination pt-3" style="text-align: center">
-      <a href="#">«</a>
+      <!-- <a href="#">«</a>
       <a href="#">1</a>
       <a class="active" href="#">2</a>
       <a href="#">3</a>
       <a href="#">4</a>
       <a href="#">5</a>
       <a href="#">6</a>
-      <a href="#">»</a>
+      <a href="#">»</a> -->
+      <nav th:if="${page.totalPages > 1}" aria-label="Page navigation">
+        <ul class="pagination justify-content-end">
+          <div th:each="i:${#numbers.sequence( 1, page.totalPages, 1)}">
+            <li class="page-item">
+              <a
+                class="page-link"
+                th:href="@{/dao-tao/mon-datn?page={page.currentPage}(page.currentPage=${i}-1)}"
+                th:text="${i}"
+              >
+              </a>
+            </li>
+          </div>
+        </ul>
+      </nav>
     </div>
   </div>
 </section>

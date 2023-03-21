@@ -67,6 +67,7 @@ window.createArticleCtrl = function (
     );
   };
   if (!window.location.href.includes("create-article")) {
+    $scope.showButton = true;
     var id = $routeParams.id;
     $scope.getHtml = function () {
       var filePath =
@@ -108,7 +109,6 @@ window.createArticleCtrl = function (
           progressBar: true,
           positionClass: "toast-top-center",
         });
-        alert(response.data);
         console.log("Thành công rồi haha");
       },
       function (error) {

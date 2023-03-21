@@ -58,17 +58,18 @@
                 >
               </li>
               <li>
-                <button class="dropdown-item" ng-click="updateMyArticle($event)"
-                  ><i
+                <button class="dropdown-item">
+                  <i
                     class="bi bi-cloud-download"
                     style="padding-right: 10px"
+                    type="button"
                   ></i
-                  >Save</button
-                >
+                  >Save
+                </button>
               </li>
             </ul>
           </div>
-          <div style="margin-top: 20px">
+          <div style="margin-top: 20px" ng-show="!showButton">
             <button
               ng-click="saveHTML($event)"
               type="button"
@@ -76,6 +77,16 @@
               style="background-color: #fb3c75c3; border: solid 1px white"
             >
               <i class="bi bi-caret-right-fill"></i>Publish
+            </button>
+          </div>
+          <div style="margin-top: 20px" ng-show="showButton">
+            <button
+              ng-click="updateMyArticle($event)"
+              type="button"
+              class="btn btn-primary"
+              style="background-color: #fb3c75c3; border: solid 1px white"
+            >
+              <i class="bi bi-caret-right-fill"></i>Update
             </button>
           </div>
 

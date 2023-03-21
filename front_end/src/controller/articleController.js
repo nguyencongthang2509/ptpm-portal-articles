@@ -7,7 +7,7 @@ window.articleCtrl = function (
   env,
   AlbumService
 ) {
-
+  $scope.listArticle = []
   $scope.listAlbum = [];
   $scope.listAlbumDefault = []
   $scope.nameAlbum = "";
@@ -29,9 +29,9 @@ window.articleCtrl = function (
   });
 
   // begin album
-  AlbumService.fetchAlbums().then(function () {
-    $scope.listAlbum = AlbumService.getAlbums();
-    $scope.listAlbumDefault =  AlbumService.getAlbums();
+  AlbumService.fetchSimpleAlbums().then(function () {
+    $scope.listAlbum = AlbumService.getSimpleAlbums();
+    $scope.listAlbumDefault =  AlbumService.getSimpleAlbums();
   });
 
   $scope.showModalAddArticleToAlbum = function (id) {
@@ -97,4 +97,32 @@ window.articleCtrl = function (
     }
   };
 //  end album
+
+// begin tym article
+$scope.favoriteArticle = function (id, index) {
+  $scope.createTymRequest = {
+    articlesId: id
+  }
+    $http
+      .post(env.API_URL + "/tym/favorite-article",  $scope.createTymRequest)
+      .then(function (respone) {
+        $scope.article = $scope.listArticle[index]
+        $scope.article.tym += 1
+        $scope.article.favorite = 1
+        $scope.listArticle.splice(index,1, $scope.article)
+      });
+};
+$scope.unfavoriteArticle = function (id, index) {
+  if($scope.listArticle[index].tym >= 0){
+    $http
+    .delete(env.API_URL + "/tym/unfavorite-article/"+id)
+    .then(function (respone) {
+      $scope.article = $scope.listArticle[index]
+        $scope.article.tym -= 1
+        $scope.article.favorite = 0
+        $scope.listArticle.splice(index,1, $scope.article)
+    });
+  }
+};
+// end tym article
 };

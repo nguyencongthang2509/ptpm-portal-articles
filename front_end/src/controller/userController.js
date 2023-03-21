@@ -1,4 +1,12 @@
-function userController($scope, $http, env) {
+window.profileController = function (
+  $scope,
+  $http,
+  $rootScope,
+  env,
+  AlbumService,
+  UserService
+) {
+
   $scope.user = {};
   $scope.albums = [];
   $scope.album = { title: "", id: "" };
@@ -6,17 +14,15 @@ function userController($scope, $http, env) {
   $scope.createNewAlbum = { title: "" };
   $scope.index = 0;
 
-  $http
-    .get(env.API_URL + "/user/detail/" + env.USER_ID)
-    .then(function (respone) {
-      respone.data.data.map((item) => {
-        $scope.user = item;
-      });
-    });
 
-  $http.get(env.API_URL + "/album").then(function (respone) {
-    $scope.albums = respone.data.data;
-  });
+    UserService.fetchDetailUser().then(function(respone){
+      $scope.user = UserService.getUser()
+    })
+
+    AlbumService.fetchAlbums().then(function(respone){
+      $scope.albums = AlbumService.getAlbums()
+    })
+
 
   $scope.createAlbum = function (event) {
     event.preventDefault();
@@ -42,15 +48,6 @@ function userController($scope, $http, env) {
       });
   };
 
-  $scope.showConfirmDeleteAlbum = function (index, idAlbum) {
-    $scope.index = index;
-
-    $http
-      .get(env.API_URL + "/album/detail/" + idAlbum)
-      .then(function (respone) {
-        $scope.album = respone.data.data;
-      });
-  };
 
   $scope.deleteAlbum = function () {
     console.log($scope.index);
@@ -61,7 +58,6 @@ function userController($scope, $http, env) {
         $scope.index = 0;
       });
     $scope.albums.splice($scope.index, 1);
-    modal.classList.remove("show");
   };
 
   $scope.updateAlbum = function (event) {
@@ -76,4 +72,5 @@ function userController($scope, $http, env) {
         });
     }
   };
+  
 }

@@ -30,6 +30,7 @@ app.config(function ($routeProvider, $locationProvider) {
     })
     .when("/profile", {
       templateUrl: "./pages/profile.html",
+      controller: profileController,
     })
     .when("/contact", {
       templateUrl: "./pages/contact.html",

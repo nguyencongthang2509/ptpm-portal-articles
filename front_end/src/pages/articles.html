@@ -20,7 +20,8 @@
             text-overflow: ellipsis;
             white-space: nowrap;">{{ar.title}}</h5>
             <a href="#article/{{ar.id}}" class="link-custom pe-3">Read More</a>
-            <a role="button"><i class="bx bx-heart"></i> {{ar.tym}}</a>
+            <a  data-ng-click="favoriteArticle(ar.id, $index)" ng-if="ar.favorite == 0"><i class="bx bx-heart"></i> {{ar.tym}}</a>
+            <a  data-ng-click="unfavoriteArticle(ar.id, $index)" ng-if="ar.favorite == 1"><i class='bx bxs-heart'></i> {{ar.tym}}</a>
             <div class="cham">
               <i class="bi bi-three-dots-vertical" style="margin: 0px; width: 12%" id="dropdownMenuButton1"
                  data-bs-toggle="dropdown" aria-expanded="false"></i>

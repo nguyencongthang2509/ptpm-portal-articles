@@ -37,6 +37,6 @@ public interface UserAlbumRepository extends AlbumRepository {
            GROUP BY ab.id, ab.title, ab.status, ab.created_date, us.name , us.img
            ORDER BY ab.created_date DESC 
             """, nativeQuery = true)
-    List<SimpleAlbumProjRequest> findAllSimpleAlBumByUserId(@Param("userId") String userId);
+    List<SimpleAlbumProjRequest> findAllSimpleAllBumByUserId(@Param("userId") String userId);
 
 }

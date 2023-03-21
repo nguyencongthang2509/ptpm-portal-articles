@@ -25,6 +25,10 @@ window.detailAlbumCtrl = function (
       $scope.listArticle = ArticleService.getFindByArticle();
     }
   );
+
+  AlbumService.fetchCheckAlbumOfAuthor($routeParams.id).then(function () {
+    $scope.author = AlbumService.getCheckAlbumOfAuthor();
+  });
   
   // begin tym article
   $scope.favoriteArticle = function (id, index) {

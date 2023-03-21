@@ -525,12 +525,12 @@
         <button type="button" ng-click="closeFormAddAlbum()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <input type="text" class="form-control"  ng-change="searchAlbum()" ng-model="nameAlbum" placeholder="Nhập tên album"/>
+        <input type="text" class="form-control"  ng-change="searchAlbum()" ng-model="nameAlbum" placeholder="nhập: abc..."/>
         <table style=" margin: 10px;">
           <thead>
           </thead>
           <tbody style="display: block; height: 100px; overflow-y: scroll">
-          <tr ng-repeat="album in listAlbum">
+          <tr ng-repeat="album in listAlbum track by $index">
             <td><input class="form-check-input" type="checkbox" style="margin-right: 15px;" value="{{album.id}}"
                        id="{{album.id}}" data-ng-click="addArticleToAlbum(album.id)" ng-checked="album.countArticle != 0"/></td>
             <td>{{album.title}}</td>

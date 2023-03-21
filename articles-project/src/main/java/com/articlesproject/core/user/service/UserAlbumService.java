@@ -35,5 +35,7 @@ public interface UserAlbumService {
     boolean delete(String id);
 
     Album findById(String id);
+
+    Album findByIdAndUsersId(String id, String userId);
 }
 

@@ -13,7 +13,7 @@ window.profileController = function (
   $scope.albumDetail = {};
   $scope.createNewAlbum = { title: "" };
   $scope.index = 0;
-
+  $scope.authen = true
 
     UserService.fetchDetailUser().then(function(respone){
       $scope.user = UserService.getUser()
@@ -51,7 +51,6 @@ window.profileController = function (
 
   $scope.deleteAlbum = function () {
     console.log($scope.index);
-    var modal = document.getElementById("deleteAlbumModal");
     $http
       .delete(env.API_URL + "/album/delete/" + $scope.album.id)
       .then(function (respone) {

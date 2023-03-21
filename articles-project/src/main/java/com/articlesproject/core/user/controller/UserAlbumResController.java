@@ -7,6 +7,7 @@ import com.articlesproject.core.user.model.request.UserUpdateAlbumRequest;
 import com.articlesproject.core.user.service.UserAlbumService;
 import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.service.UserArticleAlbumService;
+import com.articlesproject.entity.Album;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -67,6 +68,12 @@ public class UserAlbumResController extends BaseController {
         return new ResponseObject(albumService.findAllAlbumPublicByUserId(userId));
     }
 
+    @GetMapping("/find-album-user/{id}")
+    private ResponseObject findByIdAndUsersId(@PathVariable("id") String id ){
+        String userId = this.id;
+        return new ResponseObject(albumService.findByIdAndUsersId(id, userId));
+    }
+
     @GetMapping("/detail/{id}")
     private ResponseObject detailAlbum(@PathVariable("id") String id){
         return new ResponseObject(albumService.findById(id));
@@ -81,5 +88,6 @@ public class UserAlbumResController extends BaseController {
     private ResponseObject deleteArticlesInAlbum(@RequestParam("articleId") String articleId,@RequestParam("albumId") String albumId){
         return new ResponseObject(articleAlbumService.deleteArticleAlbum(articleId,albumId));
     }
+
 }
 

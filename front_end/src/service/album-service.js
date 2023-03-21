@@ -1,8 +1,17 @@
 app.service("AlbumService", function ($http, env) {
     var simpleAlbums = [];
+    var albumOfAuthor = [];
     var albums = [];
     var album = {};
+    var checkAlbumOfAuthor = true;
   
+    this.getCheckAlbumOfAuthor = function () {
+      return checkAlbumOfAuthor;
+    };
+    this.setCheckAlbumOfAuthor = function (data) {
+      checkAlbumOfAuthor = data;
+    };
+
     this.getAlbums = function () {
       return albums;
     };
@@ -22,6 +31,13 @@ app.service("AlbumService", function ($http, env) {
     };
     this.setSimpleAlbums = function (data) {
       simpleAlbums = data;
+    };
+
+    this.getAlbumOfAuthor = function () {
+      return albumOfAuthor;
+    };
+    this.setAlbumOfAuthor = function (data) {
+      albumOfAuthor = data;
     };
 
     this.fetchAlbums = function () {
@@ -61,5 +77,34 @@ app.service("AlbumService", function ($http, env) {
       );
     };
     
+    this.fetchAlbumOfAuthor = function (userId) {
+      return $http.get(env.API_URL + "/album/"+userId).then(
+        function (response) {
+          albumOfAuthor = response.data.data;
+          return response;
+        },
+        function (errors) {
+          console.log(errors);
+        }
+      );
+    };
+
+    this.fetchCheckAlbumOfAuthor = function (id) {
+      return $http.get(env.API_URL + "/album/find-album-user/"+id).then(
+        function (response) {
+          if(response.data.data != null){
+            checkAlbumOfAuthor = true;
+          }else{
+            checkAlbumOfAuthor = false;
+          }
+          
+          return response;
+        },
+        function (errors) {
+          console.log(errors);
+        }
+      );
+    };
+
   });
   

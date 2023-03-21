@@ -90,4 +90,9 @@ public class UserAlbumServiceImpl implements UserAlbumService {
         }
         return album.get();
     }
+
+    @Override
+    public Album findByIdAndUsersId(String id, String userId) {
+        return albumRepository.findByIdAndUsersId(id, userId);
+    }
 }

@@ -72,6 +72,10 @@ app.config(function ($routeProvider, $locationProvider) {
     .when("/setting", {
       templateUrl: "./pages/setting.html",
     })
+    .when("/users/:id", {
+      templateUrl: "./pages/profile.html",
+      controller: detailUserCtrl
+    })
     .when("/users", {
       templateUrl: "./pages/users.html",
     })

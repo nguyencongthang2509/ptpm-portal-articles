@@ -12,4 +12,9 @@ public interface SimpleAlbumProjRequest  extends IsIdentified {
 
     @Value("#{target.status}")
     boolean getStatus();
+
+    @Value("#{target.countArticle}")
+    int getCountArticle();
+
+
 }

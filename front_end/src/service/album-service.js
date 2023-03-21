@@ -37,8 +37,8 @@ app.service("AlbumService", function ($http, env) {
       );
     };
 
-    this.fetchSimpleAlbums = function () {
-      return $http.get(env.API_URL + "/album/detail-album-user").then(
+    this.fetchSimpleAlbums = function (articleId) {
+      return $http.get(env.API_URL + "/album/detail-album-user/"+articleId).then(
         function (response) {
           simpleAlbums = response.data.data;
           return response;

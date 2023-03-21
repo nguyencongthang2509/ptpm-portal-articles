@@ -47,8 +47,8 @@ public class UserAlbumServiceImpl implements UserAlbumService {
     }
 
     @Override
-    public List<SimpleAlbumProjRequest> findAllSimpleAllBumByUserId(String userId) {
-        return albumRepository.findAllSimpleAllBumByUserId(userId);
+    public List<SimpleAlbumProjRequest> findAllSimpleAllBumByUserId(String userId, String articleId) {
+        return albumRepository.findAllSimpleAllBumByUserId(userId, articleId);
     }
 
     @Override

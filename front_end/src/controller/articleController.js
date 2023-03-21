@@ -30,13 +30,13 @@ window.articleCtrl = function (
   });
 
   // begin album
-  AlbumService.fetchSimpleAlbums().then(function () {
-    $scope.listAlbum = AlbumService.getSimpleAlbums();
-    $scope.listAlbumDefault =  AlbumService.getSimpleAlbums();
-  });
 
   $scope.showModalAddArticleToAlbum = function (id) {
     $scope.UserCreateArticle.articlesId = id;
+    AlbumService.fetchSimpleAlbums(id).then(function () {
+      $scope.listAlbum = AlbumService.getSimpleAlbums();
+      $scope.listAlbumDefault =  AlbumService.getSimpleAlbums();
+    });
   };
 
   $scope.addArticleToAlbum = function (id) {

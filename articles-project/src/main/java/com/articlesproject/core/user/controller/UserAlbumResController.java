@@ -44,10 +44,10 @@ public class UserAlbumResController extends BaseController {
         return new ResponseObject(albumService.update(request));
     }
 
-    @GetMapping("/detail-album-user")
-    private ResponseObject findAllSimpleAllBumByUserId(){
+    @GetMapping("/detail-album-user/{articleId}")
+    private ResponseObject findAllSimpleAllBumByUserId(@PathVariable("articleId") String articleId){
         String userId = id;
-        return new ResponseObject(albumService.findAllSimpleAllBumByUserId(userId));
+        return new ResponseObject(albumService.findAllSimpleAllBumByUserId(userId, articleId));
     }
 
     @DeleteMapping("/delete/{id}")

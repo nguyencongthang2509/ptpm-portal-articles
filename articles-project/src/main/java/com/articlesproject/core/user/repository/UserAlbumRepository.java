@@ -30,13 +30,13 @@ public interface UserAlbumRepository extends AlbumRepository {
     List<UserAlbumResponse> findAllAlbumPublicByUserId(@Param("userId") String userId);
 
     @Query(value = """
-           SELECT ab.id, ab.title, ab.status FROM album ab
+           SELECT ab.id, ab.title, ab.status, (SELECT  COUNT(articles_album.id) FROM articles_album WHERE articles_album.articles_id = :articleId AND  articles_album.album_id = ab.id ) AS 'countArticle' FROM album ab
            LEFT JOIN articles_album arab ON ab.id = arab.album_id
            LEFT JOIN users us ON us.id = ab.users_id
            WHERE ab.users_id LIKE :userId
-           GROUP BY ab.id, ab.title, ab.status, ab.created_date, us.name , us.img
+           GROUP BY ab.id, ab.title, ab.status
            ORDER BY ab.created_date DESC 
             """, nativeQuery = true)
-    List<SimpleAlbumProjRequest> findAllSimpleAllBumByUserId(@Param("userId") String userId);
+    List<SimpleAlbumProjRequest> findAllSimpleAllBumByUserId(@Param("userId") String userId, @Param("articleId") String articleId);
 
 }

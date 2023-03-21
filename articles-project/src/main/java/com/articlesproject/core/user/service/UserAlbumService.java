@@ -26,7 +26,7 @@ public interface UserAlbumService {
 
     List<UserAlbumResponse> findAllAlbumPublicByUserId(String userId);
 
-    List<SimpleAlbumProjRequest> findAllSimpleAllBumByUserId(String userId);
+    List<SimpleAlbumProjRequest> findAllSimpleAllBumByUserId(String userId, String articleId);
 
     Album create(UserCreateAlbumRequest request, String userId);
 

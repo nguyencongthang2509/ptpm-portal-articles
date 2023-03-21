@@ -36,12 +36,6 @@ public class UserTymServiceImpl implements UserTymService {
 
     @Override
     public Tyms favoriteArticle(String userId, UserCreateTymRequest request) {
-        Optional<Articles> articles = articleRepository.findById(request.getArticlesId());
-        if(!articles.isPresent()){
-            throw new RestApiException(Message.ARTICLE_NOT_EXIT);
-        }
-        articles.get().setTym(articles.get().getTym() + 1);
-        articleRepository.save(articles.get());
         Tyms tyms = new Tyms();
         tyms.setArticleId(request.getArticlesId());
         tyms.setUsersId(userId);
@@ -50,12 +44,6 @@ public class UserTymServiceImpl implements UserTymService {
 
     @Override
     public boolean unfavoriteArticle(String userId, String articleId) {
-        Optional<Articles> articles = articleRepository.findById(articleId);
-        if(!articles.isPresent()){
-            throw new RestApiException(Message.ARTICLE_NOT_EXIT);
-        }
-        articles.get().setTym(articles.get().getTym() - 1);
-        articleRepository.save(articles.get());
         tymRepository.deleteByUsersIdAndArticleId(userId, articleId);
         return true;
     }

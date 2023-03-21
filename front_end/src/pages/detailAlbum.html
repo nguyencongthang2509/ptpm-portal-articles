@@ -1,0 +1,87 @@
+<div class="">
+  <h1>{{album.title}}</h1>
+</div>
+<div class="row gy-4">
+  <div class="col-md-4" data-aos="fade-up" ng-repeat="ar in listArticle">
+    <div class="card-custom rounded-4 bg-base shadow-effect" style="height: 350px;">
+      <div class="card-custom-image rounded-4">
+        <img class="rounded-4" src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.png"
+          alt="Image" style="max-height: 200px;width: 100%;object-fit: cover;" />
+      </div>
+      <div class="card-custom-content p-4">
+        <p class="text-brand mb-2">{{ar.browseDate| date:'dd/MM/yyyy'}}</p>
+        <h5 class="mb-4" style="overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;">{{ar.title}}</h5>
+        <a href="#article/{{ar.id}}" class="link-custom pe-3">Read More</a>
+        <a data-ng-click="favoriteArticle(ar.id, $index)" ng-if="ar.favorite == 0"><i class="bx bx-heart"></i>
+          {{ar.tym}}</a>
+        <a data-ng-click="unfavoriteArticle(ar.id, $index)" ng-if="ar.favorite == 1"><i class='bx bxs-heart'></i>
+          {{ar.tym}}</a>
+        <div class="cham">
+          <i class="bi bi-three-dots-vertical" style="margin: 0px; width: 12%" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false"></i>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li>
+              <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteArticleAlbum"
+                ng-click="showModalAddArticleToAlbum($index)">Xóa Bài viết </a>
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        Đặt Tên
+                      </h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">hhhh</div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                      </button>
+                      <button type="button" class="btn btn-primary">
+                        Save changes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
+                data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Ẩn bài viết</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
+                data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Báo Cáo</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- begin delete article album -->
+<div class="modal fade" id="deleteArticleAlbum" tabindex="-1" aria-labelledby="addArticleAlbum" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xóa bài viết khỏi album</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">Bạn có muốn xóa article {{article.title}}</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="deleteArticleInAlbum(article.id)">
+          Xóa
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- end delete article album -->

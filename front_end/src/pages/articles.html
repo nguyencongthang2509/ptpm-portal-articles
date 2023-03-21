@@ -522,7 +522,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Save to...</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" ng-click="closeFormAddAlbum()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <input type="text" class="form-control"  ng-change="searchAlbum()" ng-model="nameAlbum" placeholder="Nhập tên album"/>

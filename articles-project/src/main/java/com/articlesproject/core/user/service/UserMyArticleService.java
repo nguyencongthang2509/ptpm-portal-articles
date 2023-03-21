@@ -11,11 +11,11 @@ import com.articlesproject.entity.Articles;
 import java.io.IOException;
 
 public interface UserMyArticleService {
-    PageableObject<UserMyArticleResponse> getAllMyArticle(final UserMyArticleRequest request, String idUser);
+    PageableObject<UserMyArticleResponse> getAllMyArticle(final UserMyArticleRequest request, String userId);
 
     Articles updateArticle(String id, UserUpdateArticleRequest request) throws IOException;
 
-    UserArticleResponse getArticleById(String id);
+    UserArticleResponse getArticleById(String id, String userId);
 
     Articles addArticle(UserCreateArticleRequest request) throws IOException;
 

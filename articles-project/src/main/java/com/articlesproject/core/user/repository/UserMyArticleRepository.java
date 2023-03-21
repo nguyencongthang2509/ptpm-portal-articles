@@ -13,22 +13,26 @@ import java.util.Optional;
 
 public interface UserMyArticleRepository extends ArticlesRepository {
     @Query(value = """
-            SELECT ar.id, ar.title, ar.browse_date, ar.tym , GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 
+            SELECT ar.id, ar.title, ar.browse_date, COUNT(tyms.article_id) AS 'tym' , IF((SELECT SUM(IF(ty.article_id IS NULL, 0, 1))  FROM tyms ty
+                        WHERE (:userId IS NULL OR ty.users_id = :userId) AND ty.article_id = ar.id) IS NULL,0,1) AS 'favorite'  , GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 
                                     FROM articles ar
                                     LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
                                     LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
-                                    WHERE ar.users_id = :idUser
-                                    GROUP BY  ar.id, ar.title, ar.browse_date, ar.tym
+                                    LEFT JOIN tyms ON tyms.article_id = ar.id
+                                    WHERE ar.users_id = :userId
+                                    GROUP BY  ar.id, ar.title, ar.browse_date
             """, nativeQuery = true)
-    Page<UserMyArticleResponse> getAllMyArticle(Pageable page, @Param("idUser") String idUser);
+    Page<UserMyArticleResponse> getAllMyArticle(Pageable page, @Param("userId") String userId);
 
     @Query(value = """
-            SELECT ar.id, ar.title, ar.browse_date, ar.tym,  GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 
+            SELECT ar.id, ar.title, ar.browse_date, COUNT(tyms.article_id) AS 'tym', IF((SELECT SUM(IF(ty.article_id IS NULL, 0, 1))  FROM tyms ty
+                        WHERE (:userId IS NULL OR ty.users_id = :userId) AND ty.article_id = ar.id) IS NULL,0,1) AS 'favorite'  , GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 
                         FROM articles ar
                         LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
                         LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
+                        LEFT JOIN tyms ON tyms.article_id = ar.id
                         WHERE ar.id = :id
-                        GROUP BY  ar.id, ar.title, ar.browse_date, ar.tym
+                        GROUP BY  ar.id, ar.title, ar.browse_date
             """, nativeQuery = true)
-    Optional<UserArticleResponse> findArticleById(@Param("id") String id);
+    Optional<UserArticleResponse> findArticleById(@Param("id") String id, @Param("userId") String userId);
 }

@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public  class UserFindArticleRequest extends PageableRequest {
+public final class UserFindArticleRequest extends PageableRequest {
 
     private String title;
 

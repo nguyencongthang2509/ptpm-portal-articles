@@ -20,7 +20,7 @@ public interface UserArticleResponse extends IsIdentified {
     Long getBrowseDate();
 
     @Value("#{target.tym}")
-    Integer getTym();
+    int getTym();
 
     @Value("#{target.hashtags}")
     String getHashtags();

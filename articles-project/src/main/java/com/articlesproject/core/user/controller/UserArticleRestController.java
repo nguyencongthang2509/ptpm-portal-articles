@@ -29,7 +29,7 @@ public class UserArticleRestController extends BaseController {
     }
 
     @GetMapping("/search")
-    public ResponseObject findAllArticle(@RequestBody UserFindArticleRequest request) {
+    public ResponseObject findAllArticle(final UserFindArticleRequest request) {
         return new ResponseObject(userArticleService.FindAllArticle(userId,request));
     }
 

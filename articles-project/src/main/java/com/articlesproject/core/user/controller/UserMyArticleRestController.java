@@ -43,9 +43,9 @@ public class UserMyArticleRestController extends BaseController {
 
     @GetMapping("")
     public ResponseEntity<PageableObject<UserMyArticleResponse>> getAllMyArticle(final UserMyArticleRequest request) {
-        String idUser = id;
+        String userId = id;
 
-        PageableObject<UserMyArticleResponse> listMyArticle = userMyArticleService.getAllMyArticle(request, idUser);
+        PageableObject<UserMyArticleResponse> listMyArticle = userMyArticleService.getAllMyArticle(request, userId);
         return ResponseEntity.ok(listMyArticle);
     }
 
@@ -66,12 +66,14 @@ public class UserMyArticleRestController extends BaseController {
 
     @GetMapping("/detail-update-my-article/{id}")
     public ResponseObject detailUpdateMyArticle(@PathVariable("id") String id) {
-        return new ResponseObject(userMyArticleService.getArticleById(id));
+        String userId = this.id;
+        return new ResponseObject(userMyArticleService.getArticleById(id, userId));
     }
 
     @GetMapping("/detail-my-article/{id}")
     public ResponseObject detailMyArticle(@PathVariable("id") String id) {
-        return new ResponseObject(userMyArticleService.getArticleById(id));
+        String userId = this.id;
+        return new ResponseObject(userMyArticleService.getArticleById(id, userId));
     }
 
     @DeleteMapping("/delete-article/{id}")

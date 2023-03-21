@@ -54,10 +54,9 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
     private final FormUtils formUtils = new FormUtils();
 
     @Override
-    public PageableObject<UserMyArticleResponse> getAllMyArticle(UserMyArticleRequest request, String idUser) {
-        Optional<Users> users = userRepository.findById(idUser);
+    public PageableObject<UserMyArticleResponse> getAllMyArticle(UserMyArticleRequest request, String userId) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
-        Page<UserMyArticleResponse> res = userMyArticleRepository.getAllMyArticle(pageable, users.get().getId());
+        Page<UserMyArticleResponse> res = userMyArticleRepository.getAllMyArticle(pageable, userId);
         return new PageableObject<>(res);
     }
 
@@ -114,8 +113,8 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
     }
 
     @Override
-    public UserArticleResponse getArticleById(String id) {
-        Optional<UserArticleResponse> articles = userMyArticleRepository.findArticleById(id);
+    public UserArticleResponse getArticleById(String id, String userId) {
+        Optional<UserArticleResponse> articles = userMyArticleRepository.findArticleById(id, userId);
         if (!articles.isPresent()) {
             throw new RestApiException(Message.ERROR_UNKNOWN);
         }

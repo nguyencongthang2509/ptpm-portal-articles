@@ -26,6 +26,7 @@ window.articleCtrl = function (
   });
   ArticleService.fetchArticles().then(function () {
     $scope.listArticle = ArticleService.getArticle();
+    console.log($scope.listArticle );
   });
 
   // begin album
@@ -95,6 +96,11 @@ window.articleCtrl = function (
       })
       $scope.listAlbum = albums
     }
+  };
+  $scope.closeFormAddAlbum = function () {
+    document.querySelectorAll("input:checked").forEach(item => {
+      item.checked = false;
+    });
   };
 //  end album
 

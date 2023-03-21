@@ -16,9 +16,6 @@ public interface UserArticleTrashResponse extends IsIdentified {
     @Value("#{target.browse_date}")
     String getBrowseDate();
 
-    @Value("#{target.tym}")
-    Integer getTym();
-
     @Value("#{target.status}")
     Integer getStatus();
 

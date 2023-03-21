@@ -124,7 +124,6 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
     @Override
     public Articles addArticle(UserCreateArticleRequest request) throws IOException {
         Articles ar = formUtils.convertToObject(Articles.class, request);
-        ar.setTym(0);
         ar.setStatus(ArticleStatus.MOI_TAO);
         userMyArticleRepository.save(ar);
         String currentDirectory1 = System.getProperty("user.dir");

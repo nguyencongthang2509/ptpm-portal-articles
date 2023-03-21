@@ -23,5 +23,7 @@ public interface UserMyArticleResponse extends IsIdentified {
     @Value("#{target.hashtags}")
     String getHashtags();
 
+    @Value("#{target.status}")
+    Integer getStatus();
 
 }

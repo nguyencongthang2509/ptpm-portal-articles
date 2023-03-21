@@ -28,4 +28,7 @@ public interface UserArticleResponse extends IsIdentified {
     @Value("#{target.favorite}")
     int getFavorite();
 
+    @Value("#{target.status}")
+    Integer getStatus();
+
 }

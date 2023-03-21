@@ -12,20 +12,10 @@ import com.articlesproject.core.user.service.UserMyArticleService;
 import com.articlesproject.entity.Articles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.Base64;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 @RestController
 @RequestMapping("/api/my-article")
@@ -44,7 +34,6 @@ public class UserMyArticleRestController extends BaseController {
     @GetMapping("")
     public ResponseEntity<PageableObject<UserMyArticleResponse>> getAllMyArticle(final UserMyArticleRequest request) {
         String idUser = id;
-
         PageableObject<UserMyArticleResponse> listMyArticle = userMyArticleService.getAllMyArticle(request, idUser);
         return ResponseEntity.ok(listMyArticle);
     }
@@ -57,7 +46,7 @@ public class UserMyArticleRestController extends BaseController {
         return new ResponseObject("Add article successfully!");
     }
 
-    @PutMapping("/update-article/{id}")
+        @PutMapping("/update-article/{id}")
     public ResponseObject updateArticle(@PathVariable("id") String id, @RequestBody UserUpdateArticleRequest request) throws IOException {
         Articles articles = userMyArticleService.updateArticle(id, request);
         articleHashtagService.updateTagsArticle(request.getHashtag(), articles.getId());

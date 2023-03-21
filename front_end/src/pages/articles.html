@@ -12,19 +12,34 @@
     </div>
     <div class="row gy-4">
       <div class="col-md-4" data-aos="fade-up" ng-repeat="ar in listArticle">
-        <div class="card-custom rounded-4 bg-base shadow-effect" style="height: 350px;">
+        <div
+          class="card-custom rounded-4 bg-base shadow-effect"
+          style="height: 350px"
+        >
           <div class="card-custom-image rounded-4">
-            <img class="rounded-4" src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.png" alt="Image" style="max-height: 200px;width: 100%;object-fit: cover;"/>
+            <a href="#article/{{ar.id}}">
+              <img
+                class="rounded-4"
+                src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.png"
+                alt="Image"
+                style="max-height: 200px; width: 100%; object-fit: cover"
+              />
+            </a>
           </div>
           <div class="card-custom-content p-4">
             <p class="text-brand mb-2">{{ar.browseDate| date:'dd/MM/yyyy'}}</p>
-            <h5 class="mb-4" style="overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;">{{ar.title}}</h5>
-            <a href="#article/{{ar.id}}" class="link-custom pe-3">Read More</a>
-            <a  role="button"
-              ><i class="bx bx-heart"></i> {{ar.tym}}</a
+            <h5
+              class="mb-4"
+              style="
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              "
             >
+              {{ar.title}}
+            </h5>
+            <a href="#article/{{ar.id}}" class="link-custom pe-3">Read More</a>
+            <a role="button"><i class="bx bx-heart"></i> {{ar.tym}}</a>
             <div class="cham">
               <i
                 class="bi bi-three-dots-vertical"
@@ -108,7 +123,7 @@
     </div>
   </div>
 </section>
-<section id="home">
+<!-- <section id="home">
   <div class="container-fluid pt-5">
     <div class="row">
       <div data-test="post-card-item-en" class="sc-bdvvtL dKPyhr">
@@ -763,4 +778,4 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->

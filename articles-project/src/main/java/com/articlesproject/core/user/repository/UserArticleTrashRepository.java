@@ -1,18 +1,12 @@
 package com.articlesproject.core.user.repository;
 
 
-import com.articlesproject.core.user.model.request.UserArticleRequest;
-import com.articlesproject.core.user.model.request.UserFindArticleRequest;
-import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.core.user.model.response.UserArticleTrashResponse;
-import com.articlesproject.core.user.model.response.UserMyArticleResponse;
 import com.articlesproject.repository.ArticlesRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
-import java.util.Optional;
 
 public interface UserArticleTrashRepository extends ArticlesRepository {
     @Query(value = "SELECT a.id, a.title, a.browse_date, a.tym, a.status, \n" +

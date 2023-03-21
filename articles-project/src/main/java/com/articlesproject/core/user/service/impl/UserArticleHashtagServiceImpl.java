@@ -47,29 +47,31 @@ public class UserArticleHashtagServiceImpl implements UserArticleHashtagService 
     public boolean updateTagsArticle(String[] hashtags, String articleId) {
         List<ArticlesHashtag> currentArticlesHashtags = articleHashtagRepository.findByArticlesId(articleId);
 
-        // Tạo một danh sách mới để lưu trữ các từ khóa
-        List<String> newHashtags = new ArrayList<>(Arrays.asList(hashtags));
-
-        // Duyệt qua danh sách ArticlesHashtag hiện tại và xoá các từ khóa không còn trong danh sách mới
-        currentArticlesHashtags.stream()
-                .filter(current -> !newHashtags.contains(current.getHashtagId()))
-                .forEach(current -> articleHashtagRepository.delete(current));
-
-        // Duyệt qua danh sách từ khóa mới và thêm mới hoặc cập nhật lại các ArticlesHashtag tương ứng
-        newHashtags.forEach(title -> {
-            Hashtag hashtag = hashtagRepository.findByTitle(title.toLowerCase());
-            ArticlesHashtag articlesHashtag = new ArticlesHashtag();
-            articlesHashtag.setArticlesId(articleId);
-            if (hashtag != null) {
-                articlesHashtag.setHashtagId(hashtag.getId());
-            } else {
-                Hashtag newHashtag = new Hashtag();
-                newHashtag.setTitle(title);
-                hashtagRepository.save(newHashtag);
-                articlesHashtag.setHashtagId(newHashtag.getId());
-            }
-            articleHashtagRepository.save(articlesHashtag);
-        });
+        if (currentArticlesHashtags == null) {
+            return false;
+        }
+        try {
+            List<String> newHashtags = new ArrayList<>(Arrays.asList(hashtags));
+            currentArticlesHashtags.stream()
+                    .filter(current -> !newHashtags.contains(current.getHashtagId()))
+                    .forEach(current -> articleHashtagRepository.delete(current));
+            newHashtags.forEach(title -> {
+                Hashtag hashtag = hashtagRepository.findByTitle(title.toLowerCase());
+                ArticlesHashtag articlesHashtag = new ArticlesHashtag();
+                articlesHashtag.setArticlesId(articleId);
+                if (hashtag != null) {
+                    articlesHashtag.setHashtagId(hashtag.getId());
+                } else {
+                    Hashtag newHashtag = new Hashtag();
+                    newHashtag.setTitle(title);
+                    hashtagRepository.save(newHashtag);
+                    articlesHashtag.setHashtagId(newHashtag.getId());
+                }
+                articleHashtagRepository.save(articlesHashtag);
+            });
+        } catch (NullPointerException e) {
+//            e.printStackTrace();
+        }
         return true;
     }
 }

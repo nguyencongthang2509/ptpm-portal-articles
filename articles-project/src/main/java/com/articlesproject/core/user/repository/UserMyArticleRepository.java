@@ -13,11 +13,12 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface UserMyArticleRepository extends ArticlesRepository {
-    @Query(value = "SELECT a.id, a.title, a.browse_date, a.tym, \n" +
-            "GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' FROM articles a\n" +
-            "            LEFT JOIN articles_hashtag  arha ON a.id = arha.articles_id\n" +
-            "            LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id where a.users_id = :idUser" +
-            " GROUP BY  a.id, a.title, a.browse_date, a.tym ", nativeQuery = true)
+    @Query(value = "SELECT a.id, a.title, a.browse_date, a.tym, a.status, \n" +
+            " GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' FROM articles a\n" +
+            " LEFT JOIN articles_hashtag  arha ON a.id = arha.articles_id\n" +
+            " LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id WHERE a.users_id = :idUser" +
+            " AND a.status = 1 OR a.status = 2 OR a.status = 3 OR a.status = 4" +
+            " GROUP BY  a.id, a.title, a.browse_date, a.tym, a.status ", nativeQuery = true)
     Page<UserMyArticleResponse> getAllMyArticle(Pageable page, @Param("idUser") String idUser);
 
     @Query(value = """

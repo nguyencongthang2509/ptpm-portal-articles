@@ -37,16 +37,9 @@ public class UserArticleServiceImpl implements UserArticleService {
     private final FormUtils formUtils = new FormUtils();
 
     @Override
-    public PageableObject<UserArticleResponse> getAllArticle(final UserArticleRequest request) {
+    public PageableObject<UserArticleResponse> findAllArticle(String userId,final UserFindArticleRequest request) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
-        Page<UserArticleResponse> res = userArticleRepository.getAllArticle(pageable, request);
-        return new PageableObject<>(res);
-    }
-
-    @Override
-    public PageableObject<UserArticleResponse> FindAllArticle(String userId,final UserFindArticleRequest request) {
-        Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
-        Page<UserArticleResponse> res = userArticleRepository.FindAllArticle(pageable,userId, request);
+        Page<UserArticleResponse> res = userArticleRepository.findAllArticle(pageable,userId, request);
         return new PageableObject<>(res);
     }
 

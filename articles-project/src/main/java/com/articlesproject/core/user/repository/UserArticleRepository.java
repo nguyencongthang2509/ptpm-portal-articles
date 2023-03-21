@@ -13,24 +13,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface UserArticleRepository extends ArticlesRepository {
-    @Query(value = """
-           SELECT ar.id, ar.title, ar.browse_date,  COUNT(tyms.article_id) AS 'tym', IF((SELECT SUM(IF(ty.article_id IS NULL, 0, 1))  FROM tyms ty
-                        WHERE (:#{#request.userId} IS NULL OR ty.users_id = :#{#request.userId}) AND ty.article_id = ar.id) IS NULL,0,1) AS 'favorite'  , GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 
-                        FROM articles ar
-                        LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
-                        LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
-                        LEFT JOIN tyms ON tyms.article_id = ar.id
-                        GROUP BY  ar.id, ar.title, ar.browse_date
-            """,
-            countQuery = """
-                    SELECT COUNT(ar.id) FROM articles ar
-                    LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
-                    LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
-                    LEFT JOIN tyms ON tyms.article_id = ar.id
-                    GROUP BY  ar.id, ar.title, ar.browse_date
-                            """
-            , nativeQuery = true)
-    Page<UserArticleResponse> getAllArticle(Pageable page,  @Param("request") UserArticleRequest req);
 
     @Query(value = """
             
@@ -92,5 +74,5 @@ public interface UserArticleRepository extends ArticlesRepository {
                     GROUP BY  ar.id, ar.title, ar.browse_date,  aral.articles_id
                                     """
             , nativeQuery = true)
-    Page<UserArticleResponse> FindAllArticle(Pageable page, @Param("userId") String userId, @Param("request") UserFindArticleRequest request);
+    Page<UserArticleResponse> findAllArticle(Pageable page, @Param("userId") String userId, @Param("request") UserFindArticleRequest request);
 }

@@ -22,15 +22,10 @@ public class UserArticleRestController extends BaseController {
     @Autowired
     private UserArticleService userArticleService;
 
-    @GetMapping("")
-    public ResponseObject getAllArticle(final UserArticleRequest request) {
-        request.setUserId(userId);
-        return new ResponseObject(userArticleService.getAllArticle( request));
-    }
 
-    @GetMapping("/search")
+    @GetMapping("")
     public ResponseObject findAllArticle(final UserFindArticleRequest request) {
-        return new ResponseObject(userArticleService.FindAllArticle(userId,request));
+        return new ResponseObject(userArticleService.findAllArticle(userId,request));
     }
 
     @GetMapping("/{id}")

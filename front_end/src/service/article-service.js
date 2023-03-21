@@ -32,7 +32,7 @@ app.service("ArticleService", function ($http) {
 
   this.fetchFindByArticle = function (findArticleRequest) {
 
-    return $http.get(articleAPI + `/search?albumId=`+findArticleRequest.albumId+`&title=`+findArticleRequest.title+`&hashtag=`+ findArticleRequest.hashtag).then(
+    return $http.get(articleAPI + `?albumId=`+findArticleRequest.albumId+`&title=`+findArticleRequest.title+`&hashtag=`+ findArticleRequest.hashtag).then(
       function (response) {
         if (response.status === 200) {
           findByArticle = response.data.data.data;

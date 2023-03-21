@@ -1,5 +1,6 @@
 app.service("UserService", function ($http, env) {
     var user = {};
+    var profileAuthor = {}
 
 
     this.getUser = function () {
@@ -7,6 +8,13 @@ app.service("UserService", function ($http, env) {
     };
     this.setUser = function (data) {
         user = data;
+    };
+
+    this.getProfileAuthor = function () {
+        return profileAuthor;
+    };
+    this.setProfileAuthor = function (data) {
+        profileAuthor = data;
     };
 
     this.fetchDetailUser = function () {
@@ -23,6 +31,20 @@ app.service("UserService", function ($http, env) {
         );
     };
 
+
+    this.fetchProfileAuthor = function (id) {
+        return $http.get(env.API_URL + "/user/detail/"+ id).then(
+            function (response) {
+                response.data.data.map(item =>{
+                    profileAuthor = item;
+                })
+                return response;
+            },
+            function (errors) {
+                console.log(errors);
+            }
+        );
+    };
 
 });
 

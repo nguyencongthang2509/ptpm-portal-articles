@@ -3,6 +3,7 @@ package com.articlesproject.core.user.repository;
 import com.articlesproject.core.user.model.response.SimpleAlbumProjRequest;
 import com.articlesproject.core.user.model.response.UserAlbumResponse;
 import com.articlesproject.core.user.model.response.UserArticleAlbumResponse;
+import com.articlesproject.entity.Album;
 import com.articlesproject.repository.AlbumRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -39,4 +40,5 @@ public interface UserAlbumRepository extends AlbumRepository {
             """, nativeQuery = true)
     List<SimpleAlbumProjRequest> findAllSimpleAllBumByUserId(@Param("userId") String userId, @Param("articleId") String articleId);
 
+    Album findByIdAndUsersId(String id, String userId);
 }

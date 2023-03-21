@@ -22,7 +22,7 @@
           <i class="bi bi-three-dots-vertical" style="margin: 0px; width: 12%" id="dropdownMenuButton1"
             data-bs-toggle="dropdown" aria-expanded="false"></i>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li>
+            <li ng-if="author">
               <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteArticleAlbum"
                 ng-click="showModalAddArticleToAlbum($index)">Xóa Bài viết </a>
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -48,7 +48,7 @@
                 </div>
               </div>
             </li>
-            <li>
+            <li ng-if="author">
               <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
                 data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Ẩn bài viết</a>
             </li>

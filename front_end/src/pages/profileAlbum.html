@@ -1,5 +1,5 @@
 <div class="">
-  <div class="row" style="justify-content: flex-end; margin-bottom: 20px">
+  <div ng-if="authen" class="row" style="justify-content: flex-end; margin-bottom: 20px">
     <i class="bi bi-folder-plus" data-bs-toggle="modal" data-bs-target="#createAlbum"
       style="width: 8%; margin-top: 0px"></i>
   </div>
@@ -42,11 +42,11 @@
                   <i class="bi bi-three-dots-vertical" style="margin: 0px; width: 12%" id="dropdownMenuButton1"
                     data-bs-toggle="dropdown" aria-expanded="false"></i>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li>
+                    <li ng-if="authen">
                       <a class="dropdown-item" href="#" ng-click="detailAlbum($index, album.id)" data-bs-toggle="modal"
                         data-bs-target="#updateAlbumModal">Sửa</a>
                     </li>
-                    <li>
+                    <li ng-if="authen">
                       <a class="dropdown-item" href="#" ng-click="detailAlbum($index, album.id)" data-bs-toggle="modal"
                         data-bs-target="#deleteAlbumModal">Xóa</a>
                     </li>
@@ -125,11 +125,11 @@
             <div class="mb-3">
               <label for="exampleInputTitle" class="form-label">Title:</label>
               <input type="text" class="form-control" name="title" id="exampleInputPassword1" required
-                ng-model="album.title" minlength="6" />
+                ng-model="album.title" minlength="2" />
               <span class="text-danger" ng-show="formUpdate.title.$error.required && formUpdate.title.$touched">vui lòng
                 nhập title</span>
               <span class="text-danger" ng-show="formUpdate.title.$error.minlength">
-                Vui lòng nhập ít nhất 6 kí tự
+                Vui lòng nhập ít nhất 2 kí tự
               </span>
             </div>
             <div class="mb-3">

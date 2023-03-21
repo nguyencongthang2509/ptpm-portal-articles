@@ -7,9 +7,9 @@ window.articleCtrl = function (
   env,
   AlbumService
 ) {
-  $scope.listArticle = []
+  $scope.listArticle = [];
   $scope.listAlbum = [];
-  $scope.listAlbumDefault = []
+  $scope.listAlbumDefault = [];
   $scope.nameAlbum = "";
   $scope.UserCreateArticle = {
     articlesId: "",
@@ -26,7 +26,7 @@ window.articleCtrl = function (
   });
   ArticleService.fetchArticles().then(function () {
     $scope.listArticle = ArticleService.getArticle();
-    console.log($scope.listArticle );
+    console.log($scope.listArticle);
   });
 
   // begin album
@@ -35,7 +35,7 @@ window.articleCtrl = function (
     $scope.UserCreateArticle.articlesId = id;
     AlbumService.fetchSimpleAlbums(id).then(function () {
       $scope.listAlbum = AlbumService.getSimpleAlbums();
-      $scope.listAlbumDefault =  AlbumService.getSimpleAlbums();
+      $scope.listAlbumDefault = AlbumService.getSimpleAlbums();
     });
   };
 
@@ -68,8 +68,10 @@ window.articleCtrl = function (
       $http
         .post(env.API_URL + "/album/create", $scope.createAlbumRequest)
         .then(function (respone) {
-          $scope.listAlbum.push(respone.data.data);
-          $scope.listAlbumDefault.push(respone.data.data);
+          $scope.album = respone.data.data;
+          $scope.album1 = respone.data.data;
+          $scope.listAlbumDefault.push($scope.album1);
+          $scope.listAlbum.push($scope.album);
           $scope.createAlbumRequest = { title: "" };
         });
     }
@@ -82,53 +84,52 @@ window.articleCtrl = function (
     document.getElementById("createAlbum").style.display = "none";
   };
 
-  
   $scope.searchAlbum = function () {
-    $scope.listAlbum = $scope.listAlbumDefault 
+    $scope.listAlbum = $scope.listAlbumDefault;
     if ($scope.nameAlbum.trim() == "") {
-      $scope.listAlbum = $scope.listAlbumDefault 
+      $scope.listAlbum = $scope.listAlbumDefault;
     } else {
-      var albums = []
-      $scope.listAlbum.map(item =>{
-        if(item.title !== null && item.title.includes($scope.nameAlbum)){
+      var albums = [];
+      $scope.listAlbum.map((item) => {
+        if (item.title !== null && item.title.includes($scope.nameAlbum)) {
           albums.push(item);
         }
-      })
-      $scope.listAlbum = albums
+      });
+      $scope.listAlbum = albums;
     }
   };
   $scope.closeFormAddAlbum = function () {
-    document.querySelectorAll("input:checked").forEach(item => {
+    document.querySelectorAll("input:checked").forEach((item) => {
       item.checked = false;
     });
   };
-//  end album
+  //  end album
 
-// begin tym article
-$scope.favoriteArticle = function (id, index) {
-  $scope.createTymRequest = {
-    articlesId: id
-  }
+  // begin tym article
+  $scope.favoriteArticle = function (id, index) {
+    $scope.createTymRequest = {
+      articlesId: id,
+    };
     $http
-      .post(env.API_URL + "/tym/favorite-article",  $scope.createTymRequest)
+      .post(env.API_URL + "/tym/favorite-article", $scope.createTymRequest)
       .then(function (respone) {
-        $scope.article = $scope.listArticle[index]
-        $scope.article.tym += 1
-        $scope.article.favorite = 1
-        $scope.listArticle.splice(index,1, $scope.article)
+        $scope.article = $scope.listArticle[index];
+        $scope.article.tym += 1;
+        $scope.article.favorite = 1;
+        $scope.listArticle.splice(index, 1, $scope.article);
       });
-};
-$scope.unfavoriteArticle = function (id, index) {
-  if($scope.listArticle[index].tym >= 0){
-    $http
-    .delete(env.API_URL + "/tym/unfavorite-article/"+id)
-    .then(function (respone) {
-      $scope.article = $scope.listArticle[index]
-        $scope.article.tym -= 1
-        $scope.article.favorite = 0
-        $scope.listArticle.splice(index,1, $scope.article)
-    });
-  }
-};
-// end tym article
+  };
+  $scope.unfavoriteArticle = function (id, index) {
+    if ($scope.listArticle[index].tym >= 0) {
+      $http
+        .delete(env.API_URL + "/tym/unfavorite-article/" + id)
+        .then(function (respone) {
+          $scope.article = $scope.listArticle[index];
+          $scope.article.tym -= 1;
+          $scope.article.favorite = 0;
+          $scope.listArticle.splice(index, 1, $scope.article);
+        });
+    }
+  };
+  // end tym article
 };

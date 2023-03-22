@@ -25,8 +25,40 @@ window.articleCtrl = function (
     $scope.listCategory = CategoryService.getCategory();
   });
   ArticleService.fetchArticles().then(function () {
-    $scope.listArticle = ArticleService.getArticle();
-    console.log($scope.listArticle);
+    // $scope.listArticle = ArticleService.getArticle();
+    // $scope.totalPages = ArticleService.getTotalPages();
+    // $scope.currentPage = ArticleService.getCurrentPage();
+    // console.log($scope.listArticle);
+    // console.log($scope.totalPages);
+    // console.log($scope.currentPage);
+    // $scope.setPage = function (page) {
+    //   $scope.currentPage = page;
+    //   ArticleService.setPage(page);
+    //   $scope.listArticle = ArticleService.getArticle();
+    // };
+    $scope.itemsPerPage = 2;
+    $scope.totalPages = Math.ceil(
+      ArticleService.getTotalPages() / $scope.itemsPerPage
+    );
+
+    console.log($scope.totalPages);
+    $scope.currentPage = ArticleService.getCurrentPage() + 1;
+    console.log($scope.currentPage);
+    $scope.listArticle = [];
+
+    $scope.$watch("currentPage", function () {
+      var startIndex = ($scope.currentPage - 1) * $scope.itemsPerPage;
+      var endIndex = $scope.currentPage * $scope.itemsPerPage;
+      $scope.listArticle = ArticleService.getArticle().slice(
+        startIndex,
+        endIndex
+      );
+    });
+
+    $scope.pages = [];
+    for (var i = 1; i <= $scope.totalPages; i++) {
+      $scope.pages.push(i);
+    }
   });
 
   // begin album
@@ -132,4 +164,11 @@ window.articleCtrl = function (
     }
   };
   // end tym article
+
+  // begin page article
+  // ArticleService.fetchPageArticles().then(function () {
+  //   $scope.listPageArticle = ArticleService.getPageArticle();
+  //   console.log($scope.listPageArticle.currentPage);
+  //   console.log($scope.listPageArticle.totalPages);
+  // });
 };

@@ -2,45 +2,99 @@
   <div class="container-fluid">
     <div class="bt pb-4">
       <button type="button" class="btn btn-light me-5">All</button>
-      <button type="button" class="btn btn-light me-5" ng-repeat="cate in listCategory">
+      <button
+        type="button"
+        class="btn btn-light me-5"
+        ng-repeat="cate in listCategory"
+      >
         {{cate.name}}
       </button>
     </div>
     <div class="row gy-4">
-      <div class="col-md-4" data-aos="fade-up" ng-repeat="ar in listArticle">
-        <div class="card-custom rounded-4 bg-base shadow-effect" style="height: 350px;">
+      <div
+        class="col-md-4"
+        data-aos="fade-up"
+        ng-repeat="ar in listArticle | limitTo:itemsPerPage"
+      >
+        <div
+          class="card-custom rounded-4 bg-base shadow-effect"
+          style="height: 350px"
+        >
           <div class="card-custom-image rounded-4">
-            <img class="rounded-4"
-                 src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.png" alt="Image"
-                 style="max-height: 200px;width: 100%;object-fit: cover;" />
+            <img
+              class="rounded-4"
+              src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.png"
+              alt="Image"
+              style="max-height: 200px; width: 100%; object-fit: cover"
+            />
           </div>
           <div class="card-custom-content p-4">
             <p class="text-brand mb-2">{{ar.browseDate| date:'dd/MM/yyyy'}}</p>
-            <h5 class="mb-4" style="overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;">{{ar.title}}</h5>
+            <h5
+              class="mb-4"
+              style="
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              "
+            >
+              {{ar.title}}
+            </h5>
             <a href="#article/{{ar.id}}" class="link-custom pe-3">Read More</a>
-            <a  data-ng-click="favoriteArticle(ar.id, $index)" ng-if="ar.favorite == 0"><i class="bx bx-heart"></i> {{ar.tym}}</a>
-            <a  data-ng-click="unfavoriteArticle(ar.id, $index)" ng-if="ar.favorite == 1"><i class='bx bxs-heart'></i> {{ar.tym}}</a>
+            <a
+              data-ng-click="favoriteArticle(ar.id, $index)"
+              ng-if="ar.favorite == 0"
+              ><i class="bx bx-heart"></i> {{ar.tym}}</a
+            >
+            <a
+              data-ng-click="unfavoriteArticle(ar.id, $index)"
+              ng-if="ar.favorite == 1"
+              ><i class="bx bxs-heart"></i> {{ar.tym}}</a
+            >
             <div class="cham">
-              <i class="bi bi-three-dots-vertical" style="margin: 0px; width: 12%" id="dropdownMenuButton1"
-                 data-bs-toggle="dropdown" aria-expanded="false"></i>
+              <i
+                class="bi bi-three-dots-vertical"
+                style="margin: 0px; width: 12%"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li>
-                  <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addArticleAlbum" ng-click="showModalAddArticleToAlbum(ar.id)">Thêm vào album</a>
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                       aria-hidden="true">
+                  <a
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addArticleAlbum"
+                    ng-click="showModalAddArticleToAlbum(ar.id)"
+                    >Thêm vào album</a
+                  >
+                  <div
+                    class="modal fade"
+                    id="exampleModal"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
                           <h1 class="modal-title fs-5" id="exampleModalLabel">
                             Đặt Tên
                           </h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
                         </div>
                         <div class="modal-body">hhhh</div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
                             Close
                           </button>
                           <button type="button" class="btn btn-primary">
@@ -52,22 +106,94 @@
                   </div>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
-                     data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Ẩn bài viết</a>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    ng-click="showConfirmDeleteAlbum($index, album.id)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteAlbumModal"
+                    >Ẩn bài viết</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
-                     data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Báo Cáo</a>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    ng-click="showConfirmDeleteAlbum($index, album.id)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteAlbumModal"
+                    >Báo Cáo</a
+                  >
                 </li>
               </ul>
             </div>
           </div>
         </div>
       </div>
+      <div class="pagination">
+        <ul class="pagination">
+          <!-- <li ng-class="{disabled: currentPage == 1}">
+            <a ng-click="currentPage = 1">First</a>
+          </li> -->
+          <li ng-class="{disabled: currentPage == 1}">
+            <a ng-click="currentPage = currentPage - 1">Prev</a>
+          </li>
+          <li
+            ng-repeat="page in pages"
+            ng-class="{active: currentPage == page}"
+          >
+            <a ng-click="currentPage = page">{{ page }}</a>
+          </li>
+          <li>
+            <!-- <input type="number" value="1"> <span>{{totalPages}}</span> -->
+          </li>
+          <li ng-class="{disabled: currentPage == totalPages}">
+            <a ng-click="currentPage = currentPage + 1">Next</a>
+          </li>
+          <!-- <li ng-class="{disabled: currentPage == totalPages}">
+            <a ng-click="currentPage = totalPages">Last</a>
+          </li> -->
+        </ul>
+      </div>
+      <!-- <nav class="page-custom" aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <button
+                class="page-link"
+                ng-disabled="currentPage == 1"
+                ng-click="currentPage = currentPage - 1"
+                href=""
+                aria-label="Previous"
+              >
+                <span aria-hidden="true">&laquo;</span>
+              </button>
+            </li>
+            <li
+              ng-repeat="n in genArray(totalPages()) track by $index"
+              ng-class="{ active: n == currentPage }"
+              ng-click="setCurrentPage(n)"
+              class="page-item"
+            >
+              <a class="page-link" href="">{{n}}</a>
+            </li>
+
+            <li class="page-item">
+              <button
+                class="page-link"
+                href=""
+                ng-disabled="currentPage >= totalPages()"
+                ng-click="currentPage = currentPage + 1"
+                aria-label="Next"
+              >
+                <span aria-hidden="true">&raquo;</span>
+              </button>
+            </li>
+          </ul>
+        </nav> -->
     </div>
   </div>
 </section>
-<section id="home">
+<!-- <section id="home">
   <div class="container-fluid pt-5">
     <div class="row">
       <div data-test="post-card-item-en" class="sc-bdvvtL dKPyhr">
@@ -514,10 +640,10 @@
     </div>
   </div>
   </div>
-</section>
+</section> -->
 
 <!-- begin add article album -->
-<div class="modal fade" id="addArticleAlbum" tabindex="-1" aria-labelledby="addArticleAlbum" aria-hidden="true">
+<!-- <div class="modal fade" id="addArticleAlbum" tabindex="-1" aria-labelledby="addArticleAlbum" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -573,5 +699,5 @@
 
     </div>
   </div>
-</div>
+</div> -->
 <!-- end add article album -->

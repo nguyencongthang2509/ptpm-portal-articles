@@ -67,7 +67,7 @@ public class UserMyArticleRestController extends BaseController {
     }
 
     @DeleteMapping("/delete-article/{id}")
-    public ResponseObject deleteArrticle(@PathVariable("id") String id) {
+    public ResponseObject deleteArticle(@PathVariable("id") String id) {
         return new ResponseObject(userMyArticleService.deleteArticle(id));
     }
 }

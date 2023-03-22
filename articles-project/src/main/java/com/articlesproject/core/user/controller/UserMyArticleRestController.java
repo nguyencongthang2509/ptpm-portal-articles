@@ -23,7 +23,7 @@ import java.io.IOException;
 public class UserMyArticleRestController extends BaseController {
 
     @Value("${app.UserId}")
-    private String id;
+    private String idUser;
 
     @Autowired
     private UserMyArticleService userMyArticleService;
@@ -32,16 +32,13 @@ public class UserMyArticleRestController extends BaseController {
     private UserArticleHashtagService articleHashtagService;
 
     @GetMapping("")
-    public ResponseEntity<PageableObject<UserMyArticleResponse>> getAllMyArticle(final UserMyArticleRequest request) {
-        String idUser = id;
-
-        PageableObject<UserMyArticleResponse> listMyArticle = userMyArticleService.getAllMyArticle(request, idUser);
-        return ResponseEntity.ok(listMyArticle);
+    public ResponseObject getAllMyArticle(final UserMyArticleRequest request) {
+        return new ResponseObject(userMyArticleService.getAllMyArticle(request, idUser));
     }
 
     @PostMapping("/create-article")
     public ResponseObject createArticle(@RequestBody UserCreateArticleRequest request) throws IOException {
-        request.setUsersId(id);
+        request.setUsersId(idUser);
         Articles articles = userMyArticleService.addArticle(request);
         articleHashtagService.addTagsArticle(request.getHashtag(), articles.getId());
         return new ResponseObject("Add article successfully!");
@@ -56,14 +53,12 @@ public class UserMyArticleRestController extends BaseController {
 
     @GetMapping("/detail-update-my-article/{id}")
     public ResponseObject detailUpdateMyArticle(@PathVariable("id") String id) {
-        String userId = this.id;
-        return new ResponseObject(userMyArticleService.getArticleById(id, userId));
+        return new ResponseObject(userMyArticleService.getArticleById(id, idUser));
     }
 
     @GetMapping("/detail-my-article/{id}")
     public ResponseObject detailMyArticle(@PathVariable("id") String id) {
-        String userId = this.id;
-        return new ResponseObject(userMyArticleService.getArticleById(id, userId));
+        return new ResponseObject(userMyArticleService.getArticleById(id, idUser));
     }
 
     @DeleteMapping("/delete-article/{id}")

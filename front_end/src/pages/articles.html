@@ -658,7 +658,7 @@
           <tbody style="display: block; height: 100px; overflow-y: scroll">
           <tr ng-repeat="album in listAlbum track by $index">
             <td><input class="form-check-input" type="checkbox" style="margin-right: 15px;" value="{{album.id}}"
-                       id="{{album.id}}" data-ng-click="addArticleToAlbum(album.id)" ng-checked="album.countArticle != 0"/></td>
+                       id="{{album.id}}" data-ng-click="addArticleToAlbum(album.id)" ng-checked="album.countArticle != 0 "/></td>
             <td>{{album.title}}</td>
             <td ng-if="album.status"><i class="bx bx-world"></i></td>
             <td ng-if="album.status == false"><i class="bi bi-incognito"></i></td>

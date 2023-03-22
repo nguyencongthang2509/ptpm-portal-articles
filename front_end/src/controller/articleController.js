@@ -101,8 +101,7 @@ window.articleCtrl = function (
         .post(env.API_URL + "/album/create", $scope.createAlbumRequest)
         .then(function (respone) {
           $scope.album = respone.data.data;
-          $scope.album1 = respone.data.data;
-          $scope.listAlbumDefault.push($scope.album1);
+          $scope.album.countArticle = 0
           $scope.listAlbum.push($scope.album);
           $scope.createAlbumRequest = { title: "" };
         });

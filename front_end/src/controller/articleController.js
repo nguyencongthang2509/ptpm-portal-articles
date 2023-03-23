@@ -38,34 +38,29 @@ window.articleCtrl = function (
 
   $scope.nextPage = function () {
     $scope.currentPage++;
-    $scope.pageModel = $scope.currentPage + 1;
-    ArticleService.fetchArticles($scope.pageModel).then(function (respone) {
+    if ($scope.currentPage >= $scope.totalPages) {
+      $scope.pageModel = $scope.totalPages;
+    }
+    ArticleService.fetchArticles($scope.currentPage).then(function (respone) {
       $scope.listArticle = ArticleService.getArticle();
-      $scope.totalPages = ArticleService.getTotalPages();
-      $scope.currentPage = ArticleService.getCurrentPage();
+      $scope.pageModel = $scope.currentPage + 1;
     });
-    console.log($scope.currentPage + "currentPagenextPage");
-    console.log($scope.pageModel + "pageModelnextPage");
   };
+
   $scope.prevPage = function () {
     $scope.currentPage--;
-    $scope.pageModel = $scope.currentPage - 1;
-    ArticleService.fetchArticles($scope.pageModel).then(function (respone) {
+    if ($scope.currentPage <= 0) {
+      $scope.currentPage = 0;
+    }
+    ArticleService.fetchArticles($scope.currentPage).then(function (respone) {
       $scope.listArticle = ArticleService.getArticle();
-      $scope.totalPages = ArticleService.getTotalPages();
-      $scope.currentPage = ArticleService.getCurrentPage();
-    });
-    console.log($scope.currentPage + "currentPageprevPage");
-    console.log($scope.pageModel + "pageModelprevPage");
-  };
-  $scope.inputChangeEvent = function () {
-    // console.log($scope.currentPage);
-    // console.log($scope.totalPages);
-    ArticleService.fetchArticles($scope.pageModel).then(function (respone) {
-      $scope.listArticle = ArticleService.getArticle();
-      $scope.totalPages = ArticleService.getTotalPages();
-      $scope.currentPage = ArticleService.getCurrentPage();
       $scope.pageModel = $scope.currentPage + 1;
+    });
+  };
+
+  $scope.inputChangeEvent = function () {
+    ArticleService.fetchArticles($scope.pageModel - 1).then(function (respone) {
+      $scope.listArticle = ArticleService.getArticle();
     });
   };
 

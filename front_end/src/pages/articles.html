@@ -1,5 +1,4 @@
 <section id="blog" class="full-height px-lg-5">
-  <!-- <div class="container-fluid"> -->
   <div class="bt pb-4">
     <button type="button" class="btn btn-light me-5">All</button>
     <button
@@ -25,7 +24,7 @@
           />
         </div>
         <div class="card-custom-content p-4">
-          <p class="text-brand mb-2">{{ar.browseDate| date:'dd/MM/yyyy'}}</p>
+          
           <h5
             class="mb-4"
             style="
@@ -122,181 +121,30 @@
                 >
               </li>
             </ul>
-        class="col-md-4"
-        data-aos="fade-up"
-        ng-repeat="ar in listArticle | limitTo:itemsPerPage"
-      >
-        <div
-          class="card-custom rounded-4 bg-base shadow-effect"
-          style="height: 350px"
-        >
-          <div class="card-custom-image rounded-4">
-            <img
-              class="rounded-4"
-              src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.png"
-              alt="Image"
-              style="max-height: 200px; width: 100%; object-fit: cover"
-            />
           </div>
-          <div class="card-custom-content p-4">
-            <p class="text-brand mb-2">{{ar.browseDate| date:'dd/MM/yyyy'}}</p>
-            <h5
-              class="mb-4"
-              style="
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              "
-            >
-              {{ar.title}}
-            </h5>
-            <a href="#article/{{ar.id}}" class="link-custom pe-3">Read More</a>
-            <a
-              data-ng-click="favoriteArticle(ar.id, $index)"
-              ng-if="ar.favorite == 0"
-              ><i class="bx bx-heart"></i> {{ar.tym}}</a
-            >
-            <a
-              data-ng-click="unfavoriteArticle(ar.id, $index)"
-              ng-if="ar.favorite == 1"
-              ><i class="bx bxs-heart"></i> {{ar.tym}}</a
-            >
-            <div class="row">
-              <div class=" col-10">
-                <div class="card__avatars cluster color-mid-text ">
-                  <img class="img"
-                    sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
-                    ng-src="{{ar.img}}" />
-                  <div class="flow flow-space-size-0 ">
-                    <div class="card__authors flow-space-base" aria-label="authors">
-                      <a href="#/users/{{ar.userId}}" class="text-dark">{{ar.name}}</a>
-                    </div>
-                    <time class="text-dark">{{ar.browseDate| date:'dd/MM/yyyy'}}</time>
-                  </div>
+          <div class="col-10">
+            <div class="card__avatars cluster color-mid-text">
+              <img
+                class="img"
+                sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
+                ng-src="{{ar.img}}"
+              />
+              <div class="flow flow-space-size-0">
+                <div class="card__authors flow-space-base" aria-label="authors">
+                  <a href="#/users/{{ar.userId}}" class="text-dark"
+                    >{{ar.name}}</a
+                  >
                 </div>
-              </div>
-              <div class="cham col-1">
-                <i
-                  class="bi bi-three-dots-vertical"
-                  style="margin: 0px; width: 12%"
-                  id="dropdownMenuButton1"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                ></i>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      data-bs-toggle="modal"
-                      data-bs-target="#addArticleAlbum"
-                      ng-click="showModalAddArticleToAlbum(ar.id)"
-                      >Thêm vào album</a
-                    >
-                    <div
-                      class="modal fade"
-                      id="exampleModal"
-                      tabindex="-1"
-                      aria-labelledby="exampleModalLabel"
-                      aria-hidden="true"
-                    >
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">
-                              Đặt Tên
-                            </h1>
-                            <button
-                              type="button"
-                              class="btn-close"
-                              data-bs-dismiss="modal"
-                              aria-label="Close"
-                            ></button>
-                          </div>
-                          <div class="modal-body">hhhh</div>
-                          <div class="modal-footer">
-                            <button
-                              type="button"
-                              class="btn btn-secondary"
-                              data-bs-dismiss="modal"
-                            >
-                              Close
-                            </button>
-                            <button type="button" class="btn btn-primary">
-                              Save changes
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                      ng-click="showConfirmDeleteAlbum($index, album.id)"
-                      data-bs-toggle="modal"
-                      data-bs-target="#deleteAlbumModal"
-                      >Ẩn bài viết</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                      ng-click="showConfirmDeleteAlbum($index, album.id)"
-                      data-bs-toggle="modal"
-                      data-bs-target="#deleteAlbumModal"
-                      >Báo Cáo</a
-                    >
-                  </li>
-                </ul>
-
+                <p class="text-brand mb-2">{{ar.browseDate| date:'dd/MM/yyyy'}}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- <nav class="page-custom" aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item">
-              <button
-                class="page-link"
-                ng-disabled="currentPage == 1"
-                ng-click="currentPage = currentPage - 1"
-                href=""
-                aria-label="Previous"
-              >
-                <span aria-hidden="true">&laquo;</span>
-              </button>
-            </li>
-            <li
-              ng-repeat="n in genArray(totalPages()) track by $index"
-              ng-class="{ active: n == currentPage }"
-              ng-click="setCurrentPage(n)"
-              class="page-item"
-            >
-              <a class="page-link" href="">{{n}}</a>
-            </li>
-
-            <li class="page-item">
-              <button
-                class="page-link"
-                href=""
-                ng-disabled="currentPage >= totalPages()"
-                ng-click="currentPage = currentPage + 1"
-                aria-label="Next"
-              >
-                <span aria-hidden="true">&raquo;</span>
-              </button>
-            </li>
-          </ul>
-        </nav> -->
   </div>
-  <!-- </div> -->
 </section>
-<div class="container" style="padding-left: 450px;margin-top: 40px;">
+<div class="container" style="padding-left: 450px; margin-top: 40px">
   <div class="pagination">
     <ul class="pagination">
       <button
@@ -304,7 +152,7 @@
         ng-click="prevPage() "
         ng-disabled="pageModel == 1"
       >
-       <i class="bi bi-caret-left"></i>
+        <i class="bi bi-caret-left"></i>
       </button>
       <li>
         <input
@@ -313,7 +161,7 @@
           ng-model="pageModel"
           min="1"
           max="{{totalPages}}"
-          style="width: 25px;font-size: 15px;"
+          style="width: 25px; font-size: 15px"
         />
         <span> / {{totalPages}}</span>
       </li>
@@ -322,459 +170,11 @@
         ng-click="nextPage()"
         ng-disabled="pageModel == totalPages"
       >
-       <i class="bi bi-caret-right"></i>
+        <i class="bi bi-caret-right"></i>
       </button>
     </ul>
   </div>
 </div>
-<!-- <section id="home">
-  <div class="container-fluid pt-5">
-    <div class="row">
-      <div data-test="post-card-item-en" class="sc-bdvvtL dKPyhr">
-        <div class="card-custom-image rounded-4">
-          <div data-test="image" class="sc-bdvvtL kScARU sc-jIkXHa hLdqAb">
-            <a data-test="image-link" href="/blog/top-level-domains/"><img
-                    class="sc-cidDSM cXGIAa ls-is-cached lazyloaded"
-                    data-src="https://static.semrush.com/blog/uploads/media/00/9c/009c041ae47f113e29d170fc340375a0/best-content-marketing-tools.svg"
-                    alt="Content Marketing Tools" height="190" width="158" style="height: 250px"
-                    src="https://static.semrush.com/blog/uploads/media/00/9c/009c041ae47f113e29d170fc340375a0/best-content-marketing-tools.svg" /></a>
-          </div>
-        </div>
-        <div class="card-custom-content p-4">
-          <div class="sc-bdvvtL ecaHBS">
-            <div class="sc-dvQaRk iLqsUe">
-              <p data-test="category" class="sc-bBHxTw jlUUmk sc-TBWPX dlGKeq">
-                <a target="_blank" href="/blog/category/seo/what-is-seo/">SEO Tools
-                </a>
-              </p>
-              <div class="sc-bdvvtL dhnJpY sc-Galmp gJOLkM">
-                <span data-test="time-to-read" class="sc-bBHxTw gNNJPG">17 min read</span>
-              </div>
-            </div>
-            <div class="sc-bdvvtL hIeyzy">
-              <h3 data-test="text-content" style="word-break: break-word" class="sc-bBHxTw kFRQee">
-                <a data-test="title" href="/blog/top-level-domains/" class="sc-ZOtfp dLYbaQ text-dark">16 of the Best
-                  Content Marketing Tools for 2023</a>
-              </h3>
-              <span data-test="description" class="sc-bBHxTw gdTrDl sc-eLwHnm iTsgQK" style="font-size: 17px">Streamline
-                your content production and distribution with the
-                help of our favorite content marketing tools.</span>
-              <div data-test="meta" class="sc-bdvvtL btGgl sc-bTfYFJ fiKUHl">
-                <a data-test="author-name" target="_blank" href="/user/203642673/"><span data-test="text-content"
-                                                                                         class="sc-bBHxTw heMmct sc-hmjpVf hqcxFC">Semrush Team
-                  </span></a><span data-test="date" class="sc-bBHxTw lgLCkw sc-hmjpVf hqcxFC">Mar 03, 2023</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pagination" style="padding-left: 300px">
-        <a href="#">«</a>
-        <a href="#">1</a>
-        <a class="active" href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#">»</a>
-      </div>
-    </div>
-  </div>
-</section>
-<section>
-  <div class="container-fluid pt-5">
-    <div class="row">
-      <div class="col-md-4" data-aos="fade-up">
-        <div class="card">
-          <article class="card1">
-            <a aria-hidden="true" href="/web-platform-02-2023/">
-              <img alt="Colorful wooden boards." sizes="(min-width: 570px) 570px, calc(100vw - 48px)"
-                   src="https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format"
-                   srcset="
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=200   200w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=228   228w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=260   260w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=296   296w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=338   338w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=385   385w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=439   439w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=500   500w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=571   571w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=650   650w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=741   741w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=845   845w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=964   964w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=1098 1098w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=1140 1140w
-                " class="card__hero" decoding="async" height="330" loading="lazy" width="570" />
-            </a>
-            <div class="card__content flow">
-              <h2 class="card__heading text-size-3">
-                <a href="/web-platform-02-2023/" class="text-dark">New to the web
-                </a>
-              </h2>
-              <p></p>
-              <p class="text-dark">
-                Discover some of the interesting features during February 2023.
-              </p>
-              <p></p>
-            </div>
-            <div class="gap-top-size-1">
-              <div class="card__avatars cluster color-mid-text">
-                <a class="avatar" href="/authors/rachelandrew/"><img class="img" alt="Rachel Andrew"
-                                                                     sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
-                                                                     src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
-                                                                     srcset="
-                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=1&amp;q=75 1x,
-                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=2&amp;q=50 2x,
-                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=3&amp;q=35 3x,
-                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=4&amp;q=23 4x,
-                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=5&amp;q=20 5x
-                    " decoding="async" height="40" loading="lazy" width="40" /></a>
-                <div class="flow flow-space-size-0">
-                  <div class="card__authors flow-space-base" aria-label="authors">
-                    <a href="/authors/rachelandrew/" class="text-dark">Rachel Andrew</a>
-                  </div>
-                  <time class="text-dark">Feb 28, 2023</time>
-                </div>
-              </div>
-            </div>
-            <div aria-label="tags for this post" class="card__tags cluster gap-top-base">
-              <a class="pill text-dark" href="/tags/new-to-the-web/">New to the web platform</a>
-              <a class="btn bg-primary-subtle text-dark " role="button"><i class='bx bx-heart'></i> Like</a>
-              <div class="cham">
-                <i class="bi bi-three-dots-vertical" style="margin: 0px; width: 12%" id="dropdownMenuButton1"
-                   data-bs-toggle="dropdown" aria-expanded="false"></i>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li>
-                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addArticleAlbum" ng-click="showModalAddArticleToAlbum(ar.id)">Thêm vào
-                      album</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
-                       data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Ẩn bài viết</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
-                       data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Báo Cáo</a>
-                  </li>
-              </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-        <div class="card">
-          <article class="card1">
-            <a aria-hidden="true" href="/web-platform-02-2023/">
-              <img alt="Colorful wooden boards." sizes="(min-width: 570px) 570px, calc(100vw - 48px)"
-                   src="https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format"
-                   srcset="
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=200   200w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=228   228w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=260   260w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=296   296w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=338   338w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=385   385w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=439   439w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=500   500w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=571   571w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=650   650w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=741   741w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=845   845w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=964   964w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=1098 1098w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=1140 1140w
-                " class="card__hero" decoding="async" height="330" loading="lazy" width="570" />
-            </a>
-            <div class="card__content flow">
-              <h2 class="card__heading text-size-3">
-                <a href="/web-platform-02-2023/" class="text-dark">New to the web
-                </a>
-              </h2>
-              <p></p>
-              <p class="text-dark">
-                Discover some of the interesting features during February 2023.
-              </p>
-              <p></p>
-            </div>
-            <div class="gap-top-size-1">
-              <div class="card__avatars cluster color-mid-text">
-                <a class="avatar" href="/authors/rachelandrew/"><img class="img" alt="Rachel Andrew"
-                                                                     sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
-                                                                     src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
-                                                                     srcset="
-                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=1&amp;q=75 1x,
-                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=2&amp;q=50 2x,
-                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=3&amp;q=35 3x,
-                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=4&amp;q=23 4x,
-                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=5&amp;q=20 5x
-                    " decoding="async" height="40" loading="lazy" width="40" /></a>
-                <div class="flow flow-space-size-0">
-                  <div class="card__authors flow-space-base" aria-label="authors">
-                    <a href="/authors/rachelandrew/" class="text-dark">Rachel Andrew</a>
-                  </div>
-                  <time class="text-dark">Feb 28, 2023</time>
-                </div>
-              </div>
-            </div>
-            <div aria-label="tags for this post" class="card__tags cluster gap-top-base">
-              <a class="pill text-dark" href="/tags/new-to-the-web/">New to the web platform</a>
-              <a class="btn bg-primary-subtle text-dark " role="button"><i class='bx bx-heart'></i> Like</a>
-              <div class="cham">
-                <i class="bi bi-three-dots-vertical" style="margin: 0px; width: 12%" id="dropdownMenuButton1"
-                   data-bs-toggle="dropdown" aria-expanded="false"></i>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li>
-                    <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
-                       data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Thêm vào album</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
-                       data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Ẩn bài viết</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
-                       data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Báo Cáo</a>
-                  </li>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-        <div class="card">
-          <article class="card1">
-            <a aria-hidden="true" href="/web-platform-02-2023/">
-              <img alt="Colorful wooden boards." sizes="(min-width: 570px) 570px, calc(100vw - 48px)"
-                   src="https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format"
-                   srcset="
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=200   200w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=228   228w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=260   260w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=296   296w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=338   338w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=385   385w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=439   439w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=500   500w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=571   571w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=650   650w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=741   741w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=845   845w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=964   964w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=1098 1098w,
-                  https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/B99XwoFGRglrLQZuEcUL.jpg?auto=format&amp;w=1140 1140w
-                " class="card__hero" decoding="async" height="330" loading="lazy" width="570" />
-            </a>
-            <div class="card__content flow">
-              <h2 class="card__heading text-size-3">
-                <a href="/web-platform-02-2023/" class="text-dark">New to the web
-                </a>
-              </h2>
-              <p></p>
-              <p class="text-dark">
-                Discover some of the interesting features during February 2023.
-              </p>
-              <p></p>
-            </div>
-            <div class="gap-top-size-1">
-              <div class="card__avatars cluster color-mid-text">
-                <a class="avatar" href="/authors/rachelandrew/"><img class="img" alt="Rachel Andrew"
-                                                                     sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
-                                                                     src="https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?auto=format&amp;fit=crop&amp;h=40&amp;w=40"
-                                                                     srcset="
-                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=1&amp;q=75 1x,
-                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=2&amp;q=50 2x,
-                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=3&amp;q=35 3x,
-                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=4&amp;q=23 4x,
-                      https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=5&amp;q=20 5x
-                    " decoding="async" height="40" loading="lazy" width="40" /></a>
-                <div class="flow flow-space-size-0">
-                  <div class="card__authors flow-space-base" aria-label="authors">
-                    <a href="/authors/rachelandrew/" class="text-dark">Rachel Andrew</a>
-                  </div>
-                  <time class="text-dark">Feb 28, 2023</time>
-                </div>
-              </div>
-            </div>
-            <div aria-label="tags for this post" class="card__tags cluster gap-top-base">
-              <a class="pill text-dark" href="/tags/new-to-the-web/">New to the web platform</a>
-              <a class="btn bg-primary-subtle text-dark " role="button"><i class='bx bx-heart'></i> Like</a>
-              <div class="cham">
-                <i class="bi bi-three-dots-vertical" style="margin: 0px; width: 12%" id="dropdownMenuButton1"
-                   data-bs-toggle="dropdown" aria-expanded="false"></i>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li>
-                    <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
-                       data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Thêm vào album</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
-                       data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Ẩn bài viết</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#" ng-click="showConfirmDeleteAlbum($index, album.id)"
-                       data-bs-toggle="modal" data-bs-target="#deleteAlbumModal">Báo Cáo</a>
-                  </li>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="pt-4">
-  <img src="/front_end/assets/banner.jpg" alt="" style="height: 350px" />
-</section>
-<section>
-  <div class="container-fluid pt-4">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="title-h2">
-          <h4 class="text-danger">XEM NHIỀU NHẤT</h4>
-        </div>
-        <div class="progress" style="height: 1px">
-          <div class="progress-bar bg-danger" role="progressbar" aria-label="Example 1px high" style="width: 25%"
-               aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-5">
-            <img src="/front_end/assets/project-1.jpg" alt="" width="100%" />
-          </div>
-          <div class="col-7">
-            <p class="text-dark">
-              New to the web platform in February <br />
-              <small class="text-muted">13/05/2022</small>
-            </p>
-          </div>
-        </div>
-        <hr />
-        <div class="row">
-          <div class="col-5 pt-2">
-            <img src="/front_end/assets/blog1.jpg" alt="" width="100%" />
-          </div>
-          <div class="col-7">
-            <p class="text-dark">
-              New to the web platform in February
-
-              <br />
-              <small class="text-muted">08/01/2022</small>
-            </p>
-          </div>
-        </div>
-        <hr />
-        <div class="row">
-          <div class="col-5">
-            <img src="/front_end/assets/blog2.jpg.crdownload" alt="" width="100%" />
-          </div>
-          <div class="col-7">
-            <p class="text-dark">
-              New to the web platform in February
-              <br />
-              <small class="text-muted">13/05/2022</small>
-            </p>
-          </div>
-        </div>
-        <hr />
-        <div class="row">
-          <div class="col-5 pt-2 pb-2">
-            <img src="/front_end/assets/project-4.png" alt="" width="100%" />
-          </div>
-          <div class="col-7">
-            <p class="text-dark">
-              New to the web platform in February
-              <br />
-              <small class="text-muted">13/05/2022</small>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="title-h2">
-          <h4 class="text-danger">YÊU THÍCH NHIỀU NHẤT</h4>
-        </div>
-        <div class="progress" style="height: 1px">
-          <div class="progress-bar bg-danger" role="progressbar" aria-label="Example 1px high" style="width: 25%"
-               aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-5">
-            <img src="/front_end/assets/project-1.jpg" alt="" width="100%" />
-          </div>
-          <div class="col-7">
-            <p class="text-dark">
-              New to the web platform in February <br />
-              <small class="text-muted">13/05/2022</small>
-            </p>
-          </div>
-        </div>
-        <hr />
-        <div class="row">
-          <div class="col-5 pt-2">
-            <img src="/front_end/assets/blog1.jpg" alt="" width="100%" />
-          </div>
-          <div class="col-7">
-            <p class="text-dark">
-              New to the web platform in February
-
-              <br />
-              <small class="text-muted">08/01/2022</small>
-            </p>
-          </div>
-        </div>
-        <hr />
-        <div class="row">
-          <div class="col-5">
-            <img src="/front_end/assets/blog2.jpg.crdownload" alt="" width="100%" />
-          </div>
-          <div class="col-7">
-            <p class="text-dark">
-              New to the web platform in February
-              <br />
-              <small class="text-muted">13/05/2022</small>
-            </p>
-          </div>
-        </div>
-        <hr />
-        <div class="row">
-          <div class="col-5 pt-2 pb-2">
-            <img src="/front_end/assets/project-4.png" alt="" width="100%" />
-          </div>
-          <div class="col-7">
-            <p class="text-dark">
-              New to the web platform in February
-              <br />
-              <small class="text-muted">13/05/2022</small>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-6">
-      <img src="/front_end/assets/blog2.jpg.crdownload" alt="" width="100%" />
-    </div>
-
-    <div class="col-6">
-      <div class="top pt-5" style="text-align: center">
-        <div class="section-title">
-          <h4 class="text-dark">GIỚI THIỆU CHUNG</h4>
-        </div>
-        <p class="text-dark">
-          Streamline your content production and distribution with the help of our favorite content marketing tools.
-          New to the web platform in February
-        </p>
-      </div>
-    </div>
-  </div>
-  </div>
-</section> -->
 
 <!-- begin add article album -->
 <!-- <div class="modal fade" id="addArticleAlbum" tabindex="-1" aria-labelledby="addArticleAlbum" aria-hidden="true">

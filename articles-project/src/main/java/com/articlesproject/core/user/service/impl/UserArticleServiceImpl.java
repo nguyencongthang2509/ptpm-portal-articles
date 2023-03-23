@@ -3,6 +3,7 @@ package com.articlesproject.core.user.service.impl;
 import com.articlesproject.core.common.base.PageableObject;
 import com.articlesproject.core.user.model.request.UserArticleRequest;
 import com.articlesproject.core.user.model.request.UserCreateArticleRequest;
+import com.articlesproject.core.user.model.request.UserFindArticleAuthorRequest;
 import com.articlesproject.core.user.model.request.UserFindArticleRequest;
 import com.articlesproject.core.user.model.request.UserUpdateArticleRequest;
 import com.articlesproject.core.user.model.response.UserArticleResponse;
@@ -40,6 +41,13 @@ public class UserArticleServiceImpl implements UserArticleService {
     public PageableObject<UserArticleResponse> findAllArticle(String userId,final UserFindArticleRequest request) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
         Page<UserArticleResponse> res = userArticleRepository.findAllArticle(pageable,userId, request);
+        return new PageableObject<>(res);
+    }
+
+    @Override
+    public PageableObject<UserArticleResponse> findArticleByIdAuthorId(String userId, UserFindArticleAuthorRequest request) {
+        Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
+        Page<UserArticleResponse> res = userArticleRepository.findArticleByIdAuthorId(pageable,userId, request);
         return new PageableObject<>(res);
     }
 

@@ -23,8 +23,8 @@ app.service("ArticleService", function ($http) {
   this.getCurrentPage = function () {
     return currentPage;
   };
-  this.fetchArticles = function () {
-    return $http.get(articleAPI).then(
+  this.fetchArticles = function (page) {
+    return $http.get(articleAPI + `?page=` + page).then(
       function (response) {
         if (response.status === 200) {
           articles = response.data.data.data;

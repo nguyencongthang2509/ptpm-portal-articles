@@ -11,5 +11,6 @@ window.myArticleCtrl = function (
 
   MyArticleService.fetchMyArticles().then(function () {
     $scope.listMyArticle = MyArticleService.getMyArticle();
+    console.log($scope.listMyArticle);
   });
 };

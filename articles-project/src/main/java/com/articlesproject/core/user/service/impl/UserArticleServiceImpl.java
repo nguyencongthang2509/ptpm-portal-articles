@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,7 @@ public class UserArticleServiceImpl implements UserArticleService {
     private final FormUtils formUtils = new FormUtils();
 
     @Override
-    public PageableObject<UserArticleResponse> findAllArticle(String userId,final UserFindArticleRequest request) {
+    public PageableObject<UserArticleResponse> findAllArticle(String userId, UserFindArticleRequest request) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
         Page<UserArticleResponse> res = userArticleRepository.findAllArticle(pageable,userId, request);
         return new PageableObject<>(res);

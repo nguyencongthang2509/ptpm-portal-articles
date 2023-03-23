@@ -7,14 +7,12 @@ import org.springframework.data.rest.core.config.Projection;
 
 @Projection(types = {Articles.class})
 public interface UserArticleTrashResponse extends IsIdentified {
-    @Value("#{target.id}")
-    String getId();
 
     @Value("#{target.title}")
     String getTitle();
 
     @Value("#{target.browse_date}")
-    String getBrowseDate();
+    long getBrowseDate();
 
     @Value("#{target.status}")
     Integer getStatus();

@@ -6,6 +6,7 @@ import com.articlesproject.core.user.model.response.UserArticleTrashResponse;
 import com.articlesproject.core.user.repository.UserArticleAlbumRepository;
 import com.articlesproject.core.user.repository.UserArticleHashtagRepository;
 import com.articlesproject.core.user.repository.UserArticleTrashRepository;
+import com.articlesproject.core.user.repository.UserCommentRepository;
 import com.articlesproject.core.user.repository.UserRepository;
 import com.articlesproject.core.user.service.UserArticleTrashService;
 import com.articlesproject.entity.Articles;
@@ -42,6 +43,9 @@ public class UserArticleTrashServiceImpl implements UserArticleTrashService {
     @Autowired
     private UserArticleHashtagRepository articleHashtagRepository;
 
+    @Autowired
+    private UserCommentRepository commentRepository;
+
     private final FormUtils formUtils = new FormUtils();
 
 
@@ -61,6 +65,7 @@ public class UserArticleTrashServiceImpl implements UserArticleTrashService {
         }
         articleAlbumRepository.deleteByArticlesId(id);
         articleHashtagRepository.deleteByArticlesId(id);
+        commentRepository.deleteByArticlesId(id);
         userArticleTrashRepository.deleteById(id);
         return false;
     }

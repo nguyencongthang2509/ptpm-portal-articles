@@ -4,6 +4,7 @@ import com.articlesproject.entity.Articles;
 import com.articlesproject.repository.ArticlesRepository;
 import com.articlesproject.repository.Articles_AlbumRepository;
 import com.articlesproject.repository.Articles_HashtagRepository;
+import com.articlesproject.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
@@ -33,12 +34,17 @@ public class deleteArticleConfiguration {
     @Qualifier("BaseArticlesRepository")
     private ArticlesRepository articlesRepository;
 
-    @Scheduled(cron = "0 0 3 * *?")
+    @Autowired
+    @Qualifier("BaseCommentRepository")
+    private CommentRepository commentRepository;
+
+    @Scheduled(cron = "0 0 3 * * ?")
     public void scheduledFixedDelayTask(){
        List<Articles> getList = articlesRepository.getAllArticleTrashService();
        getList.stream().forEach(item ->{
            articlesAlbumRepository.deleteByArticlesId(item.getId());
            articlesHashtagRepository.deleteByArticlesId(item.getId());
+           commentRepository.deleteByArticlesId(item.getId());
            articlesRepository.deleteById(item.getId());
        });
     }

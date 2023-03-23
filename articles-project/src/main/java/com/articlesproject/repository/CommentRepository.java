@@ -9,5 +9,5 @@ public interface CommentRepository extends JpaRepository<Comments, String> {
 
     public static final String NAME = "BaseCommentRepository";
 
-
+    long deleteByArticlesId(String articleId);
 }

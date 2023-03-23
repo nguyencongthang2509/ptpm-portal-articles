@@ -3,6 +3,7 @@ package com.articlesproject.core.user.controller;
 import com.articlesproject.core.common.base.BaseController;
 import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.model.request.UserArticleRequest;
+import com.articlesproject.core.user.model.request.UserFindArticleAuthorRequest;
 import com.articlesproject.core.user.model.request.UserFindArticleRequest;
 import com.articlesproject.core.user.service.UserArticleHashtagService;
 import com.articlesproject.core.user.service.UserArticleService;
@@ -26,6 +27,11 @@ public class UserArticleRestController extends BaseController {
     @GetMapping("")
     public ResponseObject findAllArticle(final UserFindArticleRequest request) {
         return new ResponseObject(userArticleService.findAllArticle(userId,request));
+    }
+
+    @GetMapping("/author")
+    public ResponseObject findAllArticleByAuthorId(final UserFindArticleAuthorRequest request) {
+        return new ResponseObject(userArticleService.findArticleByIdAuthorId(userId,request));
     }
 
     @GetMapping("/{id}")

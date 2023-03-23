@@ -18,7 +18,7 @@ app.service("UserService", function ($http, env) {
     };
 
     this.fetchDetailUser = function () {
-        return $http.get(env.API_URL + "/user/detail/"+ env.USER_ID).then(
+        return $http.get(env.API_URL + "/user/my-user-detail").then(
             function (response) {
                 response.data.data.map(item =>{
                     user = item;

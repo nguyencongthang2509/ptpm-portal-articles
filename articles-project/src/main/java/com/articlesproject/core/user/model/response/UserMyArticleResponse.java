@@ -10,7 +10,6 @@ public interface UserMyArticleResponse extends IsIdentified {
     @Value("#{target.id}")
     String getId();
 
-
     @Value("#{target.title}")
     String getTitle();
 
@@ -25,5 +24,17 @@ public interface UserMyArticleResponse extends IsIdentified {
 
     @Value("#{target.status}")
     Integer getStatus();
+
+    @Value("#{target.favorite}")
+    Integer getFavorite();
+
+    @Value("#{target.users_id}")
+    String getUserId();
+
+    @Value("#{target.name}")
+    String getName();
+
+    @Value("#{target.img}")
+    String getImg();
 
 }

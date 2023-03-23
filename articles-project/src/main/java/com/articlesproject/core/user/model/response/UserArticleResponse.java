@@ -33,4 +33,12 @@ public interface UserArticleResponse extends IsIdentified {
     @Value("#{target.status}")
     Integer getStatus();
 
+    @Value("#{target.users_id}")
+    String getUserId();
+
+    @Value("#{target.name}")
+    String getName();
+
+    @Value("#{target.img}")
+    String getImg();
 }

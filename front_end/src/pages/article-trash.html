@@ -30,9 +30,15 @@
                   <li>
                     <a
                       class="dropdown-item"
-                      href="#"
-                      ng-click="showConfirmDeleteAlbum($index, album.id)"
+                      ng-click="deleteArticle($index, trash.id)"
                       >Delete Article</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      ng-click="restoreArticle($index, trash.id)"
+                      >Restore Article</a
                     >
                   </li>
                 </ul>

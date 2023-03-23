@@ -1,13 +1,8 @@
 package com.articlesproject.core.user.controller;
 
 import com.articlesproject.core.common.base.BaseController;
-import com.articlesproject.core.common.base.PageableObject;
 import com.articlesproject.core.common.base.ResponseObject;
-import com.articlesproject.core.user.model.request.UserArticleRequest;
 import com.articlesproject.core.user.model.request.UserArticleTrashRequest;
-import com.articlesproject.core.user.model.request.UserFindArticleRequest;
-import com.articlesproject.core.user.model.response.UserArticleTrashResponse;
-import com.articlesproject.core.user.service.UserArticleService;
 import com.articlesproject.core.user.service.UserArticleTrashService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,8 +22,17 @@ public class UserArticleTrashRestController extends BaseController {
 
     @GetMapping("")
     public ResponseObject getAllArticleTrash(final UserArticleTrashRequest request) {
-        String idUser = id;
-        return new ResponseObject(userArticleTrashService.getAllArticleTrash(request, idUser));
+        String userId = id;
+        return new ResponseObject(userArticleTrashService.getAllArticleTrash(request, userId));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseObject deleteArticleTrash(@PathVariable("id") String id) {
+        return new ResponseObject(userArticleTrashService.deleteArticle(id));
+    }
+
+    @PutMapping("/restore/{id}")
+    public ResponseObject restoreArticle(@PathVariable("id") String id) {
+        return new ResponseObject(userArticleTrashService.restoreArticle(id));
+    }
 }

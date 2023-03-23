@@ -1,4 +1,19 @@
 <div class="container-fluid">
+  <div class=" ">
+    <div class="card__avatars cluster color-mid-text">
+      <div class="">
+        <img class="img" 
+        sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
+        ng-src="{{myArticleById.img}}" />
+      </div>
+      <div class="flow flow-space-size-0 ">
+        <div class="card__authors flow-space-base " aria-label="authors">
+          <a href="#/users/{{myArticleById.userId}}" class="text-dark">{{myArticleById.name}}</a>
+        </div>
+        <time class="text-dark ">{{myArticleById.browseDate| date:'dd/MM/yyyy'}}</time>
+      </div>
+    </div>
+  </div>
   <section class="bvchitiet">
     <div class="row">
       <div class="col-lg-12">
@@ -68,7 +83,9 @@
       </div>
     </div>
   </section>
-
+<div class="">
+  <a ng-repeat="hastag in myArticleById.hashtags.split(',')" href="#/search/{{hastag}}"> <i class='bx bxs-purchase-tag' ></i>{{hastag}}</a> 
+</div>
  <!-- begin comment  -->
 </section>
   <div class="">

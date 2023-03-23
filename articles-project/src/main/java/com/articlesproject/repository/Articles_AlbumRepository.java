@@ -8,4 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface Articles_AlbumRepository extends JpaRepository<ArticlesAlbum, String> {
 
     public static final String NAME = "BaseArticles_AlbumRepository";
+
+    long deleteByArticlesId(String articleId);
+
 }

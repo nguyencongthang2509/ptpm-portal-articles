@@ -9,10 +9,18 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface UserArticleTrashRepository extends ArticlesRepository {
-    @Query(value = "SELECT a.id, a.title, a.browse_date, a.status, \n" +
-            "GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' FROM articles a\n" +
-            "            LEFT JOIN articles_hashtag  arha ON a.id = arha.articles_id\n" +
-            "            LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id where a.users_id = :idUser AND a.status = 5" +
-            " GROUP BY  a.id, a.title, a.browse_date, a.status ", nativeQuery = true)
-    Page<UserArticleTrashResponse> getAllArticleTrash(Pageable page, @Param("idUser") String idUser);
+    @Query(value = """
+             SELECT ar.id, ar.title, ar.browse_date, ar.status
+                            FROM articles ar
+                            WHERE ar.users_id = :userId AND ar.status = 5
+                            GROUP BY  ar.id, ar.title, ar.browse_date
+                            ORDER BY ar.browse_date DESC
+            """,countQuery = """
+             SELECT COUNT(ar.id)
+                            FROM articles ar
+                            WHERE ar.users_id = :userId AND ar.status = 5
+                            GROUP BY  ar.id, ar.title, ar.browse_date, ar.status
+                            ORDER BY ar.browse_date DESC
+            """,nativeQuery = true)
+    Page<UserArticleTrashResponse> getAllArticleTrash(Pageable page, @Param("userId") String userId);
 }

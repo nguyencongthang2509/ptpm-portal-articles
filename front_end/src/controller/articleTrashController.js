@@ -4,9 +4,20 @@ window.articleTrashCtrl = function (
   $rootScope,
   ArticleTrashService
 ) {
-
+  $scope.listArticleTrash = []
   ArticleTrashService.fetchTrashes().then(function () {
     $scope.listArticleTrash = ArticleTrashService.getTrash();
-    console.log($scope.listArticleTrash);
   });
+
+  $scope.deleteArticle = function(index, id){
+    $http.delete(articleTrashAPI +"/"+id).then(function(respone){
+      $scope.listArticleTrash.splice(index,1)
+    })
+  }
+
+  $scope.restoreArticle =  function(index, id){
+    $http.put(articleTrashAPI +"/restore/"+id).then(function(respone){
+      $scope.listArticleTrash.splice(index,1)
+    })
+  }
 };

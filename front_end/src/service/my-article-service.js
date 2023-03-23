@@ -19,7 +19,7 @@ app.service("MyArticleService", function ($http, env, $routeParams) {
     return $http.get(myArticleAPI).then(
       function (response) {
         if (response.status === 200) {
-          myArticle = response.data.data;
+          myArticle = response.data.data.data;
         }
         return response;
       },

@@ -30,7 +30,7 @@ public class EmailSender {
     private SpringTemplateEngine thymeleafTemplateEngine;
 
     @Async
-    public void sendEmail(String[] toEmails, String subject, String titleEmail, String[] bodyEmail) {
+    public void sendEmail(String toEmails, String subject, String titleEmail, String bodyEmail) {
         Map<String, Object> model = new HashMap<>();
         model.put("bodyEmail", bodyEmail);
         model.put("titleEmail", titleEmail);
@@ -44,7 +44,7 @@ public class EmailSender {
         return thymeleafTemplateEngine.process(templateName, thymeleafContext);
     }
 
-    private void sendSimpleMail(String[] recipients, String msgBody, String subject) {
+    private void sendSimpleMail(String recipients, String msgBody, String subject) {
         try {
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true, StandardCharsets.UTF_8.toString());
@@ -56,7 +56,8 @@ public class EmailSender {
             mimeMessageHelper.addInline("logoImage", resource);
             javaMailSender.send(mimeMessage);
         } catch (Exception e) {
-            log.error("ERROR WHILE SENDING MAIL: {}", e.getMessage());
+            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
 }

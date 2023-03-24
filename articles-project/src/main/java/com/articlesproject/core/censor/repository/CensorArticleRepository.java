@@ -18,11 +18,16 @@ public interface CensorArticleRepository extends ArticlesRepository {
     List<Articles> findByCategoryId(String categoryId);
 
     @Query(value = """
-            SELECT ar.id, ar.title, ar.content, ar.created_date, us.name AS userName, us.code AS userCode, ca.name AS categoryName, ca.code AS categoryCode  FROM articles ar
-            JOIN users us ON us.id = ar.users_id
-            JOIN category ca ON ca.id = ar.category_id
-            WHERE ar.status = 1
-            ORDER BY ar.created_date DESC
+             SELECT ar.id, ar.title, ar.browse_date, ar.users_id, us.img, us.name,
+                GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 
+                FROM articles ar
+                LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
+                LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
+                LEFT JOIN tyms ON tyms.article_id = ar.id
+                LEFT JOIN users us ON us.id = ar.users_id
+                WHERE ar.status = 1
+                GROUP BY  ar.id, ar.title, ar.browse_date, ar.status, ar.users_id, us.name
+                ORDER BY ar.created_date DESC
             """, nativeQuery = true)
     Page<ArticleNotApproveResponse> getAllArticleNotApprove(Pageable pageable,@Param("req")  ArticleRequest request);
 }

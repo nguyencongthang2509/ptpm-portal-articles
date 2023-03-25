@@ -4,7 +4,6 @@ import com.articlesproject.core.censor.model.request.ArticleRequest;
 import com.articlesproject.core.censor.model.request.UpdateStatusArticleRequest;
 import com.articlesproject.core.censor.service.CensorArticleService;
 import com.articlesproject.core.common.base.ResponseObject;
-import com.articlesproject.util.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

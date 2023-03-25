@@ -4,4 +4,5 @@ var categoryAPI = apiURL + "/category";
 var myArticleAPI = apiURL + "/my-article";
 var hashtagAPI = apiURL + "/hashtag";
 var articleTrashAPI = apiURL + "/article-trash";
+var myArticleByStatusAPI = myArticleAPI + "/status";
 

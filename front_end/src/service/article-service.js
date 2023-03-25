@@ -28,7 +28,21 @@ app.service("ArticleService", function ($http) {
   this.getCurrentPage = function () {
     return currentPage;
   };
-
+  this.fetchArticles = function (page) {
+    return $http.get(articleAPI + `?page=` + page).then(
+      function (response) {
+        if (response.status === 200) {
+          articles = response.data.data.data;
+          totalPages = response.data.data.totalPages;
+          currentPage = response.data.data.currentPage;
+        }
+        return response;
+      },
+      function (errors) {
+        console.log(errors);
+      }
+    );
+  };
   this.getArticlesOfUser = function () {
     return articlesOfUser;
   };
@@ -47,22 +61,6 @@ app.service("ArticleService", function ($http) {
   };
   this.setFindByArticle = function (data) {
     findByArticle = data;
-  };
-  
-  this.fetchArticles = function () {
-    return $http.get(articleAPI).then(
-      function (response) {
-        if (response.status === 200) {
-          articles = response.data.data.data;
-          totalPages = response.data.data.totalPages;
-          currentPage = response.data.data.currentPage;
-        }
-        return response;
-      },
-      function (errors) {
-        console.log(errors);
-      }
-    );
   };
 
   this.fetchArticlesByAuthorId = function (userId) {

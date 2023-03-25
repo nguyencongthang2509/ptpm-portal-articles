@@ -13,21 +13,18 @@ public interface ArticleNotApproveResponse extends IsIdentified {
     @Value("#{target.title}")
     String getTitle();
 
-    @Value("#{target.content}")
-    String getContent();
+    @Value("#{target.browse_date}")
+    Long getBrowseDate();
 
-    @Value("#{target.created_date}")
-    String getCreatedDate();
+    @Value("#{target.hashtags}")
+    String getHashtags();
 
-    @Value("#{target.userName}")
-    String getUserName();
+    @Value("#{target.users_id}")
+    String getUserId();
 
-    @Value("#{target.userCode}")
-    String getUserCode();
+    @Value("#{target.name}")
+    String getName();
 
-    @Value("#{target.categoryName}")
-    String getCategoryName();
-
-    @Value("#{target.categoryCode}")
-    String getCategoryCode();
+    @Value("#{target.img}")
+    String getImg();
 }

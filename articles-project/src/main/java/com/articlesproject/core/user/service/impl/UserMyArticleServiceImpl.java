@@ -1,9 +1,8 @@
 package com.articlesproject.core.user.service.impl;
 
 import com.articlesproject.core.common.base.PageableObject;
-import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.model.request.UserCreateArticleRequest;
-import com.articlesproject.core.user.model.request.UserMyArticleRequest;
+import com.articlesproject.core.user.model.request.UserMyArticleByStatusRequest;
 import com.articlesproject.core.user.model.request.UserUpdateArticleRequest;
 import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.core.user.model.response.UserMyArticleResponse;
@@ -13,12 +12,10 @@ import com.articlesproject.core.user.repository.UserRepository;
 import com.articlesproject.core.user.service.UserMyArticleService;
 import com.articlesproject.entity.Articles;
 import com.articlesproject.entity.ArticlesHashtag;
-import com.articlesproject.entity.Users;
 import com.articlesproject.infrastructure.constant.ArticleStatus;
 import com.articlesproject.infrastructure.constant.Message;
 import com.articlesproject.infrastructure.exception.rest.RestApiException;
 import com.articlesproject.util.FormUtils;
-import org.hibernate.cfg.annotations.TableBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -54,9 +51,16 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
     private final FormUtils formUtils = new FormUtils();
 
     @Override
-    public PageableObject<UserMyArticleResponse> getAllMyArticle(UserMyArticleRequest request, String userId) {
+    public PageableObject<UserMyArticleResponse> getAllMyArticle(UserMyArticleByStatusRequest request, String userId) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
-        Page<UserMyArticleResponse> res = userMyArticleRepository.getAllMyArticle(pageable, userId);
+        Page<UserMyArticleResponse> res = userMyArticleRepository.getAllMyArticle(pageable, userId, request);
+        return new PageableObject<>(res);
+    }
+
+    @Override
+    public PageableObject<UserMyArticleResponse> getAllMyArticleByStatus(UserMyArticleByStatusRequest request, String userId) {
+        Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
+        Page<UserMyArticleResponse> res = userMyArticleRepository.getAllMyArticleByStatus(pageable, userId, request);
         return new PageableObject<>(res);
     }
 

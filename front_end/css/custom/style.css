@@ -31,14 +31,14 @@ li {
 :root {
   --poppins: "Poppins", sans-serif;
   --lato: "Lato", sans-serif;
-  --maumenu: #e70649c3;
+  --maumenu: #25c161;
   --light: #ffffff;
   --trang: #e7e7e7;
   --blue: #c62d5b9a;
   --tim: #ccaca9;
   --tim1: #6d5790;
-  --tim2: #ff8f91;
-  --tim3: #c62d5b9a;
+  --tim2: #42d09c;
+  --tim3: #64bd7a;
   --light-blue: #cfe8ff;
   --grey: #eeeeee;
   --dark-grey: #aaaaaa;
@@ -49,8 +49,8 @@ li {
   --orange: #fd7238;
   --light-orange: #ffe0d3;
   --background-image: linear-gradient(rgb(205, 224, 253), white);
-  --mau1: #ff5c8dd1;
-  --logo1: #8c1e51f4;
+  --mau1: #56be72e7;
+  --logo1: #09926dd9;
 }
 
 html {
@@ -61,17 +61,16 @@ body.dark {
   --light: #222123;
   --grey: #ffffff;
   --dark: #ffffff;
-  --trang: white;
-  --maumenu: #ffdad6;
-  --mau1: #ff4580;
-  --logo1: #ffc5d7;
+  --trang: #017c1f;
+  --maumenu: #d6ffe6;
+  --mau1: #33cd88;
+  --logo1:#8ffadee9;
 }
 
 body {
-  background-image: linear-gradient(white, #fda7b734);
-  overflow-x: hidden;
-  color: black;
-  font-family: var(--font-base), sans-serif;
+  background-image: linear-gradient(white, #a7f8a123);
+  /* overflow-x: hidden;
+  font-family: var(--font-base), sans-serif; */
 }
 
 /* SIDEBAR */
@@ -126,7 +125,7 @@ body {
   padding: 4px;
 }
 #sidebar .side-menu li.active {
-  background: #fcf1f0;
+  background: #e8fff1;
   position: relative;
 }
 #sidebar .side-menu li.active::before {
@@ -137,7 +136,7 @@ body {
   border-radius: 50%;
   top: -40px;
   right: 0;
-  box-shadow: 20px 20px 0 #fcf1f0;
+  box-shadow: 20px 20px 0 #e8fff1;
   z-index: -1;
 }
 #sidebar .side-menu li.active::after {
@@ -148,7 +147,7 @@ body {
   border-radius: 50%;
   bottom: -40px;
   right: 0;
-  box-shadow: 20px -20px 0 #fcf1f0;
+  box-shadow: 20px -20px 0 #e8fff1;
   z-index: -1;
 }
 #sidebar .side-menu li a {
@@ -264,7 +263,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f81d5e96;
+  background: var(--logo1);
   color: var(--trang);
   font-size: 18px;
   border: none;
@@ -607,11 +606,10 @@ body {
 /* @import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&display=swap"); */
 
 :root {
-  /* --color-body: #b6cbce; */
   --color-heading: #eef3db;
   --color-base: #033f47;
   --color-base2: #022a30;
-  --color-brand: #fdc4cd6b;
+  --color-brand: #bbd0b66b;
   --color-brand2: #deff58;
   --sidbar-width: 240px;
   --font-base: "Bai Jamjuree";
@@ -633,13 +631,13 @@ h6 {
 a {
   text-decoration: none;
   color: var(--tim3);
-  transition: all 0.4s ease;
+  transition: all 0.2s ease;
 }
 .bx-heart:hover {
-  color: var(--maumenu);
+  color: rgb(22, 131, 94);
 }
 a:hover {
-  color: var(--maumenu);
+  color: rgb(4, 134, 90);
 }
 
 img {
@@ -784,7 +782,7 @@ input.form-control {
 }
 .cjDrZK {
   width: 100%;
-  background-color: #ffc7c19d;
+  background-color: #c1ffd59d;
   color: rgb(23, 26, 34);
 }
 
@@ -2763,9 +2761,8 @@ legend {
   width: 100%;
 }
 
-.menu-detail-myarrticle{
+.menu-detail-myarrticle {
   text-align: right;
-
 }
 .menu-detail-myarrticle a {
   color: black;

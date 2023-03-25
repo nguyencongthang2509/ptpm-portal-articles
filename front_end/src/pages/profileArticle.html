@@ -61,7 +61,7 @@ ng-repeat="ar in listArticle | limitTo:itemsPerPage"
           aria-expanded="false"
         ></i>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li>
+          <li ng-if="ar.status == 3 && authen">
             <a
               class="dropdown-item"
               data-bs-toggle="modal"

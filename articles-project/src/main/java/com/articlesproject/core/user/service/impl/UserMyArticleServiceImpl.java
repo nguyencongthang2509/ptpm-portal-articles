@@ -181,14 +181,16 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
     @Override
     public boolean deleteArticle(String id) {
         Optional<Articles> articles = userMyArticleRepository.findById(id);
-        if (!articles.isPresent()) {
+         if (!articles.isPresent()) {
             throw new RestApiException(Message.ARTICLE_NOT_EXIT);
         }
         List<ArticlesHashtag> currentArticlesHashtags = articleHashtagRepository.findByArticlesId(id);
 
         if (articles.get().getStatus() == ArticleStatus.MOI_TAO ||
                 articles.get().getStatus() == ArticleStatus.BAN_NHAP ||
-                articles.get().getStatus() == ArticleStatus.CHO_PHE_DUYET) {
+                articles.get().getStatus() == ArticleStatus.CHO_PHE_DUYET ||
+                articles.get().getStatus() == ArticleStatus.DA_HUY
+        ) {
             userMyArticleRepository.deleteById(id);
             currentArticlesHashtags.stream()
                     .forEach(current -> articleHashtagRepository.delete(current));

@@ -3,6 +3,11 @@ app.config(function ($routeProvider, $locationProvider) {
   $routeProvider
     .when("/trang-chu", {
       templateUrl: "./pages/trang-chu.html",
+      controller: homeCtrl,
+    })
+    .when("/trang-chu/:id", {
+      templateUrl: "./pages/detail-article.html",
+      controller: detailArticleCtrl,
     })
     .when("/pages", {
       templateUrl: "./pages/pages.html",
@@ -43,7 +48,7 @@ app.config(function ($routeProvider, $locationProvider) {
     })
     .when("/album/:id", {
       templateUrl: "./pages/detailAlbum.html",
-      controller: detailAlbumCtrl
+      controller: detailAlbumCtrl,
     })
     .when("/article-trash", {
       templateUrl: "./pages/article-trash.html",
@@ -74,7 +79,7 @@ app.config(function ($routeProvider, $locationProvider) {
     })
     .when("/users/:id", {
       templateUrl: "./pages/profile.html",
-      controller: detailUserCtrl
+      controller: detailUserCtrl,
     })
     .when("/users", {
       templateUrl: "./pages/users.html",

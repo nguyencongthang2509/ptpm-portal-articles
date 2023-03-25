@@ -104,7 +104,7 @@ window.articleCtrl = function (
         .post(env.API_URL + "/album/create", $scope.createAlbumRequest)
         .then(function (respone) {
           $scope.album = respone.data.data;
-          $scope.album.countArticle = 0
+          $scope.album.countArticle = 0;
           $scope.listAlbum.push($scope.album);
           $scope.createAlbumRequest = { title: "" };
         });
@@ -167,10 +167,4 @@ window.articleCtrl = function (
   };
   // end tym article
 
-  // begin page article
-  // ArticleService.fetchPageArticles().then(function () {
-  //   $scope.listPageArticle = ArticleService.getPageArticle();
-  //   console.log($scope.listPageArticle.currentPage);
-  //   console.log($scope.listPageArticle.totalPages);
-  // });
 };

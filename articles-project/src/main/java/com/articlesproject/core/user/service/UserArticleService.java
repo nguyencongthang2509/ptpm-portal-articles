@@ -14,7 +14,7 @@ import java.util.List;
 
 public interface UserArticleService {
     PageableObject<UserArticleResponse> findAllArticle(String userId, final UserFindArticleRequest request);
-
+    PageableObject<UserArticleResponse> findAllArticleByBrowseDate(String userId, final UserFindArticleRequest request);
     PageableObject<UserArticleResponse> findArticleByIdAuthorId(String userId, UserFindArticleAuthorRequest request);
 
     Articles add(UserCreateArticleRequest request);

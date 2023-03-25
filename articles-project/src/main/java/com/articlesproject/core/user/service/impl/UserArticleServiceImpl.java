@@ -46,6 +46,13 @@ public class UserArticleServiceImpl implements UserArticleService {
     }
 
     @Override
+    public PageableObject<UserArticleResponse> findAllArticleByBrowseDate(String userId, UserFindArticleRequest request) {
+        Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
+        Page<UserArticleResponse> res = userArticleRepository.findAllArticleByBrowseDate(pageable,userId, request);
+        return new PageableObject<>(res);
+    }
+
+    @Override
     public PageableObject<UserArticleResponse> findArticleByIdAuthorId(String userId, UserFindArticleAuthorRequest request) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
         Page<UserArticleResponse> res = userArticleRepository.findArticleByIdAuthorId(pageable,userId, request);

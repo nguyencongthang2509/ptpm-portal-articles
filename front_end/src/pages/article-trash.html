@@ -2,53 +2,50 @@
   <div class="container-fluid pt-4">
     <div class="row">
       <div class="col-md-12">
-        <div class="card">
-          <div class="row" ng-repeat="trash in listArticleTrash">
-            <div class="col-5">
-              <img
-                src="../../../articles-project/src/main/resources/templates/articles/{{trash.id}}/image.png"
-                alt=""
-                style="max-height: 200px; width: 100%; object-fit: cover"
-              />
-            </div>
-            <div class="col-6">
-              <p class="text-dark">
-                {{trash.title}} <br />
-                <small class="text-muted"
-                  >{{trash.browseDate| date:'dd/MM/yyyy'}}</small
-                >
-              </p>
-              
-            </div>
-            <div class="col-1">
-              <div class="cham">
-                <i
-                  class="bi bi-three-dots-vertical"
-                  style="width: 12%"
-                  id="dropdownMenuButton1"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                ></i>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      ng-click="deleteArticle($index, trash.id)"
-                      >Delete Article</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      ng-click="restoreArticle($index, trash.id)"
-                      >Restore Article</a
-                    >
-                  </li>
-                </ul>
-              </div>
+        <div class="row mt-2" ng-repeat="trash in listArticleTrash">
+          <div class="col-5">
+            <img
+              src="../../../articles-project/src/main/resources/templates/articles/{{trash.id}}/image.png"
+              alt=""
+              style="max-height: 200px; width: 100%; object-fit: cover"
+            />
+          </div>
+          <div class="col-6">
+            <p class="text-dark">
+              {{trash.title}} <br />
+              <small class="text-muted"
+                >{{trash.browseDate| date:'dd/MM/yyyy'}}</small
+              >
+            </p>
+          </div>
+          <div class="col-1">
+            <div class="cham">
+              <i
+                class="bi bi-three-dots-vertical"
+                style="width: 12%"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    ng-click="deleteArticle($index, trash.id)"
+                    >Delete Article</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    ng-click="restoreArticle($index, trash.id)"
+                    >Restore Article</a
+                  >
+                </li>
+              </ul>
             </div>
           </div>
-          <hr />
+           <hr>
         </div>
       </div>
     </div>

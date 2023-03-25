@@ -61,9 +61,9 @@
                       aria-label="authors"
                     >
                       <a href="#/articles/{{value.articleId}}" class="text-dark"
-                        ><strong> {{value.title}} </strong> bạn đã bày tỏ cảm xúc về
+                        ><strong>{{value.userName}}</strong> bạn đã bày tỏ cảm xúc về
                         <strong> bài viết </strong>của
-                        <strong> {{value.userName}}</strong></a
+                        <strong>  {{value.title}} </strong></a
                       >
                     </div>
                     <!-- <time class="text-dark"><i class="bx bx-world"></i>{{value.userName ? "Công khai" : "Riêng tư"}}</time
@@ -85,7 +85,6 @@
                   class="dropdown-menu"
                   aria-labelledby="dropdownMenuButton1"
                 >
-                  
                   <li>
                     <a
                       class="dropdown-item"
@@ -93,8 +92,7 @@
                       ng-click="unfavoriteArticle(key,$index,value.articleId)"
                       data-bs-toggle="modal"
                       data-bs-target="#deleteAlbumModal"
-                      >Xóa</a
-                    >
+                      >Xóa</a>
                   </li>
               </div>
             </td>
@@ -102,7 +100,5 @@
         </tbody>
       </table>
     </div>
-
-
   </div>
 </div>

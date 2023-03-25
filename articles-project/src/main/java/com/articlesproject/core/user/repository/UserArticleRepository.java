@@ -77,7 +77,7 @@ public interface UserArticleRepository extends ArticlesRepository {
                             AND ( :#{#request.albumId} IS NULL
                                    OR :#{#request.albumId} LIKE ''
                                    OR aral.album_id LIKE :#{#request.albumId} )
-                                   AND (ar.status = 3)
+                            AND (ar.status = 3)
                            GROUP BY  ar.id, ar.title, ar.browse_date, ar.status,  aral.articles_id, ar.users_id, us.img, us.name
                                            """
             , nativeQuery = true)

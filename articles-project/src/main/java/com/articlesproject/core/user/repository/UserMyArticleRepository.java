@@ -1,6 +1,7 @@
 package com.articlesproject.core.user.repository;
 
 
+import com.articlesproject.core.user.model.request.UserMyArticleByStatusRequest;
 import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.core.user.model.response.UserMyArticleResponse;
 import com.articlesproject.repository.ArticlesRepository;
@@ -20,9 +21,30 @@ public interface UserMyArticleRepository extends ArticlesRepository {
             LEFT JOIN tyms ON tyms.article_id = ar.id
             LEFT JOIN users us ON us.id = ar.users_id
             WHERE ar.users_id = :userId
-            AND (ar.status = 1 OR ar.status = 2 OR ar.status = 3 OR ar.status = 4)
+            AND ( :#{#request.title} IS NULL
+                OR :#{#request.title} LIKE ''
+                OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION) 
+                OR ar.title LIKE %:#{#request.title}% )
+            AND (ar.status != 5)
             GROUP BY  ar.id, ar.title, ar.browse_date, ar.status, ar.users_id, us.img, us.name
             """, countQuery = """
+            SELECT COUNT(ar.id)
+            FROM articles ar
+            LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
+            LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
+            LEFT JOIN tyms ON tyms.article_id = ar.id
+            LEFT JOIN users us ON us.id = ar.users_id
+            WHERE ar.users_id = :userId
+            AND ( :#{#request.title} IS NULL
+                OR :#{#request.title} LIKE ''
+                OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION) 
+                OR ar.title LIKE %:#{#request.title}% )
+            AND (ar.status != 5)
+            GROUP BY  ar.id, ar.title, ar.browse_date, ar.status, ar.users_id, us.img, us.name
+            """, nativeQuery = true)
+    Page<UserMyArticleResponse> getAllMyArticle(Pageable page, @Param("userId") String userId, @Param("request") UserMyArticleByStatusRequest request);
+
+    @Query(value = """
             SELECT ar.id, ar.title, ar.browse_date, ar.status,ar.users_id, us.img, us.name, COUNT(tyms.article_id) AS 'tym' , IF((SELECT SUM(IF(ty.article_id IS NULL, 0, 1))  FROM tyms ty WHERE (:userId IS NULL OR ty.users_id = :userId) AND ty.article_id = ar.id) IS NULL,0,1) AS 'favorite',GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 
             FROM articles ar
             LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
@@ -30,10 +52,28 @@ public interface UserMyArticleRepository extends ArticlesRepository {
             LEFT JOIN tyms ON tyms.article_id = ar.id
             LEFT JOIN users us ON us.id = ar.users_id
             WHERE ar.users_id = :userId
-            AND (ar.status = 1 OR ar.status = 2 OR ar.status = 3 OR ar.status = 4)
+            AND ( :#{#request.title} IS NULL
+                OR :#{#request.title} LIKE ''
+                OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION) 
+                OR ar.title LIKE %:#{#request.title}% )
+            AND (ar.status = :#{#request.status}) 
             GROUP BY  ar.id, ar.title, ar.browse_date, ar.status, ar.users_id, us.img, us.name
+            """, countQuery = """
+                SELECT ar.id, ar.title, ar.browse_date, ar.status,ar.users_id, us.img, us.name, COUNT(tyms.article_id) AS 'tym' , IF((SELECT SUM(IF(ty.article_id IS NULL, 0, 1))  FROM tyms ty WHERE (:userId IS NULL OR ty.users_id = :userId) AND ty.article_id = ar.id) IS NULL,0,1) AS 'favorite',GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 
+                FROM articles ar
+                LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
+                LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
+                LEFT JOIN tyms ON tyms.article_id = ar.id
+                LEFT JOIN users us ON us.id = ar.users_id
+                WHERE ar.users_id = :userId
+                AND ( :#{#request.title} IS NULL
+                    OR :#{#request.title} LIKE ''
+                    OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION) 
+                    OR ar.title LIKE %:#{#request.title}% )
+                AND (ar.status = :#{#request.status}) 
+                GROUP BY  ar.id, ar.title, ar.browse_date, ar.status, ar.users_id, us.img, us.name
             """, nativeQuery = true)
-    Page<UserMyArticleResponse> getAllMyArticle(Pageable page, @Param("userId") String userId);
+    Page<UserMyArticleResponse> getAllMyArticleByStatus(Pageable page, @Param("userId") String userId, @Param("request") UserMyArticleByStatusRequest request);
 
     @Query(value = """
              SELECT ar.id, ar.title, ar.browse_date, ar.status,ar.users_id, us.img, us.name,  COUNT(tyms.article_id) AS 'tym', 

@@ -6,11 +6,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserMyArticleRequest extends PageableRequest {
-    private String fileName;
+public class UserMyArticleByStatusRequest extends PageableRequest {
+    private String userId;
     private String title;
-    private String content;
-    private String img;
-    private Long createDate;
-    private Integer tym;
+    private int status;
 }

@@ -1,18 +1,15 @@
 package com.articlesproject.core.user.controller;
 
 import com.articlesproject.core.common.base.BaseController;
-import com.articlesproject.core.common.base.PageableObject;
 import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.model.request.UserCreateArticleRequest;
-import com.articlesproject.core.user.model.request.UserMyArticleRequest;
+import com.articlesproject.core.user.model.request.UserMyArticleByStatusRequest;
 import com.articlesproject.core.user.model.request.UserUpdateArticleRequest;
-import com.articlesproject.core.user.model.response.UserMyArticleResponse;
 import com.articlesproject.core.user.service.UserArticleHashtagService;
 import com.articlesproject.core.user.service.UserMyArticleService;
 import com.articlesproject.entity.Articles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 
@@ -32,8 +29,13 @@ public class UserMyArticleRestController extends BaseController {
     private UserArticleHashtagService articleHashtagService;
 
     @GetMapping("")
-    public ResponseObject getAllMyArticle(final UserMyArticleRequest request) {
+    public ResponseObject getAllMyArticle(final UserMyArticleByStatusRequest request) {
         return new ResponseObject(userMyArticleService.getAllMyArticle(request, idUser));
+    }
+
+    @GetMapping("/status")
+    public ResponseObject getAllMyArticleByStatus(final UserMyArticleByStatusRequest request) {
+        return new ResponseObject(userMyArticleService.getAllMyArticleByStatus(request, idUser));
     }
 
     @PostMapping("/create-article")

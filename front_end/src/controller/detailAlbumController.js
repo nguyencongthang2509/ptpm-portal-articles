@@ -7,14 +7,13 @@ window.detailAlbumCtrl = function (
   $http
 ) {
   $scope.listArticle = [];
-  $scope.album ={}
+  $scope.album = {};
   $scope.findArticleRequest = {
     albumId: $routeParams.id,
     title: "",
     hashtag: "",
+    category: "",
   };
-
-
 
   AlbumService.fetchAlbum($routeParams.id).then(function () {
     $scope.album = AlbumService.getAlbum();
@@ -29,7 +28,7 @@ window.detailAlbumCtrl = function (
   AlbumService.fetchCheckAlbumOfAuthor($routeParams.id).then(function () {
     $scope.author = AlbumService.getCheckAlbumOfAuthor();
   });
-  
+
   // begin tym article
   $scope.favoriteArticle = function (id, index) {
     $scope.createTymRequest = {
@@ -61,22 +60,22 @@ window.detailAlbumCtrl = function (
   $scope.indexArticle = -1;
   $scope.showModalAddArticleToAlbum = function (index) {
     $scope.indexArticle = index;
-    $scope.article =  $scope.listArticle[index];
+    $scope.article = $scope.listArticle[index];
   };
   $scope.deleteArticleInAlbum = function (id) {
-      $http
-        .delete(
-          env.API_URL +
-            "/album/delete-all-article?articleId=" +
-            id +
-            "&albumId=" +
-            $scope.album.id
-        )
-        .then(function (response) {
-          toastr.error("xóa thành công");
-          $scope.listArticle.splice($scope.indexArticle,1)
-          $scope.indexArticle = -1
-        });
+    $http
+      .delete(
+        env.API_URL +
+          "/album/delete-all-article?articleId=" +
+          id +
+          "&albumId=" +
+          $scope.album.id
+      )
+      .then(function (response) {
+        toastr.error("xóa thành công");
+        $scope.listArticle.splice($scope.indexArticle, 1);
+        $scope.indexArticle = -1;
+      });
   };
-  // end article 
+  // end article
 };

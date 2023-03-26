@@ -23,8 +23,7 @@ public interface UserMyArticleRepository extends ArticlesRepository {
             WHERE ar.users_id = :userId
             AND ( :#{#request.title} IS NULL
                 OR :#{#request.title} LIKE ''
-                OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION) 
-                OR ar.title LIKE %:#{#request.title}% )
+                OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION))
             AND (ar.status != 5)
             GROUP BY  ar.id, ar.title, ar.browse_date, ar.status, ar.users_id, us.img, us.name
             """, countQuery = """
@@ -37,8 +36,7 @@ public interface UserMyArticleRepository extends ArticlesRepository {
             WHERE ar.users_id = :userId
             AND ( :#{#request.title} IS NULL
                 OR :#{#request.title} LIKE ''
-                OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION) 
-                OR ar.title LIKE %:#{#request.title}% )
+                OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION))
             AND (ar.status != 5)
             GROUP BY  ar.id, ar.title, ar.browse_date, ar.status, ar.users_id, us.img, us.name
             """, nativeQuery = true)
@@ -54,8 +52,7 @@ public interface UserMyArticleRepository extends ArticlesRepository {
             WHERE ar.users_id = :userId
             AND ( :#{#request.title} IS NULL
                 OR :#{#request.title} LIKE ''
-                OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION) 
-                OR ar.title LIKE %:#{#request.title}% )
+                OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION))
             AND (ar.status = :#{#request.status}) 
             GROUP BY  ar.id, ar.title, ar.browse_date, ar.status, ar.users_id, us.img, us.name
             """, countQuery = """
@@ -68,8 +65,7 @@ public interface UserMyArticleRepository extends ArticlesRepository {
                 WHERE ar.users_id = :userId
                 AND ( :#{#request.title} IS NULL
                     OR :#{#request.title} LIKE ''
-                    OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION) 
-                    OR ar.title LIKE %:#{#request.title}% )
+                    OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION))
                 AND (ar.status = :#{#request.status}) 
                 GROUP BY  ar.id, ar.title, ar.browse_date, ar.status, ar.users_id, us.img, us.name
             """, nativeQuery = true)

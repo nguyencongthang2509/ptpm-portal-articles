@@ -27,7 +27,7 @@ public interface UserAlbumRepository extends AlbumRepository {
            LEFT JOIN articles_album arab ON ab.id = arab.album_id
            LEFT JOIN users us ON us.id = ab.users_id
            LEFT JOIN articles ar ON ar.id = arab.articles_id
-           WHERE ab.users_id LIKE :userId AND ab.status = 3
+           WHERE ab.users_id LIKE :userId AND ab.status = 1 AND arab.status = 3
            GROUP BY ab.id, ab.title, ab.status, ab.created_date, us.name , us.img
             """, nativeQuery = true)
     List<UserAlbumResponse> findAllAlbumPublicByUserId(@Param("userId") String userId);

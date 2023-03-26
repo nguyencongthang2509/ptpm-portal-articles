@@ -166,4 +166,5 @@ window.articleCtrl = function (
     }
   };
   // end tym article
+
 };

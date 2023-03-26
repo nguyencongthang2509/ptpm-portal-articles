@@ -6,7 +6,9 @@ app.service("ArticleService", function ($http) {
   var currentPage = [];
   var totalPagesArticleOfUser = [];
   var currentPageArticleOfUser = [];
-  var article = {}
+  var article = {};
+  var articlesByBrowseDate = [];
+  var articlesSlide = [];
 
   this.getArticle = function () {
     return articles;
@@ -14,20 +16,25 @@ app.service("ArticleService", function ($http) {
   this.setArticle = function (data) {
     articles = data;
   };
-
   this.getArticleById = function () {
     return article;
   };
   this.setArticleById = function (data) {
     article = data;
   };
-
   this.getTotalPages = function () {
     return totalPages;
   };
   this.getCurrentPage = function () {
     return currentPage;
   };
+  this.getArticleByBrowseDate = function () {
+    return articlesByBrowseDate;
+  };
+  this.getArticleSlide = function () {
+    return articlesSlide;
+  };
+
   this.fetchArticles = function (page) {
     return $http.get(articleAPI + `?page=` + page).then(
       function (response) {
@@ -35,6 +42,34 @@ app.service("ArticleService", function ($http) {
           articles = response.data.data.data;
           totalPages = response.data.data.totalPages;
           currentPage = response.data.data.currentPage;
+        }
+        return response;
+      },
+      function (errors) {
+        console.log(errors);
+      }
+    );
+  };
+
+  this.fetchArticlesByBrowseDate = function () {
+    return $http.get(articleByBrowseDateAPI).then(
+      function (response) {
+        if (response.status === 200) {
+          articlesByBrowseDate = response.data.data.data;
+        }
+        return response;
+      },
+      function (errors) {
+        console.log(errors);
+      }
+    );
+  };
+
+  this.fetchArticlesSlide = function () {
+    return $http.get(articleAPI).then(
+      function (response) {
+        if (response.status === 200) {
+          articlesSlide = response.data.data.data;
         }
         return response;
       },
@@ -64,7 +99,7 @@ app.service("ArticleService", function ($http) {
   };
 
   this.fetchArticlesByAuthorId = function (userId) {
-    return $http.get(articleAPI+"/author?userId="+userId).then(
+    return $http.get(articleAPI + "/author?userId=" + userId).then(
       function (response) {
         if (response.status === 200) {
           articlesOfUser = response.data.data.data;
@@ -80,7 +115,7 @@ app.service("ArticleService", function ($http) {
   };
 
   this.fetchArticlesById = function (articleId) {
-    return $http.get(articleAPI+"/"+articleId).then(
+    return $http.get(articleAPI + "/" + articleId).then(
       function (response) {
         if (response.status === 200) {
           article = response.data.data;

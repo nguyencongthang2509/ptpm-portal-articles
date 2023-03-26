@@ -25,7 +25,11 @@
           ></button>
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item active">
+          <div
+            class="carousel-item"
+            ng-repeat="articleSlide in listArticleSlide | limitTo:3"
+            ng-class="{ 'active': $index === 0 }"
+          >
             <article
               data-test="article-preview"
               class="sc-kHOZwM sc-hOGkXu dPKgXc fiTxcb"
@@ -43,7 +47,7 @@
                         height="250"
                         width="310"
                         style="height: 200px"
-                        src="https://static.semrush.com/blog/uploads/media/84/a3/84a3d71987338dfb855b5d9d4c9d1ee2/photo.svg"
+                        src="../../../articles-project/src/main/resources/templates/articles/{{articleSlide.id}}/image.png"
                         alt="content planning"
                       />
                     </a>
@@ -51,131 +55,25 @@
                   <div class="sc-bdvvtL FmHLX">
                     <h2 data-test="heading-text" class="sc-bBHxTw hsjjsR">
                       <a data-test="heading-link" href="/blog/content-planning/"
-                        >Content Planning: How to Create a Content Plan, Step by
-                        Step</a
+                        >{{articleSlide.title}}</a
                       >
                     </h2>
-                    <p data-test="preview-text" class="sc-bBHxTw epRzfQ">
+                    <!-- <p data-test="preview-text" class="sc-bBHxTw epRzfQ">
                       Learn what a content plan is and how to build one, with
                       examples and tools to make your life easier.
-                    </p>
+                    </p> -->
                     <div class="sc-bdvvtL ftOnze">
-                      <span data-test="date"> <!-- -->Jan 27, 2023</span
-                      ><strong data-test="category" class="sc-dtMgUX iEGeoe"
+                      <strong data-test="category" class="sc-dtMgUX iEGeoe"
                         ><a
                           data-test="category-link"
                           target="_blank"
                           href="/blog/category/content-creation/"
-                          >Content Creation</a
+                          >{{articleSlide.name}}</a
                         ></strong
                       >
-                      <span data-test="time-to-read"
-                        >10<!-- -->
-                        <!-- -->min read</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-          <div class="carousel-item">
-            <article
-              data-test="article-preview"
-              class="sc-kHOZwM sc-hOGkXu dPKgXc fiTxcb"
-            >
-              <div data-test="container" class="sc-bdvvtL cCOiXd">
-                <div class="sc-bdvvtL jbSNqA sc-kHOZwM cjDrZK">
-                  <div class="sc-bdvvtL iHLSCF">
-                    <a
-                      data-test="heading-image-link"
-                      href="/blog/content-planning/"
-                      class="sc-cZMNgc iNdGjO"
-                    >
-                      <img
-                        data-test="image"
-                        height="250"
-                        width="310"
-                        style="height: 200px"
-                        src="https://static.semrush.com/blog/uploads/media/84/a3/84a3d71987338dfb855b5d9d4c9d1ee2/photo.svg"
-                        alt="content planning"
-                      />
-                    </a>
-                  </div>
-                  <div class="sc-bdvvtL FmHLX">
-                    <h2 data-test="heading-text" class="sc-bBHxTw hsjjsR">
-                      <a data-test="heading-link" href="/blog/content-planning/"
-                        >Content Planning: How to Create a Content Plan, Step by
-                        Step</a
-                      >
-                    </h2>
-                    <p data-test="preview-text" class="sc-bBHxTw epRzfQ">
-                      Learn what a content plan is and how to build one, with
-                      examples and tools to make your life easier.
-                    </p>
-                    <div class="sc-bdvvtL ftOnze">
-                      <span data-test="date"> <!-- -->Jan 27, 2023</span
-                      ><strong data-test="category" class="sc-dtMgUX iEGeoe"
-                        ><a
-                          data-test="category-link"
-                          target="_blank"
-                          href="/blog/category/content-creation/"
-                          >Content Creation</a
-                        ></strong
-                      >
-                      <span data-test="time-to-read"
-                        >10<!-- -->
-                        <!-- -->min read</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-          <div class="carousel-item">
-            <article
-              data-test="article-preview"
-              class="sc-kHOZwM sc-hOGkXu dPKgXc fiTxcb"
-            >
-              <div data-test="container" class="sc-bdvvtL cCOiXd">
-                <div class="sc-bdvvtL jbSNqA sc-kHOZwM cjDrZK">
-                  <div class="sc-bdvvtL iHLSCF">
-                    <a
-                      data-test="heading-image-link"
-                      href="/blog/content-planning/"
-                      class="sc-cZMNgc iNdGjO"
-                    >
-                      <img
-                        data-test="image"
-                        height="250"
-                        width="310"
-                        style="height: 200px"
-                        src="https://static.semrush.com/blog/uploads/media/84/a3/84a3d71987338dfb855b5d9d4c9d1ee2/photo.svg"
-                        alt="content planning"
-                      />
-                    </a>
-                  </div>
-                  <div class="sc-bdvvtL FmHLX">
-                    <h2 data-test="heading-text" class="sc-bBHxTw hsjjsR">
-                      <a data-test="heading-link" href="/blog/content-planning/"
-                        >Content Planning: How to Create a Content Plan, Step by
-                        Step</a
-                      >
-                    </h2>
-                    <p data-test="preview-text" class="sc-bBHxTw epRzfQ">
-                      Learn what a content plan is and how to build one, with
-                      examples and tools to make your life easier.
-                    </p>
-                    <div class="sc-bdvvtL ftOnze">
-                      <span data-test="date"> <!-- -->Jan 27, 2023</span
-                      ><strong data-test="category" class="sc-dtMgUX iEGeoe"
-                        ><a
-                          data-test="category-link"
-                          target="_blank"
-                          href="/blog/category/content-creation/"
-                          >Content Creation</a
-                        ></strong
+                      <span data-test="date">
+                        <!-- -->{{articleSlide.browseDate |
+                        date:'dd/MM/yyyy'}}</span
                       >
                       <span data-test="time-to-read"
                         >10<!-- -->
@@ -217,7 +115,11 @@
 
 <section>
   <div class="row">
-    <div class="col-md-6 pt-3" data-aos="fade-up">
+    <div
+      class="col-md-6 pt-3"
+      data-aos="fade-up"
+      ng-repeat="articleByBrowseDate in listArticleByBrowseDate | limitTo:4"
+    >
       <div class="card">
         <div data-test="post-card-item-en" class="sc-bdvvtL dKPyhr">
           <div class="card-custom-image rounded-4">
@@ -225,11 +127,10 @@
               <a data-test="image-link" href="#/chitiet"
                 ><img
                   class="sc-cidDSM cXGIAa ls-is-cached lazyloaded"
-                  data-src="https://static.semrush.com/blog/uploads/media/23/41/23413d89705c46924a511afacfdc4814/learning-technical-seo.svg"
-                  alt="Technical SEO"
+                  src="../../../articles-project/src/main/resources/templates/articles/{{articleByBrowseDate.id}}/image.png"
+                  alt=""
                   height="250"
                   width="310"
-                  src="https://static.semrush.com/blog/uploads/media/23/41/23413d89705c46924a511afacfdc4814/learning-technical-seo.svg"
               /></a>
             </div>
           </div>
@@ -240,16 +141,18 @@
                   data-test="category"
                   class="sc-bBHxTw jlUUmk sc-TBWPX dlGKeq"
                 >
-                  <a target="_blank" href="/blog/category/seo/technical-seo/"
-                    >Technical SEO</a
+                  <a
+                    target="_blank"
+                    href="#/search/{{hastag}}"
+                    ng-repeat="hastag in articleByBrowseDate.hashtags.split(',')"
+                    ><i class="bx bxs-purchase-tag"></i>{{hastag}}</a
                   >
                 </p>
-                <div class="sc-bdvvtL dhnJpY sc-Galmp gJOLkM">
+                <!-- <div class="sc-bdvvtL dhnJpY sc-Galmp gJOLkM">
                   <span data-test="time-to-read" class="sc-bBHxTw gNNJPG"
-                    >11<!-- -->
-                    <!-- -->min read</span
+                    >11 min read</span
                   >
-                </div>
+                </div> -->
               </div>
               <div class="sc-bdvvtL hIeyzy">
                 <h3
@@ -261,16 +164,9 @@
                     data-test="title"
                     href="#/chitiet"
                     class="sc-ZOtfp dLYbaQ text-dark"
-                    >What Is Technical SEO? Basics and 10 Best Practices</a
+                    >{{articleByBrowseDate.title}}</a
                   >
                 </h3>
-                <span
-                  data-test="description"
-                  class="sc-bBHxTw gdTrDl sc-eLwHnm iTsgQK"
-                  style="font-size: 17px"
-                  >Technical SEO is the process of optimizing a website for
-                  search engines. Read this guide to get started.</span
-                >
                 <div data-test="meta" class="sc-bdvvtL btGgl sc-bTfYFJ fiKUHl">
                   <a
                     data-test="author-name"
@@ -279,243 +175,13 @@
                     ><span
                       data-test="text-content"
                       class="sc-bBHxTw heMmct sc-hmjpVf hqcxFC"
-                      >Tushar Pol</span
+                      >{{articleByBrowseDate.name}}</span
                     ></a
                   ><span
                     data-test="date"
                     class="sc-bBHxTw lgLCkw sc-hmjpVf hqcxFC"
-                    >Feb 01, 2023</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6 pt-3">
-      <div class="card">
-        <div data-test="post-card-item-en" class="sc-bdvvtL dKPyhr">
-          <div class="card-custom-image rounded-4">
-            <div data-test="image" class="sc-bdvvtL kScARU sc-jIkXHa gpuHmi">
-              <a data-test="image-link" href="/blog/top-level-domains/"
-                ><img
-                  class="sc-cidDSM cXGIAa ls-is-cached lazyloaded"
-                  data-src="https://static.semrush.com/blog/uploads/media/ae/75/ae7584d40bd9cf3cd4cccea5c34d040e/top-level-domains.svg"
-                  alt="top level domain"
-                  height="250"
-                  width="310"
-                  src="https://static.semrush.com/blog/uploads/media/ae/75/ae7584d40bd9cf3cd4cccea5c34d040e/top-level-domains.svg"
-              /></a>
-            </div>
-          </div>
-          <div class="card-custom-content p-4">
-            <div class="sc-bdvvtL ecaHBS">
-              <div class="sc-dvQaRk iLqsUe">
-                <p
-                  data-test="category"
-                  class="sc-bBHxTw jlUUmk sc-TBWPX dlGKeq"
-                >
-                  <a target="_blank" href="/blog/category/seo/what-is-seo/"
-                    >What is SEO</a
-                  >
-                </p>
-                <div class="sc-bdvvtL dhnJpY sc-Galmp gJOLkM">
-                  <span data-test="time-to-read" class="sc-bBHxTw gNNJPG"
-                    >6<!-- -->
-                    <!-- -->min read</span
-                  >
-                </div>
-              </div>
-              <div class="sc-bdvvtL hIeyzy">
-                <h3
-                  data-test="text-content"
-                  style="word-break: break-word"
-                  class="sc-bBHxTw kFRQee"
-                >
-                  <a
-                    data-test="title"
-                    href="/blog/top-level-domains/"
-                    class="sc-ZOtfp dLYbaQ text-dark"
-                    >What Is a Top-Level Domain? TLDs Explained with Examples</a
-                  >
-                </h3>
-                <span
-                  data-test="description"
-                  class="sc-bBHxTw gdTrDl sc-eLwHnm iTsgQK"
-                  style="font-size: 17px"
-                  >A top level domain (TLD) is the last portion of a domain
-                  name. For “semrush.com“ the “.com“ is the TLD.</span
-                >
-                <div data-test="meta" class="sc-bdvvtL btGgl sc-bTfYFJ fiKUHl">
-                  <a
-                    data-test="author-name"
-                    target="_blank"
-                    href="/user/203642673/"
-                    ><span
-                      data-test="text-content"
-                      class="sc-bBHxTw heMmct sc-hmjpVf hqcxFC"
-                      >Zach Paruch</span
-                    ></a
-                  ><span
-                    data-test="date"
-                    class="sc-bBHxTw lgLCkw sc-hmjpVf hqcxFC"
-                    >Feb 03, 2023</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6 pt-5">
-      <div class="card">
-        <div data-test="post-card-item-en" class="sc-bdvvtL dKPyhr">
-          <div class="card-custom-image rounded-4">
-            <div data-test="image" class="sc-bdvvtL kScARU sc-jIkXHa eHbKSG">
-              <a data-test="image-link" href="/blog/technical-seo/"
-                ><img
-                  class="sc-cidDSM cXGIAa ls-is-cached lazyloaded"
-                  data-src="https://static.semrush.com/blog/uploads/media/43/b0/43b0b9a04c8a433a0c52360c9cc9aaf2/seo-guide-to-yoast-for-wordpress.svg"
-                  alt="yoast seo"
-                  height="190"
-                  width="158"
-                  src="https://static.semrush.com/blog/uploads/media/43/b0/43b0b9a04c8a433a0c52360c9cc9aaf2/seo-guide-to-yoast-for-wordpress.svg"
-              /></a>
-            </div>
-          </div>
-          <div class="card-custom-content p-4">
-            <div class="sc-bdvvtL ecaHBS">
-              <div class="sc-dvQaRk iLqsUe">
-                <p
-                  data-test="category"
-                  class="sc-bBHxTw jlUUmk sc-TBWPX dlGKeq"
-                >
-                  <a target="_blank" href="/blog/category/seo/technical-seo/"
-                    >Technical SEO</a
-                  >
-                </p>
-                <div class="sc-bdvvtL dhnJpY sc-Galmp gJOLkM">
-                  <span data-test="time-to-read" class="sc-bBHxTw gNNJPG"
-                    >11<!-- -->
-                    <!-- -->min read</span
-                  >
-                </div>
-              </div>
-              <div class="sc-bdvvtL hIeyzy">
-                <h3
-                  data-test="text-content"
-                  style="word-break: break-word"
-                  class="sc-bBHxTw kFRQee"
-                >
-                  <a
-                    data-test="title"
-                    href="/blog/technical-seo/"
-                    class="sc-ZOtfp dLYbaQ text-dark"
-                    >What Is Technical SEO? Basics and 10 Best Practices</a
-                  >
-                </h3>
-                <span
-                  data-test="description"
-                  class="sc-bBHxTw gdTrDl sc-eLwHnm iTsgQK"
-                  style="font-size: 17px"
-                  >Technical SEO is the process of optimizing a website for
-                  search engines. Read this guide to get started.</span
-                >
-                <div data-test="meta" class="sc-bdvvtL btGgl sc-bTfYFJ fiKUHl">
-                  <a
-                    data-test="author-name"
-                    target="_blank"
-                    href="/user/203456689/"
-                    ><span
-                      data-test="text-content"
-                      class="sc-bBHxTw heMmct sc-hmjpVf hqcxFC"
-                      >Tushar Pol</span
-                    ></a
-                  ><span
-                    data-test="date"
-                    class="sc-bBHxTw lgLCkw sc-hmjpVf hqcxFC"
-                    >Feb 01, 2023</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6 pt-5">
-      <div class="card">
-        <div data-test="post-card-item-en" class="sc-bdvvtL dKPyhr">
-          <div class="card-custom-image rounded-4">
-            <div data-test="image" class="sc-bdvvtL kScARU sc-jIkXHa hLdqAb">
-              <a data-test="image-link" href="/blog/top-level-domains/"
-                ><img
-                  class="sc-cidDSM cXGIAa ls-is-cached lazyloaded"
-                  data-src="https://static.semrush.com/blog/uploads/media/6b/ff/6bff33a50bdb2d4ed51d8cdc9175820d/create-your-own-marketing-funnel.svg"
-                  alt="marketing funnel"
-                  height="190"
-                  width="158"
-                  src="https://static.semrush.com/blog/uploads/media/6b/ff/6bff33a50bdb2d4ed51d8cdc9175820d/create-your-own-marketing-funnel.svg"
-              /></a>
-            </div>
-          </div>
-          <div class="card-custom-content p-4">
-            <div class="sc-bdvvtL ecaHBS">
-              <div class="sc-dvQaRk iLqsUe">
-                <p
-                  data-test="category"
-                  class="sc-bBHxTw jlUUmk sc-TBWPX dlGKeq"
-                >
-                  <a target="_blank" href="/blog/category/seo/what-is-seo/"
-                    >What is SEO</a
-                  >
-                </p>
-                <div class="sc-bdvvtL dhnJpY sc-Galmp gJOLkM">
-                  <span data-test="time-to-read" class="sc-bBHxTw gNNJPG"
-                    >6<!-- -->
-                    <!-- -->min read</span
-                  >
-                </div>
-              </div>
-              <div class="sc-bdvvtL hIeyzy">
-                <h3
-                  data-test="text-content"
-                  style="word-break: break-word"
-                  class="sc-bBHxTw kFRQee"
-                >
-                  <a
-                    data-test="title"
-                    href="/blog/top-level-domains/"
-                    class="sc-ZOtfp dLYbaQ text-dark"
-                    >What Is a Top-Level Domain? TLDs Explained with Examples</a
-                  >
-                </h3>
-                <span
-                  data-test="description"
-                  class="sc-bBHxTw gdTrDl sc-eLwHnm iTsgQK"
-                  style="font-size: 17px"
-                  >A top level domain (TLD) is the last portion of a domain
-                  name. For “semrush.com“ the “.com“ is the TLD.</span
-                >
-                <div data-test="meta" class="sc-bdvvtL btGgl sc-bTfYFJ fiKUHl">
-                  <a
-                    data-test="author-name"
-                    target="_blank"
-                    href="/user/203642673/"
-                    ><span
-                      data-test="text-content"
-                      class="sc-bBHxTw heMmct sc-hmjpVf hqcxFC"
-                      >Zach Paruch</span
-                    ></a
-                  ><span
-                    data-test="date"
-                    class="sc-bBHxTw lgLCkw sc-hmjpVf hqcxFC"
-                    >Feb 03, 2023</span
+                    >{{articleByBrowseDate.browseDate |
+                    date:'dd/MM/yyyy'}}</span
                   >
                 </div>
               </div>

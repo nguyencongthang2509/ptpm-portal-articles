@@ -137,7 +137,9 @@ app.service("ArticleService", function ($http) {
           `&title=` +
           findArticleRequest.title +
           `&hashtag=` +
-          findArticleRequest.hashtag
+          findArticleRequest.hashtag +
+          `&category=` +
+          findArticleRequest.category
       )
       .then(
         function (response) {

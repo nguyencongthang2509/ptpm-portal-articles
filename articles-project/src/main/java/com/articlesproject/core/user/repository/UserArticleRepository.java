@@ -41,8 +41,7 @@ public interface UserArticleRepository extends ArticlesRepository {
                 WHERE  ar.status = 3
                 AND ( :#{#request.title} IS NULL
                 OR :#{#request.title} LIKE ''
-                OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION) 
-                OR ar.title LIKE %:#{#request.title}% )
+                OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION))
                 AND ( :#{#request.hashtag} IS NULL
                         OR :#{#request.hashtag} LIKE ''
                         OR ha.title LIKE :#{#request.hashtag} )
@@ -65,8 +64,7 @@ public interface UserArticleRepository extends ArticlesRepository {
                        LEFT JOIN users us ON us.id = ar.users_id
                        WHERE ( :#{#request.title} IS NULL
                             OR :#{#request.title} LIKE ''
-                            OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION) 
-                            OR ar.title LIKE %:#{#request.title}% )
+                            OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION))
                             AND ( :#{#request.hashtag} IS NULL
                                    OR :#{#request.hashtag} LIKE ''
                                    OR ha.title LIKE :#{#request.hashtag} )
@@ -92,17 +90,17 @@ public interface UserArticleRepository extends ArticlesRepository {
                 LEFT JOIN articles_album aral ON aral.articles_id = ar.id
                 LEFT JOIN tyms ON tyms.article_id = ar.id
                 LEFT JOIN users us ON us.id = ar.users_id
+                LEFT JOIN category ca ON ca.id = ar.category_id
                 WHERE  ar.status = 3
                 AND ( :#{#request.title} IS NULL
                 OR :#{#request.title} LIKE ''
-                OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION) 
-                OR ar.title LIKE %:#{#request.title}% )
+                OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION))
                 AND ( :#{#request.hashtag} IS NULL
                         OR :#{#request.hashtag} LIKE ''
                         OR ha.title LIKE :#{#request.hashtag} )
-                AND ( :#{#request.hashtag} IS NULL
-                        OR :#{#request.hashtag} LIKE ''
-                        OR ha.title LIKE :#{#request.hashtag} )
+                AND ( :#{#request.category} IS NULL
+                        OR :#{#request.category} LIKE ''
+                        OR ca.name LIKE :#{#request.category} )
                 AND ( :#{#request.albumId} IS NULL
                         OR :#{#request.albumId} LIKE ''
                         OR aral.album_id LIKE :#{#request.albumId} )
@@ -118,16 +116,16 @@ public interface UserArticleRepository extends ArticlesRepository {
                        LEFT JOIN articles_album aral ON aral.articles_id = ar.id
                        LEFT JOIN tyms ON tyms.article_id = ar.id
                        LEFT JOIN users us ON us.id = ar.users_id
+                       LEFT JOIN category ca ON ca.id = ar.category_id
                        WHERE ( :#{#request.title} IS NULL
                             OR :#{#request.title} LIKE ''
-                            OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION) 
-                            OR ar.title LIKE %:#{#request.title}% )
+                            OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION))
                             AND ( :#{#request.hashtag} IS NULL
                                    OR :#{#request.hashtag} LIKE ''
                                    OR ha.title LIKE :#{#request.hashtag} )
-                            AND ( :#{#request.hashtag} IS NULL
-                                   OR :#{#request.hashtag} LIKE ''
-                                   OR ha.title LIKE :#{#request.hashtag} )
+                            AND ( :#{#request.category} IS NULL
+                                   OR :#{#request.category} LIKE ''
+                                   OR ca.name LIKE :#{#request.category} )
                             AND ( :#{#request.albumId} IS NULL
                                    OR :#{#request.albumId} LIKE ''
                                    OR aral.album_id LIKE :#{#request.albumId} )

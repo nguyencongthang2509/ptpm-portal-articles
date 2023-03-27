@@ -132,7 +132,10 @@ window.articleCtrl = function (
       $scope.listAlbum = albums;
     }
   };
+
   $scope.closeFormAddAlbum = function () {
+    document.getElementById("formThemMoi").style.display = "none";
+    document.getElementById("createAlbum").style.display = "block";
     document.querySelectorAll("input:checked").forEach((item) => {
       item.checked = false;
     });
@@ -166,5 +169,4 @@ window.articleCtrl = function (
     }
   };
   // end tym article
-
 };

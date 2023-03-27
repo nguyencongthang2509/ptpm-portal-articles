@@ -16,11 +16,13 @@ import com.articlesproject.infrastructure.constant.ArticleStatus;
 import com.articlesproject.infrastructure.constant.Message;
 import com.articlesproject.infrastructure.exception.rest.RestApiException;
 import com.articlesproject.util.FormUtils;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -37,6 +39,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
+
 public class UserMyArticleServiceImpl implements UserMyArticleService {
 
     @Autowired
@@ -103,7 +106,7 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    String newImagePath = folderPath+ "/" + imageName;
+                    String newImagePath = folderPath + "/" + imageName;
                     try {
                         Path path = Paths.get(newImagePath);
                         Files.write(path, imageData);
@@ -126,8 +129,11 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
     }
 
     @Override
-    public Articles addArticle(UserCreateArticleRequest request) throws IOException {
+    public Articles addArticle(@Valid UserCreateArticleRequest request) throws IOException {
         Articles ar = formUtils.convertToObject(Articles.class, request);
+        if (request.getTitle() == null) {
+            throw new RestApiException(Message.TITLE_IS_NOT_NULL);
+        }
         ar.setStatus(ArticleStatus.MOI_TAO);
         userMyArticleRepository.save(ar);
         String currentDirectory1 = System.getProperty("user.dir");
@@ -164,7 +170,7 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                String newImagePath = folderPath+ "/" + imageName;
+                String newImagePath = folderPath + "/" + imageName;
                 try {
                     Path path = Paths.get(newImagePath);
                     Files.write(path, imageData);
@@ -181,7 +187,7 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
     @Override
     public boolean deleteArticle(String id) {
         Optional<Articles> articles = userMyArticleRepository.findById(id);
-         if (!articles.isPresent()) {
+        if (!articles.isPresent()) {
             throw new RestApiException(Message.ARTICLE_NOT_EXIT);
         }
         List<ArticlesHashtag> currentArticlesHashtags = articleHashtagRepository.findByArticlesId(id);

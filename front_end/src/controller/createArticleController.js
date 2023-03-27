@@ -38,33 +38,42 @@ window.createArticleCtrl = function (
   $scope.saveHTML = function (event) {
     event.preventDefault();
     var content = $("#summernote").summernote("code");
-    var formData = {
-      title: $scope.title,
-      content: content,
-      categoryId: $scope.category,
-      hashtag: $scope.list_of_string,
-    };
-    $http.post(myArticleAPI + "/create-article", formData).then(
-      function (response) {
-        toastr.success("Đã gửi yêu cầu phê duyệt thành công", "Thông báo!", {
-          timeOut: 5000,
-          closeButton: true,
-          progressBar: true,
-          positionClass: "toast-top-center",
-        });
-        console.log("Thành công rồi haha");
-      },
-      function (error) {
-        toastr.error(error, "Thông báo!", {
-          timeOut: 5000,
-          closeButton: true,
-          progressBar: true,
-          positionClass: "toast-top-center",
-        });
-        console.log(error);
-        console.log("Thất bại rồi xem lại code đi");
-      }
-    );
+    console.log(content);
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(content, "text/html");
+    var strippedText = doc.body.textContent.replace(/\n/g, " ");
+    console.log(strippedText);
+    var words = strippedText.split(" ");
+    var first50Words = words.slice(0, 50);
+    var first50WordsString = first50Words.join(" ");
+    console.log(first50WordsString);
+    // var formData = {
+    //   title: $scope.title,
+    //   content: content,
+    //   categoryId: $scope.category,
+    //   hashtag: $scope.list_of_string,
+    // };
+    // $http.post(myArticleAPI + "/create-article", formData).then(
+    //   function (response) {
+    //     toastr.success("Đã gửi yêu cầu phê duyệt thành công", "Thông báo!", {
+    //       timeOut: 5000,
+    //       closeButton: true,
+    //       progressBar: true,
+    //       positionClass: "toast-top-center",
+    //     });
+    //     console.log("Thành công rồi haha");
+    //   },
+    //   function (error) {
+    //     toastr.error(error, "Thông báo!", {
+    //       timeOut: 5000,
+    //       closeButton: true,
+    //       progressBar: true,
+    //       positionClass: "toast-top-center",
+    //     });
+    //     console.log(error);
+    //     console.log("Thất bại rồi xem lại code đi");
+    //   }
+    // );
   };
   if (!window.location.href.includes("create-article")) {
     $scope.showButton = true;

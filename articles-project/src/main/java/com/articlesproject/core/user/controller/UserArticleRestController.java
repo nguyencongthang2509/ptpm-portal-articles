@@ -29,6 +29,11 @@ public class UserArticleRestController extends BaseController {
         return new ResponseObject(userArticleService.findAllArticle(userId,request));
     }
 
+    @GetMapping("/search")
+    public ResponseObject findArticleBySearch(final UserFindArticleRequest request) {
+        return new ResponseObject(userArticleService.findAllArticle(userId,request));
+    }
+
     @GetMapping("/by-browse-date")
     public ResponseObject findAllArticleByBrowseDate(final UserFindArticleRequest request) {
         return new ResponseObject(userArticleService.findAllArticleByBrowseDate(userId,request));

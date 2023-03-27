@@ -1,6 +1,10 @@
 app.config(function ($routeProvider, $locationProvider) {
   $locationProvider.hashPrefix("");
   $routeProvider
+    .when("/search-result", {
+      templateUrl: "./pages/search-result.html",
+      controller: searchCtrl,
+    })
     .when("/trang-chu", {
       templateUrl: "./pages/trang-chu.html",
       controller: homeCtrl,

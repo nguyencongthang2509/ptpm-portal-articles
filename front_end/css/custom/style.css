@@ -2823,3 +2823,7 @@ legend {
   transition: all 0.2s ease-in-out;
   opacity: 1;
 }
+/* search */
+.bx-search{
+  background-color: rgb(4, 134, 90);
+}

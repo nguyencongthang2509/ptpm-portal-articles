@@ -109,6 +109,7 @@ public class DBGenerator implements CommandLineRunner {
         baiViet.setBrowseDate(1900800000L);
         baiViet.setUsersId(users.getId());
         baiViet.setCategoryId(theLoai.getId());
+        baiViet.setDescriptive("ahahahahaha");
         baiViet.setId(articlesRepository.save(baiViet).getId());
 
         Articles baiViet1 = new Articles();
@@ -118,6 +119,7 @@ public class DBGenerator implements CommandLineRunner {
         baiViet1.setBrowseDate(1900800000L);
         baiViet1.setUsersId(users.getId());
         baiViet1.setCategoryId(theLoai1.getId());
+        baiViet1.setDescriptive("ahahahahaha");
         baiViet1.setId(articlesRepository.save(baiViet1).getId());
 
         Articles baiViet2 = new Articles();
@@ -126,6 +128,7 @@ public class DBGenerator implements CommandLineRunner {
         baiViet2.setBrowseDate(1900800000L);
         baiViet2.setUsersId(users.getId());
         baiViet2.setCategoryId(theLoai.getId());
+        baiViet2.setDescriptive("ahahahahaha");
         baiViet2.setId(articlesRepository.save(baiViet2).getId());
 
         ArticlesHashtag articles_hashtag = new ArticlesHashtag();

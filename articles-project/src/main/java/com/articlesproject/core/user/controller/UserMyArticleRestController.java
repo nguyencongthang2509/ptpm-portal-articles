@@ -8,6 +8,7 @@ import com.articlesproject.core.user.model.request.UserUpdateArticleRequest;
 import com.articlesproject.core.user.service.UserArticleHashtagService;
 import com.articlesproject.core.user.service.UserMyArticleService;
 import com.articlesproject.entity.Articles;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
@@ -40,7 +41,7 @@ public class UserMyArticleRestController extends BaseController {
     }
 
     @PostMapping("/create-article")
-    public ResponseObject createArticle(@RequestBody UserCreateArticleRequest request) throws IOException {
+    public ResponseObject createArticle(@Valid @RequestBody UserCreateArticleRequest request) throws IOException {
         request.setUsersId(idUser);
         Articles articles = userMyArticleService.addArticle(request);
         articleHashtagService.addTagsArticle(request.getHashtag(), articles.getId());

@@ -22,6 +22,9 @@ public class Articles extends PrimaryEntity {
     @Column( nullable = false, length = EntityProperties.LENGTH_NoiDung )
     private String title;
 
+    @Column(length = EntityProperties.LENGTH_NoiDung )
+    private String descriptive;
+
     @Column(nullable = false)
     private ArticleStatus status;
 

@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public final class UnknownExceptionRestHandler extends
-        PortalProjectsExceptionRestHandler<Exception> {
+        ArticleProjectExceptionRestHandler<Exception> {
 
     @Override
     protected Object wrapApi(Exception ex) {

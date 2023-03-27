@@ -26,5 +26,7 @@ public final class UserCreateArticleRequest {
     @NotEmpty
     private String content;
 
+    private String descriptive;
+
     private String[] hashtag;
 }

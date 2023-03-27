@@ -2,7 +2,7 @@ package com.articlesproject.infrastructure.exception;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-public abstract class PortalProjectsExceptionHandler<T, Z extends Exception> {
+public abstract class ArticleProjectExceptionHandler<T, Z extends Exception> {
 
     @ExceptionHandler(Exception.class)
     public T handle(Z ex) {

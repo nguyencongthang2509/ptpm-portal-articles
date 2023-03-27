@@ -96,8 +96,8 @@
     <a href="#" class="nav-link">Categories</a>
     <form>
       <div class="form-input">
-        <input type="search" placeholder="Search..." />
-        <a class="search-btn" href="#search-result?123">
+        <input type="search" placeholder="Search..." ng-model="key"/>
+        <a class="search-btn" href="#search-result?key={{key}}">
           <i class="bx bx-search"></i>
         </a>
       </div>

@@ -139,12 +139,16 @@ app.service("ArticleService", function ($http) {
           `&hashtag=` +
           findArticleRequest.hashtag +
           `&category=` +
-          findArticleRequest.category
+          findArticleRequest.category+
+          `&categoryId=`+
+          findArticleRequest.categoryId
       )
       .then(
         function (response) {
           if (response.status === 200) {
             findByArticle = response.data.data.data;
+            console.log(123);
+            console.log(response);
           }
           return response;
         },

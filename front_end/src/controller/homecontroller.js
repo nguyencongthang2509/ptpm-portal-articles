@@ -5,6 +5,9 @@ window.homeCtrl = function (
   ArticleService,
   CategoryService
 ) {
+
+  $scope.key = ""
+  
   $scope.listArticleByBrowseDate = [];
   CategoryService.fetchCategories().then(function () {
     $scope.listCategory = CategoryService.getCategory();

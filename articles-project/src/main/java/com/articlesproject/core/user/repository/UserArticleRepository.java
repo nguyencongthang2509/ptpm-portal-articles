@@ -43,12 +43,14 @@ public interface UserArticleRepository extends ArticlesRepository {
                 AND ( :#{#request.title} IS NULL
                         OR :#{#request.title} LIKE ''
                         OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION))
-                AND ( :#{#request.hashtag} IS NULL
+                OR ( :#{#request.hashtag} IS NULL
                         OR :#{#request.hashtag} LIKE ''
                         OR ha.title LIKE :#{#request.hashtag} )
-                AND ( :#{#request.category} IS NULL
-                        OR :#{#request.category} LIKE ''
+                OR (:#{#request.category} LIKE ''
                         OR MATCH(ca.name) AGAINST( :#{#request.category} WITH QUERY EXPANSION) )
+                AND ( :#{#request.categoryId} IS NULL
+                                       OR :#{#request.categoryId} LIKE ''  
+                                        OR MATCH(ca.id) AGAINST( :#{#request.categoryId} WITH QUERY EXPANSION) )
                 AND ( :#{#request.albumId} IS NULL
                         OR :#{#request.albumId} LIKE ''
                         OR aral.album_id LIKE :#{#request.albumId} )
@@ -67,12 +69,15 @@ public interface UserArticleRepository extends ArticlesRepository {
                            WHERE ( :#{#request.title} IS NULL
                                 OR :#{#request.title} LIKE ''
                                 OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION))
-                                AND ( :#{#request.hashtag} IS NULL
+                                OR ( :#{#request.hashtag} IS NULL
                                        OR :#{#request.hashtag} LIKE ''
                                        OR ha.title LIKE :#{#request.hashtag} )
-                                AND ( :#{#request.category} IS NULL
+                                OR ( :#{#request.category} IS NULL
                                        OR :#{#request.category} LIKE ''
                                        OR MATCH(ca.name) AGAINST( :#{#request.category} WITH QUERY EXPANSION) )
+                                AND ( :#{#request.categoryId} IS NULL
+                                       OR :#{#request.categoryId} LIKE ''  
+                                        OR MATCH(ca.id) AGAINST( :#{#request.categoryId} WITH QUERY EXPANSION) )
                                 AND ( :#{#request.albumId} IS NULL
                                        OR :#{#request.albumId} LIKE ''
                                        OR aral.album_id LIKE :#{#request.albumId} )

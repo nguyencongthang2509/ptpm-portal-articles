@@ -12,7 +12,7 @@ import lombok.*;
 public class UserCreateAlbumRequest {
 
     @NotEmpty
-    @Size(min = 2)
+    @Size(min = 2, max = 250)
     private String title;
 
     private boolean status;

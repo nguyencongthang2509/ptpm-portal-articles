@@ -19,7 +19,7 @@ public interface UserMyArticleService {
 
     UserArticleResponse getArticleById(String id, String userId);
 
-    Articles addArticle(UserCreateArticleRequest request) throws IOException;
+    Articles addArticle(UserCreateArticleRequest request, String userId) throws IOException;
 
     boolean deleteArticle(String id);
 }

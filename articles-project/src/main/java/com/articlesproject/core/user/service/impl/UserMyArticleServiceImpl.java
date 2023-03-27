@@ -128,8 +128,9 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
     }
 
     @Override
-    public Articles addArticle( UserCreateArticleRequest request) throws IOException {
+    public Articles addArticle( UserCreateArticleRequest request, String userId) throws IOException {
         Articles ar = formUtils.convertToObject(Articles.class, request);
+        ar.setUsersId(userId);
         if (request.getTitle() == null) {
             throw new RestApiException(Message.TITLE_IS_NOT_NULL);
         }

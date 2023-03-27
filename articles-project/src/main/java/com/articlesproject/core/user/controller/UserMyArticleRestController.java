@@ -42,8 +42,8 @@ public class UserMyArticleRestController extends BaseController {
 
     @PostMapping("/create-article")
     public ResponseObject createArticle(@Valid @RequestBody UserCreateArticleRequest request) throws IOException {
-        request.setUsersId(idUser);
-        Articles articles = userMyArticleService.addArticle(request);
+        String userId = this.idUser;
+        Articles articles = userMyArticleService.addArticle(request, userId);
         articleHashtagService.addTagsArticle(request.getHashtag(), articles.getId());
         return new ResponseObject("Add article successfully!");
     }

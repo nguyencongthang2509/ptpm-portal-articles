@@ -1,7 +1,6 @@
 package com.articlesproject.core.user.model.response;
 
 import com.articlesproject.entity.Articles;
-import com.articlesproject.entity.ArticlesAlbum;
 import com.articlesproject.entity.Tyms;
 import com.articlesproject.entity.Users;
 import com.articlesproject.entity.base.IsIdentified;

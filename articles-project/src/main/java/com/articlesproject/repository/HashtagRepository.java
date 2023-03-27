@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository(HashtagRepository.NAME)
 public interface HashtagRepository extends JpaRepository<Hashtag, String> {
-    public static final String NAME = "BaseArticles_HashtagRepository";
+    public static final String NAME = "BaseHashtagRepository";
 }

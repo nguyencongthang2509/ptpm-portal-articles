@@ -1,8 +1,8 @@
 package com.articlesproject.core.user.repository;
 
-import com.articlesproject.repository.Articles_AlbumRepository;
+import com.articlesproject.repository.ArticlesAlbumRepository;
 
-public interface UserArticleAlbumRepository extends Articles_AlbumRepository {
+public interface UserArticleAlbumRepository extends ArticlesAlbumRepository {
 
     long deleteByAlbumId(String id);
 

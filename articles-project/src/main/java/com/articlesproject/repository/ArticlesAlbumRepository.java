@@ -4,10 +4,10 @@ import com.articlesproject.entity.ArticlesAlbum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository(Articles_AlbumRepository.NAME)
-public interface Articles_AlbumRepository extends JpaRepository<ArticlesAlbum, String> {
+@Repository(ArticlesAlbumRepository.NAME)
+public interface ArticlesAlbumRepository extends JpaRepository<ArticlesAlbum, String> {
 
-    public static final String NAME = "BaseArticles_AlbumRepository";
+    public static final String NAME = "BaseArticlesAlbumRepository";
 
     long deleteByArticlesId(String articleId);
 

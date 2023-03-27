@@ -4,7 +4,6 @@ import com.articlesproject.core.reviewer.model.response.EvaluateRespone;
 import com.articlesproject.repository.EvalueteRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
 import java.util.List;
 
 public interface ReviewerEvaluateRepository extends EvalueteRepository {

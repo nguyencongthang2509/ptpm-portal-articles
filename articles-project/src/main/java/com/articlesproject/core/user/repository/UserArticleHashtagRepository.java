@@ -1,11 +1,11 @@
 package com.articlesproject.core.user.repository;
 
 import com.articlesproject.entity.ArticlesHashtag;
-import com.articlesproject.repository.Articles_HashtagRepository;
+import com.articlesproject.repository.ArticlesHashtagRepository;
 
 import java.util.List;
 
-public interface UserArticleHashtagRepository extends Articles_HashtagRepository {
+public interface UserArticleHashtagRepository extends ArticlesHashtagRepository {
     List<ArticlesHashtag> findByArticlesId(String articleId);
 
 //

@@ -14,8 +14,8 @@ import com.articlesproject.entity.Users;
 import com.articlesproject.infrastructure.constant.ArticleStatus;
 import com.articlesproject.repository.AlbumRepository;
 import com.articlesproject.repository.ArticlesRepository;
-import com.articlesproject.repository.Articles_AlbumRepository;
-import com.articlesproject.repository.Articles_HashtagRepository;
+import com.articlesproject.repository.ArticlesAlbumRepository;
+import com.articlesproject.repository.ArticlesHashtagRepository;
 import com.articlesproject.repository.CategoryRepository;
 import com.articlesproject.repository.CommentRepository;
 import com.articlesproject.repository.EvalueteRepository;
@@ -54,10 +54,10 @@ public class DBGenerator implements CommandLineRunner {
     private UserRepository userRepository;
 
     @Autowired
-    private Articles_AlbumRepository articles_albumRepository;
+    private ArticlesAlbumRepository articles_albumRepository;
 
     @Autowired
-    private Articles_HashtagRepository articles_hashtagRepository;
+    private ArticlesHashtagRepository articles_hashtagRepository;
 
     @Autowired
     private TymRepository tymRepository;

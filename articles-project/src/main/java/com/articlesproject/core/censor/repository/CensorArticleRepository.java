@@ -2,8 +2,6 @@ package com.articlesproject.core.censor.repository;
 
 import com.articlesproject.core.censor.model.request.ArticleRequest;
 import com.articlesproject.core.censor.model.response.ArticleNotApproveResponse;
-import com.articlesproject.core.user.model.request.UserArticleRequest;
-import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.entity.Articles;
 import com.articlesproject.repository.ArticlesRepository;
 import org.springframework.data.domain.Page;

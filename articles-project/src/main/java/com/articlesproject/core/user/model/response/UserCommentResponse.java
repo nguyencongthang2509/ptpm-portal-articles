@@ -6,10 +6,6 @@ import com.articlesproject.entity.base.IsIdentified;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.rest.core.config.Projection;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 @Projection(types = {Comments.class, Users.class})
 public interface UserCommentResponse extends IsIdentified {
 

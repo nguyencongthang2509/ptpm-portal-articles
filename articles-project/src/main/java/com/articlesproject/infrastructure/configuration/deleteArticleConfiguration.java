@@ -2,8 +2,8 @@ package com.articlesproject.infrastructure.configuration;
 
 import com.articlesproject.entity.Articles;
 import com.articlesproject.repository.ArticlesRepository;
-import com.articlesproject.repository.Articles_AlbumRepository;
-import com.articlesproject.repository.Articles_HashtagRepository;
+import com.articlesproject.repository.ArticlesAlbumRepository;
+import com.articlesproject.repository.ArticlesHashtagRepository;
 import com.articlesproject.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,7 +13,6 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 @Configuration
@@ -23,12 +22,12 @@ import java.util.List;
 public class deleteArticleConfiguration {
 
     @Autowired
-    @Qualifier("BaseArticles_CategoryRepository")
-    private Articles_HashtagRepository articlesHashtagRepository;
+    @Qualifier("BaseArticlesHashtagRepository")
+    private ArticlesHashtagRepository articlesHashtagRepository;
 
     @Autowired
-    @Qualifier("BaseArticles_AlbumRepository")
-    private Articles_AlbumRepository articlesAlbumRepository;
+    @Qualifier("BaseArticlesAlbumRepository")
+    private ArticlesAlbumRepository articlesAlbumRepository;
 
     @Autowired
     @Qualifier("BaseArticlesRepository")

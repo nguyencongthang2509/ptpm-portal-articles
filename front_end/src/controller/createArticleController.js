@@ -40,8 +40,7 @@ window.createArticleCtrl = function (
     var content = $("#summernote").summernote("code");
     console.log(content);
     var parser = new DOMParser();
-    var doc = parser.parseFromString(content, "text/html");
-    var strippedText = doc.body.textContent.replace(/\n/g, " ");
+    var strippedText = content.replace(/<\/?[^>]+(>|$)/g, ' ');;
     console.log(strippedText);
     var words = strippedText.split(" ");
     var first50Words = words.slice(0, 50);

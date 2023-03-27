@@ -1,7 +1,5 @@
 package com.articlesproject.core.user.service;
 
-import com.articlesproject.entity.ArticlesHashtag;
-import com.articlesproject.entity.Hashtag;
 
 public interface UserArticleHashtagService {
 

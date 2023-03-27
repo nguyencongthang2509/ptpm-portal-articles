@@ -7,7 +7,6 @@ import com.articlesproject.entity.ArticlesHashtag;
 import com.articlesproject.entity.Hashtag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

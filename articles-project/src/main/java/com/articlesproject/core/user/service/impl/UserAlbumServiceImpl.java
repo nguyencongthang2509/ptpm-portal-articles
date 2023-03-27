@@ -4,7 +4,6 @@ import com.articlesproject.core.user.model.request.UserCreateAlbumRequest;
 import com.articlesproject.core.user.model.request.UserUpdateAlbumRequest;
 import com.articlesproject.core.user.model.response.SimpleAlbumProjRequest;
 import com.articlesproject.core.user.model.response.UserAlbumResponse;
-import com.articlesproject.core.user.model.response.UserArticleAlbumResponse;
 import com.articlesproject.core.user.repository.UserAlbumRepository;
 import com.articlesproject.core.user.repository.UserArticleAlbumRepository;
 import com.articlesproject.core.user.service.UserAlbumService;

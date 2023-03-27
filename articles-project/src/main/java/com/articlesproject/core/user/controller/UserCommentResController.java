@@ -4,6 +4,7 @@ import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.model.request.UserCreateCommentRequest;
 import com.articlesproject.core.user.model.request.UserUpdateCommentRequest;
 import com.articlesproject.core.user.service.UserCommentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,13 +33,13 @@ public class UserCommentResController {
     }
 
     @PostMapping("/create")
-    private ResponseObject createComment(@RequestBody UserCreateCommentRequest request){
+    private ResponseObject createComment(@Valid @RequestBody UserCreateCommentRequest request){
         String userId = id;
         return new ResponseObject(commentService.create(request, userId));
     }
 
     @PutMapping("/update")
-    private ResponseObject updateComment(@RequestBody UserUpdateCommentRequest request){
+    private ResponseObject updateComment(@Valid @RequestBody UserUpdateCommentRequest request){
         return new ResponseObject(commentService.update(request));
     }
 

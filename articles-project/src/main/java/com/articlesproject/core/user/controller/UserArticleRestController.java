@@ -2,10 +2,8 @@ package com.articlesproject.core.user.controller;
 
 import com.articlesproject.core.common.base.BaseController;
 import com.articlesproject.core.common.base.ResponseObject;
-import com.articlesproject.core.user.model.request.UserArticleRequest;
 import com.articlesproject.core.user.model.request.UserFindArticleAuthorRequest;
 import com.articlesproject.core.user.model.request.UserFindArticleRequest;
-import com.articlesproject.core.user.service.UserArticleHashtagService;
 import com.articlesproject.core.user.service.UserArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

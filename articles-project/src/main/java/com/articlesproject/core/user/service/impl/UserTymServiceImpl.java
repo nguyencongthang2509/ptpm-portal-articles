@@ -5,18 +5,13 @@ import com.articlesproject.core.user.model.response.UserTymResponse;
 import com.articlesproject.core.user.repository.UserArticleRepository;
 import com.articlesproject.core.user.repository.UserTymRepository;
 import com.articlesproject.core.user.service.UserTymService;
-import com.articlesproject.entity.Articles;
 import com.articlesproject.entity.Tyms;
-import com.articlesproject.infrastructure.constant.Message;
-import com.articlesproject.infrastructure.exception.rest.RestApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Scope(proxyMode = ScopedProxyMode.INTERFACES)

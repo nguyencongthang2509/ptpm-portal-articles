@@ -1,20 +1,43 @@
 package com.articlesproject.infrastructure.exception.rest;
 
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Path;
+import jakarta.validation.UnexpectedTypeException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
-import javax.validation.Path;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public final class RestExceptionHandler extends
         PortalProjectsExceptionRestHandler<ConstraintViolationException> {
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleExption(MethodArgumentNotValidException exception) {
+        Map<String, String> errorMap = new HashMap<>();
+        exception.getBindingResult().getFieldErrors().forEach(error -> {
+            errorMap.put(error.getField(), error.getDefaultMessage());
+        });
+
+        return errorMap;
+    }
+
+    @ExceptionHandler(UnexpectedTypeException.class)
+    public Map<String , String> handleExption(UnexpectedTypeException exception){
+        Map<String, String> errorMap = new HashMap<>();
+        exception.getLocalizedMessage();
+        Logger.getGlobal().info("this is an error from size");
+        return errorMap;
+
+    }
 
     @ExceptionHandler(RestApiException.class)
     public ResponseEntity<?> handlerException(RestApiException restApiException) {

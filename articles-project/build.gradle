@@ -60,6 +60,8 @@ dependencies {
     implementation group: 'jakarta.mail', name: 'jakarta.mail-api', version: '2.1.1'
 
     implementation 'org.eclipse.angus:jakarta.mail:1.0.0'
+    implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: '3.0.2'
+    implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '8.0.0.Final'
 
 }
 

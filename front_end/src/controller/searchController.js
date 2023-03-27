@@ -4,6 +4,7 @@ window.searchCtrl = function ($scope, $http, $rootScope, $routeParams,ArticleSer
 
   $scope.findArticleRequest = {
     albumId: "",
+    categoryId:"",
     title: $routeParams.key,
     hashtag: $routeParams.key,
     category: $routeParams.key,

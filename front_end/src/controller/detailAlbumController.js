@@ -10,6 +10,7 @@ window.detailAlbumCtrl = function (
   $scope.album = {};
   $scope.findArticleRequest = {
     albumId: $routeParams.id,
+    categoryId:"",
     title: "",
     hashtag: "",
     category: "",

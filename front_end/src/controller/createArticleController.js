@@ -39,8 +39,7 @@ window.createArticleCtrl = function (
     event.preventDefault();
     var content = $("#summernote").summernote("code");
     console.log(content);
-    var parser = new DOMParser();
-    var strippedText = content.replace(/<\/?[^>]+(>|$)/g, ' ');;
+    var strippedText = content.replace(/<\/?[^>]+(>|$)/g, ' ');
     console.log(strippedText);
     var words = strippedText.split(" ");
     var first50Words = words.slice(0, 50);

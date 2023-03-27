@@ -1,11 +1,9 @@
 package com.articlesproject.core.user.service.impl;
 
 import com.articlesproject.core.common.base.PageableObject;
-import com.articlesproject.core.user.model.request.UserArticleRequest;
 import com.articlesproject.core.user.model.request.UserCreateArticleRequest;
 import com.articlesproject.core.user.model.request.UserFindArticleAuthorRequest;
 import com.articlesproject.core.user.model.request.UserFindArticleRequest;
-import com.articlesproject.core.user.model.request.UserUpdateArticleRequest;
 import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.core.user.repository.UserArticleRepository;
 import com.articlesproject.core.user.service.UserArticleService;
@@ -19,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

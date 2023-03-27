@@ -7,7 +7,7 @@ import com.articlesproject.core.user.model.request.UserUpdateAlbumRequest;
 import com.articlesproject.core.user.service.UserAlbumService;
 import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.service.UserArticleAlbumService;
-import com.articlesproject.entity.Album;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -35,13 +35,13 @@ public class UserAlbumResController extends BaseController {
     private UserArticleAlbumService articleAlbumService;
 
     @PostMapping("/create")
-    private ResponseObject createAlbum(@RequestBody UserCreateAlbumRequest request){
+    private ResponseObject createAlbum(@Valid @RequestBody UserCreateAlbumRequest request){
         String userId = id;
         return new ResponseObject(albumService.create(request, userId));
     }
 
     @PutMapping("/update")
-    private ResponseObject updateAlbum(@RequestBody UserUpdateAlbumRequest request){
+    private ResponseObject updateAlbum(@Valid @RequestBody UserUpdateAlbumRequest request){
         return new ResponseObject(albumService.update(request));
     }
 
@@ -80,7 +80,7 @@ public class UserAlbumResController extends BaseController {
     }
 
     @PostMapping("/add-article")
-    private ResponseObject addArticleToAlbum(@RequestBody UserCreateArticleAlbumRequest request){
+    private ResponseObject addArticleToAlbum(@Valid @RequestBody UserCreateArticleAlbumRequest request){
         return new ResponseObject(articleAlbumService.createArticleAlbum(request));
     }
 

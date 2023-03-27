@@ -3,6 +3,7 @@ package com.articlesproject.core.user.controller;
 import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.model.request.UserCreateTymRequest;
 import com.articlesproject.core.user.service.UserTymService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,7 +32,7 @@ public class UserTymResController {
     }
 
     @PostMapping("/favorite-article")
-    private ResponseObject favoriteArticle(@RequestBody UserCreateTymRequest request){
+    private ResponseObject favoriteArticle(@Valid @RequestBody UserCreateTymRequest request){
         return new ResponseObject(tymService.favoriteArticle(id, request));
     }
 

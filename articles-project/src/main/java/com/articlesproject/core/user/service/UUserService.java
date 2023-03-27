@@ -7,4 +7,6 @@ import java.util.List;
 public interface UUserService {
 
     List<UserResponse> findByIdUser(String id);
+
+    List<UserResponse> findByIdAuthor(String id);
 }

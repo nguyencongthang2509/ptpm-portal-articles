@@ -3,7 +3,6 @@ package com.articlesproject.core.user.repository;
 
 import com.articlesproject.core.user.model.request.UserFindArticleAuthorRequest;
 import com.articlesproject.core.user.model.request.UserFindArticleRequest;
-import com.articlesproject.core.user.model.request.UserArticleRequest;
 import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.repository.ArticlesRepository;
 import org.springframework.data.domain.Page;

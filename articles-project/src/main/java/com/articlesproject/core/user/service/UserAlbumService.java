@@ -4,21 +4,8 @@ import com.articlesproject.core.user.model.request.UserCreateAlbumRequest;
 import com.articlesproject.core.user.model.request.UserUpdateAlbumRequest;
 import com.articlesproject.core.user.model.response.SimpleAlbumProjRequest;
 import com.articlesproject.core.user.model.response.UserAlbumResponse;
-import com.articlesproject.core.user.model.response.UserArticleAlbumResponse;
 import com.articlesproject.entity.Album;
-
 import java.util.List;
-
-import com.articlesproject.core.user.model.request.UserCreateAlbumRequest;
-import com.articlesproject.core.user.model.request.UserUpdateAlbumRequest;
-import com.articlesproject.core.user.model.response.SimpleAlbumProjRequest;
-import com.articlesproject.core.user.model.response.UserAlbumResponse;
-import com.articlesproject.core.user.model.response.UserArticleAlbumResponse;
-import com.articlesproject.entity.Album;
-import org.springframework.data.repository.query.Param;
-
-import java.util.List;
-
 
 public interface UserAlbumService {
 

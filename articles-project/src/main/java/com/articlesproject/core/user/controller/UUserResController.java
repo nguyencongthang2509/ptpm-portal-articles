@@ -21,8 +21,8 @@ public class UUserResController {
     private UUserService uUserService;
 
     @GetMapping("/detail/{id}")
-    private ResponseObject findByUserId(@PathVariable("id") String id) {
-        return new ResponseObject(uUserService.findByIdUser(id));
+    private ResponseObject findByIdAuthor(@PathVariable("id") String id) {
+        return new ResponseObject(uUserService.findByIdAuthor(id));
     }
 
     @GetMapping("/my-user-detail")

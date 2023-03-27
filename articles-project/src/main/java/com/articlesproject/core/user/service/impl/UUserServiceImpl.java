@@ -17,4 +17,9 @@ public class UUserServiceImpl implements UUserService {
     public List<UserResponse> findByIdUser(String id) {
         return userRepository.findByIdUser(id);
     }
+
+    @Override
+    public List<UserResponse> findByIdAuthor(String id) {
+        return userRepository.findByIdAuthor(id);
+    }
 }

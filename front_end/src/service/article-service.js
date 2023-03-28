@@ -132,9 +132,7 @@ app.service("ArticleService", function ($http) {
     return $http
       .get(
         articleAPI +
-          `?albumId=` +
-          findArticleRequest.albumId +
-          `&title=` +
+          `?title=` +
           findArticleRequest.title +
           `&hashtag=` +
           findArticleRequest.hashtag +

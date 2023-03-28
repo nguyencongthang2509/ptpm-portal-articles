@@ -118,8 +118,8 @@
         >
           <i class="bx bx-search"></i>
         </div>
-        <input type="search" placeholder="What are you looking for?" />
-        <button type="submit" class="search-btn"><a href="#search-result">Search</a></button>
+        <input type="search" placeholder="What are you looking for?" ng-model="key" />
+        <button type="submit" class="search-btn"><a href="#search-result?key={{key}}">Search</a></button>
       </div>
     </form>
     <input type="checkbox" id="switch-mode" hidden />

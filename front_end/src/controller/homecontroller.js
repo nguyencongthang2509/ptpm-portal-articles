@@ -19,6 +19,5 @@ window.homeCtrl = function (
 
   ArticleService.fetchArticlesSlide().then(function (respone) {
     $scope.listArticleSlide = ArticleService.getArticleSlide();
-    console.log($scope.listArticleSlide);
   });
 };

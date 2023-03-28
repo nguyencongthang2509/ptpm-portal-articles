@@ -41,6 +41,7 @@ li {
   --tim3: #64bd7a;
   --light-blue: #cfe8ff;
   --grey: #eeeeee;
+  --grey1: #d9f1e3;
   --dark-grey: #aaaaaa;
   --dark: #111112;
   --red: #db504a;
@@ -60,11 +61,12 @@ html {
 body.dark {
   --light: #222123;
   --grey: #ffffff;
+  --grey1: #ffffff;
   --dark: #ffffff;
   --trang: #017c1f;
   --maumenu: #d6ffe6;
   --mau1: #33cd88;
-  --logo1:#8ffadee9;
+  --logo1: #8ffadee9;
 }
 
 body {
@@ -237,39 +239,43 @@ body {
   color: var(--tim2);
 }
 #content nav form {
-  max-width: 400px;
+  max-width: 35em;
   width: 100%;
   margin-right: auto;
 }
 #content nav form .form-input {
   display: flex;
   align-items: center;
-  height: 36px;
+  height: 37px;
 }
 #content nav form .form-input input {
   flex-grow: 1;
-  padding: 0 16px;
+  padding: 0 10px;
   height: 100%;
   border: none;
-  background: var(--grey);
-  border-radius: 36px 0 0 36px;
+  background: var(--grey1);
+  border-radius: 0px 0 0 0px;
   outline: none;
   width: 100%;
   color: var(--dark);
 }
 #content nav form .form-input button {
-  width: 36px;
+  width: 100px;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--logo1);
-  color: var(--trang);
-  font-size: 18px;
+  background: #00ad5f;
+  color: white;
+  font-size: 16px;
   border: none;
   outline: none;
   border-radius: 0 36px 36px 0;
   cursor: pointer;
+}
+::placeholder {
+  color: rgb(0, 0, 0); /* Firefox, Chrome, Opera */
+  font-size: 15px;
 }
 #content nav .notification {
   font-size: 20px;
@@ -2824,6 +2830,106 @@ legend {
   opacity: 1;
 }
 /* search */
-.bx-search{
+/* .bx-search {
   background-color: rgb(4, 134, 90);
+} */
+
+/* detail-album */
+.backtrai {
+  background-image: linear-gradient(
+    rgba(187, 255, 206, 0.3) 0%,
+    rgba(17, 210, 130, 0.88) 33%,
+    rgb(30 148 103 / 71%) 100%
+  );
+  /* background-color: transparent; */
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  background-size: cover;
+  background-position: center center;
+  height: 85vh;
+  border-radius: 20px;
+  width: 23em;
+}
+.noidungback {
+  height: 20px;
+}
+.noidungback img {
+  z-index: -1;
+  height: 13em;
+  width: 100%;
+  object-fit: cover;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+.namealbum {
+  color: rgb(255, 255, 255);
+  padding-left: 10px;
+  font-size: 23px;
+  margin-top: 5px;
+  font-weight: 20em;
+}
+.namealbum span {
+  padding-left: 7em;
+}
+.nameuser {
+  color: rgb(255, 255, 255);
+  padding-left: 10px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+.trangthai {
+  margin-top: 5px;
+  font-size: 16px;
+}
+.trang-thai button {
+  padding: 0px 0px 2px 0px;
+  color: aliceblue;
+  border-bottom: 1px solid #eee;
+  border-radius: 0px;
+  margin-left: 10px;
+}
+.sst {
+  font-size: 12px;
+  color: aliceblue;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+.sst span {
+  padding-left: 10px;
+}
+.share {
+  font-size: 12px;
+  color: aliceblue;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+.share button {
+  padding: 10px;
+  border-radius: 100%;
+  border: none;
+  background-color: #ffffff6c;
+  float: right;
+  margin-bottom: 10px;
+}
+/* .benphai {
+  height: auto;
+}
+.benphai .row {
+  height: 40px;
+  padding-left: 10px;
+}*/
+.bai-viet {
+  background-color: rgba(176, 174, 174, 0.097);
+  padding: 20px;
+  margin-bottom: 5px;
+}
+.bai-viet .row .col-1 {
+  padding-top: 50px;
+}
+.bai-viet .row .col-3 img {
+  height: 8em;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 15px;
 }

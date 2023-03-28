@@ -13,6 +13,9 @@ public interface UserArticleResponse extends IsIdentified {
     @Value("#{target.title}")
     String getTitle();
 
+    @Value("#{target.descriptive}")
+    String getDescriptive();
+
     @Value("#{target.browse_date}")
     Long getBrowseDate();
 

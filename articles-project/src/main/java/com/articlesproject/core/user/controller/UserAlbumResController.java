@@ -3,6 +3,7 @@ package com.articlesproject.core.user.controller;
 import com.articlesproject.core.common.base.BaseController;
 import com.articlesproject.core.user.model.request.UserCreateAlbumRequest;
 import com.articlesproject.core.user.model.request.UserCreateArticleAlbumRequest;
+import com.articlesproject.core.user.model.request.UserFindArticleByAlbumRequest;
 import com.articlesproject.core.user.model.request.UserUpdateAlbumRequest;
 import com.articlesproject.core.user.service.UserAlbumService;
 import com.articlesproject.core.common.base.ResponseObject;
@@ -34,6 +35,12 @@ public class UserAlbumResController extends BaseController {
     @Autowired
     private UserArticleAlbumService articleAlbumService;
 
+    @GetMapping
+    private ResponseObject findAllAlbumByUserId(){
+        String userId = id;
+        return new ResponseObject(albumService.findAllAlbumByUserId(userId));
+    }
+
     @PostMapping("/create")
     private ResponseObject createAlbum(@Valid @RequestBody UserCreateAlbumRequest request){
         String userId = id;
@@ -56,13 +63,6 @@ public class UserAlbumResController extends BaseController {
         return new ResponseObject(albumService.delete(id));
     }
 
-
-    @GetMapping
-    private ResponseObject findAllAlbumByUserId(){
-        String userId = id;
-        return new ResponseObject(albumService.findAllAlbumByUserId(userId));
-    }
-
     @GetMapping("/{userId}")
     private ResponseObject findAllAlbumPublicByUserId(@PathVariable("userId") String userId){
         return new ResponseObject(albumService.findAllAlbumPublicByUserId(userId));
@@ -76,7 +76,8 @@ public class UserAlbumResController extends BaseController {
 
     @GetMapping("/detail/{id}")
     private ResponseObject detailAlbum(@PathVariable("id") String id){
-        return new ResponseObject(albumService.findById(id));
+        String userId = this.id;
+        return new ResponseObject(albumService.findByIdAndUsersId(id, userId));
     }
 
     @PostMapping("/add-article")
@@ -87,6 +88,12 @@ public class UserAlbumResController extends BaseController {
     @DeleteMapping("/delete-all-article")
     private ResponseObject deleteArticlesInAlbum(@RequestParam("articleId") String articleId,@RequestParam("albumId") String albumId){
         return new ResponseObject(articleAlbumService.deleteArticleAlbum(articleId,albumId));
+    }
+
+    @GetMapping("/detail-article-by-album")
+    private ResponseObject detailArticleByAlbum(final UserFindArticleByAlbumRequest request){
+        String userId = this.id;
+        return new ResponseObject(articleAlbumService.findAllArticleByAlbum(userId, request));
     }
 
 }

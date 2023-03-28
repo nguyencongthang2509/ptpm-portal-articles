@@ -8,23 +8,23 @@ window.detailAlbumCtrl = function (
 ) {
   $scope.listArticle = [];
   $scope.album = {};
-  $scope.findArticleRequest = {
-    albumId: $routeParams.id,
-    categoryId:"",
-    title: "",
-    hashtag: "",
-    category: "",
-  };
 
+  $scope.idArticle = "";
+  //get detail album
   AlbumService.fetchAlbum($routeParams.id).then(function () {
     $scope.album = AlbumService.getAlbum();
+    console.log($scope.album);
   });
 
-  ArticleService.fetchFindByArticle($scope.findArticleRequest).then(
-    function () {
-      $scope.listArticle = ArticleService.getFindByArticle();
+  //get bài viết trong album
+  AlbumService.fetchArticleByAlbum($routeParams.id).then(function () {
+    $scope.listArticle = AlbumService.getArticleByAlbum();
+    if ($scope.listArticle != null) {
+      $scope.idArticle = $scope.listArticle[0].id;
+      console.log($scope.idArticle);
     }
-  );
+    console.log($scope.listArticle);
+  });
 
   AlbumService.fetchCheckAlbumOfAuthor($routeParams.id).then(function () {
     $scope.author = AlbumService.getCheckAlbumOfAuthor();

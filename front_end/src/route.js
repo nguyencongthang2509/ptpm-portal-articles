@@ -49,9 +49,10 @@ app.config(function ($routeProvider, $locationProvider) {
     })
     .when("/album", {
       templateUrl: "./pages/album.html",
+      controller: albumCtrl,
     })
     .when("/album/:id", {
-      templateUrl: "./pages/detailAlbum.html",
+      templateUrl: "./pages/detail-album.html",
       controller: detailAlbumCtrl,
     })
     .when("/article-trash", {

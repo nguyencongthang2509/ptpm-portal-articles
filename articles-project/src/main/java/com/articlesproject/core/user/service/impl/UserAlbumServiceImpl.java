@@ -91,7 +91,7 @@ public class UserAlbumServiceImpl implements UserAlbumService {
     }
 
     @Override
-    public Album findByIdAndUsersId(String id, String userId) {
+    public UserAlbumResponse findByIdAndUsersId(String id, String userId) {
         return albumRepository.findByIdAndUsersId(id, userId);
     }
 }

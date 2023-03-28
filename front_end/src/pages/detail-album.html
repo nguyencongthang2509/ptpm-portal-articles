@@ -1,0 +1,77 @@
+<section class="album-det" ng-init="colorImage()">
+  <div class="container">
+    <section class="ben-trai">
+      <div class="row">
+        <div class="col-md-4 col order-first backtrai">
+          <div class="noidungback">
+            <img
+              src="../../../articles-project/src/main/resources/templates/articles/{{idArticle}}/image.png"
+              alt=""
+              id="myImage"
+            />
+            <div class="namealbum">
+              {{album.title}}
+              <span><i class="bi bi-pen"></i></span>
+            </div>
+            <div class="nameuser">{{album.userName}}</div>
+            <div class="trang-thai">
+              <div class="dropdown">
+                <button
+                  class="btn btn-pink dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Status
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item active" href="#">Public</a></li>
+                  <li><a class="dropdown-item" href="#">Private</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="sst">
+              <p>{{album.numberOfArticle}} Article</p>
+            </div>
+            <hr style="border-top: 4px #eee solid" />
+            <div class="share">
+              <button type="button">
+                <i class="bi bi-three-dots-vertical"></i>
+              </button>
+            </div>
+            <!-- <div class="moTa">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Des..."
+                style="
+                  border-bottom: 1px rgb(255, 255, 255) solid;
+                  border-radius: 0%;
+                  background-color: transparent;
+                  height: 30px;
+                
+                "
+              /> -->
+            <!-- </div> -->
+          </div>
+        </div>
+        <div class="col-12 col-sm-8 benphai" style="height: auto">
+          <div class="row" style="height: 40px; padding-left: 10px">
+            <i class="bi bi-filter-right"><span> Sort</span></i>
+          </div>
+          <section class="bai-viet" ng-repeat="ar in listArticle">
+            <div class="row">
+              <div class="col-1">
+                <i class="bi bi-list"></i>
+              </div>
+              <div class="col-3" align="top">
+                <img src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.png" alt="" />
+              </div>
+              <div class="col-8">{{ar.title}}</div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

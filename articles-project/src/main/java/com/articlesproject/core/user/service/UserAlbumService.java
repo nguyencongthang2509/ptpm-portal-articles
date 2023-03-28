@@ -23,6 +23,6 @@ public interface UserAlbumService {
 
     Album findById(String id);
 
-    Album findByIdAndUsersId(String id, String userId);
+    UserAlbumResponse findByIdAndUsersId(String id, String userId);
 }
 

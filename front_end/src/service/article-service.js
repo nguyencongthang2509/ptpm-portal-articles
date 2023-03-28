@@ -147,8 +147,6 @@ app.service("ArticleService", function ($http) {
         function (response) {
           if (response.status === 200) {
             findByArticle = response.data.data.data;
-            console.log(123);
-            console.log(response);
           }
           return response;
         },

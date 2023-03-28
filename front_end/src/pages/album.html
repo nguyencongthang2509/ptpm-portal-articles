@@ -1,8 +1,4 @@
 <div class="container-fluid">
-  <div class="bt pb-4">
-    <button type="button" class="btn btn-light me-5">All</button>
-    <button type="button" class="btn btn-light me-5">Bộ Sưu Tập</button>
-  </div>
   <div class="row pb-4">
     <div class="col-6">
       <img src="/front_end/assets/blog1.jpg" alt="" width="100%" />
@@ -11,20 +7,20 @@
     <div class="col-6">
       <div class="top pt-5" style="text-align: center">
         <div class="section-title">
-          <h4 class="text-dark">BỘ SƯU TẬP</h4>
+          <h4 class="text-dark">ALBUM</h4>
         </div>
-        <!-- <p class="text-dark">
+        <p class="text-dark">
           Streamline your content production and distribution with the help of
           our favorite content marketing tools. New to the web platform in
           February
-        </p> -->
-        <button type="button" class="btn btn-light me-5">Hữu Ích</button>
-        <button type="button" class="btn btn-light me-5">Học Tập</button>
-        <button type="button" class="btn btn-light me-5">Giải Trí</button>
+        </p>
+        <div class="bt pb-4">
+          <button type="button" class="btn btn-light me-5" ng-repeat="album in albums"><a href="#/album/{{album.id}}">{{album.title}}</a></button>
+        </div>
       </div>
     </div>
   </div>
-  <section>
+  <!-- <section>
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-10">
@@ -878,4 +874,5 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
+</div>

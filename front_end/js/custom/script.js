@@ -1,4 +1,3 @@
-
 var Toolbar = {};
 Toolbar.allHihi = function () {
   const allSideMenu = document.querySelectorAll("#sidebar .side-menu.top li a");
@@ -26,7 +25,7 @@ Toolbar.allHihi = function () {
     "#content nav form .form-input button"
   );
   const searchButtonIcon = document.querySelector(
-    "#content nav form .form-input button .bx"
+    "#content nav form .form-input button"
   );
   const searchForm = document.querySelector("#content nav form");
 

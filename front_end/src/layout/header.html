@@ -14,7 +14,7 @@
     >
       <a
         href="#create-article"
-        style="background-color:#1ac396d9; color: aliceblue"
+        style="background-color: #1ac396d9; color: aliceblue"
       >
         <i class="bx bxs-cloud-download"></i>
         <span>Add Articles</span>
@@ -95,11 +95,31 @@
     <i class="bx bx-menu"></i>
     <a href="#" class="nav-link">Categories</a>
     <form>
-      <div class="form-input">
+      <!-- <div class="form-input">
         <input type="search" placeholder="Search..." ng-model="key"/>
         <a class="search-btn" href="#search-result?key={{key}}">
           <i class="bx bx-search"></i>
         </a>
+      </div> -->
+      <div class="form-input">
+        <div
+          class="icon"
+          style="
+            flex-grow: 1;
+            padding-top: 6px;
+            padding-left: 15px;
+            height: 100%;
+            border: none;
+            background: var(--grey1);
+            border-radius: 36px 0 0 36px;
+            width: 30px;
+            color: black;
+          "
+        >
+          <i class="bx bx-search"></i>
+        </div>
+        <input type="search" placeholder="What are you looking for?" />
+        <button type="submit" class="search-btn"><a href="#search-result">Search</a></button>
       </div>
     </form>
     <input type="checkbox" id="switch-mode" hidden />
@@ -118,7 +138,7 @@
       >
         <img src="/front_end/assets/people.png" />
       </a>
-      <ul class="dropdown-menu" >
+      <ul class="dropdown-menu">
         <li>
           <a class="dropdown-item" href="#/profile" style="color: black"
             ><i
@@ -129,8 +149,16 @@
             <span>Profile</span></a
           >
         </li>
-        <li><a class="dropdown-item" href="#" style="color: black">Another action</a></li>
-        <li><a class="dropdown-item" href="#" style="color: black">Something else here</a></li>
+        <li>
+          <a class="dropdown-item" href="#" style="color: black"
+            >Another action</a
+          >
+        </li>
+        <li>
+          <a class="dropdown-item" href="#" style="color: black"
+            >Something else here</a
+          >
+        </li>
       </ul>
     </div>
     <!-- <a href="#/users" class="profile">

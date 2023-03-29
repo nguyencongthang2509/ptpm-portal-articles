@@ -1,0 +1,221 @@
+<div class="row">
+  <div
+class="col-md-6"
+data-aos="fade-up"
+ng-repeat="ar in listArticle | limitTo:itemsPerPage"
+>
+<div
+  class="card-custom rounded-4 bg-base shadow-effect"
+  style="height: 350px"
+>
+  <div class="card-custom-image rounded-4">
+    <img
+      class="rounded-4"
+      src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.png"
+      alt="Image"
+      style="max-height: 200px; width: 100%; object-fit: cover"
+    />
+  </div>
+  <div class="card-custom-content p-4">
+    <h5
+      class="mb-4"
+      style="
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      "
+    >
+      {{ar.title}}
+    </h5>
+    <a href="#article/{{ar.id}}" class="link-custom pe-3">Read More</a>
+    <a
+      data-ng-click="favoriteArticle(ar.id, $index)"
+      ng-if="ar.favorite == 0"
+      ><i class="bx bx-heart"></i> {{ar.tym}}</a
+    >
+    <a
+      data-ng-click="unfavoriteArticle(ar.id, $index)"
+      ng-if="ar.favorite == 1"
+      ><i class="bx bxs-heart"></i> {{ar.tym}}</a
+    >
+    <div class="row">
+      <div class=" col-10">
+        <div class="card__avatars cluster color-mid-text ">
+          <img class="img" 
+            sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
+            ng-src="{{ar.img}}" />
+          <div class="flow flow-space-size-0 ">
+            <div class="card__authors flow-space-base" aria-label="authors">
+              <a href="#/users/{{ar.userId}}" class="text-dark">{{ar.name}}</a>
+            </div>
+            <time class="text-dark">{{ar.browseDate| date:'dd/MM/yyyy'}}</time>
+          </div>
+        </div>
+      </div>
+      <div class="cham col-1">
+        <i
+          class="bi bi-three-dots-vertical"
+          style="margin: 0px; width: 12%"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        ></i>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li ng-if="ar.status == 3 && authen">
+            <a
+              class="dropdown-item"
+              data-bs-toggle="modal"
+              data-bs-target="#addArticleAlbum"
+              ng-click="showModalAddArticleToAlbum(ar.id)"
+              >Thêm vào album</a
+            >
+            <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                      Đặt Tên
+                    </h1>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">hhhh</div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                      Save changes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="#"
+              ng-click="showConfirmDeleteAlbum($index, album.id)"
+              data-bs-toggle="modal"
+              data-bs-target="#deleteAlbumModal"
+              >Ẩn bài viết</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="#"
+              ng-click="showConfirmDeleteAlbum($index, album.id)"
+              data-bs-toggle="modal"
+              data-bs-target="#deleteAlbumModal"
+              >Báo Cáo</a
+            >
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="pagination">
+<ul class="pagination">
+  <!-- <li ng-class="{disabled: currentPage == 1}">
+    <a ng-click="currentPage = 1">First</a>
+  </li> -->
+  <li ng-class="{disabled: currentPage == 1}">
+    <a ng-click="currentPage = currentPage - 1">Prev</a>
+  </li>
+  <li
+    ng-repeat="page in pages"
+    ng-class="{active: currentPage == page}"
+  >
+    <a ng-click="currentPage = page">{{ page }}</a>
+  </li>
+  <li>
+    <!-- <input type="number" value="1"> <span>{{totalPages}}</span> -->
+  </li>
+  <li ng-class="{disabled: currentPage == totalPages}">
+    <a ng-click="currentPage = currentPage + 1">Next</a>
+  </li>
+  <!-- <li ng-class="{disabled: currentPage == totalPages}">
+    <a ng-click="currentPage = totalPages">Last</a>
+  </li> -->
+</ul>
+</div>
+
+<!-- begin add article album -->
+<div class="modal fade" id="addArticleAlbum" tabindex="-1" aria-labelledby="addArticleAlbum" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Save to...</h5>
+        <button type="button" ng-click="closeFormAddAlbum()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- <input type="text" class="form-control"  ng-model="search"  ng-change="searchAlbum()" placeholder="nhập: abc..."/> -->
+        <table style=" margin: 10px;">
+          <thead>
+          </thead>
+          <tbody style="display: block; height: 100px; overflow-y: scroll">
+          <tr ng-repeat="album in listAlbum track by $index">
+            <td><input class="form-check-input" type="checkbox" style="margin-right: 15px;" value="{{album.id}}"
+                       id="{{album.id}}" data-ng-click="addArticleToAlbum(album.id)" ng-checked="album.countArticle != 0 "/></td>
+            <td>{{album.title}}</td>
+            <td ng-if="album.status"><i class="bx bx-world"></i></td>
+            <td ng-if="album.status == false"><i class="bi bi-incognito"></i></td>
+          </tr>
+
+          </tbody>
+        </table>
+        <div   id="createAlbum" ng-click="showCreateAlbum()">Create album</div>
+        <form name="formThemMoi" id="formThemMoi" style="display: none;" novalidate>
+          <div class="mb-3">
+            <label for="exampleInputTitle" class="form-label">Title:</label>
+            <input type="text" class="form-control" name="title" id="exampleInputPassword1" required
+                   ng-model="createNewAlbum.title" minlength="2" />
+            <span class="text-danger" ng-show="formThemMoi.title.$error.required && formThemMoi.title.$touched">vui lòng
+              nhập title</span>
+            <span class="text-danger" ng-show="formThemMoi.title.$error.minlength">
+              Vui lòng nhập ít nhất 2 kí tự
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputTitle" class="form-label">Status</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="status" value="false" id="flexRadioDefault1"  ng-model="createNewAlbum.status"/>
+              <label class="form-check-label" for="flexRadioDefault1">
+                <i class="bi bi-incognito"></i> Private
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="status" value="true" id="flexRadioDefault2" ng-model="createNewAlbum.status" checked />
+              <label class="form-check-label" for="flexRadioDefault2">
+                <i class="bi bi-book"></i> Public
+              </label>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" ng-click="createAlbumQuick($event)">Create</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- end add article album -->

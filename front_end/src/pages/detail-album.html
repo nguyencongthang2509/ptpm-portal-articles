@@ -15,20 +15,7 @@
             </div>
             <div class="nameuser">{{album.userName}}</div>
             <div class="trang-thai">
-              <div class="dropdown">
-                <button
-                  class="btn btn-pink dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Status
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item active" href="#">Public</a></li>
-                  <li><a class="dropdown-item" href="#">Private</a></li>
-                </ul>
-              </div>
+              Status: {{album.status == true ? "Public" : "Private"}}
             </div>
             <div class="sst">
               <p>{{album.numberOfArticle}} Article</p>
@@ -65,9 +52,30 @@
                 <i class="bi bi-list"></i>
               </div>
               <div class="col-3" align="top">
-                <img src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.png" alt="" />
+                <img
+                  src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.png"
+                  alt=""
+                />
               </div>
               <div class="col-8">{{ar.title}}</div>
+              <div class="cham">
+                <i
+                  class="bi bi-three-dots-vertical"
+                  style="width: 12%"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                ></i>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      ng-click="deleteArticleInAlbum(ar.id, album.id)"
+                      >Delete Article</a
+                    >
+                  </li>
+                </ul>
+              </div>
             </div>
           </section>
         </div>

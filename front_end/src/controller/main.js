@@ -5,9 +5,7 @@ app.controller("myCtrl", function ($scope) {
   $scope.Summernote = function () {
     Summernote.summer();
   };
-  $scope.colorImage = function () {
-    colorImage.changeColorImage();
-  };
+
 });
 app.directive("myTooltip", function () {
   return {

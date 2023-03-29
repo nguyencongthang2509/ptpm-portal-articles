@@ -19,11 +19,9 @@ window.detailAlbumCtrl = function (
   //get bài viết trong album
   AlbumService.fetchArticleByAlbum($routeParams.id).then(function () {
     $scope.listArticle = AlbumService.getArticleByAlbum();
-    if ($scope.listArticle != null) {
+    if ($scope.listArticle.length > 0) {
       $scope.idArticle = $scope.listArticle[0].id;
-      console.log($scope.idArticle);
     }
-    console.log($scope.listArticle);
   });
 
   AlbumService.fetchCheckAlbumOfAuthor($routeParams.id).then(function () {
@@ -79,4 +77,46 @@ window.detailAlbumCtrl = function (
       });
   };
   // end article
+
+  //delete article in album
+
+  $scope.deleteArticleInAlbum = function (idArticle, idAlbum) {
+    if (confirm("Bạn có chắc muốn xóa?")) {
+      $http
+        .delete(
+          albumAPI +
+            "/delete-all-article?articleId=" +
+            idArticle +
+            "&albumId=" +
+            idAlbum
+        )
+        .then(
+          function (response) {
+            toastr.success("Xóa thành công", "Thông báo!", {
+              timeOut: 3000,
+              closeButton: true,
+              progressBar: true,
+              positionClass: "toast-top-center",
+            });
+            location.reload();
+          },
+          function (error) {
+            toastr.error("Có lỗi xảy ra", "Thông báo!", {
+              timeOut: 3000,
+              closeButton: true,
+              progressBar: true,
+              positionClass: "toast-top-center",
+            });
+            console.log(error);
+          }
+        );
+    } else {
+      toastr.info("Đã hủy xóa", {
+        timeOut: 3000,
+        closeButton: true,
+        progressBar: true,
+        positionClass: "toast-top-center",
+      });
+    }
+  };
 };

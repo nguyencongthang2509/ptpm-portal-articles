@@ -86,7 +86,7 @@ public class UserAlbumResController extends BaseController {
     }
 
     @DeleteMapping("/delete-all-article")
-    private ResponseObject deleteArticlesInAlbum(@RequestParam("articleId") String articleId,@RequestParam("albumId") String albumId){
+    private ResponseObject deleteArticlesInAlbum(@RequestParam("articleId") String articleId, @RequestParam("albumId") String albumId){
         return new ResponseObject(articleAlbumService.deleteArticleAlbum(articleId,albumId));
     }
 

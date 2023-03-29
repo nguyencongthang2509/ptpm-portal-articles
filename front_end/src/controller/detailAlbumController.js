@@ -4,10 +4,15 @@ window.detailAlbumCtrl = function (
   AlbumService,
   ArticleService,
   env,
-  $http
+  $http,
+  $colorThief
 ) {
   $scope.listArticle = [];
   $scope.album = {};
+  var image = document.querySelector("#myImage");
+
+  $scope.dominant = $colorThief.getColor(image);
+  $scope.palette = $colorThief.getPalette(image);
 
   $scope.idArticle = "";
   //get detail album

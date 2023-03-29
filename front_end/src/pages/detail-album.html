@@ -2,11 +2,12 @@
   <div class="container">
     <section class="ben-trai">
       <div class="row">
-        <div class="col-md-4 col order-first backtrai">
+        <div class="col-md-4 col order-first backtrai" ng-style="{'background-color': 'rgb('+colors.dominantColor[0]+', '+colors.dominantColor[1]+', '+colors.dominantColor[2]+')'}">
           <div class="noidungback">
             <img
               src="../../../articles-project/src/main/resources/templates/articles/{{idArticle}}/image.png"
               alt=""
+              color-thief color-thief-dominant="colors.myDominantColor"
               id="myImage"
             />
             <div class="namealbum">

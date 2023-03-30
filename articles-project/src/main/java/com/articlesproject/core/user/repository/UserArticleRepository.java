@@ -40,7 +40,7 @@ public interface UserArticleRepository extends ArticlesRepository {
                 LEFT JOIN users us ON us.id = ar.users_id
                 LEFT JOIN category ca ON ca.id = ar.category_id
                 WHERE  ar.status = 3
-                AND ( :#{#request.title} IS NULL
+                AND (( :#{#request.title} IS NULL
                         OR :#{#request.title} LIKE ''
                         OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION))
                 OR ( :#{#request.hashtag} IS NULL
@@ -50,7 +50,7 @@ public interface UserArticleRepository extends ArticlesRepository {
                         OR MATCH(ca.name) AGAINST( :#{#request.category} WITH QUERY EXPANSION) )
                 AND ( :#{#request.categoryId} IS NULL
                         OR :#{#request.categoryId} LIKE ''  
-                        OR ca.id LIKE :#{#request.categoryId} )
+                        OR ca.id LIKE :#{#request.categoryId} ))
             GROUP BY  ar.id, ar.title, ar.descriptive, ar.browse_date, ar.status,  aral.articles_id, ar.users_id, us.name
             ORDER BY ar.browse_date DESC
             """,
@@ -65,7 +65,7 @@ public interface UserArticleRepository extends ArticlesRepository {
                         LEFT JOIN users us ON us.id = ar.users_id
                         LEFT JOIN category ca ON ca.id = ar.category_id
                         WHERE  ar.status = 3
-                        AND ( :#{#request.title} IS NULL
+                        AND (( :#{#request.title} IS NULL
                                 OR :#{#request.title} LIKE ''
                                 OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION))
                         OR ( :#{#request.hashtag} IS NULL
@@ -75,7 +75,7 @@ public interface UserArticleRepository extends ArticlesRepository {
                                 OR MATCH(ca.name) AGAINST( :#{#request.category} WITH QUERY EXPANSION) )
                         AND ( :#{#request.categoryId} IS NULL
                                 OR :#{#request.categoryId} LIKE ''  
-                                OR ca.id LIKE :#{#request.categoryId} )
+                                OR ca.id LIKE :#{#request.categoryId} ))
                         GROUP BY  ar.id, ar.title, ar.descriptive, ar.browse_date, ar.status,  aral.articles_id, ar.users_id, us.name
                         ORDER BY ar.browse_date DESC
                                            """
@@ -94,7 +94,7 @@ public interface UserArticleRepository extends ArticlesRepository {
                 LEFT JOIN users us ON us.id = ar.users_id
                 LEFT JOIN category ca ON ca.id = ar.category_id
                 WHERE  ar.status = 3
-                AND ( :#{#request.title} IS NULL
+                AND (( :#{#request.title} IS NULL
                 OR :#{#request.title} LIKE ''
                 OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION))
                 AND ( :#{#request.hashtag} IS NULL
@@ -102,7 +102,7 @@ public interface UserArticleRepository extends ArticlesRepository {
                         OR ha.title LIKE :#{#request.hashtag} )
                 AND ( :#{#request.category} IS NULL
                         OR :#{#request.category} LIKE ''
-                        OR MATCH(ca.name) AGAINST( :#{#request.category} WITH QUERY EXPANSION) )
+                        OR MATCH(ca.name) AGAINST( :#{#request.category} WITH QUERY EXPANSION) ))
             GROUP BY  ar.id, ar.title, ar.descriptive, ar.browse_date, ar.status,  aral.articles_id, ar.users_id, us.name
             ORDER BY ar.browse_date DESC
             """,
@@ -116,7 +116,7 @@ public interface UserArticleRepository extends ArticlesRepository {
                        LEFT JOIN tyms ON tyms.article_id = ar.id
                        LEFT JOIN users us ON us.id = ar.users_id
                        LEFT JOIN category ca ON ca.id = ar.category_id
-                       WHERE ( :#{#request.title} IS NULL
+                       WHERE (( :#{#request.title} IS NULL
                             OR :#{#request.title} LIKE ''
                             OR MATCH(ar.title) AGAINST( :#{#request.title} WITH QUERY EXPANSION))
                             AND ( :#{#request.hashtag} IS NULL
@@ -124,7 +124,7 @@ public interface UserArticleRepository extends ArticlesRepository {
                                    OR ha.title LIKE :#{#request.hashtag} )
                             AND ( :#{#request.category} IS NULL
                                    OR :#{#request.category} LIKE ''
-                                   OR ca.name LIKE :#{#request.category} )
+                                   OR ca.name LIKE :#{#request.category} ))
                             AND (ar.status = 3)
                            GROUP BY  ar.id, ar.title, ar.descriptive, ar.browse_date, ar.status,  aral.articles_id, ar.users_id, us.img, us.name
                            ORDER BY ar.browse_date DESC

@@ -134,7 +134,7 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
         if (request.getTitle() == null) {
             throw new RestApiException(Message.TITLE_IS_NOT_NULL);
         }
-        ar.setStatus(ArticleStatus.MOI_TAO);
+        ar.setStatus(ArticleStatus.CHO_PHE_DUYET);
         userMyArticleRepository.save(ar);
         String currentDirectory1 = System.getProperty("user.dir");
         String folderName = ar.getId();

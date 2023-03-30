@@ -74,13 +74,15 @@ window.profileController = function (
 
   $scope.updateAlbum = function (event) {
     event.preventDefault();
-    $scope.UpdateAlbum = { id: $scope.album.id, title: $scope.album.title };
+    $scope.UpdateAlbum = { id: $scope.album.id, title: $scope.album.title, status:  $scope.album.status};
     if ($scope.album.title != "") {
       $http
         .put(env.API_URL + "/album/update", $scope.UpdateAlbum)
         .then(function (respone) {
-          $scope.index = 0;
+          respone.data.data.countArticle =  $scope.albums[$scope.index].countArticle
           $scope.albums.splice($scope.index, 1, respone.data.data);
+          $scope.index = 0;
+
         });
     }
   };

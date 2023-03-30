@@ -1,23 +1,26 @@
-<section class="album-det" ng-init="colorImage()">
+<!-- <h1 ng-show="album.numberOfArticle = 0">LÀM GÌ CÓ BÀI VIẾT NÀO MÀ TÌM</h1> -->
+<section class="album-det" ng-show="album.numberOfArticle > 0">
   <div class="container">
     <section class="ben-trai">
       <div class="row">
-        <div class="col-md-4 col order-first backtrai">
+        <div
+          class="col-md-4 col order-first backtrai"
+          style="background-image: url(../../../articles-project/src/main/resources/templates/articles/{{idArticle}}/image.png)"
+        >
           <div class="noidungback">
             <img
               src="../../../articles-project/src/main/resources/templates/articles/{{idArticle}}/image.png"
               alt=""
-              id="myImage"
             />
             <div class="namealbum">
               {{album.title}}
               <span><i class="bi bi-pen"></i></span>
             </div>
             <div class="nameuser">{{album.userName}}</div>
-            <div class="trang-thai">
+            <div class="nameuser">
               Status: {{album.status == true ? "Public" : "Private"}}
             </div>
-            <div class="sst">
+            <div class="nameuser">
               <p>{{album.numberOfArticle}} Article</p>
             </div>
             <hr style="border-top: 4px #eee solid" />
@@ -26,21 +29,8 @@
                 <i class="bi bi-three-dots-vertical"></i>
               </button>
             </div>
-            <!-- <div class="moTa">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Des..."
-                style="
-                  border-bottom: 1px rgb(255, 255, 255) solid;
-                  border-radius: 0%;
-                  background-color: transparent;
-                  height: 30px;
-                
-                "
-              /> -->
-            <!-- </div> -->
           </div>
+          <div class="backtrai__background"></div>
         </div>
         <div class="col-12 col-sm-8 benphai" style="height: auto">
           <div class="row" style="height: 40px; padding-left: 10px">

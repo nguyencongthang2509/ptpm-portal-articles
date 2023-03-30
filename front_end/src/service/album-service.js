@@ -61,7 +61,6 @@ app.service("AlbumService", function ($http, env) {
   this.fetchAlbum = function (id) {
     return $http.get(env.API_URL + "/album/detail/" + id).then(
       function (response) {
-        console.log(response)
         album = response.data.data;
       },
       function (errors) {

@@ -49,6 +49,7 @@ window.createArticleCtrl = function (
       categoryId: $scope.category,
       hashtag: $scope.list_of_string,
     };
+    console.log(formData);
     $http.post(myArticleAPI + "/create-article", formData).then(
       function (response) {
         toastr.success("Đã gửi yêu cầu phê duyệt thành công", "Thông báo!", {

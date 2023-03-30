@@ -51,10 +51,8 @@ public interface UserArticleRepository extends ArticlesRepository {
                 AND ( :#{#request.categoryId} IS NULL
                         OR :#{#request.categoryId} LIKE ''  
                         OR ca.id LIKE :#{#request.categoryId} )
-                OR ( :#{#request.albumId} IS NULL
-                        OR :#{#request.albumId} LIKE ''
-                        OR aral.album_id LIKE :#{#request.albumId} )
             GROUP BY  ar.id, ar.title, ar.descriptive, ar.browse_date, ar.status,  aral.articles_id, ar.users_id, us.name
+            ORDER BY ar.browse_date DESC
             """,
             countQuery = """
                     SELECT ar.id, ar.title, ar.descriptive, ar.browse_date, ar.status,ar.users_id, us.img, us.name,  COUNT(tyms.article_id) AS 'tym', IF((SELECT SUM(IF(ty.article_id IS NULL, 0, 1))  FROM tyms ty
@@ -78,10 +76,8 @@ public interface UserArticleRepository extends ArticlesRepository {
                         AND ( :#{#request.categoryId} IS NULL
                                 OR :#{#request.categoryId} LIKE ''  
                                 OR ca.id LIKE :#{#request.categoryId} )
-                        AND ( :#{#request.albumId} IS NULL
-                                OR :#{#request.albumId} LIKE ''
-                                OR aral.album_id LIKE :#{#request.albumId} )
                         GROUP BY  ar.id, ar.title, ar.descriptive, ar.browse_date, ar.status,  aral.articles_id, ar.users_id, us.name
+                        ORDER BY ar.browse_date DESC
                                            """
             , nativeQuery = true)
     Page<UserArticleResponse> findAllArticle(Pageable page, @Param("userId") String userId, @Param("request") UserFindArticleRequest request);
@@ -107,9 +103,6 @@ public interface UserArticleRepository extends ArticlesRepository {
                 AND ( :#{#request.category} IS NULL
                         OR :#{#request.category} LIKE ''
                         OR MATCH(ca.name) AGAINST( :#{#request.category} WITH QUERY EXPANSION) )
-                AND ( :#{#request.albumId} IS NULL
-                        OR :#{#request.albumId} LIKE ''
-                        OR aral.album_id LIKE :#{#request.albumId} )
             GROUP BY  ar.id, ar.title, ar.descriptive, ar.browse_date, ar.status,  aral.articles_id, ar.users_id, us.name
             ORDER BY ar.browse_date DESC
             """,
@@ -132,9 +125,6 @@ public interface UserArticleRepository extends ArticlesRepository {
                             AND ( :#{#request.category} IS NULL
                                    OR :#{#request.category} LIKE ''
                                    OR ca.name LIKE :#{#request.category} )
-                            AND ( :#{#request.albumId} IS NULL
-                                   OR :#{#request.albumId} LIKE ''
-                                   OR MATCH(ca.name) AGAINST( :#{#request.category} WITH QUERY EXPANSION) )
                             AND (ar.status = 3)
                            GROUP BY  ar.id, ar.title, ar.descriptive, ar.browse_date, ar.status,  aral.articles_id, ar.users_id, us.img, us.name
                            ORDER BY ar.browse_date DESC

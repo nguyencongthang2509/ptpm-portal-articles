@@ -40,6 +40,7 @@ app.service("ArticleService", function ($http) {
       function (response) {
         if (response.status === 200) {
           articles = response.data.data.data;
+          console.log(articles)
           totalPages = response.data.data.totalPages;
           currentPage = response.data.data.currentPage;
         }
@@ -132,9 +133,7 @@ app.service("ArticleService", function ($http) {
     return $http
       .get(
         articleAPI +
-          `?albumId=` +
-          findArticleRequest.albumId +
-          `&title=` +
+          `?title=` +
           findArticleRequest.title +
           `&hashtag=` +
           findArticleRequest.hashtag +

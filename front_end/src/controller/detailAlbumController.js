@@ -13,7 +13,6 @@ window.detailAlbumCtrl = function (
   //get detail album
   AlbumService.fetchAlbum($routeParams.id).then(function () {
     $scope.album = AlbumService.getAlbum();
-    console.log($scope.album);
   });
 
   //get bài viết trong album

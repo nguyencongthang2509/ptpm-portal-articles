@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/censor/api/article")
+@RequestMapping("/api/censor/article")
 public class CensorArticleResController {
 
     @Autowired

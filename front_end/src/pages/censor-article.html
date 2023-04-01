@@ -35,3 +35,34 @@
         </div>
     </div>
 </div>
+<div class="container" style="padding-left: 450px; margin-top: 40px">
+    <div class="pagination">
+      <ul class="pagination">
+        <button
+          class="page-link"
+          ng-click="prevPage() "
+          ng-disabled="pageModel == 1"
+        >
+          <i class="bi bi-caret-left"></i>
+        </button>
+        <li>
+          <input
+            type="number"
+            ng-change="inputChangeEvent()"
+            ng-model="pageModel"
+            min="1"
+            max="{{totalPages}}"
+            style="width: 25px; font-size: 15px"
+          />
+          <span> / {{totalPages}}</span>
+        </li>
+        <button
+          class="page-link"
+          ng-click="nextPage()"
+          ng-disabled="pageModel == totalPages"
+        >
+          <i class="bi bi-caret-right"></i>
+        </button>
+      </ul>
+    </div>
+  </div>

@@ -39,6 +39,15 @@ public class CensorArticleServiceImpl implements CensorArticleService {
     }
 
     @Override
+    public ArticleNotApproveResponse findArticleById(String id) {
+        Optional<ArticleNotApproveResponse> article = articleRepository.findArticleById(id);
+        if(!article.isPresent()){
+            throw new RestApiException(Message.ARTICLE_NOT_EXIST);
+        }
+        return article.get();
+    }
+
+    @Override
     public Articles approveArticle(UpdateStatusArticleRequest request) {
         Optional<Articles> article = articleRepository.findById(request.getId());
         Optional<Users> users = userRepository.findById(article.get().getUsersId());
@@ -48,7 +57,7 @@ public class CensorArticleServiceImpl implements CensorArticleService {
         article.get().setStatus(ArticleStatus.DA_PHE_DUYET);
         article.get().setBrowseDate(new Date().getTime());
         emailSender.sendEmail(users.get().getEmail(), "[FCR] Thông báo Bài Viết chờ phê duyệt",
-                "Bài Viết "+article.get().getTitle()+" đã dược phê duyệt", request.getReview());
+                "Bài Viết "+article.get().getTitle()+" đã dược phê duyệt", request.getFeedback());
         return articleRepository.save(article.get());
     }
 
@@ -60,7 +69,7 @@ public class CensorArticleServiceImpl implements CensorArticleService {
             throw new RestApiException(Message.ARTICLE_NOT_EXIST);
         }
         emailSender.sendEmail(users.get().getEmail(), "[FCR] Thông báo Bài Viết chờ phê duyệt",
-                "Bài Viết "+article.get().getTitle()+" cần chỉnh sửa lại", request.getReview());
+                "Bài Viết "+article.get().getTitle()+" cần chỉnh sửa lại", request.getFeedback());
         article.get().setBrowseDate(new Date().getTime());
         article.get().setStatus(ArticleStatus.DA_HUY);
         return articleRepository.save(article.get());

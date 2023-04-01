@@ -6,7 +6,11 @@ app.config(function ($routeProvider, $locationProvider) {
     })
     .when("/approve-article", {
       templateUrl: "./pages/approve-article.html",
-    })
+      controller:articleCtrl
+    }).when("/article/:id", {
+        templateUrl: "./pages/censor-detail-article.html",
+        controller: detailArticleCtrl,
+      })
     // .when("/trang-chu", {
     //   templateUrl: "./pages/trang-chu.html",
     //   controller: homeCtrl,

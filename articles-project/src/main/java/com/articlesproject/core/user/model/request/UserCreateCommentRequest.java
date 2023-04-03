@@ -20,7 +20,6 @@ public class UserCreateCommentRequest {
     @Size(min = 6)
     private String content;
 
-    @NotEmpty
     private String reply;
 
 

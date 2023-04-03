@@ -7,6 +7,7 @@ import com.articlesproject.core.common.base.ResponseObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/censor/api/article")
+@RequestMapping("/api/censor/article")
 public class CensorArticleResController {
 
     @Autowired
@@ -23,6 +24,11 @@ public class CensorArticleResController {
     @GetMapping
     public ResponseObject getAllArticleNotApprove(final ArticleRequest request){
         return new ResponseObject(articleService.getAllArticleNotApprove(request));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseObject findArticleById(@PathVariable("id") String id){
+        return new ResponseObject(articleService.findArticleById(id));
     }
 
     @PutMapping("/approve-article")

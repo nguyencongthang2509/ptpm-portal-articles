@@ -11,7 +11,6 @@ import lombok.Setter;
 @Setter
 public final class UserCreateArticleRequest {
 
-    @NotEmpty
     private String categoryId;
 
     @NotEmpty

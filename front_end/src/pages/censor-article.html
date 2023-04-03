@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-md-4" data-aos="fade-up" ng-repeat="ar in listArticle">
+        <div class="card-custom rounded-4 bg-base shadow-effect" style="height: 350px">
+            <div class="card-custom-image rounded-4">
+                <img class="rounded-4"
+                    src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.png" alt="Image"
+                    style="max-height: 200px; width: 100%; object-fit: cover" />
+            </div>
+            <div class="card-custom-content p-4">
+    
+                <h5 class="mb-4" style="
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              ">
+                    {{ar.title}}
+                </h5>
+                <a href="#article/{{ar.id}}" class="link-custom pe-3">Read More</a>
+                <div class="cham">
+                    <i class="bi bi-three-dots-vertical" style="margin: 0px; width: 12%" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false"></i>
+                </div>
+                <div class="col-10">
+                    <div class="card__avatars cluster color-mid-text">
+                        <img class="img" sizes="(min-width: 40px) 40px, calc(100vw - 48px)" ng-src="{{ar.img}}" />
+                        <div class="flow flow-space-size-0">
+                            <div class="card__authors flow-space-base" aria-label="authors">
+                                <a href="#/users/{{ar.userId}}" class="text-dark">{{ar.name}}</a>
+                            </div>
+                            <p class="text-brand mb-2">{{ar.browseDate| date:'dd/MM/yyyy'}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style="padding-left: 450px; margin-top: 40px">
+    <div class="pagination">
+      <ul class="pagination">
+        <button
+          class="page-link"
+          ng-click="prevPage() "
+          ng-disabled="pageModel == 1"
+        >
+          <i class="bi bi-caret-left"></i>
+        </button>
+        <li>
+          <input
+            type="number"
+            ng-change="inputChangeEvent()"
+            ng-model="pageModel"
+            min="1"
+            max="{{totalPages}}"
+            style="width: 25px; font-size: 15px"
+          />
+          <span> / {{totalPages}}</span>
+        </li>
+        <button
+          class="page-link"
+          ng-click="nextPage()"
+          ng-disabled="pageModel == totalPages"
+        >
+          <i class="bi bi-caret-right"></i>
+        </button>
+      </ul>
+    </div>
+  </div>

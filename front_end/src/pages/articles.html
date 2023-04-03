@@ -35,7 +35,7 @@
           >
             {{ar.title}}
           </h5>
-          <a href="#article/{{ar.id}}" class="link-custom pe-3">Read More</a>
+          <a href="#article/{{ar.id}}" class="link-custom pe-3" ng-click="saveArticleInLocalStorage($index)">Read More</a>
           <a
             data-ng-click="favoriteArticle(ar.id, $index)"
             ng-if="ar.favorite == 0"

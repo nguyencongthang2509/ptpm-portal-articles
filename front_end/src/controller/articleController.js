@@ -3,6 +3,7 @@ window.articleCtrl = function (
   $http,
   $rootScope,
   ArticleService,
+  localStorageService,
   CategoryService,
   env,
   AlbumService
@@ -169,4 +170,12 @@ window.articleCtrl = function (
     }
   };
   // end tym article
+
+ // begin save article on  localStorage
+  $scope.saveArticleInLocalStorage = function(index){
+    $scope.localStorageDemo = localStorageService.get('articles');
+    $scope.localStorageDemo.push( $scope.listArticle[index])
+    localStorageService.set("articles", $scope.localStorageDemo);
+  }
+  // end save article on  localStorage
 };

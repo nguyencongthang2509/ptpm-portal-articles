@@ -9,6 +9,7 @@ app.service("ArticleService", function ($http) {
   var article = {};
   var articlesByBrowseDate = [];
   var articlesSlide = [];
+  var articlesByTym = [];
 
   this.getArticle = function () {
     return articles;
@@ -34,13 +35,16 @@ app.service("ArticleService", function ($http) {
   this.getArticleSlide = function () {
     return articlesSlide;
   };
+  this.getArticleByTym = function () {
+    return articlesByTym;
+  };
 
   this.fetchArticles = function (page) {
     return $http.get(articleAPI + `?page=` + page).then(
       function (response) {
         if (response.status === 200) {
           articles = response.data.data.data;
-          console.log(articles)
+          console.log(articles);
           totalPages = response.data.data.totalPages;
           currentPage = response.data.data.currentPage;
         }
@@ -52,11 +56,11 @@ app.service("ArticleService", function ($http) {
     );
   };
 
-  this.fetchArticlesByBrowseDate = function () {
-    return $http.get(articleByBrowseDateAPI).then(
+  this.fetchArticlesByTym = function () {
+    return $http.get(articleByTymAPI).then(
       function (response) {
         if (response.status === 200) {
-          articlesByBrowseDate = response.data.data.data;
+          articlesByTym = response.data.data.data;
         }
         return response;
       },
@@ -71,6 +75,20 @@ app.service("ArticleService", function ($http) {
       function (response) {
         if (response.status === 200) {
           articlesSlide = response.data.data.data;
+        }
+        return response;
+      },
+      function (errors) {
+        console.log(errors);
+      }
+    );
+  };
+
+  this.fetchArticlesByBrowseDate = function () {
+    return $http.get(articleByBrowseDateAPI).then(
+      function (response) {
+        if (response.status === 200) {
+          articlesByBrowseDate = response.data.data.data;
         }
         return response;
       },
@@ -138,8 +156,8 @@ app.service("ArticleService", function ($http) {
           `&hashtag=` +
           findArticleRequest.hashtag +
           `&category=` +
-          findArticleRequest.category+
-          `&categoryId=`+
+          findArticleRequest.category +
+          `&categoryId=` +
           findArticleRequest.categoryId
       )
       .then(

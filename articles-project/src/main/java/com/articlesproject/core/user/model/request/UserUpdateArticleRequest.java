@@ -11,6 +11,7 @@ public final class UserUpdateArticleRequest {
     private String categoryId;
     private String title;
     private String content;
-    private String img;
+    private String descriptive;
     private String[] hashtag;
+
 }

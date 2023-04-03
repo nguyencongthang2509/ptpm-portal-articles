@@ -1,6 +1,6 @@
 app.service("CommentService", function ($http, env) {
   var comment = {};
-  var listCommentByArticle = []
+  var listCommentByArticle = [];
   this.getCommentArticle = function () {
     return comment;
   };
@@ -28,7 +28,7 @@ app.service("CommentService", function ($http, env) {
         function (response) {
           var replies = response.data.data;
           let byId = new Map();
-          var roots = []
+          var roots = [];
 
           replies.forEach((reply) => {
             byId.set(reply.id, reply);
@@ -46,7 +46,7 @@ app.service("CommentService", function ($http, env) {
               roots.push(reply);
             }
           });
-          listCommentByArticle = roots
+          listCommentByArticle = roots;
           return response;
         },
         function (errors) {

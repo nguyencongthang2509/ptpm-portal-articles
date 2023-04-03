@@ -23,6 +23,7 @@ window.detailArticleCtrl = function (
 
   MyArticleService.fetchMyArticleById($routeParams.id).then(function () {
     $scope.myArticleById = MyArticleService.getMyArticleById();
+    console.log($scope.myArticleById);
   });
 
   CommentService.fetchComments($routeParams.id).then(function () {
@@ -31,7 +32,6 @@ window.detailArticleCtrl = function (
 
   UserService.fetchDetailUser().then(function (respone) {
     $scope.detailUser = UserService.getUser();
-    console.log($scope.detailUser);
   });
 
   $scope.deleteMyArticle = function () {
@@ -80,6 +80,7 @@ window.detailArticleCtrl = function (
     $http
       .post(env.API_URL + "/comment/create", $scope.comment)
       .then(function (response) {
+        console.log(response);
         $scope.comment = {
           articlesId: $routeParams.id,
           content: "",

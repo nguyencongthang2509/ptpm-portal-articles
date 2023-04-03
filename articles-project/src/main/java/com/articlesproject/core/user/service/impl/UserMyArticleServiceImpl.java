@@ -71,8 +71,9 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
         Optional<Articles> articles = userMyArticleRepository.findById(id);
         if (articles.isPresent()) {
             articles.get().setTitle(request.getTitle());
+            articles.get().setDescriptive(request.getDescriptive());
             articles.get().setCategoryId(request.getCategoryId());
-            articles.get().setStatus(ArticleStatus.MOI_TAO);
+            articles.get().setStatus(ArticleStatus.CHO_PHE_DUYET);
             String currentDirectory1 = System.getProperty("user.dir");
             String folderName = articles.get().getId();
             String folderPath = currentDirectory1 + "/articles-project/src/main/resources/templates/articles/" + folderName;
@@ -216,5 +217,14 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
             userMyArticleRepository.save(articles.get());
         }
         return true;
+    }
+
+    @Override
+    public UserArticleResponse getArticleUpdateById(String id, String idUser) {
+        Optional<UserArticleResponse> articles = userMyArticleRepository.findArticleUpdateById(id, idUser);
+        if (!articles.isPresent()) {
+            throw new RestApiException(Message.ERROR_UNKNOWN);
+        }
+        return articles.get();
     }
 }

@@ -22,4 +22,6 @@ public interface UserMyArticleService {
     Articles addArticle(UserCreateArticleRequest request, String userId) throws IOException;
 
     boolean deleteArticle(String id);
+
+    UserArticleResponse getArticleUpdateById(String id, String idUser);
 }

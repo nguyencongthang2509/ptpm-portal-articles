@@ -5,6 +5,10 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./pages/search-result.html",
       controller: searchCtrl,
     })
+    .when("/search", {
+      templateUrl: "./pages/search-result.html",
+      controller: searchHashtagCtrl,
+    })
     .when("/trang-chu", {
       templateUrl: "./pages/trang-chu.html",
       controller: homeCtrl,

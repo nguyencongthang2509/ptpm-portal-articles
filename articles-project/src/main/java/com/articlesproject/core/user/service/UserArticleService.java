@@ -14,4 +14,6 @@ public interface UserArticleService {
 
     Articles add(UserCreateArticleRequest request);
     UserArticleResponse getArticleById(String userId, String id);
+
+    PageableObject<UserArticleResponse> findAllArticleByTym(String userId,final UserFindArticleRequest request);
 }

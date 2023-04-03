@@ -57,7 +57,7 @@ public class UserMyArticleRestController extends BaseController {
 
     @GetMapping("/detail-update-my-article/{id}")
     public ResponseObject detailUpdateMyArticle(@PathVariable("id") String id) {
-        return new ResponseObject(userMyArticleService.getArticleById(id, idUser));
+        return new ResponseObject(userMyArticleService.getArticleUpdateById(id, idUser));
     }
 
     @GetMapping("/detail-my-article/{id}")

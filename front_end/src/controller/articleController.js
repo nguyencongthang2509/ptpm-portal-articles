@@ -174,7 +174,17 @@ window.articleCtrl = function (
  // begin save article on  localStorage
   $scope.saveArticleInLocalStorage = function(index){
     $scope.localStorageDemo = localStorageService.get('articles');
-    $scope.localStorageDemo.push( $scope.listArticle[index])
+    $scope.checkArticle = 0;
+     $scope.localStorageDemo.map((element) =>{
+      console.log(element.id + " And "+ $scope.listArticle[index].id);
+      if(element.id == $scope.listArticle[index].id){
+        $scope.checkArticle += 1
+      }
+     })
+     if($scope.checkArticle == 0){
+      $scope.localStorageDemo.push( $scope.listArticle[index])
+     }
+   
     localStorageService.set("articles", $scope.localStorageDemo);
   }
   // end save article on  localStorage

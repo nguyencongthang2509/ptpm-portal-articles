@@ -2,20 +2,16 @@ package com.articlesproject.core.user.controller;
 
 import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.model.request.UserCreateCommentRequest;
+import com.articlesproject.core.user.model.request.UserDesVarArticleIdRequest;
 import com.articlesproject.core.user.model.request.UserUpdateCommentRequest;
 import com.articlesproject.core.user.service.UserCommentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
@@ -32,10 +28,13 @@ public class UserCommentResController {
         return  new ResponseObject(commentService.findCommentByArticleId(articleId));
     }
 
-    @PostMapping("/create")
-    private ResponseObject createComment(@Valid @RequestBody UserCreateCommentRequest request){
+    @MessageMapping("/create-comment/{articleId}")
+    @SendTo("/portal-articles/create-comment/{articleId}")
+    private ResponseObject createComment(@Valid @RequestBody UserCreateCommentRequest request,
+                                         @ModelAttribute UserDesVarArticleIdRequest des,
+                                         StompHeaderAccessor headerAccessor){
         String userId = id;
-        return new ResponseObject(commentService.create(request, userId));
+        return new ResponseObject(commentService.create(request, userId, headerAccessor));
     }
 
     @PutMapping("/update")

@@ -129,6 +129,8 @@ window.myArticleCtrl = function (
       $scope.currentPage
     ).then(function (respone) {
       $scope.listMyArticleByStatus = MyArticleService.getMyArticleByStatus();
+      // console.log($scope.listMyArticleByStatus);
+      
       $scope.pageModel = $scope.currentPage + 1;
     });
   };

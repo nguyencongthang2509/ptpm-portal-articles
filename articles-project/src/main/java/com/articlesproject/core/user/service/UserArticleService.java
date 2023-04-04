@@ -11,9 +11,6 @@ public interface UserArticleService {
     PageableObject<UserArticleResponse> findAllArticle(String userId, final UserFindArticleRequest request);
     PageableObject<UserArticleResponse> findAllArticleByBrowseDate(String userId, final UserFindArticleRequest request);
     PageableObject<UserArticleResponse> findArticleByIdAuthorId(String userId, UserFindArticleAuthorRequest request);
-
-    Articles add(UserCreateArticleRequest request);
     UserArticleResponse getArticleById(String userId, String id);
-
     PageableObject<UserArticleResponse> findAllArticleByTym(String userId,final UserFindArticleRequest request);
 }

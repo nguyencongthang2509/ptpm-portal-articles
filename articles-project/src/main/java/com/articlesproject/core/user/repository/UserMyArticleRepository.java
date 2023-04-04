@@ -2,6 +2,7 @@ package com.articlesproject.core.user.repository;
 
 
 import com.articlesproject.core.user.model.request.UserMyArticleByStatusRequest;
+import com.articlesproject.core.user.model.request.UserMyArticleRequest;
 import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.core.user.model.response.UserMyArticleResponse;
 import com.articlesproject.repository.ArticlesRepository;
@@ -40,7 +41,7 @@ public interface UserMyArticleRepository extends ArticlesRepository {
             AND (ar.status != 5)
             GROUP BY  ar.id, ar.title, ar.descriptive, ar.browse_date, ar.status, ar.users_id, us.img, us.name
             """, nativeQuery = true)
-    Page<UserMyArticleResponse> getAllMyArticle(Pageable page, @Param("userId") String userId, @Param("request") UserMyArticleByStatusRequest request);
+    Page<UserMyArticleResponse> getAllMyArticle(Pageable page, @Param("userId") String userId, @Param("request") UserMyArticleRequest request);
 
     @Query(value = """
             SELECT ar.id, ar.title, ar.descriptive, ar.browse_date, ar.status,ar.users_id, us.img, us.name, COUNT(tyms.article_id) AS 'tym' , IF((SELECT SUM(IF(ty.article_id IS NULL, 0, 1))  FROM tyms ty WHERE (:userId IS NULL OR ty.users_id = :userId) AND ty.article_id = ar.id) IS NULL,0,1) AS 'favorite',GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 

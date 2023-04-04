@@ -3,6 +3,7 @@ package com.articlesproject.core.user.service.impl;
 import com.articlesproject.core.common.base.PageableObject;
 import com.articlesproject.core.user.model.request.UserCreateArticleRequest;
 import com.articlesproject.core.user.model.request.UserMyArticleByStatusRequest;
+import com.articlesproject.core.user.model.request.UserMyArticleRequest;
 import com.articlesproject.core.user.model.request.UserUpdateArticleRequest;
 import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.core.user.model.response.UserMyArticleResponse;
@@ -16,13 +17,12 @@ import com.articlesproject.infrastructure.constant.ArticleStatus;
 import com.articlesproject.infrastructure.constant.Message;
 import com.articlesproject.infrastructure.exception.rest.RestApiException;
 import com.articlesproject.util.FormUtils;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -52,13 +52,15 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
 
     private final FormUtils formUtils = new FormUtils();
 
+    @Cacheable(value = "allMyArticle", key = "#userId + '_' + #request.page")
     @Override
-    public PageableObject<UserMyArticleResponse> getAllMyArticle(UserMyArticleByStatusRequest request, String userId) {
+    public PageableObject<UserMyArticleResponse> getAllMyArticle(UserMyArticleRequest request, String userId) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
         Page<UserMyArticleResponse> res = userMyArticleRepository.getAllMyArticle(pageable, userId, request);
         return new PageableObject<>(res);
     }
 
+    @Cacheable(value = "allMyArticleByStatus", key = "#userId + '_' + #request.page + '_' + #request.status")
     @Override
     public PageableObject<UserMyArticleResponse> getAllMyArticleByStatus(UserMyArticleByStatusRequest request, String userId) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());

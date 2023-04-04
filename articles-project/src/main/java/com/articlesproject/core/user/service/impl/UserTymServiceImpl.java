@@ -38,7 +38,7 @@ public class UserTymServiceImpl implements UserTymService {
     }
 
     @Override
-    public boolean unfavoriteArticle(String userId, String articleId) {
+    public boolean unFavoriteArticle(String userId, String articleId) {
         tymRepository.deleteByUsersIdAndArticleId(userId, articleId);
         return true;
     }

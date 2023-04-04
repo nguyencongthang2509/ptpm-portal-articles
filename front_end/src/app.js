@@ -5,7 +5,8 @@ var app = angular.module("myModule", [
   "ngStorage",
   "ngFileUpload",
   "ngLocale",
-  "ui.select2"
+  "ui.select2",
+  "ngWebSocket",
 ]);
 app.constant("env", {
   API_URL: "http://localhost:8080/api",

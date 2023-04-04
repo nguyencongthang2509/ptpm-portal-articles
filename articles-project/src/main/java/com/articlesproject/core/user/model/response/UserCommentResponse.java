@@ -25,5 +25,5 @@ public interface UserCommentResponse extends IsIdentified {
     String getUserImg();
 
     @Value("#{target.created_date}")
-    String getCreateDate();
+    String getCreatedDate();
 }

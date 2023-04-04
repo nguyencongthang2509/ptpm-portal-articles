@@ -33,6 +33,7 @@ app.service("MyArticleService", function ($http, env, $routeParams) {
       function (response) {
         if (response.status === 200) {
           myArticle = response.data.data.data;
+          console.log(myArticle);
         }
         return response;
       },
@@ -73,6 +74,7 @@ app.service("MyArticleService", function ($http, env, $routeParams) {
       function (response) {
         if (response.status === 200) {
           myArticleByStatus = response.data.data.data;
+          console.log(myArticleByStatus);
           totalPages = response.data.data.totalPages;
           currentPage = response.data.data.currentPage;
         }

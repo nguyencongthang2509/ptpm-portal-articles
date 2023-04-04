@@ -4,6 +4,7 @@ import com.articlesproject.core.common.base.BaseController;
 import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.model.request.UserCreateArticleRequest;
 import com.articlesproject.core.user.model.request.UserMyArticleByStatusRequest;
+import com.articlesproject.core.user.model.request.UserMyArticleRequest;
 import com.articlesproject.core.user.model.request.UserUpdateArticleRequest;
 import com.articlesproject.core.user.service.UserArticleHashtagService;
 import com.articlesproject.core.user.service.UserMyArticleService;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
 import java.io.IOException;
 
 
@@ -31,7 +33,7 @@ public class UserMyArticleRestController extends BaseController {
     private UserArticleHashtagService articleHashtagService;
 
     @GetMapping("")
-    public ResponseObject getAllMyArticle(final UserMyArticleByStatusRequest request) {
+    public ResponseObject getAllMyArticle(final UserMyArticleRequest request) {
         return new ResponseObject(userMyArticleService.getAllMyArticle(request, idUser));
     }
 
@@ -48,7 +50,7 @@ public class UserMyArticleRestController extends BaseController {
         return new ResponseObject("Add article successfully!");
     }
 
-        @PutMapping("/update-article/{id}")
+    @PutMapping("/update-article/{id}")
     public ResponseObject updateArticle(@PathVariable("id") String id, @RequestBody UserUpdateArticleRequest request) throws IOException {
         Articles articles = userMyArticleService.updateArticle(id, request);
         articleHashtagService.updateTagsArticle(request.getHashtag(), articles.getId());

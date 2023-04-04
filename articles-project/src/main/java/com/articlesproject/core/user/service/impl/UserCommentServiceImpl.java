@@ -1,17 +1,22 @@
 package com.articlesproject.core.user.service.impl;
 
+import com.articlesproject.core.common.base.UserCommentObject;
 import com.articlesproject.core.user.model.request.UserCreateCommentRequest;
 import com.articlesproject.core.user.model.request.UserUpdateCommentRequest;
 import com.articlesproject.core.user.model.response.UserCommentResponse;
+import com.articlesproject.core.user.repository.UUserRepository;
 import com.articlesproject.core.user.repository.UserCommentRepository;
 import com.articlesproject.core.user.service.UserCommentService;
 import com.articlesproject.entity.Comments;
 import com.articlesproject.infrastructure.constant.Message;
 import com.articlesproject.infrastructure.exception.rest.RestApiException;
+import com.articlesproject.infrastructure.successnotification.ConstantMessageSuccess;
+import com.articlesproject.infrastructure.successnotification.SuccessNotificationSender;
 import com.articlesproject.util.FormUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -25,6 +30,12 @@ public class UserCommentServiceImpl implements UserCommentService {
     @Autowired
     private UserCommentRepository commentRepository;
 
+    @Autowired
+    private UUserRepository userRepository;
+
+    @Autowired
+    private SuccessNotificationSender successNotificationSender;
+
     private FormUtils formUtils = new FormUtils();
 
     @Override
@@ -33,10 +44,11 @@ public class UserCommentServiceImpl implements UserCommentService {
     }
 
     @Override
-    public Comments create(UserCreateCommentRequest request, String userId) {
+    public UserCommentObject create(UserCreateCommentRequest request, String userId, StompHeaderAccessor headerAccessor) {
         Comments comment = formUtils.convertToObject(Comments.class, request);
         comment.setUsersId(userId);
-        return commentRepository.save(comment);
+        successNotificationSender.senderNotification(ConstantMessageSuccess.THEM_THANH_CONG, headerAccessor);
+        return UserCommentObject.builder().user(userRepository.findById(userId).get()).comment(commentRepository.save(comment)).build();
     }
 
     @Override

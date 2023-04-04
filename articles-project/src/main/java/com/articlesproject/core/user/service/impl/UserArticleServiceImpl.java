@@ -1,19 +1,16 @@
 package com.articlesproject.core.user.service.impl;
 
 import com.articlesproject.core.common.base.PageableObject;
-import com.articlesproject.core.user.model.request.UserCreateArticleRequest;
 import com.articlesproject.core.user.model.request.UserFindArticleAuthorRequest;
 import com.articlesproject.core.user.model.request.UserFindArticleRequest;
 import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.core.user.repository.UserArticleRepository;
 import com.articlesproject.core.user.service.UserArticleService;
-import com.articlesproject.entity.Articles;
-import com.articlesproject.infrastructure.constant.ArticleStatus;
 import com.articlesproject.infrastructure.constant.Message;
 import com.articlesproject.infrastructure.exception.rest.RestApiException;
-import com.articlesproject.util.FormUtils;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.data.domain.Page;
@@ -30,8 +27,7 @@ public class UserArticleServiceImpl implements UserArticleService {
     @Autowired
     private UserArticleRepository userArticleRepository;
 
-    private final FormUtils formUtils = new FormUtils();
-
+    @Cacheable(value = "allArticle", key = "#userId + '_' + #request.page")
     @Override
     public PageableObject<UserArticleResponse> findAllArticle(String userId, UserFindArticleRequest request) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
@@ -39,6 +35,7 @@ public class UserArticleServiceImpl implements UserArticleService {
         return new PageableObject<>(res);
     }
 
+    @Cacheable(value = "allArticleByBrowsedate", key = "#userId")
     @Override
     public PageableObject<UserArticleResponse> findAllArticleByBrowseDate(String userId, UserFindArticleRequest request) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
@@ -46,6 +43,7 @@ public class UserArticleServiceImpl implements UserArticleService {
         return new PageableObject<>(res);
     }
 
+    @Cacheable(value = "allArticleByIdAuthor", key = "#userId")
     @Override
     public PageableObject<UserArticleResponse> findArticleByIdAuthorId(String userId, UserFindArticleAuthorRequest request) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
@@ -53,13 +51,7 @@ public class UserArticleServiceImpl implements UserArticleService {
         return new PageableObject<>(res);
     }
 
-    @Override
-    public Articles add(UserCreateArticleRequest request) {
-        Articles ar = formUtils.convertToObject(Articles.class, request);
-        ar.setStatus(ArticleStatus.MOI_TAO);
-        return userArticleRepository.save(ar);
-    }
-
+    @Cacheable(value = "articleById", key = "#id")
     @Override
     public UserArticleResponse getArticleById(String userId, String id) {
         Optional<UserArticleResponse> articles = userArticleRepository.findArticleById(id, userId);
@@ -69,6 +61,7 @@ public class UserArticleServiceImpl implements UserArticleService {
         return articles.get();
     }
 
+    @Cacheable(value = "allArticleByTym", key = "#userId")
     @Override
     public PageableObject<UserArticleResponse> findAllArticleByTym(String userId, UserFindArticleRequest request) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());

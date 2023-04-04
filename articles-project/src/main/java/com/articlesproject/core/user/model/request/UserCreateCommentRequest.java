@@ -22,5 +22,4 @@ public class UserCreateCommentRequest {
 
     private String reply;
 
-
 }

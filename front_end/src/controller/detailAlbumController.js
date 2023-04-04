@@ -3,6 +3,7 @@ window.detailAlbumCtrl = function (
   $routeParams,
   AlbumService,
   ArticleService,
+  localStorageService,
   env,
   $http
 ) {
@@ -118,4 +119,16 @@ window.detailAlbumCtrl = function (
       });
     }
   };
+
+   // begin save article on  localStorage
+   $scope.saveArticleInLocalStorage = function(index){
+    $scope.localStorageDemo = localStorageService.get('articles');
+     $scope.index =  $scope.localStorageDemo.findIndex(element => element.id == $scope.listArticle[index].id);
+     if($scope.index !== -1){
+      $scope.localStorageDemo.splice($scope.index, 1);
+     }
+     $scope.localStorageDemo.push( $scope.listArticle[index])
+    localStorageService.set("articles", $scope.localStorageDemo);
+  }
+  // end save article on  localStorage
 };

@@ -47,7 +47,7 @@
                   alt=""
                 />
               </div>
-              <div class="col-8">{{ar.title}}</div>
+              <div class="col-8"><a href="#article/{{ar.id}}" class="link-custom" ng-click="saveArticleInLocalStorage($index)">{{ar.title}}</a></div>
               <div class="cham">
                 <i
                   class="bi bi-three-dots-vertical"
@@ -60,8 +60,18 @@
                   <li>
                     <a
                       class="dropdown-item"
+                      ng-if="author"
                       ng-click="deleteArticleInAlbum(ar.id, album.id)"
                       >Delete Article</a
+                    >
+                  </li>
+                </ul>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <a href="#article/{{ar.id}}"
+                      class="dropdown-item"
+                      ng-click="saveArticleInLocalStorage($index)"
+                      >Read More</a
                     >
                   </li>
                 </ul>

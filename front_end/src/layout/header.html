@@ -48,7 +48,7 @@
     </li>
     <li>
       <a href="#/album">
-        <i class="bx bxs-heart"></i>
+        <i class="bx bx-list-ul" style="font-weight: bold"></i>
         <span class="text">Album</span>
       </a>
     </li>
@@ -111,8 +111,14 @@
         >
           <i class="bx bx-search"></i>
         </div>
-        <input type="search" placeholder="What are you looking for?" ng-model="key" />
-        <button type="submit" class="search-btn"><a href="#search-result?key={{key}}">Search</a></button>
+        <input
+          type="search"
+          placeholder="What are you looking for?"
+          ng-model="key"
+        />
+        <button type="submit" class="search-btn">
+          <a href="#search-result?key={{key}}">Search</a>
+        </button>
       </div>
     </form>
     <input type="checkbox" id="switch-mode" hidden />

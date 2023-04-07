@@ -1,6 +1,7 @@
 package com.articlesproject.core.user.service;
 
 import com.articlesproject.core.user.model.response.UserResponse;
+import com.articlesproject.entity.Users;
 
 import java.util.List;
 

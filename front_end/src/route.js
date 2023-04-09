@@ -89,6 +89,10 @@ app.config(function ($routeProvider, $locationProvider) {
     .when("/users", {
       templateUrl: "./pages/users.html",
     })
+    .when("/history", {
+      templateUrl: "./pages/history.html",
+      controller: historyCtrl,
+    })
     .otherwise({
       redirectTo: "/trang-chu",
     });

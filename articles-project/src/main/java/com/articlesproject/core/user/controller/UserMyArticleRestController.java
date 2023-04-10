@@ -50,11 +50,26 @@ public class UserMyArticleRestController extends BaseController {
         return new ResponseObject("Add article successfully!");
     }
 
+    @PostMapping("/create-draft-article")
+    public ResponseObject createDraftArticle(@Valid @RequestBody UserCreateArticleRequest request) throws IOException {
+        String userId = this.idUser;
+        Articles articles = userMyArticleService.addDraftArticle(request, userId);
+        articleHashtagService.addTagsArticle(request.getHashtag(), articles.getId());
+        return new ResponseObject("Add draft article successfully!");
+    }
+
     @PutMapping("/update-article/{id}")
     public ResponseObject updateArticle(@PathVariable("id") String id, @RequestBody UserUpdateArticleRequest request) throws IOException {
         Articles articles = userMyArticleService.updateArticle(id, request);
         articleHashtagService.updateTagsArticle(request.getHashtag(), articles.getId());
         return new ResponseObject("Update article successfully!");
+    }
+
+    @PutMapping("/update-article-to-censor/{id}")
+    public ResponseObject updateArticleToCensor(@PathVariable("id") String id, @RequestBody UserUpdateArticleRequest request) throws IOException {
+        Articles articles = userMyArticleService.updateArticleToCensor(id, request);
+        articleHashtagService.updateTagsArticle(request.getHashtag(), articles.getId());
+        return new ResponseObject("Update article to censor successfully!");
     }
 
     @GetMapping("/detail-update-my-article/{id}")

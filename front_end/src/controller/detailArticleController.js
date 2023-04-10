@@ -28,7 +28,6 @@ window.detailArticleCtrl = function (
 
   CommentService.fetchComments($routeParams.id).then(function () {
     $scope.comments = CommentService.getListCommentByArticle();
-    console.log($scope.comments);
   });
 
   UserService.fetchDetailUser().then(function (respone) {

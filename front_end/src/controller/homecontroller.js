@@ -23,6 +23,5 @@ window.homeCtrl = function (
 
   ArticleService.fetchArticlesByTym().then(function (respone) {
     $scope.listArticleByTym = ArticleService.getArticleByTym();
-    console.log($scope.listArticleByTym);
   });
 };

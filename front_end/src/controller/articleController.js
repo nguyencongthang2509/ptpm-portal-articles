@@ -171,15 +171,23 @@ window.articleCtrl = function (
   };
   // end tym article
 
- // begin save article on  localStorage
-  $scope.saveArticleInLocalStorage = function(index){
-    $scope.localStorageDemo = localStorageService.get('articles');
-     $scope.index =  $scope.localStorageDemo.findIndex(element => element.id == $scope.listArticle[index].id);
-     if($scope.index !== -1){
-      $scope.localStorageDemo.splice($scope.index, 1);
-     }
-     $scope.localStorageDemo.push( $scope.listArticle[index])
-    localStorageService.set("articles", $scope.localStorageDemo);
-  }
+  // begin save article on  localStorage
+  $scope.saveArticleInLocalStorage = function (index) {
+    if ($scope.localStorageDemo != []) {
+      $scope.localStorageDemo = localStorageService.get("articles");
+      $scope.index = $scope.localStorageDemo.findIndex(
+        (element) => element.id == $scope.listArticle[index].id
+      );
+      if ($scope.index !== -1) {
+        $scope.localStorageDemo.splice($scope.index, 1);
+      }
+      $scope.baiViet = $scope.listArticle[index];
+      $scope.baiViet.createdDate = new Date();
+      $scope.localStorageDemo.push($scope.baiViet);
+      localStorageService.set("articles", $scope.localStorageDemo);
+    }else{
+      localStorageService.set("articles", []);
+    }
+  };
   // end save article on  localStorage
 };

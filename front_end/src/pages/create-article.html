@@ -58,39 +58,59 @@
                 >
               </li>
               <li>
-                <button class="dropdown-item">
-                  <i
-                    class="bi bi-cloud-download"
-                    style="padding-right: 10px"
-                    type="button"
-                  ></i
-                  >Save
+                <button
+                  ng-if="!showButton"
+                  ng-click="saveDraftHTML($event)"
+                  type="button"
+                  class="dropdown-item bi bi-cloud-download"
+                  style="padding-right: 10px"
+                >
+                  Save add
                 </button>
+                <button
+                  ng-if="showButton"
+                  ng-click="updateMyArticle($event)"
+                  type="button"
+                  class="dropdown-item bi bi-cloud-download"
+                  style="padding-right: 10px"
+                >
+                  Save update
+                </button>
+                
               </li>
             </ul>
           </div>
-          <div style="margin-top: 20px" ng-show="!showButton">
+          <div style="margin-top: 20px" ng-if="!showButton">
             <button
               ng-click="saveHTML($event)"
               type="button"
               class="btn btn-primary"
               style="background-color: #1ac396d9; border: solid 1px white"
             >
-              <i class="bi bi-caret-right-fill"></i>Publish
+              <i class="bi bi-caret-right-fill"></i>Publish add
             </button>
           </div>
-          <div style="margin-top: 20px" ng-show="showButton">
+          <div style="margin-top: 20px" ng-if="status != 3 && showButton">
             <button
-              ng-click="updateMyArticle($event)"
+              ng-click="updateMyArticleToCensor($event)"
               type="button"
               class="btn btn-primary"
               style="background-color: #fb3c75c3; border: solid 1px white"
             >
-              <i class="bi bi-caret-right-fill"></i>Update
+              <i class="bi bi-caret-right-fill"></i>Publish update
             </button>
           </div>
-
-          <div class="cate" style="margin-top: 20px; color: black">
+          <!-- <div style="margin-top: 20px" >
+            <button
+              ng-click=""
+              type="button"
+              class="btn btn-primary"
+              style="background-color: #fb3c75c3; border: solid 1px white"
+            >
+              <i class="bi bi-caret-right-fill"></i>Lưu
+            </button>
+          </div> -->
+          <!-- <div class="cate" style="margin-top: 20px; color: black">
             <li class="nav-item" ng-class="{ 'menu-open': isMenuOpen }">
               <a href="" class="nav-link active" ng-click="toggleMenu()">
                 CATEGORY
@@ -104,7 +124,7 @@
                 </select>
               </ul>
             </li>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

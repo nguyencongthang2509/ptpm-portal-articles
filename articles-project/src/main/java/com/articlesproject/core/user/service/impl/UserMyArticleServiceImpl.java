@@ -74,8 +74,15 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
         if (articles.isPresent()) {
             articles.get().setTitle(request.getTitle());
             articles.get().setDescriptive(request.getDescriptive());
-            articles.get().setCategoryId(request.getCategoryId());
-            articles.get().setStatus(ArticleStatus.CHO_PHE_DUYET);
+            if (request.getStatus() == 1) {
+                articles.get().setStatus(ArticleStatus.BAN_NHAP);
+            } else if (request.getStatus() == 2) {
+                articles.get().setStatus(ArticleStatus.CHO_PHE_DUYET);
+            } else if (request.getStatus() == 3) {
+                articles.get().setStatus(ArticleStatus.DA_PHE_DUYET);
+            } else if (request.getStatus() == 4) {
+                articles.get().setStatus(ArticleStatus.DA_HUY);
+            }
             String currentDirectory1 = System.getProperty("user.dir");
             String folderName = articles.get().getId();
             String folderPath = currentDirectory1 + "/articles-project/src/main/resources/templates/articles/" + folderName;
@@ -95,7 +102,6 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
                 Matcher matcher = pattern.matcher(html);
                 String imageName = "image" + "." + "png";
                 if (matcher.find()) {
-                    String extension = matcher.group(1);
                     String base64Data = matcher.group(2);
                     byte[] imageData = Base64.getDecoder().decode(base64Data);
                     Files.write(Paths.get(folderPath + "/" + imageName), imageData, StandardOpenOption.CREATE_NEW);
@@ -131,7 +137,7 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
     }
 
     @Override
-    public Articles addArticle( UserCreateArticleRequest request, String userId) throws IOException {
+    public Articles addArticle(UserCreateArticleRequest request, String userId) throws IOException {
         Articles ar = formUtils.convertToObject(Articles.class, request);
         ar.setUsersId(userId);
         if (request.getTitle() == null) {
@@ -160,7 +166,6 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
             Matcher matcher = pattern.matcher(html);
             String imageName = "image" + "." + "png";
             if (matcher.find()) {
-                String extension = matcher.group(1);
                 String base64Data = matcher.group(2);
                 byte[] imageData = Base64.getDecoder().decode(base64Data);
                 Files.write(Paths.get(folderPath + "/" + imageName), imageData, StandardOpenOption.CREATE_NEW);
@@ -186,6 +191,60 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
         return null;
     }
 
+    @Override
+    public Articles addDraftArticle(UserCreateArticleRequest request, String userId) throws IOException {
+        Articles ar = formUtils.convertToObject(Articles.class, request);
+        ar.setUsersId(userId);
+        if (request.getTitle() == null) {
+            throw new RestApiException(Message.TITLE_IS_NOT_NULL);
+        }
+        ar.setStatus(ArticleStatus.BAN_NHAP);
+        userMyArticleRepository.save(ar);
+        String currentDirectory1 = System.getProperty("user.dir");
+        String folderName = ar.getId();
+        String folderPath = currentDirectory1 + "/articles-project/src/main/resources/templates/articles/" + folderName;
+        File folder = new File(folderPath);
+        if (!folder.exists()) {
+            folder.mkdirs();
+            String fileName = "toi-thanh-cong-roi.html";
+            File dir = new File(folderPath);
+            File actualFile = new File(dir, fileName);
+            actualFile.getParentFile().mkdirs();
+            actualFile.createNewFile();
+            FileWriter fileWriter = new FileWriter(actualFile);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(request.getContent());
+            bufferedWriter.close();
+            String regex = "data:image/(png|jpeg|jpg);base64,([^\"]+)";
+            Pattern pattern = Pattern.compile(regex);
+            String html = new String(Files.readAllBytes(Paths.get(folderPath + "/toi-thanh-cong-roi.html")));
+            Matcher matcher = pattern.matcher(html);
+            String imageName = "image" + "." + "png";
+            if (matcher.find()) {
+                String base64Data = matcher.group(2);
+                byte[] imageData = Base64.getDecoder().decode(base64Data);
+                Files.write(Paths.get(folderPath + "/" + imageName), imageData, StandardOpenOption.CREATE_NEW);
+            } else {
+                String imageDefaultPath = currentDirectory1 + "/front_end/assets/images/blog.png";
+                byte[] imageData = null;
+                try {
+                    Path path = Paths.get(imageDefaultPath);
+                    imageData = Files.readAllBytes(path);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                String newImagePath = folderPath + "/" + imageName;
+                try {
+                    Path path = Paths.get(newImagePath);
+                    Files.write(path, imageData);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return ar;
+        }
+        return null;
+    }
 
     @Override
     public boolean deleteArticle(String id) {
@@ -228,5 +287,56 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
             throw new RestApiException(Message.ERROR_UNKNOWN);
         }
         return articles.get();
+    }
+
+    @Override
+    public Articles updateArticleToCensor(String id, UserUpdateArticleRequest request) throws IOException {
+        Optional<Articles> articles = userMyArticleRepository.findById(id);
+        if (articles.isPresent()) {
+            articles.get().setTitle(request.getTitle());
+            articles.get().setDescriptive(request.getDescriptive());
+            articles.get().setStatus(ArticleStatus.CHO_PHE_DUYET);
+            String currentDirectory1 = System.getProperty("user.dir");
+            String folderName = articles.get().getId();
+            String folderPath = currentDirectory1 + "/articles-project/src/main/resources/templates/articles/" + folderName;
+            File folder = new File(folderPath);
+            File imageFile = new File(folderPath + "/image.png");
+            if (folder.exists()) {
+                imageFile.delete();
+                String fileName = "toi-thanh-cong-roi.html";
+                File dir = new File(folderPath);
+                File actualFile = new File(dir, fileName);
+                FileWriter fileWriter = new FileWriter(actualFile);
+                fileWriter.write(request.getContent());
+                fileWriter.close();
+                String regex = "data:image/(png|jpeg|jpg);base64,([^\"]+)";
+                Pattern pattern = Pattern.compile(regex);
+                String html = new String(Files.readAllBytes(Paths.get(folderPath + "/toi-thanh-cong-roi.html")));
+                Matcher matcher = pattern.matcher(html);
+                String imageName = "image" + "." + "png";
+                if (matcher.find()) {
+                    String base64Data = matcher.group(2);
+                    byte[] imageData = Base64.getDecoder().decode(base64Data);
+                    Files.write(Paths.get(folderPath + "/" + imageName), imageData, StandardOpenOption.CREATE_NEW);
+                } else {
+                    String imageDefaultPath = currentDirectory1 + "/front_end/assets/images/blog.png";
+                    byte[] imageData = null;
+                    try {
+                        Path path = Paths.get(imageDefaultPath);
+                        imageData = Files.readAllBytes(path);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    String newImagePath = folderPath + "/" + imageName;
+                    try {
+                        Path path = Paths.get(newImagePath);
+                        Files.write(path, imageData);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        return userMyArticleRepository.save(articles.get());
     }
 }

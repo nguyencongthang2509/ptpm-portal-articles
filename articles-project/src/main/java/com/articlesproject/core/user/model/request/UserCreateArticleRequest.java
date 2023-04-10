@@ -11,8 +11,6 @@ import lombok.Setter;
 @Setter
 public final class UserCreateArticleRequest {
 
-    private String categoryId;
-
     @NotEmpty
     @Size(min = 6, max = 250)
     private String title;

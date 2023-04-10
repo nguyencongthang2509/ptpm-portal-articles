@@ -3,7 +3,8 @@ window.myArticleCtrl = function (
   $http,
   MyArticleService,
   CategoryService,
-  AlbumService,env
+  AlbumService,
+  env
 ) {
   CategoryService.fetchCategories().then(function () {
     $scope.listCategory = CategoryService.getCategory();
@@ -67,9 +68,6 @@ window.myArticleCtrl = function (
       $scope.totalPages = MyArticleService.getTotalPages();
       $scope.currentPage = MyArticleService.getCurrentPage();
       $scope.pageModel = $scope.currentPage + 1;
-      // console.log($scope.listMyArticleByStatus);
-      // console.log($scope.totalPages);
-      // console.log($scope.currentPage);
     });
   };
 
@@ -95,9 +93,6 @@ window.myArticleCtrl = function (
       $scope.totalPages = MyArticleService.getTotalPages();
       $scope.currentPage = MyArticleService.getCurrentPage();
       $scope.pageModel = $scope.currentPage + 1;
-      // console.log($scope.listMyArticleByStatus);
-      // console.log($scope.totalPages);
-      // console.log($scope.currentPage);
     });
   };
 
@@ -129,8 +124,6 @@ window.myArticleCtrl = function (
       $scope.currentPage
     ).then(function (respone) {
       $scope.listMyArticleByStatus = MyArticleService.getMyArticleByStatus();
-      // console.log($scope.listMyArticleByStatus);
-      
       $scope.pageModel = $scope.currentPage + 1;
     });
   };
@@ -165,9 +158,9 @@ window.myArticleCtrl = function (
     });
   };
 
-   // begin album
+  // begin album
 
-   $scope.showModalAddArticleToAlbum = function (id) {
+  $scope.showModalAddArticleToAlbum = function (id) {
     $scope.UserCreateArticle.articlesId = id;
     AlbumService.fetchSimpleAlbums(id).then(function () {
       $scope.listAlbum = AlbumService.getSimpleAlbums();

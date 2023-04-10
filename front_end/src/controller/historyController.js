@@ -18,7 +18,11 @@ window.historyCtrl = function (
     status: true,
   };
 
-  $scope.listArticle = localStorageService.get("articles").reverse();
+  if ($scope.listArticle != []) {
+    $scope.listArticle = localStorageService.get("articles").reverse();
+  }else{
+    $scope.listArticle = [];
+  }
 
   // begin save article on  localStorage
   $scope.saveArticleInLocalStorage = function (index) {
@@ -30,7 +34,9 @@ window.historyCtrl = function (
     if ($scope.index !== -1) {
       $scope.localStorageDemo.splice($scope.index, 1);
     }
-    $scope.localStorageDemo.push($scope.article);
+    $scope.baiViet = $scope.listArticle[index];
+    $scope.baiViet.createdDate = new Date();
+    $scope.localStorageDemo.push($scope.baiViet);
     localStorageService.set("articles", $scope.localStorageDemo);
   };
   // end save article on  localStorage

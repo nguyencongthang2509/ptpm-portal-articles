@@ -8,10 +8,9 @@ import lombok.Setter;
 public final class UserUpdateArticleRequest {
 
     private String id;
-    private String categoryId;
     private String title;
     private String content;
     private String descriptive;
     private String[] hashtag;
-
+    private int status;
 }

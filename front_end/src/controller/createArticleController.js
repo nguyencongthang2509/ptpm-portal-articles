@@ -40,7 +40,7 @@ window.createArticleCtrl = function (
     var content = $("#summernote").summernote("code");
     var strippedText = content.replace(/<\/?[^>]+(>|$)/g, " ");
     var words = strippedText.split(" ");
-    var first30Words = words.slice(0, 70);
+    var first30Words = words.slice(0, 40);
     var first30WordsString = first30Words.join(" ");
     var formData = {
       title: $scope.title,

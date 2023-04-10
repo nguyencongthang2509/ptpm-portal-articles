@@ -1,208 +1,831 @@
 <div class="container-fluid">
-  <div class=" ">
-    <div class="card__avatars cluster color-mid-text">
-      <div class="">
-        <img class="img" 
-        sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
-        ng-src="{{myArticleById.img}}" />
-      </div>
-      <div class="flow flow-space-size-0 ">
-        <div class="card__authors flow-space-base " aria-label="authors">
-          <a href="#/users/{{myArticleById.userId}}" class="text-dark">{{myArticleById.name}}</a>
+  <div class="trenn">
+    <div class="profile">
+      <img src="/front_end/assets/people.png" alt="" class="profile-img" />
+      <span class="profile-name"
+        >Phạm Xuân Hải
+        <label style="color: grey">xuanhai@fpt.edu.vn</label>
+        <div style="color: gray">
+          <i class="bx bx-user-plus pt-1" style="font-size: 20px"></i>
+          <span style="font-size: 15px" class="me-2">5</span>
+
+          <i class="bx bx-edit-alt" style="font-size: 20px"></i>
+          <span style="font-size: 15px">1</span>
+
+          <button type="button" class="btn btn-light ms-5">Theo dõi</button>
         </div>
-        <time class="text-dark ">{{myArticleById.browseDate| date:'dd/MM/yyyy'}}</time>
-      </div>
+      </span>
+
+      <span class="dang" style="color: grey">
+        Đã đăng vào Chủ Nhật, 12:00 CH - 10 phút đọc
+
+        <div
+          class="post-meta__item mr-1 text-muted mt-2"
+          data-tippy=""
+          data-original-title="Lượt xem: 10"
+        >
+          <i class="bx bxs-low-vision" style="font-size: 20px"></i>
+          <span style="font-size: 20px" class="me-4">10</span>
+
+          <a href="#" style="color: grey">
+            <i class="bx bx-message-dots" style="font-size: 20px"></i>
+            <span style="font-size: 20px" class="me-4">9</span>
+          </a>
+          <a href="#" style="color: grey">
+            <i class="bx bxs-heart" style="font-size: 20px"></i>
+            <span style="font-size: 20px">8</span>
+          </a>
+        </div>
+      </span>
     </div>
   </div>
-  <section class="bvchitiet">
-    <div class="row">
-      <div class="col-lg-12">
-        <article
-          data-test="article-preview"
-          class="sc-kHOZwM sc-hOGkXu dPKgXc fiTxcb"
-          align="center"
-          
-          
+
+  <div class="chuyenmau">
+    <!-- <div class=" ">
+    <div class="card__avatars cluster color-mid-text">
+      <div class="">
+        <img
+          class="img"
+          sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
+          ng-src="{{myArticleById.img}}"
+        />
+      </div>
+      <div class="flow flow-space-size-0">
+        <div class="card__authors flow-space-base" aria-label="authors">
+          <a href="#/users/{{myArticleById.userId}}" class="text-dark"
+            >{{myArticleById.name}}</a
+          >
+        </div>
+        <time class="text-dark"
+          >{{myArticleById.browseDate| date:'dd/MM/yyyy'}}</time
         >
-          <div data-test="container" class="sc-bdvvtL cCOiXd" >
-            <div class="sc-bdvvtL jbSNqA sc-kHOZwM cjDrZK" >
-              <div class="sc-bdvvtL iHLSCF">
+      </div>
+    </div>
+  </div> -->
+
+    <div class="iconn mt-5">
+      <button
+        data-v-6b3c5cc4=""
+        type="button"
+        aria-describedby="el-popover-6760"
+        class="el-button is-circle type-control el-button--default el-popover__reference"
+        tabindex="0"
+      >
+        <i class="bx bxs-heart" style="font-size: 20px"></i>
+      </button>
+      <br />
+      <span class="el-popover__reference-wrapper">
+        <div class="chams col-1">
+          <button
+            data-v-23e635c8=""
+            class="el-button is-circle type-control el-button--default el-popover__reference"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            aria-describedby="el-popover-853"
+            tabindex="0"
+          >
+            <i
+              data-v-23e635c8=""
+              class="bx bx-font"
+              style="font-size: 25px"
+            ></i>
+          </button>
+          <ul
+            class="dropdown-menu"
+            style="width: 300px"
+            aria-labelledby="dropdownMenuButton1"
+          >
+            <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            ></div>
+            <li class="mb-3">
+              <div data-v-ff3977b0="">
+                <i
+                  class="fa fa-font control-icon me-2 ms-2"
+                  data-v-ff3977b0=""
+                ></i
+                ><b style="margin-right: 52px"> Cỡ Chữ </b>
+                <button
+                  type="button"
+                  class="el-button button-modify el-button--default el-button--mini is-circle"
+                  data-v-ff3977b0=""
+                  style="width: 32px; height: 32px"
+                >
+                  <!----><!----><span
+                    ><i class="fa fa-minus" data-v-ff3977b0=""></i
+                  ></span>
+                </button>
+                <span class="control-info me-1 ms-2" data-v-ff3977b0=""
+                  >18px</span
+                >
+                <button
+                  type="button"
+                  class="el-button button-modify el-button--default el-button--mini is-circle"
+                  data-v-ff3977b0=""
+                  style="width: 32px; height: 32px"
+                >
+                  <!----><!----><span
+                    ><i class="fa fa-plus" data-v-ff3977b0=""></i
+                  ></span>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div data-v-ff3977b0="">
+                <i
+                  class="fa fa-text-height control-icon me-1 ms-2"
+                  data-v-ff3977b0=""
+                ></i
+                ><b class="me-3"> Độ Cao Hàng </b>
+                <button
+                  type="button"
+                  class="el-button button-modify el-button--default el-button--mini is-circle"
+                  data-v-ff3977b0=""
+                  style="width: 32px; height: 32px"
+                >
+                  <!----><!----><span
+                    ><i class="fa fa-minus" data-v-ff3977b0=""></i
+                  ></span>
+                </button>
+                <span class="control-info me-2 ms-2" data-v-ff3977b0=""
+                  >1.75</span
+                >
+                <button
+                  type="button"
+                  class="el-button button-modify el-button--default el-button--mini is-circle"
+                  data-v-ff3977b0=""
+                  style="width: 32px; height: 32px"
+                >
+                  <!----><!----><span
+                    ><i class="fa fa-plus" data-v-ff3977b0=""></i
+                  ></span>
+                </button>
+              </div>
+            </li>
+            <li class="mt-3 mb-3">
+              <div class="d-flex mode-theme mt-1" data-v-ff3977b0="">
+                <div
+                  role="radiogroup"
+                  class="el-radio-group"
+                  data-v-ff3977b0=""
+                >
+                  <label
+                    role="radio"
+                    tabindex="-1"
+                    class="el-radio-button"
+                    data-v-ff3977b0=""
+                    ><input
+                      type="radio"
+                      tabindex="-1"
+                      value="false"
+                      checked="checked"
+                      class="el-radio-button__orig-radio"
+                    /><span class="el-radio-button__inner">
+                      Mặc định
+                      <!----></span
+                    ></label
+                  >
+                  <label
+                    role="radio"
+                    tabindex="-1"
+                    class="el-radio-button"
+                    data-v-ff3977b0=""
+                    ><input
+                      type="radio"
+                      tabindex="-1"
+                      value="true"
+                      class="el-radio-button__orig-radio"
+                    /><span class="el-radio-button__inner">
+                      Toàn màn hình
+                      <!----></span
+                    ></label
+                  >
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="d-flex mode-theme mt-1" data-v-ff3977b0="">
+                <p data-v-ff3977b0="" class="ms-3">Màu nền</p>
+                <p
+                  class="color-mode color-white background-button-mode"
+                  data-v-ff3977b0=""
+                ></p>
+                <p class="color-mode color-dark" data-v-ff3977b0=""></p>
+                <p class="color-mode color-sepia" data-v-ff3977b0=""></p>
+              </div>
+            </li>
+            <li>
+              <div class="reset-default mt-1" data-v-ff3977b0="">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                  <button type="button" class="btn btn-secondary">
+                    Đặt Lại
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </span>
+      <br />
+      <button
+        data-v-6b3c5cc4=""
+        type="button"
+        class="el-button sharing-item clip p-0 el-button--text me-2"
+        style="width: 40px; height: 40px"
+      >
+        <i class="bx bxl-facebook"></i>
+      </button>
+      <br />
+    </div>
+    <section class="bvchitiet">
+      <div class="row">
+        <div class="col-lg-12">
+          <article
+            data-test="article-preview"
+            class="sc-kHOZwM sc-hOGkXu dPKgXc fiTxcb"
+            align="center"
+          >
+            <div data-test="container" class="sc-bdvvtL cCOiXd">
+              <div class="sc-bdvvtL jbSNqA sc-kHOZwM cjDrZK">
+                <div class="sc-bdvvtL iHLSCF">
+                  <a
+                    data-test="heading-image-link"
+                    href="/blog/content-planning/"
+                    class="sc-cZMNgc iNdGjO"
+                    ><img
+                      data-test="image"
+                      height="250"
+                      width="310"
+                      style="height: 200px"
+                      src="../../../articles-project/src/main/resources/templates/articles/{{myArticleById.id}}/image.png"
+                      alt="content planning"
+                  /></a>
+                </div>
+                <div class="sc-bdvvtL FmHLX">
+                  <h2 data-test="heading-text" class="sc-bBHxTw hsjjsR">
+                    <a data-test="heading-link" href="/blog/content-planning/">
+                      {{myArticleById.title}}
+                    </a>
+                  </h2>
+                  <div class="sc-bdvvtL ftOnze">
+                    <span data-test="date">
+                      {{myArticleById.browseDate | date:'dd/MM/yyyy'}} </span
+                    ><strong data-test="category" class="sc-dtMgUX iEGeoe"
+                      ><a
+                        data-test="category-link"
+                        target="_blank"
+                        href="/blog/category/content-creation/"
+                        >Content Creation</a
+                      ></strong
+                    >
+
+                    <span data-test="time-to-read"
+                      >10<!-- -->
+                      <!-- -->min read</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="chitiet" style="background-color: rgb(255, 255, 255)">
+      <div class="row gy-4 pt-5">
+        <div class="col" data-aos="fade-up">
+          <div
+            data-parse="true"
+            class="sc-bdvvtL ikHgNc sc-fydGpi jwdqZU"
+            style="background-color: white; padding: 40px"
+          >
+            <div
+              ng-include="'../../../articles-project/src/main/resources/templates/articles/' + myArticleById.id + '/toi-thanh-cong-roi.html'"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="">
+      <a
+        ng-repeat="hastag in myArticleById.hashtags.split(',')"
+        href="#/search/{{hastag}}"
+      >
+        <i class="bx bxs-purchase-tag"></i>{{hastag}}</a
+      >
+    </div>
+    <!-- begin comment  -->
+
+    <div class="flex">
+      <div class="row">
+        <div
+          class="card-footer py-3 border-0"
+          style="background-color: #f8f9fa"
+        >
+          <div class="d-flex flex-start w-100">
+            <img
+              class="rounded-circle shadow-1-strong me-3"
+              src="{{detailUser.img}}"
+              alt="avatar"
+              style="width: 5%; height: 5%"
+            />
+            <div class="form-outline w-100">
+              <textarea
+                class="form-control"
+                id="textAreaExample"
+                rows="4"
+                style="background: #fff"
+                placeholder="Message"
+                ng-model="contentValue"
+              ></textarea>
+            </div>
+          </div>
+          <div class="float-end mt-2 pt-1">
+            <button
+              type="button"
+              class="btn btn-primary btn-sm"
+              ng-click="createComment()"
+            >
+              Post comment
+            </button>
+            <button type="button" class="btn btn-outline-primary btn-sm">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row2 mt-3">
+        <div
+          class="list-transition card-footer py-3 border-0 ms-3"
+          style="background-color: #f8f9fa"
+        >
+          <div data-commentid="PwlVmDEEL5Z" class="comment-thread root ms-3">
+            <header class="d-flex mb-05">
+              <a href="/u/vuthituyet2003" class="me-3"
+                ><img
+                  data-v-f09f4d56=""
+                  src="https://images.viblo.asia/avatar/a06a6ad0-3245-4cc9-9133-5c13b66cc5b3.jpg"
+                  srcset="
+                    https://images.viblo.asia/avatar-retina/a06a6ad0-3245-4cc9-9133-5c13b66cc5b3.jpg 2x
+                  "
+                  alt="Avatar"
+                  class="avatar avatar--md mx-05"
+              /></a>
+              <div>
+                <a href="/u/vuthituyet2003" class=""
+                  ><span class="text-bold post-author__name">Hải Xuân</span>
+                  <span class="text-muted mr-05"> @vuthituyet2003 </span></a
+                >
+                <div class="comment-meta word-break">
+                  <span class="text-muted">Thứ Năm, 4:00 CH</span>
+                </div>
+              </div>
+            </header>
+            <div class="mb-05 mt-2">
+              <div
+                class="md-contents"
+                style="font-size: 18px; line-height: 1.75"
+              >
+                <p>khá hay</p>
+              </div>
+              <!---->
+            </div>
+            <footer class="d-flex text-muted">
+              <a
+                class="mr-05 cursor-pointer me-2"
+                data-tippy=""
+                data-original-title="Trả lời"
+                ><span>Trả lời</span></a
+              >
+              <div data-v-e37282e2="" class="relative mr-05 cursor-pointer">
                 <a
-                  data-test="heading-image-link"
-                  href="/blog/content-planning/"
-                  class="sc-cZMNgc iNdGjO"
+                  data-v-e37282e2=""
+                  href="https://viblo.asia/c/PwlVmDEEL5Z"
+                  class="icon-share link plain text-muted"
+                  data-tippy=""
+                  data-original-title="Chia sẻ đường dẫn của bình luận này"
+                  ><span data-v-e37282e2="">Chia sẻ</span></a
+                >
+                <div data-v-e37282e2="" class="share-tip" style="display: none">
+                  <label data-v-e37282e2="" class="tip-label"
+                    >Chia sẻ đường dẫn của bình luận này</label
+                  >
+                  <div data-v-e37282e2="" class="d-flex share-input-group">
+                    <input
+                      data-v-e37282e2=""
+                      data-sharing-id="comment-PwlVmDEEL5Z"
+                      type="text"
+                      readonly="readonly"
+                      class="d-block share-link"
+                    />
+                    <span
+                      data-v-e37282e2=""
+                      data-clipboard-text="https://viblo.asia/c/PwlVmDEEL5Z"
+                      data-clipboard-target="[data-sharing-id='comment-PwlVmDEEL5Z']"
+                      area-label="Copied!"
+                      area-tooltip-hidden="true"
+                      title="Sao chép URL"
+                      class="share-link-addon viblo-tooltip"
+                      ><i data-v-e37282e2="" class="fa fa-copy"></i
+                    ></span>
+                  </div>
+                  <div
+                    data-v-235dd1c0=""
+                    data-v-e37282e2=""
+                    class="social-sharing social-sharing-icons social-sharing--vertical social-sharing--small"
+                  >
+                    <a
+                      data-v-e37282e2=""
+                      data-v-235dd1c0=""
+                      rel="noopener"
+                      class="link social-btn-circle facebook-btn"
+                      ><i
+                        data-v-e37282e2=""
+                        data-v-235dd1c0=""
+                        aria-hidden="true"
+                        class="fa fa-facebook"
+                      ></i
+                    ></a>
+                    <a
+                      data-v-e37282e2=""
+                      data-v-235dd1c0=""
+                      rel="noopener"
+                      class="link social-btn-circle twitter-btn"
+                      ><i
+                        data-v-e37282e2=""
+                        data-v-235dd1c0=""
+                        aria-hidden="true"
+                        class="fa fa-twitter"
+                      ></i
+                    ></a>
+                    <a
+                      data-v-e37282e2=""
+                      data-v-235dd1c0=""
+                      rel="noopener"
+                      class="link social-btn-circle google-btn"
+                      ><i
+                        data-v-e37282e2=""
+                        data-v-235dd1c0=""
+                        aria-hidden="true"
+                        class="fa fa-google-plus"
+                      ></i
+                    ></a>
+                  </div>
+                  <div
+                    data-v-e37282e2=""
+                    class="d-flex"
+                    style="justify-content: flex-end"
+                  >
+                    <span data-v-e37282e2="" class="close-share-tip">
+                      Đóng
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="comment-menu ml-05 el-dropdown">
+                <span
+                  class="cursor-pointer el-dropdown-selfdefine"
+                  data-tippy=""
+                  data-original-title="Hiển thị các hành động"
+                  aria-haspopup="list"
+                  aria-controls="dropdown-menu-3722"
+                  role="button"
+                  tabindex="0"
+                  ><i class="el-icon-more-outline v-menu-icon--small"></i
+                ></span>
+                <!---->
+                <ul
+                  class="el-dropdown-menu el-popper"
+                  id="dropdown-menu-3722"
+                  style="display: none"
+                >
+                  <!---->
+                  <li tabindex="-1" class="el-dropdown-menu__item">
+                    <!----><i
+                      aria-hidden="true"
+                      class="fa fa-flag-o pr-0 mr-05"
+                    ></i>
+                    Báo cáo
+                  </li>
+                  <!---->
+                  <!---->
+                  <!---->
+                </ul>
+              </div>
+            </footer>
+            <!---->
+            <!---->
+            <div
+              data-commentid="Rk74an7MJeO"
+              class="comment-thread reply mt-3 ms-3"
+            >
+              <header class="d-flex mb-05">
+                <a href="/u/xuanhai29072003" class="me-3"
                   ><img
-                    data-test="image"
-                    height="250"
-                    width="310"
-                    style="height: 200px"
-                    src="../../../articles-project/src/main/resources/templates/articles/{{myArticleById.id}}/image.png"
-                    alt="content planning"
+                    data-v-f09f4d56=""
+                    src="https://images.viblo.asia/avatar/82d04ed8-ff27-4962-8148-34ad3d5b4c37.jpg"
+                    srcset="
+                      https://images.viblo.asia/avatar-retina/82d04ed8-ff27-4962-8148-34ad3d5b4c37.jpg 2x
+                    "
+                    alt="Avatar"
+                    class="avatar avatar--md mx-05"
                 /></a>
-              </div>
-              <div class="sc-bdvvtL FmHLX" >
-                <h2 data-test="heading-text" class="sc-bBHxTw hsjjsR">
-                  <a data-test="heading-link" href="/blog/content-planning/"></a>
-                    {{myArticleById.title}}
-                  </a>
-                </h2>
-                <!-- <p data-test="preview-text" class="sc-bBHxTw epRzfQ">
-                  Learn what a content plan is and how to build one, with
-                  examples and tools to make your life easier.
-                </p> -->
-                <div class="sc-bdvvtL ftOnze">
-                  <span data-test="date">
-                    {{myArticleById.browseDate | date:'dd/MM/yyyy'}} </span
-                  ><strong data-test="category" class="sc-dtMgUX iEGeoe"
-                    ><a
-                      data-test="category-link"
-                      target="_blank"
-                      href="/blog/category/content-creation/"
-                      >Content Creation</a
-                    ></strong
+                <div>
+                  <a href="/u/xuanhai29072003" class=""
+                    ><span class="text-bold post-author__name"
+                      >PhạmXuânHải</span
+                    >
+                    <span class="text-muted mr-05"> @xuanhai29072003 </span></a
                   >
-
-                  <span data-test="time-to-read"
-                    >10<!-- -->
-                    <!-- -->min read</span
+                  <div class="comment-meta word-break">
+                    <span class="text-muted">Thứ Năm, 4:00 CH</span>
+                  </div>
+                </div>
+              </header>
+              <div class="mb-05 mt-2">
+                <div
+                  class="md-contents"
+                  style="font-size: 18px; line-height: 1.75"
+                >
+                  <p>mình cảm ơn</p>
+                </div>
+                <!---->
+              </div>
+              <footer class="d-flex text-muted">
+                <a
+                  class="mr-05 cursor-pointer me-3"
+                  data-tippy=""
+                  data-original-title="Trả lời"
+                  ><span>Trả lời</span></a
+                >
+                <div data-v-e37282e2="" class="relative mr-05 cursor-pointer">
+                  <a
+                    data-v-e37282e2=""
+                    href="https://viblo.asia/c/Rk74an7MJeO"
+                    class="icon-share link plain text-muted"
+                    data-tippy=""
+                    data-original-title="Chia sẻ đường dẫn của bình luận này"
+                    ><span data-v-e37282e2="">Chia sẻ</span></a
                   >
+                  <div
+                    data-v-e37282e2=""
+                    class="share-tip"
+                    style="display: none"
+                  >
+                    <label data-v-e37282e2="" class="tip-label"
+                      >Chia sẻ đường dẫn của bình luận này</label
+                    >
+                    <div data-v-e37282e2="" class="d-flex share-input-group">
+                      <input
+                        data-v-e37282e2=""
+                        data-sharing-id="comment-Rk74an7MJeO"
+                        type="text"
+                        readonly="readonly"
+                        class="d-block share-link"
+                      />
+                      <span
+                        data-v-e37282e2=""
+                        data-clipboard-text="https://viblo.asia/c/Rk74an7MJeO"
+                        data-clipboard-target="[data-sharing-id='comment-Rk74an7MJeO']"
+                        area-label="Copied!"
+                        area-tooltip-hidden="true"
+                        title="Sao chép URL"
+                        class="share-link-addon viblo-tooltip"
+                        ><i data-v-e37282e2="" class="fa fa-copy"></i
+                      ></span>
+                    </div>
+                    <div
+                      data-v-235dd1c0=""
+                      data-v-e37282e2=""
+                      class="social-sharing social-sharing-icons social-sharing--vertical social-sharing--small"
+                    >
+                      <a
+                        data-v-e37282e2=""
+                        data-v-235dd1c0=""
+                        rel="noopener"
+                        class="link social-btn-circle facebook-btn"
+                        ><i
+                          data-v-e37282e2=""
+                          data-v-235dd1c0=""
+                          aria-hidden="true"
+                          class="fa fa-facebook"
+                        ></i
+                      ></a>
+                      <a
+                        data-v-e37282e2=""
+                        data-v-235dd1c0=""
+                        rel="noopener"
+                        class="link social-btn-circle twitter-btn"
+                        ><i
+                          data-v-e37282e2=""
+                          data-v-235dd1c0=""
+                          aria-hidden="true"
+                          class="fa fa-twitter"
+                        ></i
+                      ></a>
+                      <a
+                        data-v-e37282e2=""
+                        data-v-235dd1c0=""
+                        rel="noopener"
+                        class="link social-btn-circle google-btn"
+                        ><i
+                          data-v-e37282e2=""
+                          data-v-235dd1c0=""
+                          aria-hidden="true"
+                          class="fa fa-google-plus"
+                        ></i
+                      ></a>
+                    </div>
+                    <div
+                      data-v-e37282e2=""
+                      class="d-flex"
+                      style="justify-content: flex-end"
+                    >
+                      <span data-v-e37282e2="" class="close-share-tip">
+                        Đóng
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="chitiet" style="background-color: rgb(255, 255, 255)" >
-    <div class="row gy-4 pt-5">
-      <div class="col" data-aos="fade-up">
-        <div data-parse="true" class="sc-bdvvtL ikHgNc sc-fydGpi jwdqZU" style="background-color: white;padding: 40px;">
-          <div ng-include="'../../../articles-project/src/main/resources/templates/articles/' + myArticleById.id + '/toi-thanh-cong-roi.html'"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-<div class="">
-  <a ng-repeat="hastag in myArticleById.hashtags.split(',')" href="#/search/{{hastag}}"> <i class='bx bxs-purchase-tag' ></i>{{hastag}}</a> 
-</div>
- <!-- begin comment  -->
-</section>
-  <div class="">
-
-    <div class="row">
-      <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
-        <div class="d-flex flex-start w-100">
-          <img class="rounded-circle shadow-1-strong me-3"
-               src="{{detailUser.img}}" alt="avatar"
-               style="width: 5%;height: 5%;" />
-          <div class="form-outline w-100">
-            <textarea class="form-control" id="textAreaExample" rows="4" style="background: #fff;" placeholder="Message"
-                      ng-model="contentValue"></textarea>
-          </div>
-        </div>
-        <div class="float-end mt-2 pt-1">
-          <button type="button" class="btn btn-primary btn-sm" ng-click="createComment()">Post comment</button>
-          <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="" ng-repeat="comment in comments">
-        <div class="d-flex flex-start">
-          <img class="rounded-circle shadow-1-strong me-3" style="width: 5%;height: 5%;" ng-src="{{comment.userImg}}"
-               alt="avatar" />
-          <div class="flex-grow-1 flex-shrink-1">
-            <div>
-              <div class="d-flex justify-content-between align-items-center">
-                <p class="mb-1">
-                  {{comment.userName}} <span class="small">- {{comment.createdDate | date:"h:mma 'at' dd/dMM/yyyy"}}</span>
-                </p>
-                <a ng-click="replyComment(comment.id, comment.userName)"><i class="fas fa-reply fa-xs"></i><span
-                        class="small"> reply</span></a>
-              </div>
-              <p class="small mb-0">
-                {{comment.content}}
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- begin reply  -->
-        <div class="row">
-          <div  id="{{comment.id}}" class="fromReplyComment" style="display:none;">
-            <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
-              <div class="d-flex flex-start w-100">
-                <img class="rounded-circle shadow-1-strong me-3"
-                     src="{{detailUser.img}}" alt="avatar"
-                     style="width: 5%;height: 5%;" />
-                <div class="form-outline w-100">
-                  <input type="hidden" ng-model="replyValue">
-                  <!-- <input type="text" ng-model="contentOfReplyValue.value"> -->
-                  <textarea class="form-control" id="textAreaExample" rows="4" style="background: #fff;"
-                            placeholder="Message" ng-model="contentOfReplyValue.value"></textarea>
+                <div class="comment-menu ml-05 el-dropdown">
+                  <span
+                    class="cursor-pointer el-dropdown-selfdefine"
+                    data-tippy=""
+                    data-original-title="Hiển thị các hành động"
+                    aria-haspopup="list"
+                    aria-controls="dropdown-menu-7450"
+                    role="button"
+                    tabindex="0"
+                    ><i class="el-icon-more-outline v-menu-icon--small"></i
+                  ></span>
+                  <!---->
+                  <ul
+                    class="el-dropdown-menu el-popper"
+                    id="dropdown-menu-7450"
+                    style="display: none"
+                  >
+                    <!---->
+                    <li tabindex="-1" class="el-dropdown-menu__item">
+                      <!----><i
+                        aria-hidden="true"
+                        class="fa fa-flag-o pr-0 mr-05"
+                      ></i>
+                      Báo cáo
+                    </li>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </ul>
                 </div>
-              </div>
-              <div class="float-end mt-2 pt-1">
-                <button type="button" class="btn btn-primary btn-sm" ng-click="CreateReplyComment()">Post comment</button>
-                <button type="button" class="btn btn-outline-primary btn-sm"
-                        ng-click="closeForm(comment.id)">Cancel</button>
-              </div>
+              </footer>
+              <!---->
+              <!---->
+              <!---->
             </div>
+            <!---->
           </div>
         </div>
-        <!-- end reply  -->
-        <div ng-if="comment.children && comment.children.length" ng-include="'reply.html'"></div>
       </div>
-    </div>
 
-    <script type="text/ng-template" id="reply.html">
-      <ul>
-        <li ng-repeat="comment in comment.children">
+      <div class="row">
+        <div class="" ng-repeat="comment in comments">
           <div class="d-flex flex-start">
-            <img class="rounded-circle shadow-1-strong me-3"  style="width: 5%;height: 5%;"
-                 ng-src="{{comment.userImg}}" alt="avatar"  />
+            <img
+              class="rounded-circle shadow-1-strong me-3"
+              style="width: 5%; height: 5%"
+              ng-src="{{comment.userImg}}"
+              alt="avatar"
+            />
             <div class="flex-grow-1 flex-shrink-1">
               <div>
                 <div class="d-flex justify-content-between align-items-center">
                   <p class="mb-1">
-                    {{comment.userName}} <span class="small">- {{comment.createdDate | date:"h:mma 'at' dd/dMM/yyyy"}}</span>
+                    {{comment.userName}}
+                    <span class="small"
+                      >- {{comment.createdDate | date:"h:mma 'at'
+                      dd/dMM/yyyy"}}</span
+                    >
                   </p>
-                  <a ng-click="replyComment(comment.id, comment.userName)"><i class="fas fa-reply fa-xs"></i><span class="small"> reply</span></a>
+                  <a ng-click="replyComment(comment.id, comment.userName)"
+                    ><i class="fas fa-reply fa-xs"></i
+                    ><span class="small"> reply</span></a
+                  >
                 </div>
-                <p class="small mb-0">
-                  {{comment.content}}
-                </p>
+                <p class="small mb-0">{{comment.content}}</p>
               </div>
             </div>
           </div>
           <!-- begin reply  -->
           <div class="row">
-            <div  id="{{comment.id}}" class="fromReplyComment" style="display:none;">
-              <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+            <div
+              id="{{comment.id}}"
+              class="fromReplyComment"
+              style="display: none"
+            >
+              <div
+                class="card-footer py-3 border-0"
+                style="background-color: #f8f9fa"
+              >
                 <div class="d-flex flex-start w-100">
-                  <img class="rounded-circle shadow-1-strong me-3"
-                       src="{{detailUser.img}}" alt="avatar"
-                       style="width: 5%;height: 5%;" />
+                  <img
+                    class="rounded-circle shadow-1-strong me-3"
+                    src="{{detailUser.img}}"
+                    alt="avatar"
+                    style="width: 5%; height: 5%"
+                  />
                   <div class="form-outline w-100">
-                    <input type="hidden" ng-model="replyValue">
-                    <textarea class="form-control" id="textAreaExample" rows="4" style="background: #fff;"
-                              placeholder="Message" ng-model="contentOfReplyValue"></textarea>
+                    <input type="hidden" ng-model="replyValue" />
+                    <!-- <input type="text" ng-model="contentOfReplyValue.value"> -->
+                    <textarea
+                      class="form-control"
+                      id="textAreaExample"
+                      rows="4"
+                      style="background: #fff"
+                      placeholder="Message"
+                      ng-model="contentOfReplyValue.value"
+                    ></textarea>
                   </div>
                 </div>
                 <div class="float-end mt-2 pt-1">
-                  <button type="button" class="btn btn-primary btn-sm" ng-click="CreateReplyComment()">Post comment</button>
-                  <button type="button" class="btn btn-outline-primary btn-sm"
-                          ng-click="closeForm(comment.id)">Cancel</button>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm"
+                    ng-click="CreateReplyComment()"
+                  >
+                    Post comment
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary btn-sm"
+                    ng-click="closeForm(comment.id)"
+                  >
+                    Cancel
+                  </button>
                 </div>
               </div>
             </div>
           </div>
           <!-- end reply  -->
-          <div ng-if="comment.children && comment.children.length" ng-include="'reply.html'"></div>
-        </li>
-      </ul>
-    </script>
+          <div
+            ng-if="comment.children && comment.children.length"
+            ng-include="'reply.html'"
+          ></div>
+        </div>
+      </div>
+
+      <script type="text/ng-template" id="reply.html">
+        <ul>
+          <li ng-repeat="comment in comment.children">
+            <div class="d-flex flex-start">
+              <img class="rounded-circle shadow-1-strong me-3"  style="width: 5%;height: 5%;"
+                   ng-src="{{comment.userImg}}" alt="avatar"  />
+              <div class="flex-grow-1 flex-shrink-1">
+                <div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <p class="mb-1">
+                      {{comment.userName}} <span class="small">- {{comment.createdDate | date:"h:mma 'at' dd/dMM/yyyy"}}</span>
+                    </p>
+                    <a ng-click="replyComment(comment.id, comment.userName)"><i class="fas fa-reply fa-xs"></i><span class="small"> reply</span></a>
+                  </div>
+                  <p class="small mb-0">
+                    {{comment.content}}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- begin reply  -->
+            <div class="row">
+              <div  id="{{comment.id}}" class="fromReplyComment" style="display:none;">
+                <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+                  <div class="d-flex flex-start w-100">
+                    <img class="rounded-circle shadow-1-strong me-3"
+                         src="{{detailUser.img}}" alt="avatar"
+                         style="width: 5%;height: 5%;" />
+                    <div class="form-outline w-100">
+                      <input type="hidden" ng-model="replyValue">
+                      <textarea class="form-control" id="textAreaExample" rows="4" style="background: #fff;"
+                                placeholder="Message" ng-model="contentOfReplyValue"></textarea>
+                    </div>
+                  </div>
+                  <div class="float-end mt-2 pt-1">
+                    <button type="button" class="btn btn-primary btn-sm" ng-click="CreateReplyComment()">Post comment</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm"
+                            ng-click="closeForm(comment.id)">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end reply  -->
+            <div ng-if="comment.children && comment.children.length" ng-include="'reply.html'"></div>
+          </li>
+        </ul>
+      </script>
+    </div>
   </div>
 </div>

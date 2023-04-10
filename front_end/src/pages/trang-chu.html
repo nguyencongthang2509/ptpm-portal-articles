@@ -182,7 +182,7 @@
                   {{articleByBrowseDate.descriptive}}
                 </p>
                 <!-- Readmore -->
-                <a href="#article/{{ar.id}}" class="link-custom pe-3"
+                <a href="#article/{{ar.id}}" class="link-custom pe-3" ng-click="saveArticleInLocalStorage($index, 0)"
                   >Read More</a
                 >
                 <div data-test="meta" class="sc-bdvvtL btGgl sc-bTfYFJ fiKUHl">
@@ -340,7 +340,7 @@
                 >
               </h2>
               <p class="text-dark">{{articleByTym.descriptive}}</p>
-              <a href="#article/{{ar.id}}" class="link-custom pe-3"
+              <a href="#article/{{ar.id}}" class="link-custom pe-3" ng-click="saveArticleInLocalStorage($index,1)"
                 >Read More</a
               >
               <!-- tim -->

@@ -1,96 +1,113 @@
 <div class="">
-    <section class="bai-viet" ng-repeat="ar in listArticle">
-        <div class="row">
-    
-          <div class="col-3" align="top">
-            <img
-              src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.png"
-              alt=""
-            />
-          </div>
-          <div class="col-8">
-           <div class="row">
-            <a href="#article/{{ar.id}}" class="link-custom" ng-click="saveArticleInLocalStorage($index)">{{ar.title}} - {{ar.createdDate}}</a>
-           </div>
-           <div class="row">
-            <p>{{ar.name  }}   * {{ar.tym}} tym</p>
-           </div>
-           <div class="row">
-            <p>{{ar.descriptive}}</p>
-           </div>
-        </div>
-          <div class="col-1 cham">
+  <div class="" ng-repeat="(key, values) in listHistoryArticle">
+    <table class="table" style="background-color: #F9F9F9; border-radius: 15px">
+      <thead><tr>
+        <th scope="row">
+          <label> {{key * 24 * 60 * 60  | date:'dd/MM/yyyy'}}</label>
+        </th>
+      </tr></thead>
+      <tbody>
+        <tr ng-repeat="ar in values">
+          <td>
+              <div class="row">
+          
+                <div class="col-3" align="top">
+                  <img
+                    src="../../../articles-project/src/main/resources/templates/articles/{{ar.id}}/image.png"
+                    alt=""
+                  />
+                </div>
+                <div class="col-8">
+                 <div class="row">
+                  <a href="#article/{{ar.id}}" class="link-custom" ng-click="saveArticleInLocalStorage(ar.id)">{{ar.title}} </a>
+                 </div>
+                 <div class="row">
+                  <p>{{ar.name  }}   * {{ar.tym}} tym</p>
+                 </div>
+                 <div class="row">
+                  <p>{{ar.descriptive}}</p>
+                 </div>
+              </div>
+            
+              </div>
+          </td>
+          <td>
+           <div class="cham">
             <i
-              class="bi bi-three-dots-vertical"
-              style="width: 12%"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            ></i>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li>
-                <a
-                  class="dropdown-item"
-                  ng-click="deleteArticleInLocalStorage($index)"
-                  >Delete Article</a
-                >
-              </li>
-              <li>
-                <a href="#article/{{ar.id}}"
-                  class="dropdown-item"
-                  ng-click="saveArticleInLocalStorage($index)"
-                  >Read More</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  data-bs-toggle="modal"
-                  data-bs-target="#addArticleAlbum"
-                  ng-click="showModalAddArticleToAlbum(ar.id)"
-                  >Thêm vào album</a
-                >
-                <div
-                  class="modal fade"
-                  id="exampleModal"
-                  tabindex="-1"
-                  aria-labelledby="exampleModalLabel"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">
-                          Đặt Tên
-                        </h1>
-                        <button
-                          type="button"
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></button>
-                      </div>
-                      <div class="modal-body">hhhh</div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          data-bs-dismiss="modal"
-                        >
-                          Close
-                        </button>
-                        <button type="button" class="btn btn-primary">
-                          Save changes
-                        </button>
-                      </div>
+            class="bi bi-three-dots-vertical"
+            style="width: 12%"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          ></i>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li>
+              <a
+                class="dropdown-item"
+                ng-click="deleteArticleInLocalStorage(key, $index, ar.id)"
+                >Delete Article</a
+              >
+            </li>
+            <li>
+              <a href="#article/{{ar.id}}"
+                class="dropdown-item"
+                ng-click="saveArticleInLocalStorage($index)"
+                >Read More</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#addArticleAlbum"
+                ng-click="showModalAddArticleToAlbum(ar.id)"
+                >Thêm vào album</a
+              >
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        Đặt Tên
+                      </h1>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">hhhh</div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button type="button" class="btn btn-primary">
+                        Save changes
+                      </button>
                     </div>
                   </div>
                 </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+              </div>
+            </li>
+          </ul>
+           </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    
 </div>
 <!-- begin add article album -->
 <div class="modal fade" id="addArticleAlbum" tabindex="-1" aria-labelledby="addArticleAlbum" aria-hidden="true">

@@ -4,6 +4,7 @@ window.myArticleCtrl = function (
   MyArticleService,
   CategoryService,
   AlbumService,
+  localStorageService,
   env
 ) {
   CategoryService.fetchCategories().then(function () {
@@ -232,4 +233,26 @@ window.myArticleCtrl = function (
     });
   };
   //  end album
+
+  
+  // begin save article on  localStorage
+  $scope.saveArticleInLocalStorage = function (index) {
+    $scope.localStorageDemo = localStorageService.get("articles");
+    if ($scope.localStorageDemo != []) {
+      $scope.index = $scope.localStorageDemo.findIndex(
+        (element) => element.id == $scope.listMyArticleByStatus[index].id
+      );
+      if ($scope.index !== -1) {
+        $scope.localStorageDemo.splice($scope.index, 1);
+      }
+      $scope.article = $scope.listMyArticleByStatus[index];
+      $scope.article.createdDate = Date.now()
+      $scope.localStorageDemo.push($scope.article);
+      localStorageService.set("articles", $scope.localStorageDemo);
+    }else{
+      localStorageService.set("articles", []);
+    }
+  };
+  // end save article on  localStorage
+
 };

@@ -121,14 +121,22 @@ window.detailAlbumCtrl = function (
   };
 
    // begin save article on  localStorage
-   $scope.saveArticleInLocalStorage = function(index){
-    $scope.localStorageDemo = localStorageService.get('articles');
-     $scope.index =  $scope.localStorageDemo.findIndex(element => element.id == $scope.listArticle[index].id);
-     if($scope.index !== -1){
-      $scope.localStorageDemo.splice($scope.index, 1);
-     }
-     $scope.localStorageDemo.push( $scope.listArticle[index])
-    localStorageService.set("articles", $scope.localStorageDemo);
-  }
+   $scope.saveArticleInLocalStorage = function (index) {
+    $scope.localStorageDemo = localStorageService.get("articles");
+    if ($scope.localStorageDemo != []) {
+      $scope.index = $scope.localStorageDemo.findIndex(
+        (element) => element.id == $scope.listArticle[index].id
+      );
+      if ($scope.index !== -1) {
+        $scope.localStorageDemo.splice($scope.index, 1);
+      }
+      $scope.article = $scope.listArticle[index];
+      $scope.article.createdDate = Date.now()
+      $scope.localStorageDemo.push($scope.article);
+      localStorageService.set("articles", $scope.localStorageDemo);
+    }else{
+      localStorageService.set("articles", []);
+    }
+  };
   // end save article on  localStorage
 };

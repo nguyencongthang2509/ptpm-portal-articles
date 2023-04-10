@@ -17,40 +17,61 @@ window.historyCtrl = function (
     title: "",
     status: true,
   };
-
-  if ($scope.listArticle != []) {
-    $scope.listArticle = localStorageService.get("articles").reverse();
-  }else{
-    $scope.listArticle = [];
-  }
-
-  // begin save article on  localStorage
-  $scope.saveArticleInLocalStorage = function (index) {
-    $scope.localStorageDemo = localStorageService.get("articles");
-    $scope.article = $scope.listArticle[index];
-    $scope.index = $scope.localStorageDemo.findIndex(
-      (element) => element.id == $scope.listArticle[index].id
-    );
-    if ($scope.index !== -1) {
-      $scope.localStorageDemo.splice($scope.index, 1);
+  var groupByTimePeriod = function (obj, timestamp) {
+    var objPeriod = {};
+    var oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
+    for (var i = 0; i < obj.length; i++) {
+     var d = Math.floor(obj[i][timestamp]  / oneDay);
+      
+      objPeriod[d] = objPeriod[d] || [];
+      objPeriod[d].push(obj[i]);
     }
-    $scope.baiViet = $scope.listArticle[index];
-    $scope.baiViet.createdDate = new Date();
-    $scope.localStorageDemo.push($scope.baiViet);
-    localStorageService.set("articles", $scope.localStorageDemo);
+    return objPeriod;
+  };
+  $scope.listHistoryArticle = {};
+  if (localStorageService.get("articles") != []) {
+    $scope.listHistoryArticle = groupByTimePeriod(
+      localStorageService.get("articles"),
+      "createdDate"
+    );
+  }
+  // begin save article on  localStorage
+  $scope.saveArticleInLocalStorage = function (id) {
+    if ($scope.localStorageDemo != []) {
+      $scope.article = {};
+      $scope.localStorageDemo = localStorageService.get("articles");
+      $scope.index = $scope.localStorageDemo.findIndex(
+        (element) => element.id == id
+      );
+      if ($scope.index !== -1) {
+        $scope.article = $scope.localStorageDemo[$scope.index];
+        $scope.localStorageDemo.splice($scope.index, 1);
+      }
+
+      $scope.article.createdDate = Date.now();
+      $scope.localStorageDemo.push($scope.article);
+      localStorageService.set("articles", $scope.localStorageDemo);
+    } else {
+      localStorageService.set("articles", []);
+    }
   };
   // end save article on  localStorage
-
   // begin delete article in  localStorage
-  $scope.deleteArticleInLocalStorage = function (index) {
+  $scope.deleteArticleInLocalStorage = function (key, index, id) {
     $scope.localStorageDemo = localStorageService.get("articles");
     $scope.index = $scope.localStorageDemo.findIndex(
-      (element) => element.id == $scope.listArticle[index].id
+      (element) => element.id == id
     );
-    console.log($scope.index);
+
     if ($scope.index !== -1) {
       $scope.localStorageDemo.splice($scope.index, 1);
-      $scope.listArticle.splice($scope.index, 1);
+      $scope.listHistoryArticle[key].splice(index, 1);
+      var isEmpty = $scope.listHistoryArticle[key].filter(function (val) {
+        return val !== null || val !== "";
+      }).length;
+      if (isEmpty === 0) {
+        delete $scope.listHistoryArticle[key];
+      }
     }
     localStorageService.set("articles", $scope.localStorageDemo);
   };

@@ -1244,22 +1244,9 @@ ul.nav-tabs li.nav-item button.nav-link-custom {
   overflow: hidden;
   margin-bottom: 5px;
 }
-/* Set the style for the a tag */
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
-/* set the style for the active class */
-.pagination a.active {
-  background-color: dodgerblue;
-  color: white;
-}
-/* add background color when user hovers on inactive class */
-.pagination a:hover:not(.active) {
-  background-color: #ddd;
+
+.pagination {
+  margin-top: 20px;
 }
 .section-title h2 {
   color: #1c1c1c;
@@ -3071,4 +3058,66 @@ legend {
     transform: translateX(0px);
     width: 16px;
   }
+}
+
+.el-button {
+  background: gainsboro;
+  clip-path: circle(50%);
+  height: 50px;
+  width: 50px;
+  box-shadow: 5px black;
+  border: 4px black;
+}
+
+.profile img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.container-fluid .iconn {
+  float: left;
+}
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid var(--second-color);
+}
+
+.profile-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #00ad5f;
+}
+.trenn .profile .dang {
+  padding-left: 100px;
+}
+.comment-thread a img {
+  background: gainsboro;
+  clip-path: circle(50%);
+  height: 50px;
+  width: 50px;
+  box-shadow: 5px black;
+  border: 4px black;
+}
+.iconn {
+  position: sticky;
+  top: 0;
+  flex-direction: column !important;
+  display: flex !important;
+}
+.flex {
+  margin-left: 80px;
+}
+.chams {
+  margin-right: 50px;
 }

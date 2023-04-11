@@ -24,7 +24,6 @@
           />
         </div>
         <div class="card-custom-content p-4">
-          
           <h5
             class="mb-4"
             style="
@@ -35,7 +34,12 @@
           >
             {{ar.title}}
           </h5>
-          <a href="#article/{{ar.id}}" class="link-custom pe-3" ng-click="saveArticleInLocalStorage($index)">Read More</a>
+          <a
+            href="#article/{{ar.id}}"
+            class="link-custom pe-3"
+            ng-click="saveArticleInLocalStorage($index)"
+            >Read More</a
+          >
           <a
             data-ng-click="favoriteArticle(ar.id, $index)"
             ng-if="ar.favorite == 0"
@@ -135,7 +139,9 @@
                     >{{ar.name}}</a
                   >
                 </div>
-                <p class="text-brand mb-2">{{ar.browseDate| date:'dd/MM/yyyy'}}</p>
+                <p class="text-brand mb-2">
+                  {{ar.browseDate| date:'dd/MM/yyyy'}}
+                </p>
               </div>
             </div>
           </div>
@@ -144,11 +150,12 @@
     </div>
   </div>
 </section>
-<div class="container" style="padding-left: 450px; margin-top: 40px">
-  <div class="pagination">
+<div class="container">
+  <div class="pagination justify-content-center">
     <ul class="pagination">
       <button
-        class="page-link"
+        style="height: 35px"
+        class="page-link me-3"
         ng-click="prevPage() "
         ng-disabled="pageModel == 1"
       >
@@ -156,17 +163,20 @@
       </button>
       <li>
         <input
-          type="number"
+          type="text"
           ng-change="inputChangeEvent()"
           ng-model="pageModel"
           min="1"
           max="{{totalPages}}"
-          style="width: 25px; font-size: 15px"
+          style="width: 35px; font-size: 18px"
         />
-        <span> / {{totalPages}}</span>
+        <span>
+          <b style="font-size: 20px" class="ms-2 me-2"> / </b
+          >{{totalPages}}</span
+        >
       </li>
       <button
-        class="page-link"
+        class="page-link ms-3"
         ng-click="nextPage()"
         ng-disabled="pageModel == totalPages"
       >
@@ -177,60 +187,125 @@
 </div>
 
 <!-- begin add article album -->
-<div class="modal fade" id="addArticleAlbum" tabindex="-1" aria-labelledby="addArticleAlbum" aria-hidden="true">
+<div
+  class="modal fade"
+  id="addArticleAlbum"
+  tabindex="-1"
+  aria-labelledby="addArticleAlbum"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Save to album</h5>
-        <button type="button" ng-click="closeFormAddAlbum()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          ng-click="closeFormAddAlbum()"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
-        <input type="text" class="form-control"  ng-change="searchAlbum()" ng-model="nameAlbum" placeholder="Enter name album..."/>
-        <table style=" margin: 10px;">
-          <thead>
-          </thead>
+        <input
+          type="text"
+          class="form-control"
+          ng-change="searchAlbum()"
+          ng-model="nameAlbum"
+          placeholder="Enter name album..."
+        />
+        <table style="margin: 10px">
+          <thead></thead>
           <tbody style="display: block; height: 100px; overflow-y: scroll">
-          <tr ng-repeat="album in listAlbum track by $index">
-            <td><input class="form-check-input" type="checkbox" style="margin-right: 15px;" value="{{album.id}}"
-                       id="{{album.id}}" data-ng-click="addArticleToAlbum(album.id)" ng-checked="album.countArticle != 0"/></td>
-            <td>{{album.title}}</td>
-            <td ng-if="album.status"><i class="bx bx-world"></i></td>
-            <td ng-if="album.status == false"><i class="bi bi-incognito"></i></td>
-          </tr>
-
+            <tr ng-repeat="album in listAlbum track by $index">
+              <td>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  style="margin-right: 15px"
+                  value="{{album.id}}"
+                  id="{{album.id}}"
+                  data-ng-click="addArticleToAlbum(album.id)"
+                  ng-checked="album.countArticle != 0"
+                />
+              </td>
+              <td>{{album.title}}</td>
+              <td ng-if="album.status"><i class="bx bx-world"></i></td>
+              <td ng-if="album.status == false">
+                <i class="bi bi-incognito"></i>
+              </td>
+            </tr>
           </tbody>
         </table>
-        <div   id="createAlbum" ng-click="showCreateAlbum()">Create album</div>
-        <form name="formThemMoi" id="formThemMoi" style="display: none;" novalidate>
+        <div id="createAlbum" ng-click="showCreateAlbum()">Create album</div>
+        <form
+          name="formThemMoi"
+          id="formThemMoi"
+          style="display: none"
+          novalidate
+        >
           <div class="mb-3">
             <label for="exampleInputTitle" class="form-label">Title:</label>
-            <input type="text" class="form-control" name="title" id="exampleInputPassword1" required
-                   ng-model="createAlbumRequest.title" minlength="2" />
-            <span class="text-danger" ng-show="formThemMoi.title.$error.required && formThemMoi.title.$touched">vui lòng
-              nhập title</span>
-            <span class="text-danger" ng-show="formThemMoi.title.$error.minlength">
+            <input
+              type="text"
+              class="form-control"
+              name="title"
+              id="exampleInputPassword1"
+              required
+              ng-model="createAlbumRequest.title"
+              minlength="2"
+            />
+            <span
+              class="text-danger"
+              ng-show="formThemMoi.title.$error.required && formThemMoi.title.$touched"
+              >vui lòng nhập title</span
+            >
+            <span
+              class="text-danger"
+              ng-show="formThemMoi.title.$error.minlength"
+            >
               Vui lòng nhập ít nhất 2 kí tự
             </span>
           </div>
           <div class="mb-3">
             <label for="exampleInputTitle" class="form-label">Status</label>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="status" value="false" id="flexRadioDefault1"  ng-model="createAlbumRequest.status"/>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="status"
+                value="false"
+                id="flexRadioDefault1"
+                ng-model="createAlbumRequest.status"
+              />
               <label class="form-check-label" for="flexRadioDefault1">
                 <i class="bi bi-incognito"></i> Private
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="status" value="true" id="flexRadioDefault2" ng-model="createAlbumRequest.status" checked />
+              <input
+                class="form-check-input"
+                type="radio"
+                name="status"
+                value="true"
+                id="flexRadioDefault2"
+                ng-model="createAlbumRequest.status"
+                checked
+              />
               <label class="form-check-label" for="flexRadioDefault2">
                 <i class="bi bi-book"></i> Public
               </label>
             </div>
           </div>
-          <button type="button" class="btn btn-primary" ng-click="createAlbum($event)">Create</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            ng-click="createAlbum($event)"
+          >
+            Create
+          </button>
         </form>
       </div>
-
     </div>
   </div>
 </div>

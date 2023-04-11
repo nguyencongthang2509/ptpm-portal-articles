@@ -1,30 +1,48 @@
 <div class="container-fluid">
   <div class="row">
     <h5 class="text-dark">Lượt Yêu Thích</h5>
-    <table class="table" style="background-color: #F9F9F9; border-radius: 15px">
+    <table class="table" style="background-color: #f9f9f9; border-radius: 15px">
       <tbody>
         <tr style="height: 40px">
-          <th scope="row">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="defaultCheck1"
-              />
-              <label> Tất Cả </label>
+          <th scope="row" class="row">
+            <div class="col-sm-11">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="defaultCheck1"
+                />
+                <label> Tất Cả </label>
+              </div>
+            </div>
+            <div class="col-sm-1">
+              <button
+                type="button"
+                ng-click="deleteSelected()"
+                id="deleteBtn"
+                style="display: none"
+                class="btn btn-primary"
+              >
+                Xóa
+              </button>
             </div>
           </th>
         </tr>
       </tbody>
     </table>
     <div class="" ng-repeat="(key, values) in listArticleFavorite">
-      <table class="table" style="background-color: #F9F9F9; border-radius: 15px">
-        <thead><tr>
-          <th scope="row">
-            <label> {{key * 24 * 60 * 60  | date:'dd/MM/yyyy'}}</label>
-          </th>
-        </tr></thead>
+      <table
+        class="table"
+        style="background-color: #f9f9f9; border-radius: 15px"
+      >
+        <thead>
+          <tr>
+            <th scope="row">
+              <label> {{key * 24 * 60 * 60 | date:'dd/MM/yyyy'}}</label>
+            </th>
+          </tr>
+        </thead>
         <tbody>
           <tr ng-repeat="value in values">
             <td>
@@ -32,24 +50,17 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
+                  id="check-2"
                   value="{{value.id}}"
-                  id="defaultCheck1"
+                  ng-model="checkboxModel.value1"
+                  ng-change="checkboxChanged()"
                 />
-  
                 <div class="card__avatars cluster color-mid-text ps-4">
                   <a class="avatar" href="#/articles/{{value.articleId}}"
                     ><img
                       class="img"
-                      alt="Rachel Andrew"
                       sizes="(min-width: 40px) 40px, calc(100vw - 48px)"
                       src="{{value.userImage}}"
-                      srcset="
-                        https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=1&amp;q=75 1x,
-                        https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=2&amp;q=50 2x,
-                        https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=3&amp;q=35 3x,
-                        https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=4&amp;q=23 4x,
-                        https://web-dev.imgix.net/image/admin/dUAN2DEXHRT6G6iPrIby.jpg?fit=crop&amp;h=40&amp;w=40&amp;auto=format&amp;dpr=5&amp;q=20 5x
-                      "
                       decoding="async"
                       height="40"
                       loading="lazy"
@@ -60,31 +71,25 @@
                       class="card__authors flow-space-base"
                       aria-label="authors"
                     >
-                      <a href="#/articles/{{value.articleId}}" class="text-dark"
-                        ><strong>{{value.userName}}</strong> bạn đã bày tỏ cảm xúc về
-                        <strong> bài viết </strong>của
-                        <strong>  {{value.title}} </strong></a
+                      <a href="#/article/{{value.articleId}}" class="text-dark"
+                        >Bạn đã tym bài viết
+                        <strong> {{value.title}} </strong></a
                       >
                     </div>
-                    <!-- <time class="text-dark"><i class="bx bx-world"></i>{{value.userName ? "Công khai" : "Riêng tư"}}</time
-                    > -->
                   </div>
                 </div>
               </div>
             </td>
             <td>
               <div class="cham">
-                  <i
+                <i
                   class="bi bi-three-dots-vertical"
                   style="margin: 0px; width: 12%"
                   id="dropdownMenuButton1"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 ></i>
-                <ul
-                  class="dropdown-menu"
-                  aria-labelledby="dropdownMenuButton1"
-                >
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <li>
                     <a
                       class="dropdown-item"
@@ -92,8 +97,10 @@
                       ng-click="unfavoriteArticle(key,$index,value.articleId)"
                       data-bs-toggle="modal"
                       data-bs-target="#deleteAlbumModal"
-                      >Xóa</a>
+                      >Xóa</a
+                    >
                   </li>
+                </ul>
               </div>
             </td>
           </tr>

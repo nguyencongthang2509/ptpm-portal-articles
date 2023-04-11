@@ -21,7 +21,7 @@ window.historyCtrl = function (
     var objPeriod = {};
     var oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
     for (var i = 0; i < obj.length; i++) {
-     var d = Math.floor(obj[i][timestamp]  / oneDay);
+     var d = Math.floor(obj[i][timestamp]  / oneDay) * 1000;
       
       objPeriod[d] = objPeriod[d] || [];
       objPeriod[d].push(obj[i]);

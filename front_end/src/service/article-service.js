@@ -158,12 +158,17 @@ app.service("ArticleService", function ($http) {
           `&category=` +
           findArticleRequest.category +
           `&categoryId=` +
-          findArticleRequest.categoryId
+          findArticleRequest.categoryId +
+          `&page=` + findArticleRequest.page
       )
       .then(
         function (response) {
+          console.log(findArticleRequest.categoryId);
+          console.log(response);
           if (response.status === 200) {
             findByArticle = response.data.data.data;
+            totalPages = response.data.data.totalPages;
+            currentPage = response.data.data.currentPage;
           }
           return response;
         },

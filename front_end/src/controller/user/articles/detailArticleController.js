@@ -15,6 +15,8 @@ window.detailArticleCtrl = function (
     content: "",
   };
 
+  $scope.index = -1;
+
   $scope.replyCommentUser = {
     articlesId: $routeParams.id,
     content: "",
@@ -91,38 +93,40 @@ window.detailArticleCtrl = function (
           userName: objUser.name,
           createdDate: objComment.createdDate,
         };
-        $scope.comments.push(newObj);
+         if($scope.index == -1){
+          $scope.comments.push(newObj);
+        }else{
+          $scope.comments[$scope.index].children.push(newObj)
+        }
         $scope.$apply();
       }
     );
   });
   $scope.createComment = function () {
-    let objComment = {
-      articlesId: $routeParams.id,
-      content: $scope.contentValue,
-    };
     stompClient.send(
       "/action/create-comment/" + $routeParams.id,
       {},
-      JSON.stringify(objComment)
+      JSON.stringify( $scope.comment)
     );
   };
 
   $scope.contentOfReplyValue = {
     value: "",
   };
-  $scope.replyComment = function (id, userName) {
+  $scope.replyComment = function (index, id, userName) {
     [...document.querySelectorAll(".fromReplyComment")].map((item) => {
       item.style.display = "none";
     });
     var reply = document.getElementById(id);
     reply.style.display = "block";
-    $scope.replyValue = id;
-    $scope.contentOfReplyValue.value = "@" + userName + " ";
+    $scope.replyCommentUser.reply = id;
+    $scope.replyCommentUser.content = "@" + userName + " ";
+    $scope.index = index;
   };
   $scope.closeForm = function (id) {
     var reply = document.getElementById(id);
     reply.style.display = "none";
+    $scope.index = -1;
   };
 
   // stompClient.connect({}, function (frame) {
@@ -150,17 +154,16 @@ window.detailArticleCtrl = function (
   //     }
   //   );
   // });
-  $scope.CreateReplyComment = function () {
-    let objReplyComment = {
-      articlesId: $routeParams.id,
-      content: $scope.contentOfReplyValue.value,
-      reply: $scope.replyValue,
-    };
-    console.log(objReplyComment);
+  $scope.CreateReplyComment = function (id) {
+    console.log(id);
+    var reply = document.getElementById(id);
+    reply.style.display = "none";
+    $scope.index = -1;
     stompClient.send(
       "/action/create-comment/" + $routeParams.id,
       {},
-      JSON.stringify(objReplyComment)
+      JSON.stringify($scope.replyCommentUser)
     );
+    
   };
 };

@@ -3,6 +3,7 @@ package com.articlesproject.core.user.controller;
 import com.articlesproject.core.common.base.BaseController;
 import com.articlesproject.core.common.base.ResponseObject;
 import com.articlesproject.core.user.model.request.UserFindArticleAuthorRequest;
+import com.articlesproject.core.user.model.request.UserFindArticleByCategoryRequest;
 import com.articlesproject.core.user.model.request.UserFindArticleRequest;
 import com.articlesproject.core.user.service.UserArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,11 @@ public class UserArticleRestController extends BaseController {
     @GetMapping("/search")
     public ResponseObject findArticleBySearch(final UserFindArticleRequest request) {
         return new ResponseObject(userArticleService.findAllArticle(userId,request));
+    }
+
+    @GetMapping("/find-article-category")
+    public ResponseObject findAllArticleByCategory(final UserFindArticleByCategoryRequest request) {
+        return new ResponseObject(userArticleService.findAllArticleByCategory(userId,request));
     }
 
     @GetMapping("/by-browse-date")

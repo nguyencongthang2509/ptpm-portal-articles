@@ -82,8 +82,10 @@ window.articleCtrl = function (
   $scope.searchFillter = function(idCategory){
     $scope.findArticleRequest.categoryId = idCategory
     $scope.findArticleRequest.page = 0
-    ArticleService.fetchFindByArticle( $scope.findArticleRequest).then(function (respone) {
+    ArticleService.fetchFindByArticleByCategory( $scope.findArticleRequest).then(function (respone) {
       $scope.listArticle = ArticleService.getFindByArticle();
+      $scope.totalPages = ArticleService.getTotalPages();
+      $scope.currentPage = ArticleService.getCurrentPage();
       $scope.pageModel = $scope.currentPage + 1;
     });
   }

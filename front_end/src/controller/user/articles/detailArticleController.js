@@ -23,7 +23,13 @@ window.detailArticleCtrl = function (
 
   MyArticleService.fetchMyArticleById($routeParams.id).then(function () {
     $scope.myArticleById = MyArticleService.getMyArticleById();
-    // console.log($scope.myArticleById);
+    $scope.select2Options = {
+      multiple: true,
+      simple_tags: true,
+      tags: $scope.myArticleById.hashtag.split(","),
+      tokenSeparators: ["/", ",", ";"],
+    };
+    console.log($scope.myArticleById);
   });
 
   CommentService.fetchComments($routeParams.id).then(function () {
@@ -103,7 +109,7 @@ window.detailArticleCtrl = function (
   };
 
   $scope.contentOfReplyValue = {
-    value:""
+    value: "",
   };
   $scope.replyComment = function (id, userName) {
     [...document.querySelectorAll(".fromReplyComment")].map((item) => {

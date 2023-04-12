@@ -12,22 +12,48 @@
               src="../../../articles-project/src/main/resources/templates/articles/{{idArticle}}/image.png"
               alt=""
             />
-            <div class="namealbum">
+            <input
+              required=""
+              type="text"
+              value="{{album.title}}"
+              ng-model="album.title"
+            />
+            <button type="button" ng-click="updateAlbum()">ok</button>
+            <!-- <div class="namealbum">
               {{album.title}}
               <span><i class="bi bi-pen"></i></span>
-            </div>
+            </div> -->
             <div class="nameuser">{{album.userName}}</div>
-            <div class="nameuser">
-              Status: {{album.status == true ? "Public" : "Private"}}
-            </div>
+            <select ng-model="album.status" ng-change="updateAlbum()">
+              <option value="0" ng-selected="album.status == '0'">
+                Private
+              </option>
+              <option value="1" ng-selected="album.status == '1'">
+                Public
+              </option>
+            </select>
             <div class="nameuser">
               <p>{{album.numberOfArticle}} Article</p>
             </div>
             <hr style="border-top: 4px #eee solid" />
-            <div class="share">
-              <button type="button">
-                <i class="bi bi-three-dots-vertical"></i>
-              </button>
+            <div class="cham">
+              <i
+                class="bi bi-three-dots-vertical"
+                style="width: 12%"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    ng-if="author"
+                    ng-click="deleteAlbum()"
+                    >Delete Album</a
+                  >
+                </li>
+              </ul>
             </div>
           </div>
           <div class="backtrai__background"></div>
@@ -47,7 +73,14 @@
                   alt=""
                 />
               </div>
-              <div class="col-8"><a href="#article/{{ar.id}}" class="link-custom" ng-click="saveArticleInLocalStorage($index)">{{ar.title}}</a></div>
+              <div class="col-8">
+                <a
+                  href="#article/{{ar.id}}"
+                  class="link-custom"
+                  ng-click="saveArticleInLocalStorage($index)"
+                  >{{ar.title}}</a
+                >
+              </div>
               <div class="cham">
                 <i
                   class="bi bi-three-dots-vertical"
@@ -66,7 +99,8 @@
                     >
                   </li>
                   <li>
-                    <a href="#article/{{ar.id}}"
+                    <a
+                      href="#article/{{ar.id}}"
                       class="dropdown-item"
                       ng-click="saveArticleInLocalStorage($index)"
                       >Read More</a

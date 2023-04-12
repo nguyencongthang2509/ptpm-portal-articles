@@ -54,7 +54,10 @@
           </div>
           <div class="card-custom-content p-4">
             <h4>{{myArticle.title}}</h4>
-            <a href="#my-article/{{myArticle.id}}" class="link-custom" ng-click="saveArticleInLocalStorage($index)"
+            <a
+              href="#my-article/{{myArticle.id}}"
+              class="link-custom"
+              ng-click="saveArticleInLocalStorage($index)"
               >Read More</a
             >
           </div>
@@ -174,10 +177,6 @@
         </button>
       </ul>
     </div>
-    <div class="counter"></div>
-
-    <button class="paginate left"><i></i><i></i></button>
-    <button class="paginate right"><i></i><i></i></button>
   </div>
 </section>
 <!-- begin add article album -->

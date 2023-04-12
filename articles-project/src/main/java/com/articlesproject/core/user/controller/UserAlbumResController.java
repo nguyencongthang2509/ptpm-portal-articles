@@ -47,9 +47,9 @@ public class UserAlbumResController extends BaseController {
         return new ResponseObject(albumService.create(request, userId));
     }
 
-    @PutMapping("/update")
-    private ResponseObject updateAlbum(@Valid @RequestBody UserUpdateAlbumRequest request){
-        return new ResponseObject(albumService.update(request));
+    @PutMapping("/update/{id}")
+    private ResponseObject updateAlbum(@Valid @RequestBody UserUpdateAlbumRequest request,@PathVariable("id") String id){
+        return new ResponseObject(albumService.update(request, id));
     }
 
     @GetMapping("/detail-album-user/{articleId}")

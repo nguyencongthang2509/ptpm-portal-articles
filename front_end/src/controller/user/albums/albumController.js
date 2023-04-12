@@ -6,7 +6,6 @@ window.albumCtrl = function (
   env,
   $http
 ) {
-    
   $scope.album = [];
 
   //get all album
@@ -14,6 +13,4 @@ window.albumCtrl = function (
     $scope.albums = AlbumService.getAlbums();
     console.log($scope.albums);
   });
-
-  
 };

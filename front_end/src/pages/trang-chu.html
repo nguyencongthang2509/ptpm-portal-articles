@@ -22,7 +22,7 @@
       <div class="carousel-inner">
         <div
           class="carousel-item"
-          ng-repeat="articleSlide in listArticleSlide | limitTo:3"
+          ng-repeat="articleSlide in listArticleSlide | limitTo:3 "
           ng-class="{ 'active': $index === 0 }"
         >
           <article
@@ -144,7 +144,7 @@
                   <a
                     target="_self"
                     href="#/search/?hashtag={{hastag}}"
-                    ng-repeat="hastag in articleByBrowseDate.hashtags.split(',')"
+                    ng-repeat="hastag in articleByBrowseDate.hashtags.split(',') track by $index"
                     ><i class="bx bxs-purchase-tag"></i>{{hastag}}</a
                   >
                 </p>

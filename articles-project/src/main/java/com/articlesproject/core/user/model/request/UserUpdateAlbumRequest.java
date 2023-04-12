@@ -11,9 +11,6 @@ import lombok.Setter;
 public class UserUpdateAlbumRequest {
 
     @NotEmpty
-    private String id;
-
-    @NotEmpty
     @Size(min = 2)
     private String title;
 

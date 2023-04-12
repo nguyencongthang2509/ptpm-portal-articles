@@ -58,8 +58,8 @@ public class UserAlbumServiceImpl implements UserAlbumService {
     }
 
     @Override
-    public Album update(UserUpdateAlbumRequest request) {
-        Optional<Album> album = albumRepository.findById(request.getId());
+    public Album update(UserUpdateAlbumRequest request, String id) {
+        Optional<Album> album = albumRepository.findById(id);
         if(!album.isPresent()){
             throw new RestApiException(Message.ALBUM_NOT_EXIST);
         }

@@ -5,7 +5,8 @@ window.detailAlbumCtrl = function (
   ArticleService,
   localStorageService,
   env,
-  $http
+  $http,
+  $location
 ) {
   $scope.listArticle = [];
   $scope.album = {};
@@ -120,8 +121,8 @@ window.detailAlbumCtrl = function (
     }
   };
 
-   // begin save article on  localStorage
-   $scope.saveArticleInLocalStorage = function (index) {
+  // begin save article on  localStorage
+  $scope.saveArticleInLocalStorage = function (index) {
     $scope.localStorageDemo = localStorageService.get("articles");
     if ($scope.localStorageDemo != []) {
       $scope.index = $scope.localStorageDemo.findIndex(
@@ -131,12 +132,59 @@ window.detailAlbumCtrl = function (
         $scope.localStorageDemo.splice($scope.index, 1);
       }
       $scope.article = $scope.listArticle[index];
-      $scope.article.createdDate = Date.now()
+      $scope.article.createdDate = Date.now();
       $scope.localStorageDemo.push($scope.article);
       localStorageService.set("articles", $scope.localStorageDemo);
-    }else{
+    } else {
       localStorageService.set("articles", []);
     }
   };
   // end save article on  localStorage
+
+  //update album
+  $scope.updateAlbum = function () {
+    $scope.updateAlbumRequest = {
+      title: $scope.album.title,
+      status: parseInt($scope.album.status),
+    };
+    console.log($scope.updateAlbumRequest);
+    $http
+      .put(albumAPI + "/update/" + $routeParams.id, $scope.updateAlbumRequest)
+      .then(function (respone) {
+        alert("Sửa thành công");
+      });
+  };
+
+  //delete album
+  $scope.deleteAlbum = function () {
+    if (confirm("Bạn có chắc muốn xóa?")) {
+      $http.delete(albumAPI + "/delete/" + $routeParams.id).then(
+        function (response) {
+          toastr.success("Xóa thành công", "Thông báo!", {
+            timeOut: 3000,
+            closeButton: true,
+            progressBar: true,
+            positionClass: "toast-top-center",
+          });
+          $location.path("/album");
+        },
+        function (error) {
+          toastr.error("Có lỗi xảy ra", "Thông báo!", {
+            timeOut: 3000,
+            closeButton: true,
+            progressBar: true,
+            positionClass: "toast-top-center",
+          });
+          console.log(error);
+        }
+      );
+    } else {
+      toastr.info("Đã hủy xóa", {
+        timeOut: 3000,
+        closeButton: true,
+        progressBar: true,
+        positionClass: "toast-top-center",
+      });
+    }
+  };
 };

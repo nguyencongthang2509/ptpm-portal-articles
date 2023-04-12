@@ -139,12 +139,15 @@ window.createArticleCtrl = function (
     var words = strippedText.split(" ");
     var first30Words = words.slice(0, 70);
     var first30WordsString = first30Words.join(" ");
+    // let str = $scope.list_of_string;
+    // let res = str.split(",");
+    // console.log(res);
+    console.log($scope.list_of_string);
     var formData = {
       title: $scope.title,
       content: content,
       descriptive: first30WordsString,
       hashtag: $scope.list_of_string,
-      status: $scope.status,
     };
     console.log(formData);
 
@@ -166,37 +169,37 @@ window.createArticleCtrl = function (
     );
   };
 
-    $scope.updateMyArticleToCensor = function (event) {
-      event.preventDefault();
-      var content = $("#summernote").summernote("code");
-      var strippedText = content.replace(/<\/?[^>]+(>|$)/g, " ");
-      var words = strippedText.split(" ");
-      var first30Words = words.slice(0, 70);
-      var first30WordsString = first30Words.join(" ");
-      var formData = {
-        title: $scope.title,
-        content: content,
-        descriptive: first30WordsString,
-        hashtag: $scope.list_of_string,
-        status: $scope.status,
-      };
-      console.log(formData);
-
-      $http.put(myArticleAPI + "/update-article-to-censor/" + id, formData).then(
-        function (response) {
-          toastr.success("Đã gửi yêu cầu phê duyệt thành công", "Thông báo!", {
-            timeOut: 5000,
-            closeButton: true,
-            progressBar: true,
-            positionClass: "toast-top-center",
-          });
-          console.log("Thành công rồi haha");
-        },
-        function (error) {
-          toastr.error("Có lỗi xảy ra");
-          console.log(error);
-          console.log("Thất bại rồi xem lại code đi");
-        }
-      );
+  $scope.updateMyArticleToCensor = function (event) {
+    event.preventDefault();
+    var content = $("#summernote").summernote("code");
+    var strippedText = content.replace(/<\/?[^>]+(>|$)/g, " ");
+    var words = strippedText.split(" ");
+    var first30Words = words.slice(0, 70);
+    var first30WordsString = first30Words.join(" ");
+    var formData = {
+      title: $scope.title,
+      content: content,
+      descriptive: first30WordsString,
+      hashtag: $scope.list_of_string,
+      status: $scope.status,
     };
+    console.log(formData);
+
+    $http.put(myArticleAPI + "/update-article-to-censor/" + id, formData).then(
+      function (response) {
+        toastr.success("Đã gửi yêu cầu phê duyệt thành công", "Thông báo!", {
+          timeOut: 5000,
+          closeButton: true,
+          progressBar: true,
+          positionClass: "toast-top-center",
+        });
+        console.log("Thành công rồi haha");
+      },
+      function (error) {
+        toastr.error("Có lỗi xảy ra");
+        console.log(error);
+        console.log("Thất bại rồi xem lại code đi");
+      }
+    );
+  };
 };

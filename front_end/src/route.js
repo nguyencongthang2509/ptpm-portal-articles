@@ -2,11 +2,11 @@ app.config(function ($routeProvider, $locationProvider) {
   $locationProvider.hashPrefix("");
   $routeProvider
     .when("/search-result", {
-      templateUrl: "./pages/search-result.html",
+      templateUrl: "./pages/user/searches/search-result.html",
       controller: searchCtrl,
     })
     .when("/search", {
-      templateUrl: "./pages/search-result.html",
+      templateUrl: "./pages/user/searches/search-result.html",
       controller: searchHashtagCtrl,
     })
     .when("/trang-chu", {
@@ -14,7 +14,7 @@ app.config(function ($routeProvider, $locationProvider) {
       controller: homeCtrl,
     })
     .when("/trang-chu/:id", {
-      templateUrl: "./pages/detail-article.html",
+      templateUrl: "./pages/user/articles/detail-article.html",
       controller: detailArticleCtrl,
     })
     .when("/pages", {
@@ -27,19 +27,19 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./pages/blog.html",
     })
     .when("/my-article", {
-      templateUrl: "./pages/my-article.html",
+      templateUrl: "./pages/user/my-articles/my-article.html",
       controller: myArticleCtrl,
     })
     .when("/articles", {
-      templateUrl: "./pages/articles.html",
+      templateUrl: "./pages/user/articles/articles.html",
       controller: articleCtrl,
     })
     .when("/favourite-articles", {
-      templateUrl: "./pages/favourite-articles.html",
+      templateUrl: "./pages/user/favourite-articles/favourite-articles.html",
       controller: favouriteArticleCtrl,
     })
     .when("/profile", {
-      templateUrl: "./pages/profile.html",
+      templateUrl: "./pages/user/profilies/profile.html",
       controller: profileController,
     })
     .when("/contact", {
@@ -52,49 +52,49 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./pages/signup.html",
     })
     .when("/album", {
-      templateUrl: "./pages/album.html",
+      templateUrl: "./pages/user/albums/album.html",
       controller: albumCtrl,
     })
     .when("/album/:id", {
-      templateUrl: "./pages/detail-album.html",
+      templateUrl: "./pages/user/albums/detail-album.html",
       controller: detailAlbumCtrl,
     })
     .when("/article-trash", {
-      templateUrl: "./pages/article-trash.html",
+      templateUrl: "./pages/user/trash-articles/article-trash.html",
       controller: articleTrashCtrl,
     })
     .when("/article/:id", {
-      templateUrl: "./pages/detail-article.html",
+      templateUrl: "./pages/user/articles/detail-article.html",
       controller: detailArticleCtrl,
     })
     .when("/my-article/:id", {
-      templateUrl: "./pages/detail-my-article.html",
+      templateUrl: "./pages/user/my-articles/detail-my-article.html",
       controller: detailArticleCtrl,
     })
     .when("/my-article/update-article/:id", {
-      templateUrl: "./pages/create-article.html",
+      templateUrl: "./pages/user/articles/create-article.html",
       controller: createArticleCtrl,
     })
     .when("/my-article/delete-article/:id", {
-      templateUrl: "./pages/my-article.html",
+      templateUrl: "./pages/user/my-articles/my-article.html",
       controller: createArticleCtrl,
     })
     .when("/create-article", {
-      templateUrl: "./pages/create-article.html",
+      templateUrl: "./pages/user/articles/create-article.html",
       controller: createArticleCtrl,
     })
     .when("/setting", {
       templateUrl: "./pages/setting.html",
     })
     .when("/users/:id", {
-      templateUrl: "./pages/profile.html",
+      templateUrl: "./pages/user/profilies/profile.html",
       controller: detailUserCtrl,
     })
     .when("/users", {
-      templateUrl: "./pages/users.html",
+      templateUrl: "./pages/user/profilies/users.html",
     })
     .when("/history", {
-      templateUrl: "./pages/history.html",
+      templateUrl: "./pages/user/histories/history.html",
       controller: historyCtrl,
     })
     .otherwise({

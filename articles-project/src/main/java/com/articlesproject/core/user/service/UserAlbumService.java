@@ -17,7 +17,7 @@ public interface UserAlbumService {
 
     Album create(UserCreateAlbumRequest request, String userId);
 
-    Album update(UserUpdateAlbumRequest request);
+    Album update(UserUpdateAlbumRequest request, String id);
 
     boolean delete(String id);
 

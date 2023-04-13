@@ -1,13 +1,14 @@
 <section id="blog" class="full-height px-lg-5">
   <div class="bt pb-4">
-    <button type="button" class="btn btn-light me-5">All</button>
-    <button
-      type="button"
-      class="btn btn-light me-5"
+    <button type="button" class="btn btn-light me-5" ng-click="searchFillter('')">All</button>
+    <span
       ng-repeat="cate in listCategory"
     >
+    <div 
+    class="btn btn-light me-5" ng-click="searchFillter(cate.id)">
       {{cate.name}}
-    </button>
+  </div>
+    </span>
   </div>
   <div class="row gy-4">
     <div class="col-md-4" data-aos="fade-up" ng-repeat="ar in listArticle">

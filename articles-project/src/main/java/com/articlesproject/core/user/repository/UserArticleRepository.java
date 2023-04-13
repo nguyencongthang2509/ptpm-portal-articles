@@ -2,6 +2,7 @@ package com.articlesproject.core.user.repository;
 
 
 import com.articlesproject.core.user.model.request.UserFindArticleAuthorRequest;
+import com.articlesproject.core.user.model.request.UserFindArticleByCategoryRequest;
 import com.articlesproject.core.user.model.request.UserFindArticleRequest;
 import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.repository.ArticlesRepository;
@@ -208,4 +209,41 @@ public interface UserArticleRepository extends ArticlesRepository {
                            """
             , nativeQuery = true)
     Page<UserArticleResponse> findAllArticleByTym(Pageable page, @Param("userId") String userId, @Param("request") UserFindArticleRequest request);
+
+    @Query(value = """
+             SELECT ar.id, ar.title, ar.descriptive, ar.browse_date, ar.status,ar.users_id, us.img, us.name,  COUNT(tyms.article_id) AS 'tym', IF((SELECT SUM(IF(ty.article_id IS NULL, 0, 1))  FROM tyms ty
+                WHERE (:userId IS NULL OR ty.users_id = :userId) AND ty.article_id = ar.id) IS NULL,0,1) AS 'favorite'  , GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 
+                FROM articles ar
+                LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
+                LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
+                LEFT JOIN articles_album aral ON aral.articles_id = ar.id
+                LEFT JOIN tyms ON tyms.article_id = ar.id
+                LEFT JOIN users us ON us.id = ar.users_id
+                LEFT JOIN category ca ON ca.id = ar.category_id
+                WHERE  ar.status = 3
+                AND  (:#{#request.categoryId} IS NULL
+                        OR :#{#request.categoryId} LIKE ''  
+                        OR ca.id LIKE :#{#request.categoryId} )
+            GROUP BY  ar.id, ar.title, ar.descriptive, ar.browse_date, ar.status,ar.users_id, us.img, us.name
+            ORDER BY ar.browse_date DESC
+            """,
+            countQuery = """
+                    SELECT ar.id, ar.title, ar.descriptive, ar.browse_date, ar.status,ar.users_id, us.img, us.name,  COUNT(tyms.article_id) AS 'tym', IF((SELECT SUM(IF(ty.article_id IS NULL, 0, 1))  FROM tyms ty
+                        WHERE (:userId IS NULL OR ty.users_id = :userId) AND ty.article_id = ar.id) IS NULL,0,1) AS 'favorite'  , GROUP_CONCAT(ha.title ORDER BY ha.title SEPARATOR ', ') AS 'hashtags' 
+                        FROM articles ar
+                        LEFT JOIN articles_hashtag  arha ON ar.id = arha.articles_id
+                        LEFT JOIN hashtag ha ON ha.id = arha.hashtag_id
+                        LEFT JOIN articles_album aral ON aral.articles_id = ar.id
+                        LEFT JOIN tyms ON tyms.article_id = ar.id
+                        LEFT JOIN users us ON us.id = ar.users_id
+                        LEFT JOIN category ca ON ca.id = ar.category_id
+                        WHERE  ar.status = 3
+                        AND  (:#{#request.categoryId} IS NULL
+                                OR :#{#request.categoryId} LIKE ''  
+                                OR ca.id LIKE :#{#request.categoryId} )
+                    GROUP BY  ar.id, ar.title, ar.descriptive, ar.browse_date, ar.status,ar.users_id, us.img, us.name
+                    ORDER BY ar.browse_date DESC
+                                                   """
+            , nativeQuery = true)
+    Page<UserArticleResponse> findAllArticleByCategory(Pageable page, @Param("userId") String userId, @Param("request") UserFindArticleByCategoryRequest request);
 }

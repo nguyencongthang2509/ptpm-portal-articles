@@ -158,12 +158,41 @@ app.service("ArticleService", function ($http) {
           `&category=` +
           findArticleRequest.category +
           `&categoryId=` +
-          findArticleRequest.categoryId
+          findArticleRequest.categoryId +
+          `&page=` + findArticleRequest.page
       )
       .then(
         function (response) {
           if (response.status === 200) {
             findByArticle = response.data.data.data;
+            totalPages = response.data.data.totalPages;
+            currentPage = response.data.data.currentPage;
+          }
+          return response;
+        },
+        function (errors) {
+          console.log(errors);
+        }
+      );
+  };
+
+  this.fetchFindByArticleByCategory = function (findArticleRequest) {
+    return $http
+      .get(
+        articleAPI +
+          `/find-article-category?categoryId=` +
+          findArticleRequest.categoryId +
+          `&page=` + findArticleRequest.page
+      )
+      .then(
+        function (response) {
+          console.log("hi");
+          console.log(response);
+          console.log(response.data.data.totalPages);
+          if (response.status === 200) {
+            findByArticle = response.data.data.data;
+            totalPages = response.data.data.totalPages;
+            currentPage = response.data.data.currentPage;
           }
           return response;
         },

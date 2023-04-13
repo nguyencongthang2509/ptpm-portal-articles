@@ -8,6 +8,15 @@ window.articleCtrl = function (
   env,
   AlbumService
 ) {
+
+  $scope.findArticleRequest = {
+    categoryId:"",
+    title: "",
+    hashtag: "",
+    category: "",
+    page: 0
+  };
+
   $scope.listArticle = [];
   $scope.listAlbum = [];
   $scope.listAlbumDefault = [];
@@ -24,14 +33,16 @@ window.articleCtrl = function (
 
   CategoryService.fetchCategories().then(function () {
     $scope.listCategory = CategoryService.getCategory();
+    console.log($scope.listCategory);
   });
 
   $scope.pageArticle = function () {
-    ArticleService.fetchArticles(0).then(function (respone) {
-      $scope.listArticle = ArticleService.getArticle();
+    ArticleService.fetchFindByArticle( $scope.findArticleRequest).then(function (respone) {
+      $scope.listArticle = ArticleService.getFindByArticle();
       $scope.totalPages = ArticleService.getTotalPages();
       $scope.currentPage = ArticleService.getCurrentPage();
       $scope.pageModel = $scope.currentPage + 1;
+      console.log($scope.pageModel );
     });
   };
 
@@ -42,8 +53,9 @@ window.articleCtrl = function (
     if ($scope.currentPage >= $scope.totalPages) {
       $scope.pageModel = $scope.totalPages;
     }
-    ArticleService.fetchArticles($scope.currentPage).then(function (respone) {
-      $scope.listArticle = ArticleService.getArticle();
+    $scope.findArticleRequest.page = $scope.currentPage
+    ArticleService.fetchFindByArticle( $scope.findArticleRequest).then(function (respone) {
+      $scope.listArticle = ArticleService.getFindByArticle();
       $scope.pageModel = $scope.currentPage + 1;
     });
   };
@@ -53,18 +65,30 @@ window.articleCtrl = function (
     if ($scope.currentPage <= 0) {
       $scope.currentPage = 0;
     }
-    ArticleService.fetchArticles($scope.currentPage).then(function (respone) {
-      $scope.listArticle = ArticleService.getArticle();
+    $scope.findArticleRequest.page = $scope.currentPage
+    ArticleService.fetchFindByArticle( $scope.findArticleRequest).then(function (respone) {
+      $scope.listArticle = ArticleService.getFindByArticle();
       $scope.pageModel = $scope.currentPage + 1;
     });
   };
 
   $scope.inputChangeEvent = function () {
-    ArticleService.fetchArticles($scope.pageModel - 1).then(function (respone) {
-      $scope.listArticle = ArticleService.getArticle();
+    $scope.findArticleRequest.page = $scope.pageModel - 1
+    ArticleService.fetchFindByArticle( $scope.findArticleRequest).then(function (respone) {
+      $scope.listArticle = ArticleService.getFindByArticle();
     });
   };
 
+  $scope.searchFillter = function(idCategory){
+    $scope.findArticleRequest.categoryId = idCategory
+    $scope.findArticleRequest.page = 0
+    ArticleService.fetchFindByArticleByCategory( $scope.findArticleRequest).then(function (respone) {
+      $scope.listArticle = ArticleService.getFindByArticle();
+      $scope.totalPages = ArticleService.getTotalPages();
+      $scope.currentPage = ArticleService.getCurrentPage();
+      $scope.pageModel = $scope.currentPage + 1;
+    });
+  }
   // begin album
 
   $scope.showModalAddArticleToAlbum = function (id) {

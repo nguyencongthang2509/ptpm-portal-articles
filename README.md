@@ -1,0 +1,21 @@
+# ptpm-portal-articles
+Module Quản lý Bài viết
+- [x] Tạo, sửa, update bài viết, xem chi tiết
+- [x] Xem danh sách bài viết, show trang home
+- [x] Xem bài viết trang bài viết
+- [x] Trang tìm kiếm
+- [x] Trang bài viết của tôi, chia theo trạng thái bài viết: Bản nháp, chờ phê duyệt, đã phê duyệt, đã hủy, all
+- [x] Trang bài viết đã tym
+- [x] Trang album, thêm bài viết vào album, sửa, xóa album, tìm kiếm
+- [x] Trang lịch sử xem bài viết
+- [x] Trang bài viết đã xóa, hoàn tác lại bài viết đã xóa
+- [x] Phê duyệt bài viết, hủy phê duyệt bài viết, thêm, sửa, xóa thể loại cho bài viết đã được phê duyệt
+- [x] Thông tin người tạo bài viết, người xem bài viết
+- [x] Trang chủ khi ngời dùng chưa đăng nhập, xem bài viết, tìm kiếm
+- [x] Tym bài viết, comment
+- [x] Lưu bản nháp, tiếp tục chỉnh sửa bản nháp
+- [ ] Review bài viết, đánh giá
+- [ ] Check validate
+- [ ] Chỉnh sửa giao diện cho đẹp
+- [ ] Đăng nhập, đăng ký
+- [ ] Sắp xếp tìm kiếm

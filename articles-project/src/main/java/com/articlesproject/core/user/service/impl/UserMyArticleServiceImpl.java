@@ -8,11 +8,13 @@ import com.articlesproject.core.user.model.request.UserUpdateArticleRequest;
 import com.articlesproject.core.user.model.response.UserArticleResponse;
 import com.articlesproject.core.user.model.response.UserMyArticleResponse;
 import com.articlesproject.core.user.repository.UserArticleHashtagRepository;
+import com.articlesproject.core.user.repository.UserHistoryRepository;
 import com.articlesproject.core.user.repository.UserMyArticleRepository;
 import com.articlesproject.core.user.repository.UserRepository;
 import com.articlesproject.core.user.service.UserMyArticleService;
 import com.articlesproject.entity.Articles;
 import com.articlesproject.entity.ArticlesHashtag;
+import com.articlesproject.entity.History;
 import com.articlesproject.infrastructure.constant.ArticleStatus;
 import com.articlesproject.infrastructure.constant.Message;
 import com.articlesproject.infrastructure.exception.rest.RestApiException;
@@ -33,6 +35,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -45,7 +48,7 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
     private UserMyArticleRepository userMyArticleRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserHistoryRepository userHistoryRepository;
 
     @Autowired
     private UserArticleHashtagRepository articleHashtagRepository;
@@ -130,6 +133,21 @@ public class UserMyArticleServiceImpl implements UserMyArticleService {
     @Override
     public UserArticleResponse getArticleById(String id, String userId) {
         Optional<UserArticleResponse> articles = userMyArticleRepository.findArticleById(id, userId);
+        Optional<History> historyOptionalArticlesIdAndUsersId = userHistoryRepository.findHistoriesByArticlesIdAndUsersId(id, userId);
+        if (!historyOptionalArticlesIdAndUsersId.isPresent()) {
+            History history = new History();
+            history.setArticlesId(id);
+            history.setUsersId(userId);
+            history.setCreateAt(new Date().getTime());
+            userHistoryRepository.save(history);
+            System.out.println("Chạy vào thêm ok");
+        } else {
+            System.out.println(historyOptionalArticlesIdAndUsersId.get());
+            historyOptionalArticlesIdAndUsersId.get().setCreateAt(new Date().getTime());
+            userHistoryRepository.save(historyOptionalArticlesIdAndUsersId.get());
+            System.out.println("Chạy vào update ok");
+        }
+
         if (!articles.isPresent()) {
             throw new RestApiException(Message.ERROR_UNKNOWN);
         }

@@ -22,16 +22,17 @@ window.detailArticleCtrl = function (
     content: "",
     reply: "",
   };
-
   MyArticleService.fetchMyArticleById($routeParams.id).then(function () {
     $scope.myArticleById = MyArticleService.getMyArticleById();
-    $scope.select2Options = {
-      multiple: true,
-      simple_tags: true,
-      tags: $scope.myArticleById.hashtag.split(","),
-      tokenSeparators: ["/", ",", ";"],
-    };
-    console.log($scope.myArticleById);
+    if ($scope.myArticleById.hashtag == null) {
+    } else {
+      $scope.select2Options = {
+        multiple: true,
+        simple_tags: true,
+        tags: $scope.myArticleById.hashtag.split(","),
+        tokenSeparators: ["/", ",", ";"],
+      };
+    }
   });
 
   CommentService.fetchComments($routeParams.id).then(function () {
@@ -93,10 +94,10 @@ window.detailArticleCtrl = function (
           userName: objUser.name,
           createdDate: objComment.createdDate,
         };
-         if($scope.index == -1){
+        if ($scope.index == -1) {
           $scope.comments.push(newObj);
-        }else{
-          $scope.comments[$scope.index].children.push(newObj)
+        } else {
+          $scope.comments[$scope.index].children.push(newObj);
         }
         $scope.$apply();
       }
@@ -106,7 +107,7 @@ window.detailArticleCtrl = function (
     stompClient.send(
       "/action/create-comment/" + $routeParams.id,
       {},
-      JSON.stringify( $scope.comment)
+      JSON.stringify($scope.comment)
     );
   };
 
@@ -164,6 +165,5 @@ window.detailArticleCtrl = function (
       {},
       JSON.stringify($scope.replyCommentUser)
     );
-    
   };
 };

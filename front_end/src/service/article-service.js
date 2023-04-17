@@ -159,7 +159,8 @@ app.service("ArticleService", function ($http) {
           findArticleRequest.category +
           `&categoryId=` +
           findArticleRequest.categoryId +
-          `&page=` + findArticleRequest.page
+          `&page=` +
+          findArticleRequest.page
       )
       .then(
         function (response) {
@@ -182,13 +183,11 @@ app.service("ArticleService", function ($http) {
         articleAPI +
           `/find-article-category?categoryId=` +
           findArticleRequest.categoryId +
-          `&page=` + findArticleRequest.page
+          `&page=` +
+          findArticleRequest.page
       )
       .then(
         function (response) {
-          console.log("hi");
-          console.log(response);
-          console.log(response.data.data.totalPages);
           if (response.status === 200) {
             findByArticle = response.data.data.data;
             totalPages = response.data.data.totalPages;

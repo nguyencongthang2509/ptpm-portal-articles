@@ -10,3 +10,4 @@ var articleByBrowseDateAPI = apiURL + "/article/by-browse-date";
 var articleByTymAPI = apiURL + "/article/by-tym";
 var albumAPI = apiURL + "/album";
 var commentAPI = apiURL + "/comment";
+var historyAPI = apiURL + "/history";

@@ -1,4 +1,4 @@
-<div class="">
+<!-- <div class="">
   <div class="" ng-repeat="(key, values) in listHistoryArticle">
     <table class="table" style="background-color: #F9F9F9; border-radius: 15px">
       <thead><tr>
@@ -7,7 +7,7 @@
         </th>
       </tr></thead>
       <tbody>
-        <tr ng-repeat="ar in values">
+        <tr ng-repeat="hi in values">
           <td>
               <div class="row">
           
@@ -108,9 +108,9 @@
     </table>
   </div>
     
-</div>
+</div> -->
 <!-- begin add article album -->
-<div class="modal fade" id="addArticleAlbum" tabindex="-1" aria-labelledby="addArticleAlbum" aria-hidden="true">
+<!-- <div class="modal fade" id="addArticleAlbum" tabindex="-1" aria-labelledby="addArticleAlbum" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -166,5 +166,121 @@
 
     </div>
   </div>
-</div>
+</div> -->
 <!-- end add article album -->
+<div class="">
+  <div class="" ng-repeat="(key, values) in listHistory track by $index">
+    <table class="table" style="background-color: #f9f9f9; border-radius: 15px">
+      <thead>
+        <tr>
+          <th scope="row">
+            <label> {{key * 24 * 60 * 60 | date:'dd/MM/yyyy'}}</label>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="hi in values">
+          <td>
+            <div class="row">
+              <div class="col-3" align="top">
+                <img
+                  src="../../../articles-project/src/main/resources/templates/articles/{{hi.articlesId}}/image.png"
+                  alt=""
+                />
+              </div>
+              <div class="col-8">
+                <div class="row">
+                  <a
+                    href="#article/{{hi.articlesId}}"
+                    class="link-custom"
+                    ng-click="saveArticleInLocalStorage(hi.articlesId)"
+                    >{{hi.title}}
+                  </a>
+                </div>
+                <div class="row">
+                  <p>{{hi.name }} - {{hi.browseDate == null ? 'Chưa được phê duyệt' : hi.browseDate | date:'dd/MM/yyyy'}}</p>
+                </div>
+                <div class="row">
+                  <p>{{hi.descriptive}}</p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="cham">
+              <i
+                class="bi bi-three-dots-vertical"
+                style="width: 12%"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    ng-click="deleteArticleInLocalStorage(key, $index, hi.id)"
+                    >Delete Article</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#article/{{hi.id}}"
+                    class="dropdown-item"
+                    ng-click="saveArticleInLocalStorage($index)"
+                    >Read More</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addArticleAlbum"
+                    ng-click="showModalAddArticleToAlbum(hi.id)"
+                    >Thêm vào album</a
+                  >
+                  <div
+                    class="modal fade"
+                    id="exampleModal"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            Đặt Tên
+                          </h1>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div class="modal-body">hhhh</div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button type="button" class="btn btn-primary">
+                            Save changes
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

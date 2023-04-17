@@ -18,6 +18,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 import java.util.Optional;
 
 @Service
@@ -32,14 +33,14 @@ public class UserArticleServiceImpl implements UserArticleService {
     @Override
     public PageableObject<UserArticleResponse> findAllArticle(String userId, UserFindArticleRequest request) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
-        Page<UserArticleResponse> res = userArticleRepository.findAllArticle(pageable,userId, request);
+        Page<UserArticleResponse> res = userArticleRepository.findAllArticle(pageable, userId, request);
         return new PageableObject<>(res);
     }
 
     @Override
     public PageableObject<UserArticleResponse> findAllArticleByCategory(String userId, UserFindArticleByCategoryRequest request) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
-        Page<UserArticleResponse> res = userArticleRepository.findAllArticleByCategory(pageable,userId, request);
+        Page<UserArticleResponse> res = userArticleRepository.findAllArticleByCategory(pageable, userId, request);
         return new PageableObject<>(res);
     }
 
@@ -47,7 +48,7 @@ public class UserArticleServiceImpl implements UserArticleService {
     @Override
     public PageableObject<UserArticleResponse> findAllArticleByBrowseDate(String userId, UserFindArticleRequest request) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
-        Page<UserArticleResponse> res = userArticleRepository.findAllArticleByBrowseDate(pageable,userId, request);
+        Page<UserArticleResponse> res = userArticleRepository.findAllArticleByBrowseDate(pageable, userId, request);
         return new PageableObject<>(res);
     }
 
@@ -55,7 +56,7 @@ public class UserArticleServiceImpl implements UserArticleService {
     @Override
     public PageableObject<UserArticleResponse> findArticleByIdAuthorId(String userId, UserFindArticleAuthorRequest request) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
-        Page<UserArticleResponse> res = userArticleRepository.findArticleByIdAuthorId(pageable,userId, request);
+        Page<UserArticleResponse> res = userArticleRepository.findArticleByIdAuthorId(pageable, userId, request);
         return new PageableObject<>(res);
     }
 
@@ -63,7 +64,7 @@ public class UserArticleServiceImpl implements UserArticleService {
     @Override
     public UserArticleResponse getArticleById(String userId, String id) {
         Optional<UserArticleResponse> articles = userArticleRepository.findArticleById(id, userId);
-        if(!articles.isPresent()){
+        if (!articles.isPresent()) {
             throw new RestApiException(Message.ERROR_UNKNOWN);
         }
         return articles.get();
@@ -73,7 +74,7 @@ public class UserArticleServiceImpl implements UserArticleService {
     @Override
     public PageableObject<UserArticleResponse> findAllArticleByTym(String userId, UserFindArticleRequest request) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
-        Page<UserArticleResponse> res = userArticleRepository.findAllArticleByTym(pageable,userId, request);
+        Page<UserArticleResponse> res = userArticleRepository.findAllArticleByTym(pageable, userId, request);
         return new PageableObject<>(res);
     }
 

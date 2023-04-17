@@ -1,28 +1,8 @@
 package com.articlesprojectTool;
 
-import com.articlesproject.entity.Album;
-import com.articlesproject.entity.Articles;
-import com.articlesproject.entity.ArticlesAlbum;
-import com.articlesproject.entity.ArticlesHashtag;
-import com.articlesproject.entity.Category;
-import com.articlesproject.entity.Comments;
-import com.articlesproject.entity.Evaluate;
-import com.articlesproject.entity.Hashtag;
-import com.articlesproject.entity.Point;
-import com.articlesproject.entity.Tyms;
-import com.articlesproject.entity.Users;
+import com.articlesproject.entity.*;
 import com.articlesproject.infrastructure.constant.ArticleStatus;
-import com.articlesproject.repository.AlbumRepository;
-import com.articlesproject.repository.ArticlesRepository;
-import com.articlesproject.repository.ArticlesAlbumRepository;
-import com.articlesproject.repository.ArticlesHashtagRepository;
-import com.articlesproject.repository.CategoryRepository;
-import com.articlesproject.repository.CommentRepository;
-import com.articlesproject.repository.EvalueteRepository;
-import com.articlesproject.repository.HashtagRepository;
-import com.articlesproject.repository.PointRepository;
-import com.articlesproject.repository.TymRepository;
-import com.articlesproject.repository.UserRepository;
+import com.articlesproject.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -64,6 +44,9 @@ public class DBGenerator implements CommandLineRunner {
 
     @Autowired
     private HashtagRepository hashtagRepository;
+
+    @Autowired
+    private HistoryRepository historyRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -159,7 +142,8 @@ public class DBGenerator implements CommandLineRunner {
         Comments comments = new Comments();
         comments.setContent("Rất biết ơn về những chia sẻ thực sự bổ ích của bạn.\n" +
                 "Mong bạn và gia đình nhiều sức khỏe, bình an.\n" +
-                "HH");comments.setUsersId(users1.getId());
+                "HH");
+        comments.setUsersId(users1.getId());
         comments.setArticlesId(baiViet.getId());
         comments.setId(commentRepository.save(comments).getId());
 
@@ -265,6 +249,12 @@ public class DBGenerator implements CommandLineRunner {
         danhGia2.setUsersId(users.getId());
         danhGia2.setArticlesId(baiViet1.getId());
         danhGia2.setId(evalueteRepository.save(danhGia2).getId());
+
+        History history = new History();
+        history.setArticlesId(baiViet.getId());
+        history.setUsersId(users.getId());
+        history.setCreateAt(1900800000L);
+        history.setId(historyRepository.save(history).getId());
 
     }
 
